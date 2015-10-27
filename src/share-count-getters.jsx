@@ -1,5 +1,5 @@
 import jsonp from 'jsonp';
-import { objectToGetParams } from 'utils';
+import { objectToGetParams } from './utils';
 
 
 function jsonpPromise(url) {

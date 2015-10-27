@@ -1,4 +1,4 @@
-import { objectToGetParams } from 'utils';
+import { objectToGetParams } from './utils';
 
 
 function assertProvided(argument, caller) {

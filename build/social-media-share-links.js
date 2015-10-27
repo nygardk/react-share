@@ -9,7 +9,7 @@ exports.facebook = facebook;
 exports.googlePlus = googlePlus;
 exports.linkedin = linkedin;
 
-var _utils = require('utils');
+var _utils = require('./utils');
 
 function assertProvided(argument, caller) {
   if (!argument) {

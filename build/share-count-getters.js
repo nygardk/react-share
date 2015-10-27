@@ -14,7 +14,7 @@ var _jsonp = require('jsonp');
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
-var _utils = require('utils');
+var _utils = require('./utils');
 
 function jsonpPromise(url) {
   return new Promise(function promiseCallback(resolve, reject) {

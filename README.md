@@ -17,6 +17,13 @@ See demos/demo0 for a concrete example.
 npm install react-share --save
 ```
 
+## Browser
+
+ShareButtons work on all browsers.
+
+ShareCounts works on all browsers, with the exception of Goolge Plus share count
+working only on IE11 and newer (XHR CORS problem).
+
 ## Compatibility
 
 Compatible with React versions `0.13.x` and `0.14.x`.

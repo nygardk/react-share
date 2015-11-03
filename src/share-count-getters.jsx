@@ -1,6 +1,8 @@
 import jsonp from 'jsonp';
-import { objectToGetParams } from './utils';
+import Promise from 'bluebird';
+import platform from 'platform';
 
+import { objectToGetParams } from './utils';
 
 function jsonpPromise(url) {
   return new Promise(function promiseCallback(resolve, reject) {
@@ -23,8 +25,7 @@ export function getFacebookShareCount(shareUrl) {
   const endpoint = 'https://api.facebook.com/method/fql.query' +
     `?format=json&query=${fql}`;
 
-  return fetch(endpoint)
-    .then(response => response.json())
+  return jsonpPromise(endpoint)
     .then(response => response.length && response[0].share_count
       ? response[0].share_count
       : undefined);
@@ -39,13 +40,21 @@ export function getTwitterShareCount(shareUrl) {
 }
 
 export function getGooglePlusShareCount(shareUrl) {
-  return fetch(`https://clients6.google.com/rpc`, {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
+  if (platform.name === 'IE' && parseInt(platform.version, 10) < 11) {
+    /* eslint-disable no-console */
+    console.error('Google plus share count is not supported in <=IE10!');
+    /* eslint-enable no-console */
+    return;
+  }
+
+  return new Promise(function promiseCb(resolve, reject) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'https://clients6.google.com/rpc');
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+
+    xhr.send(JSON.stringify({
       method: 'pos.plusones.get',
       id: 'p',
       params: {
@@ -58,11 +67,20 @@ export function getGooglePlusShareCount(shareUrl) {
       jsonrpc: '2.0',
       key: 'p',
       apiVersion: 'v1'
-    })
-  }).then(response => response.json())
-    .then(response => !!response
-      ? response.result.metadata.globalCounts.count
-      : undefined);
+    }));
+
+    xhr.onload = function onSuccessResponse() {
+      console.log(this.responseText);
+      resolve(JSON.parse(this.responseText));
+    };
+
+    xhr.onerror = function onErrorResponse() {
+      reject();
+    };
+  })
+  .then(response => !!response
+    ? response.result.metadata.globalCounts.count
+    : undefined);
 }
 
 export function getLinkedinShareCount(shareUrl) {

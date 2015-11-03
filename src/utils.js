@@ -1,3 +1,5 @@
+import platform from 'platform';
+
 export function objectToGetParams(object) {
   return '?' + Object.keys(object)
     .filter(key => !!object[key])
@@ -29,7 +31,7 @@ export function windowOpen(url, name, height = 400, width = 550) {
 
   return window.open(
     url,
-    name,
+    platform.name === 'IE' && parseInt(platform.version, 10) < 10 ? '' : name,
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 }

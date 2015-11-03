@@ -4,6 +4,8 @@ var path = require('path');
 var ENV = process.env.NODE_ENV;
 
 module.exports = {
+  debug: true,
+  devtool: '#inline-source-map',
   entry: {
     demo0: ['babel-core/polyfill', './demos/demo0/index.jsx']
   },

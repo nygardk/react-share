@@ -70,7 +70,6 @@ export function getGooglePlusShareCount(shareUrl) {
     }));
 
     xhr.onload = function onSuccessResponse() {
-      console.log(this.responseText);
       resolve(JSON.parse(this.responseText));
     };
 

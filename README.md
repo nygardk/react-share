@@ -5,9 +5,11 @@
 <img src="example.png" alt="Share buttons and counts example" />
 
 `New!` Pinterest support added in 1.2.0.
+
 <img src="example-pinterest.png" alt="Pinterest share buttons and count example" />
 
 #### Features:
+* no external script loading, i.e. no dependencies on SDKs
 * opens a popup share-window
 * supported services: Facebook, Twitter, Google+, LinkedIn, Pinterest
 * share buttons with generated icons or custom icons of your choice

@@ -8,6 +8,7 @@ exports.twitter = twitter;
 exports.facebook = facebook;
 exports.googlePlus = googlePlus;
 exports.linkedin = linkedin;
+exports.pinterest = pinterest;
 
 var _utils = require('./utils');
 
@@ -64,13 +65,12 @@ function linkedin(url, title) {
   return 'https://linkedin.com/shareArticle' + (0, _utils.objectToGetParams)({ url: url, title: title });
 }
 
-// TODO
-// export function pinterest(url, media) {
-//   assertProvided(media, 'pinterest');
-//   assertProvided(url, 'pinterest');
+function pinterest(url, media) {
+  assertProvided(url, 'pinterest');
+  assertProvided(media, 'pinterest');
 
-//   return `https://pinterest.com/pin/create/button/` + objectToGetParams({
-//     url,
-//     media
-//   });
-// }
+  return 'https://pinterest.com/pin/create/button/' + (0, _utils.objectToGetParams)({
+    url: url,
+    media: media
+  });
+}

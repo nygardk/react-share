@@ -127,4 +127,26 @@ var LinkedinShareButton = _react2['default'].createClass({
       className: 'SocialMediaShareButton--linkedin' }));
   }
 });
+
 exports.LinkedinShareButton = LinkedinShareButton;
+var PinterestShareButton = _react2['default'].createClass({
+  displayName: 'PinterestShareButton',
+
+  propTypes: {
+    children: _react2['default'].PropTypes.node.isRequired,
+    media: _react2['default'].PropTypes.string.isRequired,
+    url: _react2['default'].PropTypes.string.isRequired
+  },
+
+  render: function render() {
+    var _props4 = this.props;
+    var url = _props4.url;
+    var media = _props4.media;
+
+    return _react2['default'].createElement(SocialMediaShareButton, _extends({
+      link: (0, _socialMediaShareLinks.pinterest)(url, media)
+    }, this.props, {
+      className: 'SocialMediaShareButton--pinterest' }));
+  }
+});
+exports.PinterestShareButton = PinterestShareButton;

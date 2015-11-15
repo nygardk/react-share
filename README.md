@@ -4,12 +4,22 @@
 
 <img src="example.png" alt="Share buttons and counts example" />
 
-#### Features:
-* open popup-share window
-* share counts from most popular social media sites
-* use custom icons or generate de-facto social media icons
+`New!` Pinterest support added in 1.2.0.
+<img src="example-pinterest.png" alt="Pinterest share buttons and count example" />
 
-See demos/demo0 for a concrete example.
+#### Features:
+* opens a popup share-window
+* supported services: Facebook, Twitter, Google+, LinkedIn, Pinterest
+* share buttons with generated icons or custom icons of your choice
+* share counts
+
+#### Demos:
+
+* [demos/demo0](demos/demo0): Facebook, Twitter, Google+, Linkedin
+* [demos/demo1](demos/demo1): Pinterest
+
+To run demos: clone repo and run `npm install && npm run run-demos`
+and open `http://localhost:8080`.
 
 ## Install
 
@@ -45,7 +55,8 @@ const {
   FacebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
-  TwitterShareButton
+  TwitterShareButton,
+  PinterestShareButton
 } = ShareButtons;
 ```
 
@@ -60,6 +71,10 @@ and `FacebookShareButton`:
 
 * `title`: Title of the shared page (string)
 
+Required prop for `PinterestShareButton`:
+
+* `media`: An absolute link to the image that will be pinned (string)
+
 ### Share counts
 
 ```js
@@ -67,7 +82,8 @@ const {
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
-  TwitterShareCount
+  TwitterShareCount,
+  PinterestShareCount
 } = ShareCounts;
 ```
 
@@ -99,6 +115,7 @@ const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
+const PinterestIcon = generateShareIcon('pinterest');
 ```
 
 Props:

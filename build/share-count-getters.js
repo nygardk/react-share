@@ -7,6 +7,7 @@ exports.getFacebookShareCount = getFacebookShareCount;
 exports.getTwitterShareCount = getTwitterShareCount;
 exports.getGooglePlusShareCount = getGooglePlusShareCount;
 exports.getLinkedinShareCount = getLinkedinShareCount;
+exports.getPinterestShareCount = getPinterestShareCount;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -87,7 +88,6 @@ function getGooglePlusShareCount(shareUrl) {
     }));
 
     xhr.onload = function onSuccessResponse() {
-      console.log(this.responseText);
       resolve(JSON.parse(this.responseText));
     };
 
@@ -110,11 +110,12 @@ function getLinkedinShareCount(shareUrl) {
   });
 }
 
-// TODO
-// export function getPinterestShareCount(shareUrl) {
-//   const url = 'https://api.pinterest.com/v1/urls/count.json';
+function getPinterestShareCount(shareUrl) {
+  var url = 'https://api.pinterest.com/v1/urls/count.json';
 
-//   return jsonpPromise(url + objectToGetParams({
-//     url: shareUrl
-//   })).then(response => !!response ? response.count : undefined);
-// }
+  return jsonpPromise(url + (0, _utils.objectToGetParams)({
+    url: shareUrl
+  })).then(function (response) {
+    return !!response ? response.count : undefined;
+  });
+}

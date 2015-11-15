@@ -5,6 +5,7 @@ import {
   facebook,
   googlePlus,
   linkedin,
+  pinterest,
   twitter
 } from './social-media-share-links';
 import { windowOpen } from './utils';
@@ -117,6 +118,28 @@ export const LinkedinShareButton = React.createClass({
         link={linkedin(url, title)}
         {...this.props}
         className="SocialMediaShareButton--linkedin" />
+    );
+  }
+});
+
+export const PinterestShareButton = React.createClass({
+  propTypes: {
+    children: React.PropTypes.node.isRequired,
+    media: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired
+  },
+
+  render() {
+    const {
+      url,
+      media
+    } = this.props;
+
+    return (
+      <SocialMediaShareButton
+        link={pinterest(url, media)}
+        {...this.props}
+        className="SocialMediaShareButton--pinterest" />
     );
   }
 });

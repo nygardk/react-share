@@ -91,11 +91,10 @@ export function getLinkedinShareCount(shareUrl) {
   })).then(response => !!response ? response.count : undefined);
 }
 
-// TODO
-// export function getPinterestShareCount(shareUrl) {
-//   const url = 'https://api.pinterest.com/v1/urls/count.json';
+export function getPinterestShareCount(shareUrl) {
+  const url = 'https://api.pinterest.com/v1/urls/count.json';
 
-//   return jsonpPromise(url + objectToGetParams({
-//     url: shareUrl
-//   })).then(response => !!response ? response.count : undefined);
-// }
+  return jsonpPromise(url + objectToGetParams({
+    url: shareUrl
+  })).then(response => !!response ? response.count : undefined);
+}

@@ -7,7 +7,8 @@ module.exports = {
   debug: true,
   devtool: '#inline-source-map',
   entry: {
-    demo0: ['babel-core/polyfill', './demos/demo0/index.jsx']
+    demo0: ['babel-core/polyfill', './demos/demo0/index.jsx'],
+    demo1: ['babel-core/polyfill', './demos/demo1/index.jsx']
   },
   contentBase: './demos',
   output: {
@@ -29,6 +30,11 @@ module.exports = {
         loaders: ENV === 'development'
           ? ['react-hot', 'babel']
           : ['babel'],
+        exclude: /node_modules|build/
+      },
+      {
+        test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
+        loader: 'url-loader?limit=1',
         exclude: /node_modules|build/
       }
     ]

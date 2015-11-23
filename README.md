@@ -8,6 +8,13 @@
 
 <img src="example-pinterest.png" alt="Pinterest share buttons and count example" />
 
+
+### News 23.11.2015
+
+Since 20th of November Twitter no longer supports open count API. The service
+was shut down and there is currently no way to fetch the share count.
+Thus, TwitterShareCount was removed in version 1.3.0.
+
 #### Features:
 * no external script loading, i.e. no dependencies on SDKs
 * opens a popup share-window

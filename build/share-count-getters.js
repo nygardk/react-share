@@ -4,7 +4,6 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.getFacebookShareCount = getFacebookShareCount;
-exports.getTwitterShareCount = getTwitterShareCount;
 exports.getGooglePlusShareCount = getGooglePlusShareCount;
 exports.getLinkedinShareCount = getLinkedinShareCount;
 exports.getPinterestShareCount = getPinterestShareCount;
@@ -46,14 +45,6 @@ function getFacebookShareCount(shareUrl) {
 
   return jsonpPromise(endpoint).then(function (response) {
     return response.length && response[0].share_count ? response[0].share_count : undefined;
-  });
-}
-
-function getTwitterShareCount(shareUrl) {
-  var url = 'https://cdn.api.twitter.com/1/urls/count.json' + ('?&url=' + encodeURIComponent(shareUrl));
-
-  return jsonpPromise(url).then(function (response) {
-    return !isNaN(response.count) ? response.count : undefined;
   });
 }
 

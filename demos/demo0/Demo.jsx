@@ -15,8 +15,7 @@ const {
 const {
   FacebookShareCount,
   GooglePlusShareCount,
-  LinkedinShareCount,
-  TwitterShareCount
+  LinkedinShareCount
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -58,11 +57,9 @@ const Demo = React.createClass({
               round={true} />
           </TwitterShareButton>
 
-          <TwitterShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
-            {count => count}
-          </TwitterShareCount>
+          <div className="Demo__some-network__share-count">
+            &nbsp;
+          </div>
         </div>
 
         <div className="Demo__some-network">

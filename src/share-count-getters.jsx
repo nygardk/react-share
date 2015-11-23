@@ -31,14 +31,6 @@ export function getFacebookShareCount(shareUrl) {
       : undefined);
 }
 
-export function getTwitterShareCount(shareUrl) {
-  const url = 'https://cdn.api.twitter.com/1/urls/count.json' +
-    `?&url=${encodeURIComponent(shareUrl)}`;
-
-  return jsonpPromise(url)
-    .then(response => !isNaN(response.count) ? response.count : undefined);
-}
-
 export function getGooglePlusShareCount(shareUrl) {
   if (platform.name === 'IE' && parseInt(platform.version, 10) < 11) {
     /* eslint-disable no-console */

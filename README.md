@@ -91,7 +91,6 @@ const {
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
-  TwitterShareCount,
   PinterestShareCount
 } = ShareCounts;
 ```
@@ -102,7 +101,7 @@ URL you are sharing. `className` prop is optional.
 Example:
 
 ```jsx
-<TwitterShareCount url={shareUrl} />
+<FacebookShareCount url={shareUrl} />
 ```
 
 If you want to render anything else but the count,
@@ -110,11 +109,11 @@ you can provide a function as a child element that takes in `shareCount` as an
 argument and returns an element:
 
 ```jsx
-<TwitterShareCount url={shareUrl}>
+<FacebookShareCount url={shareUrl}>
   {shareCount => (
     <span className="myShareCountWrapper">{shareCount}</span>
   )}
-</TwitterShareCount>
+</FacebookShareCount>
 ```
 
 ### Icons

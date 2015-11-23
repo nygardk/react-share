@@ -39,7 +39,7 @@ var SocialMediaShareCount = _react2['default'].createClass({
         isLoading: true
       });
 
-      this.props.getCount(this.props.url).then(function (count) {
+      this.props.getCount(this.props.url, function (count) {
         if (_this.isMounted()) {
           _this.setState({
             count: count,

@@ -48,6 +48,7 @@ var FacebookShareButton = _react2['default'].createClass({
   displayName: 'FacebookShareButton',
 
   propTypes: {
+    className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     title: _react2['default'].PropTypes.string.isRequired,
     url: _react2['default'].PropTypes.string.isRequired
@@ -61,7 +62,7 @@ var FacebookShareButton = _react2['default'].createClass({
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
       link: (0, _socialMediaShareLinks.facebook)(url, title)
     }, this.props, {
-      className: 'SocialMediaShareButton--facebook' }));
+      className: 'SocialMediaShareButton--facebook' + (' ' + (this.props.className || '')) }));
   }
 });
 
@@ -70,6 +71,7 @@ var TwitterShareButton = _react2['default'].createClass({
   displayName: 'TwitterShareButton',
 
   propTypes: {
+    className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     title: _react2['default'].PropTypes.string.isRequired,
     url: _react2['default'].PropTypes.string.isRequired
@@ -83,7 +85,7 @@ var TwitterShareButton = _react2['default'].createClass({
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
       link: (0, _socialMediaShareLinks.twitter)(url, title)
     }, this.props, {
-      className: 'SocialMediaShareButton--twitter' }));
+      className: 'SocialMediaShareButton--twitter' + (' ' + (this.props.className || '')) }));
   }
 });
 
@@ -92,6 +94,7 @@ var GooglePlusShareButton = _react2['default'].createClass({
   displayName: 'GooglePlusShareButton',
 
   propTypes: {
+    className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     url: _react2['default'].PropTypes.string.isRequired
   },
@@ -102,7 +105,7 @@ var GooglePlusShareButton = _react2['default'].createClass({
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
       link: (0, _socialMediaShareLinks.googlePlus)(url)
     }, this.props, {
-      className: 'SocialMediaShareButton--google-plus' }));
+      className: 'SocialMediaShareButton--google-plus' + (' ' + (this.props.className || '')) }));
   }
 });
 
@@ -111,6 +114,7 @@ var LinkedinShareButton = _react2['default'].createClass({
   displayName: 'LinkedinShareButton',
 
   propTypes: {
+    className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     title: _react2['default'].PropTypes.string.isRequired,
     url: _react2['default'].PropTypes.string.isRequired
@@ -124,7 +128,7 @@ var LinkedinShareButton = _react2['default'].createClass({
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
       link: (0, _socialMediaShareLinks.linkedin)(url, title)
     }, this.props, {
-      className: 'SocialMediaShareButton--linkedin' }));
+      className: 'SocialMediaShareButton--linkedin' + (' ' + (this.props.className || '')) }));
   }
 });
 
@@ -133,6 +137,7 @@ var PinterestShareButton = _react2['default'].createClass({
   displayName: 'PinterestShareButton',
 
   propTypes: {
+    className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     media: _react2['default'].PropTypes.string.isRequired,
     url: _react2['default'].PropTypes.string.isRequired
@@ -146,7 +151,7 @@ var PinterestShareButton = _react2['default'].createClass({
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
       link: (0, _socialMediaShareLinks.pinterest)(url, media)
     }, this.props, {
-      className: 'SocialMediaShareButton--pinterest' }));
+      className: 'SocialMediaShareButton--pinterest' + (' ' + (this.props.className || '')) }));
   }
 });
 exports.PinterestShareButton = PinterestShareButton;

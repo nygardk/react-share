@@ -1,3 +1,7 @@
+## 1.4.1 (Jan 11, 2016)
+
+* Bugfix: className-prop was not propagating correctly in share-buttons.
+
 ## 1.4.0 (Nov 23, 2015)
 
 * Removed Bluebird from dependencies: no need for Promises. The library has a much smaller footprint now.

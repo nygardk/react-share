@@ -38,6 +38,7 @@ const SocialMediaShareButton = React.createClass({
 
 export const FacebookShareButton = React.createClass({
   propTypes: {
+    className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     title: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired
@@ -53,13 +54,15 @@ export const FacebookShareButton = React.createClass({
       <SocialMediaShareButton
         link={facebook(url, title)}
         {...this.props}
-        className="SocialMediaShareButton--facebook" />
+        className={'SocialMediaShareButton--facebook' +
+          ` ${this.props.className || ''}`} />
     );
   }
 });
 
 export const TwitterShareButton = React.createClass({
   propTypes: {
+    className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     title: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired
@@ -75,13 +78,15 @@ export const TwitterShareButton = React.createClass({
       <SocialMediaShareButton
         link={twitter(url, title)}
         {...this.props}
-        className="SocialMediaShareButton--twitter" />
+        className={'SocialMediaShareButton--twitter' +
+          ` ${this.props.className || ''}`} />
     );
   }
 });
 
 export const GooglePlusShareButton = React.createClass({
   propTypes: {
+    className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     url: React.PropTypes.string.isRequired
   },
@@ -95,13 +100,15 @@ export const GooglePlusShareButton = React.createClass({
       <SocialMediaShareButton
         link={googlePlus(url)}
         {...this.props}
-        className="SocialMediaShareButton--google-plus" />
+        className={'SocialMediaShareButton--google-plus' +
+          ` ${this.props.className || ''}`} />
     );
   }
 });
 
 export const LinkedinShareButton = React.createClass({
   propTypes: {
+    className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     title: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired
@@ -117,13 +124,15 @@ export const LinkedinShareButton = React.createClass({
       <SocialMediaShareButton
         link={linkedin(url, title)}
         {...this.props}
-        className="SocialMediaShareButton--linkedin" />
+        className={'SocialMediaShareButton--linkedin' +
+          ` ${this.props.className || ''}`} />
     );
   }
 });
 
 export const PinterestShareButton = React.createClass({
   propTypes: {
+    className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     media: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired
@@ -139,7 +148,8 @@ export const PinterestShareButton = React.createClass({
       <SocialMediaShareButton
         link={pinterest(url, media)}
         {...this.props}
-        className="SocialMediaShareButton--pinterest" />
+        className={'SocialMediaShareButton--pinterest' +
+          ` ${this.props.className || ''}`} />
     );
   }
 });

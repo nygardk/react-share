@@ -1,3 +1,7 @@
+## 1.5.0 (Apr 12, 2016)
+
+* Updated to support React v. 15.x.x
+
 ## 1.4.1 (Jan 11, 2016)
 
 * Bugfix: className-prop was not propagating correctly in share-buttons.

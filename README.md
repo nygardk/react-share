@@ -45,7 +45,7 @@ working only on IE11 and newer (XHR CORS problem).
 
 ## Compatibility
 
-Compatible with React versions `0.13.x` and `0.14.x`.
+Compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.
 
 ## API
 

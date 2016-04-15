@@ -74,16 +74,20 @@ var TwitterShareButton = _react2['default'].createClass({
     className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     title: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
+    url: _react2['default'].PropTypes.string.isRequired,
+    via: _react2['default'].PropTypes.string,
+    hashtags: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string)
   },
 
   render: function render() {
     var _props2 = this.props;
     var url = _props2.url;
     var title = _props2.title;
+    var via = _props2.via;
+    var hashtags = _props2.hashtags;
 
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.twitter)(url, title)
+      link: (0, _socialMediaShareLinks.twitter)(url, title, via, hashtags)
     }, this.props, {
       className: 'SocialMediaShareButton--twitter' + (' ' + (this.props.className || '')) }));
   }
@@ -140,16 +144,18 @@ var PinterestShareButton = _react2['default'].createClass({
     className: _react2['default'].PropTypes.string,
     children: _react2['default'].PropTypes.node.isRequired,
     media: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
+    url: _react2['default'].PropTypes.string.isRequired,
+    description: _react2['default'].PropTypes.string
   },
 
   render: function render() {
     var _props4 = this.props;
     var url = _props4.url;
     var media = _props4.media;
+    var description = _props4.description;
 
     return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.pinterest)(url, media)
+      link: (0, _socialMediaShareLinks.pinterest)(url, media, description)
     }, this.props, {
       className: 'SocialMediaShareButton--pinterest' + (' ' + (this.props.className || '')) }));
   }

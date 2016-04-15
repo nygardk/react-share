@@ -1,6 +1,6 @@
 {
   "name": "react-share",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Easy social media share buttons and share counts.",
   "main": "./build/react-share.js",
   "scripts": {

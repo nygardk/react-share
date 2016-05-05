@@ -65,18 +65,22 @@ export const TwitterShareButton = React.createClass({
     className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     title: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired
+    url: React.PropTypes.string.isRequired,
+    via: React.PropTypes.string,
+    hashtags: React.PropTypes.arrayOf(React.PropTypes.string)
   },
 
   render() {
     const {
       url,
-      title
+      title,
+      via,
+      hashtags
     } = this.props;
 
     return (
       <SocialMediaShareButton
-        link={twitter(url, title)}
+        link={twitter(url, title, via, hashtags)}
         {...this.props}
         className={'SocialMediaShareButton--twitter' +
           ` ${this.props.className || ''}`} />
@@ -135,18 +139,20 @@ export const PinterestShareButton = React.createClass({
     className: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     media: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired
+    url: React.PropTypes.string.isRequired,
+    description: React.PropTypes.string
   },
 
   render() {
     const {
       url,
-      media
+      media,
+      description
     } = this.props;
 
     return (
       <SocialMediaShareButton
-        link={pinterest(url, media)}
+        link={pinterest(url, media, description)}
         {...this.props}
         className={'SocialMediaShareButton--pinterest' +
           ` ${this.props.className || ''}`} />

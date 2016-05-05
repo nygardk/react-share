@@ -65,12 +65,13 @@ function linkedin(url, title) {
   return 'https://linkedin.com/shareArticle' + (0, _utils.objectToGetParams)({ url: url, title: title });
 }
 
-function pinterest(url, media) {
+function pinterest(url, media, description) {
   assertProvided(url, 'pinterest');
   assertProvided(media, 'pinterest');
 
   return 'https://pinterest.com/pin/create/button/' + (0, _utils.objectToGetParams)({
     url: url,
-    media: media
+    media: media,
+    description: description
   });
 }

@@ -52,12 +52,13 @@ export function linkedin(url, title) {
   return `https://linkedin.com/shareArticle` + objectToGetParams({url, title});
 }
 
-export function pinterest(url, media) {
+export function pinterest(url, media, description) {
   assertProvided(url, 'pinterest');
   assertProvided(media, 'pinterest');
 
   return `https://pinterest.com/pin/create/button/` + objectToGetParams({
     url,
-    media
+    media,
+    description
   });
 }

@@ -6,23 +6,28 @@ import {
   generateShareIcon,
 } from 'react-share';
 
+import exampleImage from './react-share-pin-example.png';
+
 const {
   FacebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
+  PinterestShareButton,
 } = ShareButtons;
 
 const {
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
+  PinterestShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
+const PinterestIcon = generateShareIcon('pinterest');
 
 const Demo = React.createClass({
   render() {
@@ -94,6 +99,18 @@ const Demo = React.createClass({
             className="Demo__some-network__share-count">
             {count => count}
           </LinkedinShareCount>
+        </div>
+
+        <div className="Demo__some-network">
+          <PinterestShareButton
+            url={String(window.location)}
+            media={`${String(window.location)}/${exampleImage}`}
+            className="Demo__some-network__share-button">
+            <PinterestIcon size={32} round />
+          </PinterestShareButton>
+
+          <PinterestShareCount url={String(window.location)}
+            className="Demo__some-network__share-count" />
         </div>
       </div>
     );

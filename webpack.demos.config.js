@@ -8,7 +8,6 @@ module.exports = {
   devtool: '#inline-source-map',
   entry: {
     demo0: ['./demos/demo0/index.jsx'],
-    demo1: ['./demos/demo1/index.jsx']
   },
   contentBase: './demos',
   output: {

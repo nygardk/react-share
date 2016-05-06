@@ -1,29 +1,18 @@
+import assert from 'assert';
+
 import { objectToGetParams } from './utils';
 
-
-function assertProvided(argument, caller) {
-  if (!argument) {
-    throw new Error(`Argument not provided for ${caller}.`);
-  }
-}
-
-function assertIsArray(array, caller) {
-  if (!!array && typeof array.contructor === Array) {
-    throw new Error(`Expected object to be an array in ${caller}.`);
-  }
-}
-
 export function email(subject, body) {
-  assertProvided(subject, 'email');
-  assertProvided(body, 'email');
+  assert(subject, 'email.subject');
+  assert(body, 'email.body');
 
   return `mailto:` + objectToGetParams({subject, body});
 }
 
 export function twitter(url, text, via, hashtags = []) {
-  assertProvided(url, 'twitter');
-  assertProvided(text, 'twitter');
-  assertIsArray(hashtags, 'twitter');
+  assert(url, 'twitter.url');
+  assert(text, 'twitter.text');
+  assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return `https://twitter.com/share` + objectToGetParams({
     url,
@@ -34,27 +23,27 @@ export function twitter(url, text, via, hashtags = []) {
 }
 
 export function facebook(url) {
-  assertProvided(url, 'facebook');
+  assert(url, 'facebook.url');
 
   return `https://facebook.com/sharer.php` + objectToGetParams({u: url});
 }
 
 export function googlePlus(url) {
-  assertProvided(url, 'googlePlus');
+  assert(url, 'googlePlus.url');
 
   return `https://plus.google.com/share` + objectToGetParams({url});
 }
 
 export function linkedin(url, title) {
-  assertProvided(url, 'linkedin');
-  assertProvided(title, 'linkedin');
+  assert(url, 'linkedin.url');
+  assert(title, 'linkedin.title');
 
   return `https://linkedin.com/shareArticle` + objectToGetParams({url, title});
 }
 
 export function pinterest(url, media, description) {
-  assertProvided(url, 'pinterest');
-  assertProvided(media, 'pinterest');
+  assert(url, 'pinterest.url');
+  assert(media, 'pinterest.media');
 
   return `https://pinterest.com/pin/create/button/` + objectToGetParams({
     url,

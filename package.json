@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",
+    "classnames": "^2.2.5",
     "jsonp": "^0.2.0",
     "platform": "^1.3.0",
     "react-social-icons": "^1.1.0"

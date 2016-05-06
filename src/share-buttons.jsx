@@ -1,161 +1,92 @@
 /* eslint-disable react/no-multi-comp */
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
 
-import {
-  facebook,
-  googlePlus,
-  linkedin,
-  pinterest,
-  twitter,
-} from './social-media-share-links';
+import * as links from './social-media-share-links';
 import { windowOpen } from './utils';
 
+const supportedNetworks = Object.keys(links);
 
-const SocialMediaShareButton = React.createClass({
-  propTypes: {
-    children: React.PropTypes.node.isRequired,
-    className: React.PropTypes.string,
-    link: React.PropTypes.node.isRequired,
-    url: React.PropTypes.string.isRequired,
-  },
+export default class ShareButton extends Component {
+  static propTypes = {
+    className: PropTypes.string,
+    network: PropTypes.oneOf(supportedNetworks),
+    url: PropTypes.string.isRequired,
+    opts: PropTypes.object,
+  };
 
-  onClick() {
-    windowOpen(this.props.link);
-  },
+  onClick = (e) => {
+    e.preventDefault();
+    windowOpen(this.link());
+    return false;
+  }
 
-  render() {
-    const className = `SocialMediaShareButton ${this.props.className || ''}`;
-
-    return (
-      <div {...this.props}
-        className={className}
-        onClick={this.onClick}>
-        {this.props.children}
-      </div>
-    );
-  },
-});
-
-export const FacebookShareButton = React.createClass({
-  propTypes: {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    title: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  },
+  link() {
+    const { url, opts, network } = this.props;
+    return links[network](url, opts);
+  }
 
   render() {
     const {
-      url,
-      title,
+      className,
+      network,
+      ...rest,
     } = this.props;
 
     return (
-      <SocialMediaShareButton
-        link={facebook(url, { title })}
-        {...this.props}
-        className={'SocialMediaShareButton--facebook' +
-          ` ${this.props.className || ''}`} />
+      <div {...rest}
+        onClick={this.onClick}
+        url={this.link()}
+        className={cx(
+          'SocialMediaShareButton',
+          `SocialMediaShareButton--${network}`,
+          className
+        )} />
     );
-  },
+  }
+}
+
+/* HOC to ease migration from v1 to v2.
+ * To-be-removed in v2.
+ */
+function createShareButton(network, optsMap = () => ({}), propTypes) {
+  const component = props => (
+    <ShareButton {...props} network={network} opts={optsMap(props)} />
+  );
+
+  component.propTypes = propTypes;
+
+  return component;
+}
+
+export const FacebookShareButton = createShareButton('facebook', props => ({
+  title: props.title,
+}), {
+  title: PropTypes.string.isRequired,
 });
 
-export const TwitterShareButton = React.createClass({
-  propTypes: {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    title: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-    via: React.PropTypes.string,
-    hashtags: React.PropTypes.arrayOf(React.PropTypes.string),
-  },
-
-  render() {
-    const {
-      url,
-      title,
-      via,
-      hashtags,
-    } = this.props;
-
-    return (
-      <SocialMediaShareButton
-        link={twitter(url, { text: title, via, hashtags })}
-        {...this.props}
-        className={'SocialMediaShareButton--twitter' +
-          ` ${this.props.className || ''}`} />
-    );
-  },
+export const TwitterShareButton = createShareButton('twitter', props => ({
+  text: props.title,
+  via: props.via,
+  hashtags: props.hashtags,
+}), {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  via: PropTypes.string,
 });
 
-export const GooglePlusShareButton = React.createClass({
-  propTypes: {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    url: React.PropTypes.string.isRequired,
-  },
+export const GooglePlusShareButton = createShareButton('googlePlus');
 
-  render() {
-    const {
-      url,
-    } = this.props;
-
-    return (
-      <SocialMediaShareButton
-        link={googlePlus(url)}
-        {...this.props}
-        className={'SocialMediaShareButton--google-plus' +
-          ` ${this.props.className || ''}`} />
-    );
-  },
+export const LinkedinShareButton = createShareButton('linkedin', props => ({
+  title: props.title,
+}), {
+  title: PropTypes.string.isRequired,
 });
 
-export const LinkedinShareButton = React.createClass({
-  propTypes: {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    title: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  },
-
-  render() {
-    const {
-      url,
-      title,
-    } = this.props;
-
-    return (
-      <SocialMediaShareButton
-        link={linkedin(url, { title })}
-        {...this.props}
-        className={'SocialMediaShareButton--linkedin' +
-          ` ${this.props.className || ''}`} />
-    );
-  },
-});
-
-export const PinterestShareButton = React.createClass({
-  propTypes: {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    media: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string,
-  },
-
-  render() {
-    const {
-      url,
-      media,
-      description,
-    } = this.props;
-
-    return (
-      <SocialMediaShareButton
-        link={pinterest(url, { media, description })}
-        {...this.props}
-        className={'SocialMediaShareButton--pinterest' +
-          ` ${this.props.className || ''}`} />
-    );
-  },
+export const PinterestShareButton = createShareButton('pinterest', props => ({
+  media: props.media,
+  description: props.description,
+}), {
+  media: PropTypes.string.isRequired,
+  description: PropTypes.string,
 });

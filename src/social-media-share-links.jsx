@@ -52,3 +52,9 @@ export function pinterest(url, { media, description }) {
     description,
   });
 }
+
+export function vk(url) {
+  assert(url, 'vk.url');
+
+  return 'https://vk.com/share.php' + objectToGetParams({ url });
+}

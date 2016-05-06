@@ -14,6 +14,7 @@ const {
   LinkedinShareButton,
   TwitterShareButton,
   PinterestShareButton,
+  VKShareButton,
 } = ShareButtons;
 
 const {
@@ -28,6 +29,7 @@ const TwitterIcon = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 const PinterestIcon = generateShareIcon('pinterest');
+const VKIcon = generateShareIcon('vk');
 
 const Demo = React.createClass({
   render() {
@@ -111,6 +113,20 @@ const Demo = React.createClass({
 
           <PinterestShareCount url={String(window.location)}
             className="Demo__some-network__share-count" />
+        </div>
+
+        <div className="Demo__some-network">
+          <VKShareButton
+            url={shareUrl}
+            className="Demo__some-network__share-button">
+            <VKIcon
+              size={32}
+              round />
+          </VKShareButton>
+
+          <div className="Demo__some-network__share-count">
+            &nbsp;
+          </div>
         </div>
       </div>
     );

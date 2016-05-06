@@ -90,3 +90,5 @@ export const PinterestShareButton = createShareButton('pinterest', props => ({
   media: PropTypes.string.isRequired,
   description: PropTypes.string,
 });
+
+export const VKShareButton = createShareButton('vk');

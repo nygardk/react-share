@@ -7,8 +7,8 @@ module.exports = {
   debug: true,
   devtool: '#inline-source-map',
   entry: {
-    demo0: ['babel-core/polyfill', './demos/demo0/index.jsx'],
-    demo1: ['babel-core/polyfill', './demos/demo1/index.jsx']
+    demo0: ['./demos/demo0/index.jsx'],
+    demo1: ['./demos/demo1/index.jsx']
   },
   contentBase: './demos',
   output: {

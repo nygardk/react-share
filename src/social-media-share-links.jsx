@@ -10,7 +10,7 @@ export function email(subject, body) {
   return 'mailto:' + objectToGetParams({ subject, body });
 }
 
-export function twitter(url, text, via, hashtags = []) {
+export function twitter(url, { text, via, hashtags = [] }) {
   assert(url, 'twitter.url');
   assert(text, 'twitter.text');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
@@ -35,14 +35,14 @@ export function googlePlus(url) {
   return 'https://plus.google.com/share' + objectToGetParams({ url });
 }
 
-export function linkedin(url, title) {
+export function linkedin(url, { title }) {
   assert(url, 'linkedin.url');
   assert(title, 'linkedin.title');
 
   return 'https://linkedin.com/shareArticle' + objectToGetParams({ url, title });
 }
 
-export function pinterest(url, media, description) {
+export function pinterest(url, { media, description }) {
   assert(url, 'pinterest.url');
   assert(media, 'pinterest.media');
 

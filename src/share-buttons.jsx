@@ -52,7 +52,7 @@ export const FacebookShareButton = React.createClass({
 
     return (
       <SocialMediaShareButton
-        link={facebook(url, title)}
+        link={facebook(url, { title })}
         {...this.props}
         className={'SocialMediaShareButton--facebook' +
           ` ${this.props.className || ''}`} />
@@ -80,7 +80,7 @@ export const TwitterShareButton = React.createClass({
 
     return (
       <SocialMediaShareButton
-        link={twitter(url, title, via, hashtags)}
+        link={twitter(url, { text: title, via, hashtags })}
         {...this.props}
         className={'SocialMediaShareButton--twitter' +
           ` ${this.props.className || ''}`} />
@@ -126,7 +126,7 @@ export const LinkedinShareButton = React.createClass({
 
     return (
       <SocialMediaShareButton
-        link={linkedin(url, title)}
+        link={linkedin(url, { title })}
         {...this.props}
         className={'SocialMediaShareButton--linkedin' +
           ` ${this.props.className || ''}`} />
@@ -152,7 +152,7 @@ export const PinterestShareButton = React.createClass({
 
     return (
       <SocialMediaShareButton
-        link={pinterest(url, media, description)}
+        link={pinterest(url, { media, description })}
         {...this.props}
         className={'SocialMediaShareButton--pinterest' +
           ` ${this.props.className || ''}`} />

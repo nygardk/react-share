@@ -1,6 +1,7 @@
 ## 1.6.0 (to-be-released)
 
-* mostly internal changes for preparing version 2, assertion message changes
+* feature: added sharing support for VK
+* internal changes for preparing version 2, assertion message changes
 * minor breaking change: Google Plus button now has class `SocialMediaShareButton--googlePlus` instead of `SocialMediaShareButton--google-plus`
 
 ## 1.5.0 (Apr 12, 2016)

@@ -2,17 +2,17 @@ import React from 'react';
 import {
   ShareButtons,
   ShareCounts,
-  generateShareIcon
+  generateShareIcon,
 } from 'react-share';
 
 import exampleImage from './react-share-pin-example.png';
 
 const {
-  PinterestShareButton
+  PinterestShareButton,
 } = ShareButtons;
 
 const {
-  PinterestShareCount
+  PinterestShareCount,
 } = ShareCounts;
 
 const PinterestIcon = generateShareIcon('pinterest');
@@ -29,15 +29,15 @@ const Demo = React.createClass({
             url={shareUrl}
             media={media}
             className="Demo__some-network__share-button">
-            <PinterestIcon size={32} round={true} />
+            <PinterestIcon size={32} round />
           </PinterestShareButton>
 
           <PinterestShareCount url={shareUrl}
-            className="Demo__some-network__share-count"/>
+            className="Demo__some-network__share-count" />
         </div>
       </div>
     );
-  }
+  },
 });
 
 export default Demo;

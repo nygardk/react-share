@@ -42,11 +42,11 @@ export function getGooglePlusShareCount(shareUrl, callback) {
       id: shareUrl,
       source: 'widget',
       userId: '@viewer',
-      groupId: '@self'
+      groupId: '@self',
     },
     jsonrpc: '2.0',
     key: 'p',
-    apiVersion: 'v1'
+    apiVersion: 'v1',
   }));
 
   xhr.onload = function onSuccessdata() {
@@ -64,7 +64,7 @@ export function getLinkedinShareCount(shareUrl, callback) {
 
   return jsonp(url + objectToGetParams({
     url: shareUrl,
-    format: 'jsonp'
+    format: 'jsonp',
   }), (err, data) => {
     callback(!!data ? data.count : undefined);
   });
@@ -74,7 +74,7 @@ export function getPinterestShareCount(shareUrl, callback) {
   const url = 'https://api.pinterest.com/v1/urls/count.json';
 
   return jsonp(url + objectToGetParams({
-    url: shareUrl
+    url: shareUrl,
   }), (err, data) => {
     callback(!!data ? data.count : undefined);
   });

@@ -5,35 +5,34 @@ import {
   getFacebookShareCount,
   getGooglePlusShareCount,
   getLinkedinShareCount,
-  getPinterestShareCount
+  getPinterestShareCount,
 } from './share-count-getters';
-
 
 const SocialMediaShareCount = React.createClass({
   propTypes: {
     children: React.PropTypes.func,
     className: React.PropTypes.string,
     getCount: React.PropTypes.func,
-    url: React.PropTypes.string.isRequired
+    url: React.PropTypes.string.isRequired,
   },
 
   getInitialState() {
     return {
-      count: 0
+      count: 0,
     };
   },
 
   componentDidMount() {
     if (this.props.getCount) {
       this.setState({
-        isLoading: true
+        isLoading: true,
       });
 
       this.props.getCount(this.props.url, count => {
         if (this.isMounted()) {
           this.setState({
             count,
-            isLoading: false
+            isLoading: false,
           });
         }
       });
@@ -43,11 +42,11 @@ const SocialMediaShareCount = React.createClass({
   render() {
     const {
       count,
-      isLoading
+      isLoading,
     } = this.state;
 
     const {
-      children
+      children,
     } = this.props;
 
     const className = `SocialMediaShareCount ${this.props.className || ''}`;
@@ -61,15 +60,12 @@ const SocialMediaShareCount = React.createClass({
         {!isLoading && render(count || 0)}
       </div>
     );
-  }
+  },
 });
 
 function shareCountFactory(getCount) {
-  return React.createClass({
-    render() {
-      return <SocialMediaShareCount getCount={getCount} {...this.props} />;
-    }
-  });
+  return props =>
+    <SocialMediaShareCount getCount={getCount} {...props} />;
 }
 
 export const FacebookShareCount = shareCountFactory(getFacebookShareCount);

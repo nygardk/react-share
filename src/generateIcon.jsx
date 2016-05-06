@@ -2,7 +2,6 @@ import React from 'react';
 
 import icons from './icons';
 
-
 export function generateIcon(network) {
   if (!icons[network.toLowerCase()]) {
     throw new Error('invalid network name for a social icon');
@@ -14,12 +13,12 @@ export function generateIcon(network) {
     propTypes: {
       className: React.PropTypes.string,
       round: React.PropTypes.bool,
-      size: React.PropTypes.number
+      size: React.PropTypes.number,
     },
 
     getDefaultProps() {
       return {
-        size: 64
+        size: 64,
       };
     },
 
@@ -27,22 +26,22 @@ export function generateIcon(network) {
       const {
         className,
         round,
-        size
+        size,
       } = this.props;
 
       const baseStyle = {
         display: 'inline-block',
         width: size,
-        height: size
+        height: size,
       };
 
       const svgStyle = {
         fill: 'white',
         width: size,
-        height: size
+        height: size,
       };
 
-      const classes = `social-icon social-icon--${network} ` + className;
+      const classes = `social-icon social-icon--${network} ${className}`;
 
       return (
         <div style={baseStyle}>
@@ -54,13 +53,13 @@ export function generateIcon(network) {
                 <rect
                   width="64"
                   height="64"
-                  style={{fill: iconConfig.color}} />
+                  style={{ fill: iconConfig.color }} />
               ) : (
                 <circle
                   cx="32"
                   cy="32"
                   r="31"
-                  style={{fill: iconConfig.color}} />
+                  style={{ fill: iconConfig.color }} />
               ))}
             </g>
 
@@ -70,6 +69,6 @@ export function generateIcon(network) {
           </svg>
         </div>
       );
-    }
+    },
   });
 }

@@ -1,4 +1,5 @@
 {
+  "extends": "eslint-config-airbnb",
   "env": {
     "es6": true
   },
@@ -9,5 +10,12 @@
   },
   "plugins": [
     "react"
-  ]
+  ],
+  "rules": {
+    "react/prefer-es6-class": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/no-is-mounted": 0,
+    "react/prefer-stateless-function": 0
+  }
 }

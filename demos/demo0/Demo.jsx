@@ -2,20 +2,20 @@ import React from 'react';
 import {
   ShareButtons,
   ShareCounts,
-  generateShareIcon
+  generateShareIcon,
 } from 'react-share';
 
 const {
   FacebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
-  TwitterShareButton
+  TwitterShareButton,
 } = ShareButtons;
 
 const {
   FacebookShareCount,
   GooglePlusShareCount,
-  LinkedinShareCount
+  LinkedinShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -37,7 +37,7 @@ const Demo = React.createClass({
             className="Demo__some-network__share-button">
             <FacebookIcon
               size={32}
-              round={true} />
+              round />
           </FacebookShareButton>
 
           <FacebookShareCount
@@ -54,7 +54,7 @@ const Demo = React.createClass({
             className="Demo__some-network__share-button">
             <TwitterIcon
               size={32}
-              round={true} />
+              round />
           </TwitterShareButton>
 
           <div className="Demo__some-network__share-count">
@@ -68,7 +68,7 @@ const Demo = React.createClass({
             className="Demo__some-network__share-button">
             <GooglePlusIcon
               size={32}
-              round={true} />
+              round />
           </GooglePlusShareButton>
 
           <GooglePlusShareCount
@@ -85,7 +85,7 @@ const Demo = React.createClass({
             className="Demo__some-network__share-button">
             <LinkedinIcon
               size={32}
-              round={true} />
+              round />
           </LinkedinShareButton>
 
           <LinkedinShareCount
@@ -96,7 +96,7 @@ const Demo = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });
 
 export default Demo;

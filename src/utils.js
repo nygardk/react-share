@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import platform from 'platform';
 
 export function objectToGetParams(object) {
@@ -26,7 +27,7 @@ export function windowOpen(url, name, height = 400, width = 550) {
     scrollbars: 'yes',
     resizable: 'no',
     centerscreen: 'yes',
-    chrome: 'yes'
+    chrome: 'yes',
   };
 
   return window.open(

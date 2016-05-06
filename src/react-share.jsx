@@ -5,5 +5,5 @@ import * as ShareCounts from './share-counts';
 export {
   generateIcon as generateShareIcon,
   ShareButtons,
-  ShareCounts
+  ShareCounts,
 };

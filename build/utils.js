@@ -1,24 +1,30 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 exports.objectToGetParams = objectToGetParams;
 exports.windowOpen = windowOpen;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _platform = require('platform');
 
 var _platform2 = _interopRequireDefault(_platform);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function objectToGetParams(object) {
-  return '?' + Object.keys(object).filter(function (key) {
+  return '?' + (0, _keys2.default)(object).filter(function (key) {
     return !!object[key];
   }).map(function (key) {
     return key + '=' + encodeURIComponent(object[key]);
   }).join('&');
-}
+} /* eslint-disable prefer-template */
+
 
 function windowOpen(url, name) {
   var height = arguments.length <= 2 || arguments[2] === undefined ? 400 : arguments[2];
@@ -43,7 +49,7 @@ function windowOpen(url, name) {
     chrome: 'yes'
   };
 
-  return window.open(url, _platform2['default'].name === 'IE' && parseInt(_platform2['default'].version, 10) < 10 ? '' : name, Object.keys(config).map(function (key) {
+  return window.open(url, _platform2.default.name === 'IE' && parseInt(_platform2.default.version, 10) < 10 ? '' : name, (0, _keys2.default)(config).map(function (key) {
     return key + '=' + config[key];
   }).join(', '));
 }

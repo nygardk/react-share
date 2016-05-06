@@ -1,13 +1,13 @@
-/* eslint-disable react/no-multi-comp */
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.TwitterShareCount = exports.PinterestShareCount = exports.GooglePlusShareCount = exports.LinkedinShareCount = exports.FacebookShareCount = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _react = require('react');
 
@@ -15,14 +15,19 @@ var _react2 = _interopRequireDefault(_react);
 
 var _shareCountGetters = require('./share-count-getters');
 
-var SocialMediaShareCount = _react2['default'].createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable react/no-multi-comp */
+
+
+var SocialMediaShareCount = _react2.default.createClass({
   displayName: 'SocialMediaShareCount',
 
   propTypes: {
-    children: _react2['default'].PropTypes.func,
-    className: _react2['default'].PropTypes.string,
-    getCount: _react2['default'].PropTypes.func,
-    url: _react2['default'].PropTypes.string.isRequired
+    children: _react2.default.PropTypes.func,
+    className: _react2.default.PropTypes.string,
+    getCount: _react2.default.PropTypes.func,
+    url: _react2.default.PropTypes.string.isRequired
   },
 
   getInitialState: function getInitialState() {
@@ -30,7 +35,6 @@ var SocialMediaShareCount = _react2['default'].createClass({
       count: 0
     };
   },
-
   componentDidMount: function componentDidMount() {
     var _this = this;
 
@@ -49,12 +53,12 @@ var SocialMediaShareCount = _react2['default'].createClass({
       });
     }
   },
-
   render: function render() {
     var _state = this.state;
     var count = _state.count;
     var isLoading = _state.isLoading;
     var children = this.props.children;
+
 
     var className = 'SocialMediaShareCount ' + (this.props.className || '');
 
@@ -62,31 +66,24 @@ var SocialMediaShareCount = _react2['default'].createClass({
       return shareCount;
     };
 
-    return _react2['default'].createElement(
+    return _react2.default.createElement(
       'div',
-      _extends({}, this.props, { className: className }),
+      (0, _extends3.default)({}, this.props, { className: className }),
       !isLoading && render(count || 0)
     );
   }
 });
 
 function shareCountFactory(getCount) {
-  return _react2['default'].createClass({
-    render: function render() {
-      return _react2['default'].createElement(SocialMediaShareCount, _extends({ getCount: getCount }, this.props));
-    }
-  });
+  return function (props) {
+    return _react2.default.createElement(SocialMediaShareCount, (0, _extends3.default)({ getCount: getCount }, props));
+  };
 }
 
-var FacebookShareCount = shareCountFactory(_shareCountGetters.getFacebookShareCount);
-exports.FacebookShareCount = FacebookShareCount;
-var LinkedinShareCount = shareCountFactory(_shareCountGetters.getLinkedinShareCount);
-exports.LinkedinShareCount = LinkedinShareCount;
-var GooglePlusShareCount = shareCountFactory(_shareCountGetters.getGooglePlusShareCount);
-exports.GooglePlusShareCount = GooglePlusShareCount;
-var PinterestShareCount = shareCountFactory(_shareCountGetters.getPinterestShareCount);
-exports.PinterestShareCount = PinterestShareCount;
-var TwitterShareCount = function TwitterShareCount() {
+var FacebookShareCount = exports.FacebookShareCount = shareCountFactory(_shareCountGetters.getFacebookShareCount);
+var LinkedinShareCount = exports.LinkedinShareCount = shareCountFactory(_shareCountGetters.getLinkedinShareCount);
+var GooglePlusShareCount = exports.GooglePlusShareCount = shareCountFactory(_shareCountGetters.getGooglePlusShareCount);
+var PinterestShareCount = exports.PinterestShareCount = shareCountFactory(_shareCountGetters.getPinterestShareCount);
+var TwitterShareCount = exports.TwitterShareCount = function TwitterShareCount() {
   throw new Error('TwitterShareCount was removed in version 1.3.0 because' + 'the Twitter API was shut down and there is no replacement. Please ' + 'remove it from your code.');
 };
-exports.TwitterShareCount = TwitterShareCount;

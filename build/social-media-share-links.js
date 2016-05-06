@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.email = email;
@@ -9,34 +9,33 @@ exports.facebook = facebook;
 exports.googlePlus = googlePlus;
 exports.linkedin = linkedin;
 exports.pinterest = pinterest;
+exports.vk = vk;
+
+var _assert = require('assert');
+
+var _assert2 = _interopRequireDefault(_assert);
 
 var _utils = require('./utils');
 
-function assertProvided(argument, caller) {
-  if (!argument) {
-    throw new Error('Argument not provided for ' + caller + '.');
-  }
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function assertIsArray(array, caller) {
-  if (!!array && typeof array.contructor === Array) {
-    throw new Error('Expected object to be an array in ' + caller + '.');
-  }
-}
-
+/* eslint-disable prefer-template */
 function email(subject, body) {
-  assertProvided(subject, 'email');
-  assertProvided(body, 'email');
+  (0, _assert2.default)(subject, 'email.subject');
+  (0, _assert2.default)(body, 'email.body');
 
   return 'mailto:' + (0, _utils.objectToGetParams)({ subject: subject, body: body });
 }
 
-function twitter(url, text, via) {
-  var hashtags = arguments.length <= 3 || arguments[3] === undefined ? [] : arguments[3];
+function twitter(url, _ref) {
+  var text = _ref.text;
+  var via = _ref.via;
+  var _ref$hashtags = _ref.hashtags;
+  var hashtags = _ref$hashtags === undefined ? [] : _ref$hashtags;
 
-  assertProvided(url, 'twitter');
-  assertProvided(text, 'twitter');
-  assertIsArray(hashtags, 'twitter');
+  (0, _assert2.default)(url, 'twitter.url');
+  (0, _assert2.default)(text, 'twitter.text');
+  (0, _assert2.default)(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return 'https://twitter.com/share' + (0, _utils.objectToGetParams)({
     url: url,
@@ -47,31 +46,42 @@ function twitter(url, text, via) {
 }
 
 function facebook(url) {
-  assertProvided(url, 'facebook');
+  (0, _assert2.default)(url, 'facebook.url');
 
   return 'https://facebook.com/sharer.php' + (0, _utils.objectToGetParams)({ u: url });
 }
 
 function googlePlus(url) {
-  assertProvided(url, 'googlePlus');
+  (0, _assert2.default)(url, 'googlePlus.url');
 
   return 'https://plus.google.com/share' + (0, _utils.objectToGetParams)({ url: url });
 }
 
-function linkedin(url, title) {
-  assertProvided(url, 'linkedin');
-  assertProvided(title, 'linkedin');
+function linkedin(url, _ref2) {
+  var title = _ref2.title;
+
+  (0, _assert2.default)(url, 'linkedin.url');
+  (0, _assert2.default)(title, 'linkedin.title');
 
   return 'https://linkedin.com/shareArticle' + (0, _utils.objectToGetParams)({ url: url, title: title });
 }
 
-function pinterest(url, media, description) {
-  assertProvided(url, 'pinterest');
-  assertProvided(media, 'pinterest');
+function pinterest(url, _ref3) {
+  var media = _ref3.media;
+  var description = _ref3.description;
+
+  (0, _assert2.default)(url, 'pinterest.url');
+  (0, _assert2.default)(media, 'pinterest.media');
 
   return 'https://pinterest.com/pin/create/button/' + (0, _utils.objectToGetParams)({
     url: url,
     media: media,
     description: description
   });
+}
+
+function vk(url) {
+  (0, _assert2.default)(url, 'vk.url');
+
+  return 'https://vk.com/share.php' + (0, _utils.objectToGetParams)({ url: url });
 }

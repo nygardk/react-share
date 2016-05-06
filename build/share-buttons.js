@@ -1,157 +1,179 @@
-/* eslint-disable react/no-multi-comp */
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.VKShareButton = exports.PinterestShareButton = exports.LinkedinShareButton = exports.GooglePlusShareButton = exports.TwitterShareButton = exports.FacebookShareButton = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _socialMediaShareLinks = require('./social-media-share-links');
+
+var links = _interopRequireWildcard(_socialMediaShareLinks);
 
 var _utils = require('./utils');
 
-var SocialMediaShareButton = _react2['default'].createClass({
-  displayName: 'SocialMediaShareButton',
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-  propTypes: {
-    children: _react2['default'].PropTypes.node.isRequired,
-    className: _react2['default'].PropTypes.string,
-    link: _react2['default'].PropTypes.node.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  onClick: function onClick() {
-    (0, _utils.windowOpen)(this.props.link);
-  },
+/* eslint-disable react/no-multi-comp */
 
-  render: function render() {
-    var className = 'SocialMediaShareButton ' + (this.props.className || '');
 
-    return _react2['default'].createElement(
-      'div',
-      _extends({}, this.props, {
-        className: className,
-        onClick: this.onClick }),
-      this.props.children
-    );
+var supportedNetworks = (0, _keys2.default)(links);
+
+var ShareButton = function (_Component) {
+  (0, _inherits3.default)(ShareButton, _Component);
+
+  function ShareButton() {
+    var _Object$getPrototypeO;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, ShareButton);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_Object$getPrototypeO = (0, _getPrototypeOf2.default)(ShareButton)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.onClick = function (e) {
+      e.preventDefault();
+      (0, _utils.windowOpen)(_this.link());
+      return false;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+
+  (0, _createClass3.default)(ShareButton, [{
+    key: 'link',
+    value: function link() {
+      var _props = this.props;
+      var url = _props.url;
+      var opts = _props.opts;
+      var network = _props.network;
+
+      return links[network](url, opts);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props;
+      var className = _props2.className;
+      var network = _props2.network;
+      var rest = (0, _objectWithoutProperties3.default)(_props2, ['className', 'network']);
+
+
+      return _react2.default.createElement('div', (0, _extends3.default)({}, rest, {
+        onClick: this.onClick,
+        url: this.link(),
+        className: (0, _classnames2.default)('SocialMediaShareButton', 'SocialMediaShareButton--' + network, className) }));
+    }
+  }]);
+  return ShareButton;
+}(_react.Component);
+
+/* HOC to ease migration from v1 to v2.
+ * To-be-removed in v2.
+ */
+
+
+ShareButton.propTypes = {
+  className: _react.PropTypes.string,
+  network: _react.PropTypes.oneOf(supportedNetworks),
+  url: _react.PropTypes.string.isRequired,
+  opts: _react.PropTypes.object
+};
+exports.default = ShareButton;
+function createShareButton(network) {
+  var optsMap = arguments.length <= 1 || arguments[1] === undefined ? function () {
+    return {};
+  } : arguments[1];
+  var propTypes = arguments[2];
+
+  var component = function component(props) {
+    return _react2.default.createElement(ShareButton, (0, _extends3.default)({}, props, { network: network, opts: optsMap(props) }));
+  };
+
+  component.propTypes = propTypes;
+
+  return component;
+}
+
+var FacebookShareButton = exports.FacebookShareButton = createShareButton('facebook', function (props) {
+  return {
+    title: props.title
+  };
+}, {
+  title: _react.PropTypes.string.isRequired
 });
 
-var FacebookShareButton = _react2['default'].createClass({
-  displayName: 'FacebookShareButton',
-
-  propTypes: {
-    className: _react2['default'].PropTypes.string,
-    children: _react2['default'].PropTypes.node.isRequired,
-    title: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
-
-  render: function render() {
-    var _props = this.props;
-    var url = _props.url;
-    var title = _props.title;
-
-    return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.facebook)(url, title)
-    }, this.props, {
-      className: 'SocialMediaShareButton--facebook' + (' ' + (this.props.className || '')) }));
-  }
+var TwitterShareButton = exports.TwitterShareButton = createShareButton('twitter', function (props) {
+  return {
+    text: props.title,
+    via: props.via,
+    hashtags: props.hashtags
+  };
+}, {
+  title: _react.PropTypes.string.isRequired,
+  url: _react.PropTypes.string.isRequired,
+  via: _react.PropTypes.string
 });
 
-exports.FacebookShareButton = FacebookShareButton;
-var TwitterShareButton = _react2['default'].createClass({
-  displayName: 'TwitterShareButton',
+var GooglePlusShareButton = exports.GooglePlusShareButton = createShareButton('googlePlus');
 
-  propTypes: {
-    className: _react2['default'].PropTypes.string,
-    children: _react2['default'].PropTypes.node.isRequired,
-    title: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
-
-  render: function render() {
-    var _props2 = this.props;
-    var url = _props2.url;
-    var title = _props2.title;
-
-    return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.twitter)(url, title)
-    }, this.props, {
-      className: 'SocialMediaShareButton--twitter' + (' ' + (this.props.className || '')) }));
-  }
+var LinkedinShareButton = exports.LinkedinShareButton = createShareButton('linkedin', function (props) {
+  return {
+    title: props.title
+  };
+}, {
+  title: _react.PropTypes.string.isRequired
 });
 
-exports.TwitterShareButton = TwitterShareButton;
-var GooglePlusShareButton = _react2['default'].createClass({
-  displayName: 'GooglePlusShareButton',
-
-  propTypes: {
-    className: _react2['default'].PropTypes.string,
-    children: _react2['default'].PropTypes.node.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
-
-  render: function render() {
-    var url = this.props.url;
-
-    return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.googlePlus)(url)
-    }, this.props, {
-      className: 'SocialMediaShareButton--google-plus' + (' ' + (this.props.className || '')) }));
-  }
+var PinterestShareButton = exports.PinterestShareButton = createShareButton('pinterest', function (props) {
+  return {
+    media: props.media,
+    description: props.description
+  };
+}, {
+  media: _react.PropTypes.string.isRequired,
+  description: _react.PropTypes.string
 });
 
-exports.GooglePlusShareButton = GooglePlusShareButton;
-var LinkedinShareButton = _react2['default'].createClass({
-  displayName: 'LinkedinShareButton',
-
-  propTypes: {
-    className: _react2['default'].PropTypes.string,
-    children: _react2['default'].PropTypes.node.isRequired,
-    title: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
-
-  render: function render() {
-    var _props3 = this.props;
-    var url = _props3.url;
-    var title = _props3.title;
-
-    return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.linkedin)(url, title)
-    }, this.props, {
-      className: 'SocialMediaShareButton--linkedin' + (' ' + (this.props.className || '')) }));
-  }
-});
-
-exports.LinkedinShareButton = LinkedinShareButton;
-var PinterestShareButton = _react2['default'].createClass({
-  displayName: 'PinterestShareButton',
-
-  propTypes: {
-    className: _react2['default'].PropTypes.string,
-    children: _react2['default'].PropTypes.node.isRequired,
-    media: _react2['default'].PropTypes.string.isRequired,
-    url: _react2['default'].PropTypes.string.isRequired
-  },
-
-  render: function render() {
-    var _props4 = this.props;
-    var url = _props4.url;
-    var media = _props4.media;
-
-    return _react2['default'].createElement(SocialMediaShareButton, _extends({
-      link: (0, _socialMediaShareLinks.pinterest)(url, media)
-    }, this.props, {
-      className: 'SocialMediaShareButton--pinterest' + (' ' + (this.props.className || '')) }));
-  }
-});
-exports.PinterestShareButton = PinterestShareButton;
+var VKShareButton = exports.VKShareButton = createShareButton('vk');

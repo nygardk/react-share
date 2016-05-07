@@ -18,7 +18,6 @@ export default class ShareButton extends Component {
   onClick = (e) => {
     e.preventDefault();
     windowOpen(this.link());
-    return false;
   }
 
   link() {

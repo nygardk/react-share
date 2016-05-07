@@ -6,7 +6,7 @@
 
 ### News
 
-##### 6.5.2016
+##### 7.5.2016
 
 `New!` VK support added in version 1.6.0.
 

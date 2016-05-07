@@ -1,4 +1,4 @@
-## 1.6.0 (to-be-released)
+## 1.6.0 (May 7, 2016)
 
 * feature: added sharing support for VK
 * internal changes for preparing version 2, assertion message changes

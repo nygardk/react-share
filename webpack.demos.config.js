@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'eslint',
-        exclude: /node_modules|build/
+        exclude: /node_modules|lib/
       },
     ],
     loaders: [
@@ -29,12 +29,12 @@ module.exports = {
         loaders: ENV === 'development'
           ? ['react-hot', 'babel']
           : ['babel'],
-        exclude: /node_modules|build/
+        exclude: /node_modules|lib/
       },
       {
         test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
         loader: 'url-loader?limit=1',
-        exclude: /node_modules|build/
+        exclude: /node_modules|lib/
       }
     ]
   },

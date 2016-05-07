@@ -2,17 +2,18 @@
   "name": "react-share",
   "version": "1.5.0",
   "description": "Easy social media share buttons and share counts.",
-  "main": "./build/react-share.js",
+  "main": "./lib/react-share.js",
   "engines": {
     "node": ">=4.0.0",
     "npm": ">=3.0.0"
   },
   "scripts": {
     "build": "npm run lint && npm run build-src && npm run build-demos",
-    "build-src": "babel ./src --out-dir ./build",
+    "build-src": "babel ./src --out-dir ./lib",
     "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js",
     "run-demos": "NODE_ENV=development webpack-dev-server --config webpack.demos.config.js --content-base demos/ --progress --colors",
-    "lint": "eslint --ext .jsx ./src ./demos"
+    "lint": "eslint --ext .jsx ./src ./demos",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "react",

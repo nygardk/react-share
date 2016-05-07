@@ -50,13 +50,17 @@ export default class ShareButton extends Component {
  * To-be-removed in v2.
  */
 function createShareButton(network, optsMap = () => ({}), propTypes) {
-  const component = props => (
-    <ShareButton {...props} network={network} opts={optsMap(props)} />
-  );
+  return React.createClass({
+    propTypes,
 
-  component.propTypes = propTypes;
-
-  return component;
+    render() {
+      return (
+        <ShareButton {...this.props}
+          network={network}
+          opts={optsMap(this.props)} />
+      );
+    },
+  });
 }
 
 export const FacebookShareButton = createShareButton('facebook', props => ({

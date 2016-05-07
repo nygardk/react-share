@@ -2,7 +2,7 @@
 
 > Easy social media share buttons and share counts.
 
-<img src="example.png" alt="Share buttons and counts example" height="72" />
+<img src="example.png" alt="Share buttons and counts example" />
 
 ### News
 

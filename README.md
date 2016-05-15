@@ -6,6 +6,11 @@
 
 ### News
 
+##### 15.5.2016
+
+Version 1.6.1 no longer adds `display: 'inline-block'` to icons. If you are
+upgrading from an older version, be sure to add the style yourself if needed.
+
 ##### 7.5.2016
 
 `New!` VK support added in version 1.6.0.

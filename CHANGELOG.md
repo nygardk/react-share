@@ -1,3 +1,7 @@
+## 1.6.1 (May 15, 2016)
+
+* Inline style `display: 'inline-block'` is no longer added to icons. If you are upgrading from an older version, be sure to add the style yourself if needed.
+
 ## 1.6.0 (May 7, 2016)
 
 * feature: added sharing support for VK

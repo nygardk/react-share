@@ -30,7 +30,6 @@ export function generateIcon(network) {
       } = this.props;
 
       const baseStyle = {
-        display: 'inline-block',
         width: size,
         height: size,
       };

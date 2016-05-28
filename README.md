@@ -78,8 +78,14 @@ const {
 Required props for all:
 
 * `children`: A React node (e.g. string or element)
+
 * `url`: URL of the shared page (string)
 
+Optional props for all:
+
+* `disabled`: Disables click action and adds `disabled` class (bool)
+
+* `disabledStyle`: Style when button is disabled (object, default = { opacity: 0.6 })
 
 Required props for `LinkedinShareButton`, `TwitterShareButton`
 and `FacebookShareButton`:

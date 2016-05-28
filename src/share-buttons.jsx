@@ -10,14 +10,25 @@ const supportedNetworks = Object.keys(links);
 export default class ShareButton extends Component {
   static propTypes = {
     className: PropTypes.string,
+    disabled: PropTypes.bool,
+    disabledStyle: PropTypes.object,
     network: PropTypes.oneOf(supportedNetworks),
-    url: PropTypes.string.isRequired,
     opts: PropTypes.object,
+    url: PropTypes.string.isRequired,
+    style: PropTypes.object,
   };
 
+  static defaultProps = {
+    disabledStyle: {
+      opacity: 0.6,
+    },
+  }
+
   onClick = (e) => {
-    e.preventDefault();
-    windowOpen(this.link());
+    if (!this.props.disabled) {
+      e.preventDefault();
+      windowOpen(this.link());
+    }
   }
 
   link() {
@@ -28,19 +39,32 @@ export default class ShareButton extends Component {
   render() {
     const {
       className,
+      disabled,
+      disabledStyle,
       network,
+      style,
       ...rest,
     } = this.props;
+
+    const classes = cx(
+      'SocialMediaShareButton',
+      `SocialMediaShareButton--${network}`,
+      {
+        'SocialMediaShareButton--disabled': !!disabled,
+        disabled: !!disabled,
+      },
+      className
+    );
 
     return (
       <div {...rest}
         onClick={this.onClick}
         url={this.link()}
-        className={cx(
-          'SocialMediaShareButton',
-          `SocialMediaShareButton--${network}`,
-          className
-        )} />
+        className={classes}
+        style={{
+          ...style,
+          ...(disabled ? disabledStyle : {}),
+        }} />
     );
   }
 }

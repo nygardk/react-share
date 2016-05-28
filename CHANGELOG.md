@@ -1,3 +1,8 @@
+## 1.7.0 (May 28, 2016)
+
+* added disabled and disabledStyle props to share buttons
+* added iconBgStyle and logoFillColor to icon styles
+
 ## 1.6.1 (May 15, 2016)
 
 * Inline style `display: 'inline-block'` is no longer added to icons. If you are upgrading from an older version, be sure to add the style yourself if needed.

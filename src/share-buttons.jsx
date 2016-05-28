@@ -13,11 +13,14 @@ export default class ShareButton extends Component {
     network: PropTypes.oneOf(supportedNetworks),
     url: PropTypes.string.isRequired,
     opts: PropTypes.object,
+    disabled: PropTypes.bool,
   };
 
   onClick = (e) => {
-    e.preventDefault();
-    windowOpen(this.link());
+    if (!this.props.disabled) {
+      e.preventDefault();
+      windowOpen(this.link());
+    }
   }
 
   link() {

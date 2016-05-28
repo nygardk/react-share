@@ -14,6 +14,7 @@ export function generateIcon(network) {
       className: React.PropTypes.string,
       round: React.PropTypes.bool,
       size: React.PropTypes.number,
+      disabled: React.PropTypes.bool,
     },
 
     getDefaultProps() {
@@ -27,6 +28,7 @@ export function generateIcon(network) {
         className,
         round,
         size,
+        disabled,
       } = this.props;
 
       const baseStyle = {
@@ -42,6 +44,7 @@ export function generateIcon(network) {
       };
 
       const classes = `social-icon social-icon--${network} ${className}`;
+      const iconColor = disabled ? 'gray' : iconConfig.color;
 
       return (
         <div style={baseStyle}>
@@ -53,13 +56,13 @@ export function generateIcon(network) {
                 <rect
                   width="64"
                   height="64"
-                  style={{ fill: iconConfig.color }} />
+                  style={{ fill: iconColor }} />
               ) : (
                 <circle
                   cx="32"
                   cy="32"
                   r="31"
-                  style={{ fill: iconConfig.color }} />
+                  style={{ fill: iconColor }} />
               ))}
             </g>
 

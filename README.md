@@ -146,7 +146,12 @@ const VKIcon = generateShareIcon('vk');
 Props:
 
 * `size`: Icon size in pixels (number)
+
 * `round`: Whether to show round or rect icons (bool)
+
+* `iconBgStyle`: customize background style, e.g. `fill` (object)
+
+* `logoFillColor`: customize logo's fill color (string, default = 'white')
 
 Example:
 ```

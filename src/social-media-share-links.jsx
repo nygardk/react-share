@@ -26,7 +26,11 @@ export function twitter(url, { text, via, hashtags = [] }) {
 export function facebook(url) {
   assert(url, 'facebook.url');
 
-  return 'https://facebook.com/sharer.php' + objectToGetParams({ u: url });
+  return 'https://www.facebook.com/dialog/share' + objectToGetParams({
+    app_id: '184484190795',
+    quote:'Checkout This Image from Neon Labs!',
+    href: url,
+  });
 }
 
 export function googlePlus(url) {

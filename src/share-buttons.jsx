@@ -88,6 +88,8 @@ function createShareButton(network, optsMap = () => ({}), propTypes) {
 
 export const FacebookShareButton = createShareButton('facebook', props => ({
   title: props.title,
+  quote: props.quote,
+  appId: props.appId,
 }), {
   title: PropTypes.string.isRequired,
 });

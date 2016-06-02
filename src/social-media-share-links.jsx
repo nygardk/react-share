@@ -23,12 +23,12 @@ export function twitter(url, { text, via, hashtags = [] }) {
   });
 }
 
-export function facebook(url) {
+export function facebook(url, { appId, quote }) {
   assert(url, 'facebook.url');
 
   return 'https://www.facebook.com/dialog/share' + objectToGetParams({
-    app_id: '184484190795',
-    quote:'Checkout This Image from Neon Labs!',
+    app_id: appId,
+    quote: quote,
     href: url,
   });
 }

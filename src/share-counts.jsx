@@ -28,8 +28,8 @@ const SocialMediaShareCount = React.createClass({
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.url !== this.props.url) {
-      this.updateCount(nextProps.url)
-    };
+      this.updateCount(nextProps.url);
+    }
   },
 
   updateCount(url) {

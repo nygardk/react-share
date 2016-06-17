@@ -12,11 +12,9 @@ export function getFacebookShareCount(shareUrl, callback) {
     `?format=json&query=${fql}`;
 
   jsonp(endpoint, (err, data) => {
-    if (!err) {
-      callback(data.length && data[0].share_count
-        ? data[0].share_count
-        : undefined);
-    }
+    callback(!err && data.length && data[0].share_count
+      ? data[0].share_count
+      : undefined);
   });
 }
 

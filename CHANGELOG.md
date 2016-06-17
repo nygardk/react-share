@@ -1,3 +1,8 @@
+## 1.8.0 (June 17, 2016)
+
+* Share count will now be updated if url prop is changed
+* Error callback with Facebook share counts is now correctly called
+
 ## 1.7.0 (May 28, 2016)
 
 * added disabled and disabledStyle props to share buttons

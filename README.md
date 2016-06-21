@@ -87,8 +87,7 @@ Optional props for all:
 
 * `disabledStyle`: Style when button is disabled (object, default = { opacity: 0.6 })
 
-Required props for `LinkedinShareButton`, `TwitterShareButton`
-and `FacebookShareButton`:
+Required props for `LinkedinShareButton` and `TwitterShareButton`:
 
 * `title`: Title of the shared page (string)
 

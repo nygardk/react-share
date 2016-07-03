@@ -1,3 +1,7 @@
+## 1.8.1 (July 3, 2016)
+
+* Fixed propType warnings that were caused by updating to React v. 15.2.0
+
 ## 1.8.0 (June 17, 2016)
 
 * Share count will now be updated if url prop is changed

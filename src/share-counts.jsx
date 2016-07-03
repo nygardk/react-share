@@ -1,5 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
+import cx from 'classnames';
 
 import {
   getFacebookShareCount,
@@ -57,16 +58,15 @@ const SocialMediaShareCount = React.createClass({
 
     const {
       children,
+      className,
     } = this.props;
-
-    const className = `SocialMediaShareCount ${this.props.className || ''}`;
 
     const render = children || function renderCount(shareCount) {
       return shareCount;
     };
 
     return (
-      <div {...this.props} className={className}>
+      <div className={cx('SocialMediaShareCount', className)}>
         {!isLoading && render(count || 0)}
       </div>
     );

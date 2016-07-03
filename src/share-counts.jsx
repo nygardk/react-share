@@ -61,17 +61,17 @@ const SocialMediaShareCount = React.createClass({
       className,
     } = this.props;
 
-    const render = children || function renderCount(shareCount) {
-      return shareCount;
-    };
-
     return (
       <div className={cx('SocialMediaShareCount', className)}>
-        {!isLoading && render(count || 0)}
+        {!isLoading && children(count || 0)}
       </div>
     );
   },
 });
+
+SocialMediaShareCount.defaultProps = {
+  children: shareCount => shareCount,
+};
 
 function shareCountFactory(getCount) {
   return props =>

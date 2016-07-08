@@ -23,10 +23,14 @@ export function twitter(url, { text, via, hashtags = [] }) {
   });
 }
 
-export function facebook(url) {
+export function facebook(url, { title, description }) {
   assert(url, 'facebook.url');
 
-  return 'https://facebook.com/sharer.php' + objectToGetParams({ u: url });
+  return 'https://facebook.com/sharer.php' + objectToGetParams({
+    u: url,
+    title,
+    description,
+  });
 }
 
 export function googlePlus(url) {

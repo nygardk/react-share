@@ -75,29 +75,17 @@ const {
 } = ShareButtons;
 ```
 
-Required props for all:
+##### Share button props
 
-* `children`: A React node (e.g. string or element)
-
-* `url`: URL of the shared page (string)
-
-Optional props for all:
-
-* `disabled`: Disables click action and adds `disabled` class (bool)
-
-* `disabledStyle`: Style when button is disabled (object, default = { opacity: 0.6 })
-
-Required props for `LinkedinShareButton` and `TwitterShareButton`:
-
-* `title`: Title of the shared page (string)
-
-Required prop for `PinterestShareButton`:
-
-* `media`: An absolute link to the image that will be pinned (string)
-
-Optional props for `PinterestShareButton`:
-
-* `description`: Description for the shared media.
+|       |Required props|Optional props|
+|-------|--------|--------------|
+|__All__|__`children`__: A React node (e.g. string or element)<br />__`url`__: URL of the shared page (string)|__`disabled`__: Disables click action and adds `disabled` class (bool)<br/>__`disabledStyle`__: Style when button is disabled (object, default = { opacity: 0.6 })|
+|FacebookShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
+|GooglePlusShareButton|-|-|
+|LinkedinShareButton|__`title`__: Title of the shared page (string)|-|
+|TwitterShareButton|__`title`__: Title of the shared page (string)|__`via`__: (string)<br/>__`hashtags`__: (array)|
+|PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
+|VKShareButton|-|-|
 
 ### Share counts
 

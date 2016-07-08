@@ -1,3 +1,7 @@
+## 1.8.2 (July 8, 2016)
+
+* Added `title` and `description` props for FacebookShareButton. `title` was not working correctly previously.
+
 ## 1.8.1 (July 3, 2016)
 
 * Fixed propType warnings that were caused by updating to React v. 15.2.0

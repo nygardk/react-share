@@ -1,5 +1,8 @@
 # react-share
 
+[![NPM version][npm-image]][npm-url]
+[![Download Count][downloads-image]][downloads-url]
+
 > Easy social media share buttons and share counts.
 
 <img src="example.png" alt="Share buttons and counts example" />

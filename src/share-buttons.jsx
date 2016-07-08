@@ -97,12 +97,12 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
 });
 
 export const TwitterShareButton = createShareButton('twitter', props => ({
+  hashtags: props.hashtags,
   text: props.title,
   via: props.via,
-  hashtags: props.hashtags,
 }), {
+  hashtags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   via: PropTypes.string,
 });
 

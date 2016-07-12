@@ -98,7 +98,7 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
 
 export const TwitterShareButton = createShareButton('twitter', props => ({
   hashtags: props.hashtags,
-  text: props.title,
+  title: props.title,
   via: props.via,
 }), {
   hashtags: PropTypes.arrayOf(PropTypes.string),

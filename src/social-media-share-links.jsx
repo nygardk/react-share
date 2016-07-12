@@ -10,14 +10,14 @@ export function email(subject, body) {
   return 'mailto:' + objectToGetParams({ subject, body });
 }
 
-export function twitter(url, { text, via, hashtags = [] }) {
+export function twitter(url, { title, via, hashtags = [] }) {
   assert(url, 'twitter.url');
-  assert(text, 'twitter.text');
+  assert(title, 'twitter.title');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return 'https://twitter.com/share' + objectToGetParams({
     url,
-    text,
+    text: title,
     via,
     hashtags: hashtags.join(','),
   });

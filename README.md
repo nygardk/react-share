@@ -143,6 +143,8 @@ Props:
 
 * `logoFillColor`: customize logo's fill color (string, default = 'white')
 
+* `useDataUrl`: Set this flag to insert icon as a base64 encoded image instead of a svg element (boolean, default = `false`)
+
 Example:
 ```
 <TwitterIcon size={32} round={true} />

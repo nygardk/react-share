@@ -46,7 +46,6 @@ export function generateIcon(network) {
       const classes = `social-icon social-icon--${network} ${className || ''}`;
 
       const finalIconBgStyle = {
-        fill: iconConfig.color,
         ...iconBgStyle,
       };
 
@@ -62,12 +61,14 @@ export function generateIcon(network) {
               <rect
                 width="64"
                 height="64"
+                fill={iconConfig.color}
                 style={finalIconBgStyle} />
             ) : (
               <circle
                 cx="32"
                 cy="32"
                 r="31"
+                fill={iconConfig.color}
                 style={finalIconBgStyle} />
             ))}
           </g>

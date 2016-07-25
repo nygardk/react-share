@@ -79,7 +79,9 @@ export function generateIcon(network) {
       );
 
       if (inline) {
-        const data = btoa(renderToStaticMarkup(svg));
+        // React can't render svgs with xmlns set, so we replace it in the string
+        const svgMarkup = renderToStaticMarkup(svg).replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+        const data = btoa(svgMarkup);
         return (
           <img style={baseStyle} src={`data:image/svg+xml;base64,${data}`} role="presentation" />
         );

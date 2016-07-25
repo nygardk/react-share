@@ -49,7 +49,7 @@ export function generateIcon(network) {
         height: size,
       };
 
-      const classes = `social-icon social-icon--${network} ${className}`;
+      const classes = `social-icon social-icon--${network} ${className || ''}`;
 
       const finalIconBgStyle = {
         fill: iconConfig.color,

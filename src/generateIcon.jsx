@@ -17,14 +17,14 @@ export function generateIcon(network) {
       logoFillColor: React.PropTypes.string,
       round: React.PropTypes.bool,
       size: React.PropTypes.number,
-      inline: React.PropTypes.bool,
+      useDataUrl: React.PropTypes.bool,
     },
 
     getDefaultProps() {
       return {
         logoFillColor: 'white',
         size: 64,
-        inline: false,
+        useDataUrl: false,
       };
     },
 
@@ -35,7 +35,7 @@ export function generateIcon(network) {
         logoFillColor,
         round,
         size,
-        inline,
+        useDataUrl,
       } = this.props;
 
       const baseStyle = {
@@ -78,7 +78,7 @@ export function generateIcon(network) {
         </svg>
       );
 
-      if (inline) {
+      if (useDataUrl) {
         // React can't render svgs with xmlns set, so we replace it in the string
         const svgMarkup = renderToStaticMarkup(svg).replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
         const data = btoa(svgMarkup);

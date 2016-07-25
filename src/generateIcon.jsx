@@ -17,7 +17,7 @@ export function generateIcon(network) {
       logoFillColor: React.PropTypes.string,
       round: React.PropTypes.bool,
       size: React.PropTypes.number,
-      inline: React.PropTypes.boolean,
+      inline: React.PropTypes.bool,
     },
 
     getDefaultProps() {

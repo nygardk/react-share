@@ -43,12 +43,6 @@ export function generateIcon(network) {
         height: size,
       };
 
-      const svgStyle = {
-        fill: logoFillColor,
-        width: size,
-        height: size,
-      };
-
       const classes = `social-icon social-icon--${network} ${className || ''}`;
 
       const finalIconBgStyle = {
@@ -57,8 +51,11 @@ export function generateIcon(network) {
       };
 
       const svg = (
-        <svg viewBox="0 0 64 64"
-          style={svgStyle}
+        <svg
+          viewBox="0 0 64 64"
+          fill={logoFillColor}
+          width={size}
+          height={size}
           className={classes}>
           <g>
             {(!round ? (

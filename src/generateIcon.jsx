@@ -39,35 +39,33 @@ export function generateIcon(network) {
         height: size,
       };
 
-      const svgStyle = {
-        fill: logoFillColor,
-        width: size,
-        height: size,
-      };
-
-      const classes = `social-icon social-icon--${network} ${className}`;
+      const classes = `social-icon social-icon--${network} ${className || ''}`;
 
       const finalIconBgStyle = {
-        fill: iconConfig.color,
         ...iconBgStyle,
       };
 
       return (
         <div style={baseStyle}>
-          <svg viewBox="0 0 64 64"
-            style={svgStyle}
+          <svg
+            viewBox="0 0 64 64"
+            fill={logoFillColor}
+            width={size}
+            height={size}
             className={classes}>
             <g>
               {(!round ? (
                 <rect
                   width="64"
                   height="64"
+                  fill={iconConfig.color}
                   style={finalIconBgStyle} />
               ) : (
                 <circle
                   cx="32"
                   cy="32"
                   r="31"
+                  fill={iconConfig.color}
                   style={finalIconBgStyle} />
               ))}
             </g>

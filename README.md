@@ -83,7 +83,7 @@ const {
 |       |Required props|Optional props|
 |-------|--------|--------------|
 |__All__|__`children`__: A React node (e.g. string or element)<br />__`url`__: URL of the shared page (string)|__`disabled`__: Disables click action and adds `disabled` class (bool)<br/>__`disabledStyle`__: Style when button is disabled (object, default = { opacity: 0.6 })|
-|FacebookShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
+|FacebookShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`picture`__: The picture attached to the post (min. size 200x200 px) (string)<br/>__`caption`__: Description of the link (string)<br/>__`appId`__: |
 |GooglePlusShareButton|-|-|
 |LinkedinShareButton|__`title`__: Title of the shared page (string)|-|
 |TwitterShareButton|__`title`__: Title of the shared page (string)|__`via`__: (string)<br/>__`hashtags`__: (array)|

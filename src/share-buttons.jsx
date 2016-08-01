@@ -88,6 +88,14 @@ function createShareButton(network, optsMap = () => ({}), propTypes) {
   });
 }
 
+export const EmailShareButton = createShareButton('email', props => ({
+  subject: props.subject,
+  body: props.body,
+}), {
+  subject: PropTypes.string,
+  body: PropTypes.string,
+});
+
 export const FacebookShareButton = createShareButton('facebook', props => ({
   description: props.description,
   title: props.title,

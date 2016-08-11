@@ -8,7 +8,7 @@ export function objectToGetParams(object) {
     .join('&');
 }
 
-export function windowOpen({ url, name, height = 400, width = 550 }) {
+export function windowOpen(url, { name, height = 400, width = 550 }) {
   const left = (window.outerWidth / 2)
     + (window.screenX || window.screenLeft || 0) - (width / 2);
   const top = (window.outerHeight / 2)

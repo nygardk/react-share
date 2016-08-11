@@ -107,6 +107,7 @@ const Demo = React.createClass({
           <PinterestShareButton
             url={String(window.location)}
             media={`${String(window.location)}/${exampleImage}`}
+            windowWidth={1000}
             className="Demo__some-network__share-button">
             <PinterestIcon size={32} round />
           </PinterestShareButton>

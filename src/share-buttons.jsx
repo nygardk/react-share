@@ -17,6 +17,8 @@ export default class ShareButton extends Component {
     opts: PropTypes.object,
     url: PropTypes.string.isRequired,
     style: PropTypes.object,
+    windowWidth: PropTypes.number,
+    windowHeight: PropTypes.number,
   };
 
   static defaultProps = {
@@ -28,7 +30,7 @@ export default class ShareButton extends Component {
   onClick = (e) => {
     if (!this.props.disabled) {
       e.preventDefault();
-      windowOpen(this.link());
+      windowOpen({ url: this.link(), width: this.props.windowWidth });
     }
   }
 

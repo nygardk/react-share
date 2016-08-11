@@ -30,7 +30,7 @@ export default class ShareButton extends Component {
   onClick = (e) => {
     if (!this.props.disabled) {
       e.preventDefault();
-      windowOpen(this.link(), undefined, this.props.windowHeight, this.props.windowWidth);
+      windowOpen({ url: this.link(), width: this.props.windowWidth });
     }
   }
 

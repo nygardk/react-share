@@ -1,3 +1,7 @@
+## 1.9.0 (Aug 11, 2016)
+
+* Added `windowWidth` and `windowHeight` props to share buttons to control opened window dimensions
+
 ## 1.8.2 (July 8, 2016)
 
 * Added `title` and `description` props for FacebookShareButton. `title` was not working correctly previously.

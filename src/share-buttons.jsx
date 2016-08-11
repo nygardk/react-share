@@ -82,8 +82,8 @@ export default class ShareButton extends Component {
 /* HOC to ease migration from v1 to v2.
  * To-be-removed in v2.
  */
-function createShareButton(network, optsMap = () => ({}), propTypes) {
-  return React.createClass({
+function createShareButton(network, optsMap = () => ({}), propTypes, defaultProps = {}) {
+  const CreatedButton = React.createClass({
     propTypes,
 
     render() {
@@ -94,6 +94,10 @@ function createShareButton(network, optsMap = () => ({}), propTypes) {
       );
     },
   });
+
+  CreatedButton.defaultProps = defaultProps;
+
+  return CreatedButton;
 }
 
 export const FacebookShareButton = createShareButton('facebook', props => ({
@@ -102,6 +106,9 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
 }), {
   description: PropTypes.string,
   title: PropTypes.string.isRequired,
+}, {
+  windowWidth: 550,
+  windowHeight: 400,
 });
 
 export const TwitterShareButton = createShareButton('twitter', props => ({
@@ -112,14 +119,27 @@ export const TwitterShareButton = createShareButton('twitter', props => ({
   hashtags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   via: PropTypes.string,
+}, {
+  windowWidth: 550,
+  windowHeight: 400,
 });
 
-export const GooglePlusShareButton = createShareButton('googlePlus');
+export const GooglePlusShareButton = createShareButton('googlePlus',
+  undefined,
+  undefined,
+  {
+    windowWidth: 550,
+    windowHeight: 400,
+  }
+);
 
 export const LinkedinShareButton = createShareButton('linkedin', props => ({
   title: props.title,
 }), {
   title: PropTypes.string.isRequired,
+}, {
+  windowWidth: 750,
+  windowHeight: 600,
 });
 
 export const PinterestShareButton = createShareButton('pinterest', props => ({
@@ -128,6 +148,12 @@ export const PinterestShareButton = createShareButton('pinterest', props => ({
 }), {
   media: PropTypes.string.isRequired,
   description: PropTypes.string,
+}, {
+  windowWidth: 1000,
+  windowHeight: 730,
 });
 
-export const VKShareButton = createShareButton('vk');
+export const VKShareButton = createShareButton('vk', undefined, undefined, {
+  windowWidth: 660,
+  windowHeight: 460,
+});

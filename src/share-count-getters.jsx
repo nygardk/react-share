@@ -5,15 +5,11 @@ import { objectToGetParams } from './utils';
 
 
 export function getFacebookShareCount(shareUrl, callback) {
-  const fql = encodeURIComponent('select like_count, share_count from ' +
-    `link_stat where url = '${encodeURIComponent(shareUrl)}'`);
-
-  const endpoint = 'https://api.facebook.com/method/fql.query' +
-    `?format=json&query=${fql}`;
+  const endpoint = `http://graph.facebook.com/?id=${shareUrl}`;
 
   jsonp(endpoint, (err, data) => {
-    callback(!err && data.length && data[0].share_count
-      ? data[0].share_count
+    callback(!err && data && data.share.share_count
+      ? data.share.share_count
       : undefined);
   });
 }

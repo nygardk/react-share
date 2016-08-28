@@ -1,3 +1,7 @@
+## 1.9.1 (Aug 28, 2016)
+
+* New end point for fetching Facebook share count.
+
 ## 1.9.0 (Aug 11, 2016)
 
 * Added `windowWidth` and `windowHeight` props to share buttons to control opened window dimensions

@@ -1,6 +1,6 @@
 {
   "name": "react-share",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "Easy social media share buttons and share counts.",
   "main": "./lib/react-share.js",
   "engines": {

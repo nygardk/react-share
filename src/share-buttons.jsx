@@ -153,7 +153,13 @@ export const PinterestShareButton = createShareButton('pinterest', props => ({
   windowHeight: 730,
 });
 
-export const VKShareButton = createShareButton('vk', undefined, undefined, {
+export const VKShareButton = createShareButton('vk', props => ({
+  title: props.title,
+  description: props.description,
+}), {
+  title: PropTypes.string,
+  description: PropTypes.string,
+}, {
   windowWidth: 660,
   windowHeight: 460,
 });

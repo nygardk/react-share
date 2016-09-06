@@ -88,7 +88,7 @@ const {
 |LinkedinShareButton|__`title`__: Title of the shared page (string)|-|
 |TwitterShareButton|__`title`__: Title of the shared page (string)|__`via`__: (string)<br/>__`hashtags`__: (array)|
 |PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
-|VKShareButton|-|-|
+|VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 
 ### Share counts
 

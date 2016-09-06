@@ -135,8 +135,10 @@ export const GooglePlusShareButton = createShareButton('googlePlus',
 
 export const LinkedinShareButton = createShareButton('linkedin', props => ({
   title: props.title,
+  description: props.description,
 }), {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
 }, {
   windowWidth: 750,
   windowHeight: 600,

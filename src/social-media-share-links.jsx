@@ -39,11 +39,14 @@ export function googlePlus(url) {
   return 'https://plus.google.com/share' + objectToGetParams({ url });
 }
 
-export function linkedin(url, { title }) {
+export function linkedin(url, { title, description }) {
   assert(url, 'linkedin.url');
-  assert(title, 'linkedin.title');
 
-  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url, title });
+  return 'https://linkedin.com/shareArticle' + objectToGetParams({
+    url,
+    title,
+    summary: description,
+  });
 }
 
 export function pinterest(url, { media, description }) {

@@ -12,7 +12,6 @@ export function email(subject, body) {
 
 export function twitter(url, { title, via, hashtags = [] }) {
   assert(url, 'twitter.url');
-  assert(title, 'twitter.title');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return 'https://twitter.com/share' + objectToGetParams({

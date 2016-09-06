@@ -117,7 +117,7 @@ export const TwitterShareButton = createShareButton('twitter', props => ({
   via: props.via,
 }), {
   hashtags: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   via: PropTypes.string,
 }, {
   windowWidth: 550,

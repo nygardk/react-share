@@ -12,7 +12,6 @@ export function email(subject, body) {
 
 export function twitter(url, { title, via, hashtags = [] }) {
   assert(url, 'twitter.url');
-  assert(title, 'twitter.title');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return 'https://twitter.com/share' + objectToGetParams({
@@ -39,11 +38,14 @@ export function googlePlus(url) {
   return 'https://plus.google.com/share' + objectToGetParams({ url });
 }
 
-export function linkedin(url, { title }) {
+export function linkedin(url, { title, description }) {
   assert(url, 'linkedin.url');
-  assert(title, 'linkedin.title');
 
-  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url, title });
+  return 'https://linkedin.com/shareArticle' + objectToGetParams({
+    url,
+    title,
+    summary: description,
+  });
 }
 
 export function pinterest(url, { media, description }) {
@@ -57,8 +59,12 @@ export function pinterest(url, { media, description }) {
   });
 }
 
-export function vk(url) {
+export function vk(url, { title, description }) {
   assert(url, 'vk.url');
 
-  return 'https://vk.com/share.php' + objectToGetParams({ url });
+  return 'https://vk.com/share.php' + objectToGetParams({
+    url,
+    title,
+    description,
+  });
 }

@@ -117,7 +117,7 @@ export const TwitterShareButton = createShareButton('twitter', props => ({
   via: props.via,
 }), {
   hashtags: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   via: PropTypes.string,
 }, {
   windowWidth: 550,
@@ -135,8 +135,10 @@ export const GooglePlusShareButton = createShareButton('googlePlus',
 
 export const LinkedinShareButton = createShareButton('linkedin', props => ({
   title: props.title,
+  description: props.description,
 }), {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
 }, {
   windowWidth: 750,
   windowHeight: 600,
@@ -153,7 +155,13 @@ export const PinterestShareButton = createShareButton('pinterest', props => ({
   windowHeight: 730,
 });
 
-export const VKShareButton = createShareButton('vk', undefined, undefined, {
+export const VKShareButton = createShareButton('vk', props => ({
+  title: props.title,
+  description: props.description,
+}), {
+  title: PropTypes.string,
+  description: PropTypes.string,
+}, {
   windowWidth: 660,
   windowHeight: 460,
 });

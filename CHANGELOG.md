@@ -1,3 +1,8 @@
+## 1.10.0 (Sep 17, 2016)
+
+* Added `title` and `description` to VK and Linkedin share links (@VorontsovMaxim)
+* Fixed Firefox bug with loading SVGs with CSP enabled (@OttoRobotto)
+
 ## 1.9.1 (Aug 28, 2016)
 
 * New end point for fetching Facebook share count.

@@ -1,5 +1,4 @@
 /* eslint-disable prefer-template */
-import platform from 'platform';
 
 export function objectToGetParams(object) {
   return '?' + Object.keys(object)
@@ -32,7 +31,7 @@ export function windowOpen(url, { name, height = 400, width = 550 }) {
 
   return window.open(
     url,
-    platform.name === 'IE' && parseInt(platform.version, 10) < 10 ? '' : name,
+    name,
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 }

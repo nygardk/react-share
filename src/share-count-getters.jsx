@@ -1,5 +1,4 @@
 import jsonp from 'jsonp';
-import platform from 'platform';
 
 import { objectToGetParams } from './utils';
 
@@ -15,13 +14,6 @@ export function getFacebookShareCount(shareUrl, callback) {
 }
 
 export function getGooglePlusShareCount(shareUrl, callback) {
-  if (platform.name === 'IE' && parseInt(platform.version, 10) < 11) {
-    /* eslint-disable no-console */
-    console.error('Google plus share count is not supported in <=IE10!');
-    /* eslint-enable no-console */
-    return;
-  }
-
   const xhr = new XMLHttpRequest();
 
   xhr.open('POST', 'https://clients6.google.com/rpc');

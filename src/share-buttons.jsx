@@ -106,7 +106,7 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
   picture: props.picture,
 }), {
   description: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   picture: PropTypes.string,
 }, {
   windowWidth: 550,

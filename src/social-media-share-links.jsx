@@ -29,7 +29,7 @@ export function facebook(url, { title, description, picture }) {
     u: url,
     title,
     description,
-    picture
+    picture,
   });
 }
 

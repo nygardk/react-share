@@ -46,7 +46,7 @@ export default class ShareButton extends Component {
       const windowOpenBound = () => windowOpen(this.link(), windowOptions);
 
       if (beforeOnClick) {
-        beforeOnClick().then(() => windowOpenBound()).catch(console.error);
+        beforeOnClick().then(() => windowOpenBound());
       } else {
         windowOpenBound();
       }

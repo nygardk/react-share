@@ -1,7 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
-
 import * as links from './social-media-share-links';
 import { windowOpen } from './utils';
 
@@ -19,6 +18,7 @@ export default class ShareButton extends Component {
     style: PropTypes.object,
     windowWidth: PropTypes.number,
     windowHeight: PropTypes.number,
+    beforeOnClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -28,15 +28,28 @@ export default class ShareButton extends Component {
   }
 
   onClick = (e) => {
-    if (!this.props.disabled) {
+    const {
+      disabled,
+      windowWidth,
+      windowHeight,
+      beforeOnClick,
+    } = this.props;
+
+    if (!disabled) {
       e.preventDefault();
 
       const windowOptions = {
-        height: this.props.windowHeight,
-        width: this.props.windowWidth,
+        height: windowHeight,
+        width: windowWidth,
       };
 
-      windowOpen(this.link(), windowOptions);
+      const windowOpenBound = () => windowOpen(this.link(), windowOptions);
+
+      if (beforeOnClick) {
+        beforeOnClick().then(() => windowOpenBound()).catch(console.error);
+      } else {
+        windowOpenBound();
+      }
     }
   }
 

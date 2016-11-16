@@ -22,7 +22,7 @@ export function twitter(url, { title, via, hashtags = [] }) {
   });
 }
 
-export function facebook(url, { title, description, picture }) {
+export function facebook(url, { title, description, picture, hashtag }) {
   assert(url, 'facebook.url');
 
   return 'https://facebook.com/sharer.php' + objectToGetParams({
@@ -30,6 +30,7 @@ export function facebook(url, { title, description, picture }) {
     title,
     description,
     picture,
+    hashtag,
   });
 }
 

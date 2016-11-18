@@ -7,24 +7,8 @@
 
 <img src="example.png" alt="Share buttons and counts example" />
 
-### News
+### Features
 
-##### 15.5.2016
-
-Version 1.6.1 no longer adds `display: 'inline-block'` to icons. If you are
-upgrading from an older version, be sure to add the style yourself if needed.
-
-##### 7.5.2016
-
-`New!` VK support added in version 1.6.0.
-
-##### 23.11.2015
-
-Since 20th of November Twitter no longer supports open count API. The service
-was shut down and there is currently no way to fetch the share count.
-Thus, TwitterShareCount was removed in version 1.3.0.
-
-#### Features:
 * no external script loading, i.e. no dependencies on SDKs
 * opens a popup share-window
 * sharing buttons for Facebook, Twitter, Google+, LinkedIn, Pinterest, VK

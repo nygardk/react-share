@@ -117,10 +117,12 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
   description: props.description,
   title: props.title,
   picture: props.picture,
+  hashtag: props.hashtag,
 }), {
   description: PropTypes.string,
   title: PropTypes.string,
   picture: PropTypes.string,
+  hashtag: PropTypes.string,
 }, {
   windowWidth: 550,
   windowHeight: 400,

@@ -1,3 +1,8 @@
+## 1.11.0 (Nov 18, 2016)
+
+* Added `beforeOnClick` option for share buttons
+* Added `hashtag` option for Facebook share button
+
 ## 1.10.0 (Sep 17, 2016)
 
 * Added `title` and `description` to VK and Linkedin share links (@VorontsovMaxim)

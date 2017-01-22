@@ -67,12 +67,12 @@ const {
 |       |Required props|Optional props|
 |-------|--------|--------------|
 |__All__|__`children`__: A React node (e.g. string or element)<br />__`url`__: URL of the shared page (string)|__`disabled`__: Disables click action and adds `disabled` class (bool)<br/>__`disabledStyle`__: Style when button is disabled (object, default = { opacity: 0.6 })<br/>__`windowWidth`, `windowHeight`__: opened window dimensions (int, different defaults for all share buttons)<br>__`beforeOnClick`__: Takes a function that returns a Promise to be fulfilled before calling onClick|
-|FacebookShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
+|FacebookShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`picture`__: An absolute link to the image that will be shared (string)|
 |GooglePlusShareButton|-|-|
 |LinkedinShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |TwitterShareButton|-|__`title`__: Title of the shared page (string)<br/>__`via`__: (string)<br/>__`hashtags`__: (array)|
 |PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
-|VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
+|VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 
 ### Share counts
 

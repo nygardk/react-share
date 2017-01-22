@@ -1,3 +1,8 @@
+## 1.11.1 (Jan 22, 2017)
+
+* Added `image` prop to VK share link
+* Added missing `picture` prop to README.md for FacebookShareButton
+
 ## 1.11.0 (Nov 18, 2016)
 
 * Added `beforeOnClick` option for share buttons

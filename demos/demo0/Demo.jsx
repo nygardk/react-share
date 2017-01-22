@@ -122,6 +122,7 @@ const Demo = React.createClass({
         <div className="Demo__some-network">
           <VKShareButton
             url={shareUrl}
+            image={`${String(window.location)}/${exampleImage}`}
             windowWidth={660}
             windowHeight={460}
             className="Demo__some-network__share-button">

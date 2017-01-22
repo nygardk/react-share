@@ -42,6 +42,7 @@ const Demo = React.createClass({
           <FacebookShareButton
             url={shareUrl}
             title={title}
+            picture={`${String(window.location)}/${exampleImage}`}
             className="Demo__some-network__share-button">
             <FacebookIcon
               size={32}

@@ -15,6 +15,8 @@ const {
   TwitterShareButton,
   PinterestShareButton,
   VKShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
 } = ShareButtons;
 
 const {
@@ -30,6 +32,8 @@ const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 const PinterestIcon = generateShareIcon('pinterest');
 const VKIcon = generateShareIcon('vk');
+const TelegramIcon = generateShareIcon('telegram');
+const WhatsappIcon = generateShareIcon('whatsapp');
 
 const Demo = React.createClass({
   render() {
@@ -65,6 +69,33 @@ const Demo = React.createClass({
               size={32}
               round />
           </TwitterShareButton>
+
+          <div className="Demo__some-network__share-count">
+            &nbsp;
+          </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <TelegramShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <TelegramIcon size={32} round />
+          </TelegramShareButton>
+
+          <div className="Demo__some-network__share-count">
+            &nbsp;
+          </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <WhatsappShareButton
+            url={shareUrl}
+            title={title}
+            separator=":: "
+            className="Demo__some-network__share-button">
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
 
           <div className="Demo__some-network__share-count">
             &nbsp;

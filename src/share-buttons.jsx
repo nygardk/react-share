@@ -141,6 +141,28 @@ export const TwitterShareButton = createShareButton('twitter', props => ({
   windowHeight: 400,
 });
 
+export const TelegramShareButton = createShareButton('telegram', props => ({
+  title: props.title,
+  via: props.via,
+}), {
+  title: PropTypes.string,
+  via: PropTypes.string,
+}, {
+  windowWidth: 550,
+  windowHeight: 400,
+});
+
+export const WhatsappShareButton = createShareButton('whatsapp', props => ({
+  title: props.title,
+  separator: props.separator ? props.separator : ' ',
+}), {
+  title: PropTypes.string,
+  separator: PropTypes.string,
+}, {
+  windowWidth: 550,
+  windowHeight: 400,
+});
+
 export const GooglePlusShareButton = createShareButton('googlePlus',
   undefined,
   undefined,

@@ -154,11 +154,12 @@ export const TelegramShareButton = createShareButton('telegram', props => ({
 
 export const WhatsappShareButton = createShareButton('whatsapp', props => ({
   title: props.title,
-  separator: props.separator ? props.separator : ' ',
+  separator: props.separator,
 }), {
   title: PropTypes.string,
   separator: PropTypes.string,
 }, {
+  separator: ' ',
   windowWidth: 550,
   windowHeight: 400,
 });

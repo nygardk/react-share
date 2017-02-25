@@ -74,9 +74,14 @@ const {
 |LinkedinShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |TwitterShareButton|-|__`title`__: Title of the shared page (string)<br/>__`via`__: (string)<br/>__`hashtags`__: (array)|
 |TelegramShareButton|-|__`title`__: Title of the shared page (string)<br/>|
-|WhatsappShareButton|-|__`title`__: Title of the shared page (string)<br/>__`separator`__: separates title from url default value is a single space (string)|
+|WhatsappShareButton|-|__`title`__: Title of the shared page (string)<br/>__`separator`__: Separates title from the url, default: " " (string)|
 |PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
 |VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
+
+##### Notes
+
+Whatsapp share button uses `whatsapp` protocol in shared links (`whatsapp://send`).
+Thus, it is meant to be used on mobile views and will not work on (all) desktop web browsers.
 
 ### Share counts
 

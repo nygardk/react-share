@@ -1,3 +1,7 @@
+## 1.12.1 (Feb 25, 2017)
+
+* Replaced `https://facebook.com/sharer.php` with `https://www.facebook.com/sharer/sharer.php`
+
 ## 1.12.0 (Feb 25, 2017)
 
 * Added VKShareCount

@@ -88,7 +88,8 @@ const {
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
-  PinterestShareCount
+  PinterestShareCount,
+  VKShareCount
 } = ShareCounts;
 ```
 

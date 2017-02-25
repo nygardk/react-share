@@ -15,9 +15,7 @@
 * share counts for Facebook, Google+, Linkedin and Pinterest
 * share buttons with generated icons or custom icons of your choice
 
-#### Demos:
-
-* [demos/demo0](demos/demo0): Facebook, Twitter, Google+, Linkedin, Pinterest, VK
+#### Demo
 
 To run demos: clone repo and run `npm install && npm run run-demos`
 and open `http://localhost:8080/demo0/`.

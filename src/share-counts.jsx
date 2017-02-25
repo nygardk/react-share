@@ -7,6 +7,7 @@ import {
   getGooglePlusShareCount,
   getLinkedinShareCount,
   getPinterestShareCount,
+  getVKShareCount,
 } from './share-count-getters';
 
 const SocialMediaShareCount = React.createClass({
@@ -82,6 +83,7 @@ export const FacebookShareCount = shareCountFactory(getFacebookShareCount);
 export const LinkedinShareCount = shareCountFactory(getLinkedinShareCount);
 export const GooglePlusShareCount = shareCountFactory(getGooglePlusShareCount);
 export const PinterestShareCount = shareCountFactory(getPinterestShareCount);
+export const VKShareCount = shareCountFactory(getVKShareCount);
 export const TwitterShareCount = () => {
   throw new Error('TwitterShareCount was removed in version 1.3.0 because' +
     'the Twitter API was shut down and there is no replacement. Please ' +

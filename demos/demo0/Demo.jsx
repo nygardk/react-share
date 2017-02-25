@@ -24,6 +24,7 @@ const {
   GooglePlusShareCount,
   LinkedinShareCount,
   PinterestShareCount,
+  VKShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -163,9 +164,8 @@ const Demo = React.createClass({
               round />
           </VKShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
+          <VKShareCount url={String(window.location)}
+            className="Demo__some-network__share-count" />
         </div>
       </div>
     );

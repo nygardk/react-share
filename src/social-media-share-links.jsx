@@ -40,7 +40,7 @@ export function whatsapp(url, { title, separator }) {
 export function facebook(url, { title, description, picture, hashtag }) {
   assert(url, 'facebook.url');
 
-  return 'https://facebook.com/sharer.php' + objectToGetParams({
+  return 'https://www.facebook.com/sharer/sharer.php' + objectToGetParams({
     u: url,
     title,
     description,

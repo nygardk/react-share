@@ -1,3 +1,8 @@
+## 1.12.0 (Feb 25, 2017)
+
+* Added VKShareCount
+* Added Whatsapp and Telegram share buttons
+
 ## 1.11.1 (Jan 22, 2017)
 
 * Added `image` prop to VK share link

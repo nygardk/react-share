@@ -57,6 +57,8 @@ const {
   GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
   PinterestShareButton,
   VKShareButton
 } = ShareButtons;
@@ -71,6 +73,8 @@ const {
 |GooglePlusShareButton|-|-|
 |LinkedinShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |TwitterShareButton|-|__`title`__: Title of the shared page (string)<br/>__`via`__: (string)<br/>__`hashtags`__: (array)|
+|TelegramShareButton|-|__`title`__: Title of the shared page (string)<br/>|
+|WhatsappShareButton|-|__`title`__: Title of the shared page (string)<br/>__`separator`__: separates title from url default value is a single space (string)|
 |PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
 |VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 
@@ -111,6 +115,8 @@ argument and returns an element:
 ```js
 const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
+const TelegramIcon = generateShareIcon('telegram');
+const WhatsappIcon = generateShareIcon('whatsapp');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 const PinterestIcon = generateShareIcon('pinterest');

@@ -22,6 +22,21 @@ export function twitter(url, { title, via, hashtags = [] }) {
   });
 }
 
+export function telegram(url, { title }) {
+  assert(url, 'telegram.url');
+  return 'https://telegram.me/share/' + objectToGetParams({
+    url,
+    text: title,
+  });
+}
+
+export function whatsapp(url, { title, separator }) {
+  assert(url, 'whatsapp.url');
+  return 'whatsapp://send' + objectToGetParams({
+    text: title + separator + url,
+  });
+}
+
 export function facebook(url, { title, description, picture, hashtag }) {
   assert(url, 'facebook.url');
 

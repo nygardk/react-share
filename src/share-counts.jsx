@@ -8,7 +8,7 @@ import {
   getLinkedinShareCount,
   getPinterestShareCount,
   getVKShareCount,
-  getOKShareCount
+  getOKShareCount,
 } from './share-count-getters';
 
 const SocialMediaShareCount = React.createClass({

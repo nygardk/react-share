@@ -87,13 +87,13 @@ export function vk(url, { title, description, image }) {
   });
 }
 
-export function ok(url, {  title, description, image }) {
+export function ok(url, { title, description, image }) {
   assert(url, 'ok.url');
 
   return 'https://connect.ok.ru/offer' + objectToGetParams({
     url,
     title,
     description,
-    imageUrl: image
+    imageUrl: image,
   });
 }

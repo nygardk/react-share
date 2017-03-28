@@ -15,6 +15,7 @@ const {
   TwitterShareButton,
   PinterestShareButton,
   VKShareButton,
+  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
 } = ShareButtons;
@@ -25,6 +26,7 @@ const {
   LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,
+  OKShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -33,6 +35,7 @@ const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 const PinterestIcon = generateShareIcon('pinterest');
 const VKIcon = generateShareIcon('vk');
+const OKIcon = generateShareIcon('ok');
 const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
 
@@ -165,6 +168,22 @@ const Demo = React.createClass({
           </VKShareButton>
 
           <VKShareCount url={String(window.location)}
+            className="Demo__some-network__share-count" />
+        </div>
+
+		<div className="Demo__some-network">
+          <OKShareButton
+            url={shareUrl}
+            image={`${String(window.location)}/${exampleImage}`}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button">
+            <OKIcon
+              size={32}
+              round />
+          </OKShareButton>
+
+          <OKShareCount url={String(window.location)}
             className="Demo__some-network__share-count" />
         </div>
       </div>

@@ -58,7 +58,8 @@ const {
   TelegramShareButton,
   WhatsappShareButton,
   PinterestShareButton,
-  VKShareButton
+  VKShareButton,
+  OKShareButton
 } = ShareButtons;
 ```
 
@@ -75,6 +76,7 @@ const {
 |WhatsappShareButton|-|__`title`__: Title of the shared page (string)<br/>__`separator`__: Separates title from the url, default: " " (string)|
 |PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
 |VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
+|OKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 
 ##### Notes
 
@@ -89,7 +91,8 @@ const {
   GooglePlusShareCount,
   LinkedinShareCount,
   PinterestShareCount,
-  VKShareCount
+  VKShareCount,
+  OKShareCount
 } = ShareCounts;
 ```
 
@@ -125,6 +128,7 @@ const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 const PinterestIcon = generateShareIcon('pinterest');
 const VKIcon = generateShareIcon('vk');
+const OKIcon = generateShareIcon('ok');
 ```
 
 Props:

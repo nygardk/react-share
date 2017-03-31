@@ -1,3 +1,7 @@
+## 1.13.0 (Mar 31, 2017)
+
+* Added share button and count for Odnoklassniki.ru (thanks @R0nd!).
+
 ## 1.12.1 (Feb 25, 2017)
 
 * Replaced `https://facebook.com/sharer.php` with `https://www.facebook.com/sharer/sharer.php`

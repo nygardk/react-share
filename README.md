@@ -11,7 +11,7 @@
 
 * no external script loading, i.e. no dependencies on SDKs
 * opens a popup share-window
-* sharing buttons for Facebook, Twitter, Google+, LinkedIn, Pinterest, VK, Telegram and Whatsapp
+* sharing buttons for Facebook, Twitter, Google+, LinkedIn, Pinterest, VK, Telegram, Whatsapp and Odnoklassniki
 * share counts for Facebook, Google+, Linkedin, Pinterest and VK
 * share buttons with generated icons or custom icons of your choice
 

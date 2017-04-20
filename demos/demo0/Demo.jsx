@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import React, { Component } from 'react';
 import {
   ShareButtons,
   ShareCounts,
@@ -39,7 +39,7 @@ const OKIcon = generateShareIcon('ok');
 const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
 
-const Demo = React.createClass({
+class Demo extends Component {
   render() {
     const shareUrl = 'http://github.com';
     const title = 'GitHub';
@@ -188,7 +188,7 @@ const Demo = React.createClass({
         </div>
       </div>
     );
-  },
-});
+  }
+}
 
 export default Demo;

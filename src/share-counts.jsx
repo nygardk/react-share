@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -12,7 +12,7 @@ import {
   getOKShareCount,
 } from './share-count-getters';
 
-class SocialMediaShareCount extends React.Component {
+class SocialMediaShareCount extends Component {
   constructor(props) {
     super(props);
 

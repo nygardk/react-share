@@ -1,5 +1,6 @@
 /* eslint-disable react/no-multi-comp */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import * as links from './social-media-share-links';
 import { windowOpen } from './utils';
@@ -96,18 +97,13 @@ export default class ShareButton extends Component {
  * To-be-removed in v2.
  */
 function createShareButton(network, optsMap = () => ({}), propTypes, defaultProps = {}) {
-  const CreatedButton = React.createClass({
-    propTypes,
+  const CreatedButton = props => (
+    <ShareButton {...props}
+      network={network}
+      opts={optsMap(props)} />
+  );
 
-    render() {
-      return (
-        <ShareButton {...this.props}
-          network={network}
-          opts={optsMap(this.props)} />
-      );
-    },
-  });
-
+  CreatedButton.propTypes = propTypes;
   CreatedButton.defaultProps = defaultProps;
 
   return CreatedButton;

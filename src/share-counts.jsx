@@ -1,5 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import {
@@ -11,29 +12,28 @@ import {
   getOKShareCount,
 } from './share-count-getters';
 
-const SocialMediaShareCount = React.createClass({
-  propTypes: {
-    children: React.PropTypes.func,
-    className: React.PropTypes.string,
-    getCount: React.PropTypes.func,
-    url: React.PropTypes.string.isRequired,
-  },
+class SocialMediaShareCount extends React.Component {
+  constructor(props) {
+    super(props);
 
-  getInitialState() {
-    return {
-      count: 0,
-    };
-  },
+    this._isMounted = false;
+    this.state = { count: 0 };
+  }
 
   componentDidMount() {
+    this._isMounted = true;
     this.updateCount(this.props.url);
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.url !== this.props.url) {
       this.updateCount(nextProps.url);
     }
-  },
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   updateCount(url) {
     if (this.props.getCount) {
@@ -42,7 +42,7 @@ const SocialMediaShareCount = React.createClass({
       });
 
       this.props.getCount(url, count => {
-        if (this.isMounted()) {
+        if (this._isMounted) {
           this.setState({
             count,
             isLoading: false,
@@ -50,7 +50,7 @@ const SocialMediaShareCount = React.createClass({
         }
       });
     }
-  },
+  }
 
   render() {
     const {
@@ -68,8 +68,15 @@ const SocialMediaShareCount = React.createClass({
         {!isLoading && children(count || 0)}
       </div>
     );
-  },
-});
+  }
+}
+
+SocialMediaShareCount.propTypes = {
+  children: PropTypes.func,
+  className: PropTypes.string,
+  getCount: PropTypes.func,
+  url: PropTypes.string.isRequired,
+};
 
 SocialMediaShareCount.defaultProps = {
   children: shareCount => shareCount,

@@ -1,4 +1,4 @@
-## 1.13.1 (Apr 20, 2017)
+## 1.13.2 (Apr 20, 2017)
 
 * Minor icon component fix: use `prop-types` lib instead of `React.propTypes` and use `React.Component` instead of `React.createClass`. Suppresses warnings caused by upgrading to React v. `>=15.5.0` (thanks @yurick-flama).
 

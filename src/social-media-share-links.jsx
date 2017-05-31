@@ -97,3 +97,12 @@ export function ok(url, { title, description, image }) {
     imageUrl: image,
   });
 }
+
+export function reddit(url, { title }) {
+  assert(url, 'reddit.url');
+
+  return 'https://www.reddit.com/submit' + objectToGetParams({
+    url,
+    title,
+  });
+}

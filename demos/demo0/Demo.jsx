@@ -18,6 +18,7 @@ const {
   OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
+  RedditShareButton,
 } = ShareButtons;
 
 const {
@@ -27,6 +28,7 @@ const {
   PinterestShareCount,
   VKShareCount,
   OKShareCount,
+  RedditShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -38,6 +40,7 @@ const VKIcon = generateShareIcon('vk');
 const OKIcon = generateShareIcon('ok');
 const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
+const RedditIcon = generateShareIcon('reddit');
 
 class Demo extends Component {
   render() {
@@ -151,7 +154,7 @@ class Demo extends Component {
             <PinterestIcon size={32} round />
           </PinterestShareButton>
 
-          <PinterestShareCount url={String(window.location)}
+          <PinterestShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
         </div>
 
@@ -167,11 +170,11 @@ class Demo extends Component {
               round />
           </VKShareButton>
 
-          <VKShareCount url={String(window.location)}
+          <VKShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
         </div>
 
-		<div className="Demo__some-network">
+        <div className="Demo__some-network">
           <OKShareButton
             url={shareUrl}
             image={`${String(window.location)}/${exampleImage}`}
@@ -183,7 +186,23 @@ class Demo extends Component {
               round />
           </OKShareButton>
 
-          <OKShareCount url={String(window.location)}
+          <OKShareCount url={shareUrl}
+            className="Demo__some-network__share-count" />
+        </div>
+
+        <div className="Demo__some-network">
+          <RedditShareButton
+            url={shareUrl}
+            title={title}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button">
+            <RedditIcon
+              size={32}
+              round />
+          </RedditShareButton>
+
+          <RedditShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
         </div>
       </div>

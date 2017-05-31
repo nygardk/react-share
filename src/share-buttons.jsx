@@ -216,3 +216,12 @@ export const OKShareButton = createShareButton('ok', props => ({
   windowWidth: 660,
   windowHeight: 460,
 });
+
+export const RedditShareButton = createShareButton('reddit', props => ({
+  title: props.title,
+}), {
+  title: PropTypes.string,
+}, {
+  windowWidth: 660,
+  windowHeight: 460,
+});

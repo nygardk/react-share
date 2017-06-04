@@ -1,3 +1,8 @@
+## 1.14.0 (Jun 4, 2017)
+
+* Added Reddit share button and count (thanks @watbe!).
+* `beforeOnClick` no longer has to return Promise
+
 ## 1.13.3 (May 29, 2017)
 
 * More permissive dependency versions.

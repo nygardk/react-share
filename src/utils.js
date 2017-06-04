@@ -36,3 +36,6 @@ export function windowOpen(url, { name, height = 400, width = 550 }) {
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 }
+
+export const isPromise = obj =>
+  !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';

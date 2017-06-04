@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import * as links from './social-media-share-links';
-import { windowOpen } from './utils';
+import { isPromise, windowOpen } from './utils';
 
 const supportedNetworks = Object.keys(links);
 
@@ -47,7 +47,13 @@ export default class ShareButton extends Component {
       const windowOpenBound = () => windowOpen(this.link(), windowOptions);
 
       if (beforeOnClick) {
-        beforeOnClick().then(() => windowOpenBound());
+        const returnVal = beforeOnClick();
+
+        if (isPromise(returnVal)) {
+          returnVal.then(windowOpenBound);
+        } else {
+          windowOpenBound();
+        }
       } else {
         windowOpenBound();
       }

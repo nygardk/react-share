@@ -24,7 +24,7 @@ export function generateIcon(network) {
       height: size,
     };
 
-    const classes = `social-icon social-icon--${network} ${className || ''}`;
+    const classes = `social-icon social-icon--${network} ${className}`;
 
     const finalIconBgStyle = {
       ...iconBgStyle,
@@ -72,6 +72,7 @@ export function generateIcon(network) {
   };
 
   Icon.defaultProps = {
+    className: '',
     logoFillColor: 'white',
     size: 64,
   };

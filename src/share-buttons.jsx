@@ -91,6 +91,7 @@ export default class ShareButton extends Component {
         tabIndex="0"
         onClick={this.onClick}
         className={classes}
+        url={this.link()}
         style={{
           ...style,
           ...(disabled ? disabledStyle : {}),

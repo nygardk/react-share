@@ -1,3 +1,7 @@
+## 1.14.1 (Jun 4, 2017)
+
+* Minor accessibility update.
+
 ## 1.14.0 (Jun 4, 2017)
 
 * Added Reddit share button and count (thanks @watbe!).

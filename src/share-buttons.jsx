@@ -87,6 +87,8 @@ export default class ShareButton extends Component {
 
     return (
       <div
+        role="button"
+        tabIndex="0"
         onClick={this.onClick}
         className={classes}
         style={{

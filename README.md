@@ -11,9 +11,27 @@
 
 * no external script loading, i.e. no dependencies on SDKs
 * opens a popup share-window
-* sharing buttons for Facebook, Twitter, Google+, LinkedIn, Pinterest, VK, Telegram, Whatsapp and Odnoklassniki
-* share counts for Facebook, Google+, Linkedin, Pinterest and VK
-* share buttons with generated icons or custom icons of your choice
+* share buttons for:
+  - Facebook
+  - Twitter
+  - Telegram
+  - Google+
+  - Whatsapp
+  - LinkedIn
+  - Pinterest
+  - VK
+  - Odnoklassniki
+  - Reddit
+* share counts for
+  - Facebook
+  - Google+
+  - Linkedin
+  - Pinterest
+  - VK
+  - Odnoklassniki
+  - Reddit
+* social media icons included in the library
+* supports also custom icons
 
 #### Demo
 

@@ -1,3 +1,8 @@
+## 1.15.0 (Jun 18, 2017)
+
+* Use new WhatsApp API (thanks @renchap!).
+* A11y update: handle Enter-keypress when share button is on focus.
+
 ## 1.14.1 (Jun 4, 2017)
 
 * Minor accessibility update.

@@ -98,11 +98,6 @@ const {
 |OKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |RedditShareButton|-|__`title`__: Title of the shared page (string)|
 
-##### Notes
-
-Whatsapp share button uses `whatsapp` protocol in shared links (`whatsapp://send`).
-Thus, it is meant to be used on mobile views and will not work on (all) desktop web browsers.
-
 ### Share counts
 
 ```js

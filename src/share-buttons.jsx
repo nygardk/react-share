@@ -60,6 +60,12 @@ export default class ShareButton extends Component {
     }
   }
 
+  onKeyPress = (e) => {
+    if (e.key === 'Enter' || e.key === 13) {
+      this.onClick(e);
+    }
+  }
+
   link() {
     const { url, opts, network } = this.props;
     return links[network](url, opts);
@@ -90,6 +96,7 @@ export default class ShareButton extends Component {
         role="button"
         tabIndex="0"
         onClick={this.onClick}
+        onKeyPress={this.onKeyPress}
         className={classes}
         style={{
           ...style,

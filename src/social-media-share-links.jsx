@@ -32,7 +32,7 @@ export function telegram(url, { title }) {
 
 export function whatsapp(url, { title, separator }) {
   assert(url, 'whatsapp.url');
-  return 'whatsapp://send' + objectToGetParams({
+  return 'https://api.whatsapp.com/send' + objectToGetParams({
     text: title + separator + url,
   });
 }

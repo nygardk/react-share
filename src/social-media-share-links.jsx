@@ -37,14 +37,11 @@ export function whatsapp(url, { title, separator }) {
   });
 }
 
-export function facebook(url, { title, description, picture, hashtag }) {
+export function facebook(url, { quote, hashtag }) {
   assert(url, 'facebook.url');
-
   return 'https://www.facebook.com/sharer/sharer.php' + objectToGetParams({
     u: url,
-    title,
-    description,
-    picture,
+    quote,
     hashtag,
   });
 }

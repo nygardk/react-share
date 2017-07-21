@@ -52,8 +52,7 @@ class Demo extends Component {
         <div className="Demo__some-network">
           <FacebookShareButton
             url={shareUrl}
-            title={title}
-            picture={`${String(window.location)}/${exampleImage}`}
+            quote={title}
             className="Demo__some-network__share-button">
             <FacebookIcon
               size={32}

@@ -3,6 +3,7 @@
   "version": "1.15.0",
   "description": "Easy social media share buttons and share counts.",
   "main": "./lib/react-share.js",
+  "typings": "./index.d.ts",
   "engines": {
     "node": ">=4.0.0",
     "npm": ">=3.0.0"
@@ -62,6 +63,7 @@
     "webpack-dev-server": "1.16.3"
   },
   "dependencies": {
+    "@types/react": "^15.0.38",
     "babel-runtime": "^6.6.1",
     "classnames": "^2.2.5",
     "jsonp": "^0.2.1",

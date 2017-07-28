@@ -8,7 +8,7 @@ export function objectToGetParams(object) {
     .join('&');
 }
 
-export function windowOpen(url, { name, height = 400, width = 550 }) {
+export function windowOpen(url, { name, height = 400, width = 550 }, closeCallback) {
   const left = (window.outerWidth / 2)
     + (window.screenX || window.screenLeft || 0) - (width / 2);
   const top = (window.outerHeight / 2)
@@ -30,11 +30,26 @@ export function windowOpen(url, { name, height = 400, width = 550 }) {
     chrome: 'yes',
   };
 
-  return window.open(
+  const shareDialog = window.open(
     url,
     platform.name === 'IE' && parseInt(platform.version, 10) < 10 ? '' : name,
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
+
+  const interval = window.setInterval(() => {
+    try {
+      if (shareDialog === null || shareDialog.closed) {
+        window.clearInterval(interval);
+        if (closeCallback) {
+          closeCallback(shareDialog);
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, 1000);
+
+  return shareDialog;
 }
 
 export const isPromise = obj =>

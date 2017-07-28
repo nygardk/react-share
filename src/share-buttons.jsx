@@ -20,6 +20,7 @@ export default class ShareButton extends Component {
     windowWidth: PropTypes.number,
     windowHeight: PropTypes.number,
     beforeOnClick: PropTypes.func,
+    closeCallback: PropTypes.func,
   };
 
   static defaultProps = {
@@ -34,6 +35,7 @@ export default class ShareButton extends Component {
       windowWidth,
       windowHeight,
       beforeOnClick,
+      closeCallback,
     } = this.props;
 
     if (!disabled) {
@@ -44,7 +46,7 @@ export default class ShareButton extends Component {
         width: windowWidth,
       };
 
-      const windowOpenBound = () => windowOpen(this.link(), windowOptions);
+      const windowOpenBound = () => windowOpen(this.link(), windowOptions, closeCallback);
 
       if (beforeOnClick) {
         const returnVal = beforeOnClick();

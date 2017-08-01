@@ -36,18 +36,18 @@ export function windowOpen(url, { name, height = 400, width = 550 }, closeCallba
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 
-  const interval = window.setInterval(() => {
-    try {
-      if (shareDialog === null || shareDialog.closed) {
-        window.clearInterval(interval);
-        if (closeCallback) {
+  if (closeCallback) {
+    const interval = window.setInterval(() => {
+      try {
+        if (shareDialog === null || shareDialog.closed) {
+          window.clearInterval(interval);
           closeCallback(shareDialog);
         }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
-    }
-  }, 1000);
+    }, 1000);
+  }
 
   return shareDialog;
 }

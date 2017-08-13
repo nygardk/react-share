@@ -38,13 +38,8 @@ export function whatsapp(url, { title, separator }) {
 }
 
 export function facebook(url, { quote, hashtag }) {
-  /*eslint-disable */
-  if (quote == null) {
-    console.warn('Warning: Description, title and picture fields are no longer supported by react-share! Use quote instead!');
-  }
-  /*eslint-enable */
-
   assert(url, 'facebook.url');
+
   return 'https://www.facebook.com/sharer/sharer.php' + objectToGetParams({
     u: url,
     quote,

@@ -124,10 +124,27 @@ function createShareButton(network, optsMap = () => ({}), propTypes, defaultProp
   return CreatedButton;
 }
 
-export const FacebookShareButton = createShareButton('facebook', props => ({
-  quote: props.quote,
-  hashtag: props.hashtag,
-}), {
+export const FacebookShareButton = createShareButton('facebook', props => {
+  /* eslint-disable no-console */
+  if (props.picture) {
+    console.warn('FacebookShareButton warning: picture is a deprecated prop.');
+  }
+
+  if (props.title) {
+    console.warn('FacebookShareButton warning: title is a deprecated prop. Use "quote" instead.');
+  }
+
+  if (props.description) {
+    console.warn(`FacebookShareButton warning: description is a deprecated prop.
+      Use "quote" instead.`);
+  }
+  /* eslint-enable no-console */
+
+  return {
+    quote: props.quote,
+    hashtag: props.hashtag,
+  };
+}, {
   quote: PropTypes.string,
   hashtag: PropTypes.string,
 }, {

@@ -1,3 +1,7 @@
+## 1.15.1 (Aug 13, 2017)
+
+* Deprecated `title`, `description` and `picture` props for FacebookShareButton (because of Facebook API change). New prop: `quote`.
+
 ## 1.15.0 (Jun 18, 2017)
 
 * Use new WhatsApp API (thanks @renchap!).

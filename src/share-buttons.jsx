@@ -125,14 +125,10 @@ function createShareButton(network, optsMap = () => ({}), propTypes, defaultProp
 }
 
 export const FacebookShareButton = createShareButton('facebook', props => ({
-  description: props.description,
-  title: props.title,
-  picture: props.picture,
+  quote: props.quote,
   hashtag: props.hashtag,
 }), {
-  description: PropTypes.string,
-  title: PropTypes.string,
-  picture: PropTypes.string,
+  quote: PropTypes.string,
   hashtag: PropTypes.string,
 }, {
   windowWidth: 550,

@@ -163,6 +163,10 @@ Example:
 <TwitterIcon size={32} round={true} />
 ```
 
+### About semantic versioning
+
+This library uses the standard semver convention. However, the share buttons and and counts are prone to lots of changes that are not in control of this library. For example: if Facebook decides to change or deprecate it's API in a major way, this library will not get a major version bump just because of that. Keep this in mind when you are planning the maintenance of your application.
+
 ## License
 
 MIT

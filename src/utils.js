@@ -8,7 +8,7 @@ export function objectToGetParams(object) {
     .join('&');
 }
 
-export function windowOpen(url, { name, height = 400, width = 550 }, closeCallback) {
+export function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose) {
   const left = (window.outerWidth / 2)
     + (window.screenX || window.screenLeft || 0) - (width / 2);
   const top = (window.outerHeight / 2)
@@ -36,12 +36,12 @@ export function windowOpen(url, { name, height = 400, width = 550 }, closeCallba
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 
-  if (closeCallback) {
+  if (onShareWindowClose) {
     const interval = window.setInterval(() => {
       try {
         if (shareDialog === null || shareDialog.closed) {
           window.clearInterval(interval);
-          closeCallback(shareDialog);
+          onShareWindowClose(shareDialog);
         }
       } catch (e) {
         console.log(e);

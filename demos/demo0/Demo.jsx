@@ -19,6 +19,7 @@ const {
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
+  EmailShareButton,
 } = ShareButtons;
 
 const {
@@ -41,6 +42,7 @@ const OKIcon = generateShareIcon('ok');
 const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
 const RedditIcon = generateShareIcon('reddit');
+const EmailIcon = generateShareIcon('email');
 
 class Demo extends Component {
   render() {
@@ -203,6 +205,18 @@ class Demo extends Component {
 
           <RedditShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
+        </div>
+
+        <div className="Demo__some-network">
+          <EmailShareButton
+            url={shareUrl}
+            subject={title}
+            body="body"
+            className="Demo__some-network__share-button">
+            <EmailIcon
+              size={32}
+              round />
+          </EmailShareButton>
         </div>
       </div>
     );

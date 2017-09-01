@@ -14,7 +14,9 @@ export default class ShareButton extends Component {
     disabled: PropTypes.bool,
     disabledStyle: PropTypes.object,
     network: PropTypes.oneOf(supportedNetworks),
+    onClick: PropTypes.func,
     opts: PropTypes.object,
+    openWindow: PropTypes.bool,
     url: PropTypes.string.isRequired,
     style: PropTypes.object,
     windowWidth: PropTypes.number,
@@ -27,38 +29,58 @@ export default class ShareButton extends Component {
     disabledStyle: {
       opacity: 0.6,
     },
+    openWindow: true,
+  }
+
+  openWindow = (link) => {
+    const {
+      beforeOnClick,
+      onShareWindowClose,
+      windowWidth,
+      windowHeight,
+    } = this.props;
+
+    const windowOptions = {
+      height: windowHeight,
+      width: windowWidth,
+    };
+
+    const windowOpenBound = () => windowOpen(link, windowOptions, onShareWindowClose);
+
+    if (beforeOnClick) {
+      const returnVal = beforeOnClick();
+
+      if (isPromise(returnVal)) {
+        returnVal.then(windowOpenBound);
+      } else {
+        windowOpenBound();
+      }
+    } else {
+      windowOpenBound();
+    }
   }
 
   onClick = (e) => {
     const {
       disabled,
-      windowWidth,
-      windowHeight,
-      beforeOnClick,
-      onShareWindowClose,
+      onClick,
+      openWindow,
     } = this.props;
 
-    if (!disabled) {
-      e.preventDefault();
+    if (disabled) {
+      return;
+    }
 
-      const windowOptions = {
-        height: windowHeight,
-        width: windowWidth,
-      };
+    e.preventDefault();
 
-      const windowOpenBound = () => windowOpen(this.link(), windowOptions, onShareWindowClose);
+    const link = this.link();
 
-      if (beforeOnClick) {
-        const returnVal = beforeOnClick();
+    if (openWindow) {
+      this.openWindow(link);
+    }
 
-        if (isPromise(returnVal)) {
-          returnVal.then(windowOpenBound);
-        } else {
-          windowOpenBound();
-        }
-      } else {
-        windowOpenBound();
-      }
+    if (onClick) {
+      onClick(link)
     }
   }
 
@@ -197,9 +219,8 @@ export const EmailShareButton = createShareButton('email', props => ({
   subject: PropTypes.string,
   body: PropTypes.string,
 }, {
-  separator: ' ',
-  windowWidth: 550,
-  windowHeight: 400,
+  openWindow: false,
+  onClick: link => window.location.href = link,
 });
 
 export const GooglePlusShareButton = createShareButton('googlePlus',

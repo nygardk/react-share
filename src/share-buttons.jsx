@@ -32,6 +32,36 @@ export default class ShareButton extends Component {
     openWindow: true,
   }
 
+  onClick = (e) => {
+    const {
+      disabled,
+      onClick,
+      openWindow,
+    } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
+    e.preventDefault();
+
+    const link = this.link();
+
+    if (openWindow) {
+      this.openWindow(link);
+    }
+
+    if (onClick) {
+      onClick(link);
+    }
+  }
+
+  onKeyPress = (e) => {
+    if (e.key === 'Enter' || e.key === 13) {
+      this.onClick(e);
+    }
+  }
+
   openWindow = (link) => {
     const {
       beforeOnClick,
@@ -57,36 +87,6 @@ export default class ShareButton extends Component {
       }
     } else {
       windowOpenBound();
-    }
-  }
-
-  onClick = (e) => {
-    const {
-      disabled,
-      onClick,
-      openWindow,
-    } = this.props;
-
-    if (disabled) {
-      return;
-    }
-
-    e.preventDefault();
-
-    const link = this.link();
-
-    if (openWindow) {
-      this.openWindow(link);
-    }
-
-    if (onClick) {
-      onClick(link)
-    }
-  }
-
-  onKeyPress = (e) => {
-    if (e.key === 'Enter' || e.key === 13) {
-      this.onClick(e);
     }
   }
 
@@ -220,7 +220,7 @@ export const EmailShareButton = createShareButton('email', props => ({
   body: PropTypes.string,
 }, {
   openWindow: false,
-  onClick: link => window.location.href = link,
+  onClick: (link) => { window.location.href = link; },
 });
 
 export const GooglePlusShareButton = createShareButton('googlePlus',

@@ -44,7 +44,9 @@ export function windowOpen(url, { name, height = 400, width = 550 }, onShareWind
           onShareWindowClose(shareDialog);
         }
       } catch (e) {
-        console.log(e);
+        /* eslint-disable no-console */
+        console.error(e);
+        /* eslint-enable no-console */
       }
     }, 1000);
   }

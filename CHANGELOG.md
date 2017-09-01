@@ -1,3 +1,9 @@
+## 1.16.0 (Sep 1, 2017)
+
+* Allow React `v16.x.x` as peer dependency.
+* Added `<EmailShareButton />`.
+* Added `onShareWindowClose` share button prop (#91).
+
 ## 1.15.1 (Aug 13, 2017)
 
 * Deprecated `title`, `description` and `picture` props for FacebookShareButton (because of Facebook API change). New prop: `quote`.

@@ -22,6 +22,7 @@
   - VK
   - Odnoklassniki
   - Reddit
+  - email
 * share counts for
   - Facebook
   - Google+

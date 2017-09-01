@@ -4,10 +4,7 @@ import assert from 'assert';
 import { objectToGetParams } from './utils';
 
 export function email(url, { subject, body }) {
-  assert(subject, 'email.subject');
-  assert(body, 'email.body');
-
-  return 'mailto:' + objectToGetParams({ subject, body });
+  return 'mailto:' + objectToGetParams({ subject, body: body || email });
 }
 
 export function twitter(url, { title, via, hashtags = [] }) {

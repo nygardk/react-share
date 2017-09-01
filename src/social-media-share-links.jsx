@@ -3,7 +3,7 @@ import assert from 'assert';
 
 import { objectToGetParams } from './utils';
 
-export function email(subject, body) {
+export function email(url, { subject, body }) {
   assert(subject, 'email.subject');
   assert(body, 'email.body');
 

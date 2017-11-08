@@ -101,3 +101,15 @@ export function reddit(url, { title }) {
     title,
   });
 }
+
+export function tumblr(url, { title, caption, tags, posttype }) {
+  assert(url, 'tumblr.url');
+
+  return 'https://www.tumblr.com/widgets/share/tool' + objectToGetParams({
+    canonicalUrl: url,
+    title,
+    caption,
+    tags,
+    posttype,
+  });
+}

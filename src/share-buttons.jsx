@@ -9,6 +9,7 @@ const supportedNetworks = Object.keys(links);
 
 export default class ShareButton extends Component {
   static propTypes = {
+    additionalProps: PropTypes.object,
     children: PropTypes.node,
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -101,6 +102,7 @@ export default class ShareButton extends Component {
 
   render() {
     const {
+      additionalProps,
       children,
       className,
       disabled,
@@ -123,6 +125,7 @@ export default class ShareButton extends Component {
 
     return (
       <div
+        {...additionalProps}
         role={role}
         tabIndex={tabIndex}
         onClick={this.onClick}

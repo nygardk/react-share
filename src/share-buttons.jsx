@@ -18,11 +18,13 @@ export default class ShareButton extends Component {
     opts: PropTypes.object,
     openWindow: PropTypes.bool,
     url: PropTypes.string.isRequired,
+    role: PropTypes.string,
     style: PropTypes.object,
     windowWidth: PropTypes.number,
     windowHeight: PropTypes.number,
     beforeOnClick: PropTypes.func,
     onShareWindowClose: PropTypes.func,
+    tabIndex: PropTypes.string,
   };
 
   static defaultProps = {
@@ -30,6 +32,8 @@ export default class ShareButton extends Component {
       opacity: 0.6,
     },
     openWindow: true,
+    role: 'button',
+    tabIndex: '0',
   }
 
   onClick = (e) => {
@@ -102,7 +106,9 @@ export default class ShareButton extends Component {
       disabled,
       disabledStyle,
       network,
+      role,
       style,
+      tabIndex,
     } = this.props;
 
     const classes = cx(
@@ -117,8 +123,8 @@ export default class ShareButton extends Component {
 
     return (
       <div
-        role="button"
-        tabIndex="0"
+        role={role}
+        tabIndex={tabIndex}
         onClick={this.onClick}
         onKeyPress={this.onKeyPress}
         className={classes}

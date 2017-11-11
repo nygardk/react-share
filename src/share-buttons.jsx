@@ -288,3 +288,20 @@ export const RedditShareButton = createShareButton('reddit', props => ({
   windowWidth: 660,
   windowHeight: 460,
 });
+
+export const TumblrShareButton = createShareButton('tumblr', props => ({
+  title: props.title,
+  tags: props.tags.join(','),
+  caption: props.caption,
+  posttype: props.posttype,
+}), {
+  title: PropTypes.string,
+  caption: PropTypes.string,
+  posttype: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+}, {
+  tags: [],
+  posttype: 'link',
+  windowWidth: 660,
+  windowHeight: 460,
+});

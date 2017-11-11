@@ -11,6 +11,7 @@ import {
   getVKShareCount,
   getOKShareCount,
   getRedditShareCount,
+  getTumblrShareCount,
 } from './share-count-getters';
 
 class SocialMediaShareCount extends Component {
@@ -95,6 +96,7 @@ export const PinterestShareCount = shareCountFactory(getPinterestShareCount);
 export const VKShareCount = shareCountFactory(getVKShareCount);
 export const OKShareCount = shareCountFactory(getOKShareCount);
 export const RedditShareCount = shareCountFactory(getRedditShareCount);
+export const TumblrShareCount = shareCountFactory(getTumblrShareCount);
 export const TwitterShareCount = () => {
   throw new Error('TwitterShareCount was removed in version 1.3.0 because' +
     'the Twitter API was shut down and there is no replacement. Please ' +

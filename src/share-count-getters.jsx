@@ -131,3 +131,13 @@ export function getRedditShareCount(shareUrl, callback) {
       : undefined);
   });
 }
+
+export function getTumblrShareCount(shareUrl, callback) {
+  const endpoint = 'http://api.tumblr.com/v2/share/stats';
+
+  return jsonp(endpoint + objectToGetParams({
+    url: shareUrl,
+  }), (err, data) => {
+    callback(!!data ? data.note_count : undefined);
+  });
+}

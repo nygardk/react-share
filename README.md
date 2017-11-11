@@ -22,6 +22,7 @@
   - VK
   - Odnoklassniki
   - Reddit
+  - Tumblr
   - email
 * share counts for
   - Facebook
@@ -31,6 +32,7 @@
   - VK
   - Odnoklassniki
   - Reddit
+  - Tumblr
 * social media icons included in the library
 * supports also custom icons
 
@@ -80,6 +82,7 @@ const {
   VKShareButton,
   OKShareButton,
   RedditShareButton,
+  TumblrShareButton,
   EmailShareButton,
 } = ShareButtons;
 ```
@@ -99,6 +102,7 @@ const {
 |VKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |OKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |RedditShareButton|-|__`title`__: Title of the shared page (string)|
+|TumblrShareButton|-|__`title`__: Title of the shared page (string)<br/>__`tags`__: (array)<br/>__`caption`__: Description of the shared page (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts
@@ -112,6 +116,7 @@ const {
   VKShareCount,
   OKShareCount,
   RedditShareCount,
+  TumblrShareCount,
 } = ShareCounts;
 ```
 
@@ -149,6 +154,7 @@ const PinterestIcon = generateShareIcon('pinterest');
 const VKIcon = generateShareIcon('vk');
 const OKIcon = generateShareIcon('ok');
 const RedditIcon = generateShareIcon('reddit');
+const TumblrIcon = generateShareIcon('tumblr');
 const EmailIcon = generateShareIcon('email');
 ```
 

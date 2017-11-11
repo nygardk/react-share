@@ -20,6 +20,7 @@ const {
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
+  TumblrShareButton,
 } = ShareButtons;
 
 const {
@@ -30,6 +31,7 @@ const {
   VKShareCount,
   OKShareCount,
   RedditShareCount,
+  TumblrShareCount,
 } = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
@@ -42,6 +44,7 @@ const OKIcon = generateShareIcon('ok');
 const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
 const RedditIcon = generateShareIcon('reddit');
+const TumblrIcon = generateShareIcon('tumblr');
 const EmailIcon = generateShareIcon('email');
 
 class Demo extends Component {
@@ -204,6 +207,22 @@ class Demo extends Component {
           </RedditShareButton>
 
           <RedditShareCount url={shareUrl}
+            className="Demo__some-network__share-count" />
+        </div>
+
+        <div className="Demo__some-network">
+          <TumblrShareButton
+            url={shareUrl}
+            title={title}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button">
+            <TumblrIcon
+              size={32}
+              round />
+          </TumblrShareButton>
+
+          <TumblrShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
         </div>
 

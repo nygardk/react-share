@@ -1,3 +1,9 @@
+## 1.17.0 (Nov 12, 2017)
+
+* Added `<TumblrShareButton />` and `<TumblrShareCount />` (thanks @ArtBIT!)
+* Added `additionalProps` to share buttons to make it possible to pass any additional props (like `aria-` attributes)
+* It is now possible to override `role` (default='button') and `tabIndex` (default='0') props
+
 ## 1.16.0 (Sep 1, 2017)
 
 * Allow React `v16.x.x` as peer dependency.

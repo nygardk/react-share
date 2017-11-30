@@ -23,6 +23,7 @@
   - Odnoklassniki
   - Reddit
   - Tumblr
+  - LiveJournal
   - email
 * share counts for
   - Facebook

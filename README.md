@@ -84,6 +84,7 @@ const {
   OKShareButton,
   RedditShareButton,
   TumblrShareButton,
+  LivejournalShareButton,
   EmailShareButton,
 } = ShareButtons;
 ```
@@ -104,6 +105,7 @@ const {
 |OKShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |RedditShareButton|-|__`title`__: Title of the shared page (string)|
 |TumblrShareButton|-|__`title`__: Title of the shared page (string)<br/>__`tags`__: (array)<br/>__`caption`__: Description of the shared page (string)|
+|LivejournalShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts
@@ -156,6 +158,7 @@ const VKIcon = generateShareIcon('vk');
 const OKIcon = generateShareIcon('ok');
 const RedditIcon = generateShareIcon('reddit');
 const TumblrIcon = generateShareIcon('tumblr');
+const LivejournalIcon = generateShareIcon('livejournal');
 const EmailIcon = generateShareIcon('email');
 ```
 

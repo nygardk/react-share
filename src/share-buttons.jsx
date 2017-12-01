@@ -314,3 +314,16 @@ export const TumblrShareButton = createShareButton('tumblr', props => ({
   windowWidth: 660,
   windowHeight: 460,
 });
+
+export const MailruShareButton = createShareButton('mailru', props => ({
+  title: props.title,
+  description: props.description,
+  image: props.image,
+}), {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+}, {
+  windowWidth: 660,
+  windowHeight: 460,
+});

@@ -21,6 +21,7 @@ const {
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
+  MailruShareButton,
 } = ShareButtons;
 
 const {
@@ -45,6 +46,7 @@ const TelegramIcon = generateShareIcon('telegram');
 const WhatsappIcon = generateShareIcon('whatsapp');
 const RedditIcon = generateShareIcon('reddit');
 const TumblrIcon = generateShareIcon('tumblr');
+const MailruIcon = generateShareIcon('mailru');
 const EmailIcon = generateShareIcon('email');
 
 class Demo extends Component {
@@ -224,6 +226,17 @@ class Demo extends Component {
 
           <TumblrShareCount url={shareUrl}
             className="Demo__some-network__share-count" />
+        </div>
+
+        <div className="Demo__some-network">
+          <MailruShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <MailruIcon
+              size={32}
+              round />
+          </MailruShareButton>
         </div>
 
         <div className="Demo__some-network">

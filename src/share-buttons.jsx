@@ -314,18 +314,14 @@ export const TumblrShareButton = createShareButton('tumblr', props => ({
   windowWidth: 660,
   windowHeight: 460,
 });
-export const LivejournalShareButton = createShareButton(
-  'livejournal',
-  props => ({
-    title: props.title,
-    description: props.description,
-  }),
-  {
-    title: PropTypes.string,
-    description: PropTypes.string,
-  },
-  {
-    windowWidth: 660,
-    windowHeight: 460,
-  }
-);
+
+export const LivejournalShareButton = createShareButton('livejournal', props => ({
+  title: props.title,
+  description: props.description,
+}), {
+  title: PropTypes.string,
+  description: PropTypes.string,
+}, {
+  windowWidth: 660,
+  windowHeight: 460,
+});

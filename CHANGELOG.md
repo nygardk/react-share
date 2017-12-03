@@ -1,3 +1,7 @@
+## 1.18.0 (Dev 3, 2017)
+
+* Added LiveJournal and Mail.Ru sharebuttons (thanks @pvpshoot!)
+
 ## 1.17.0 (Nov 12, 2017)
 
 * Added `<TumblrShareButton />` and `<TumblrShareCount />` (thanks @ArtBIT!)

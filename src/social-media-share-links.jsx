@@ -113,3 +113,15 @@ export function tumblr(url, { title, caption, tags, posttype }) {
     posttype,
   });
 }
+
+export function livejournal(url, { title, description }) {
+  assert(url, 'livejournal.url');
+
+  return (
+    'https://www.livejournal.com/update.bml' +
+    objectToGetParams({
+      subject: title,
+      event: description,
+    })
+  );
+}

@@ -122,3 +122,14 @@ export function livejournal(url, { title, description }) {
     event: description,
   });
 }
+
+export function mailru(url, { title, description, image }) {
+  assert(url, 'mailru.url');
+
+  return 'https://connect.mail.ru/share' + objectToGetParams({
+    url,
+    title,
+    description,
+    imageurl: image,
+  });
+}

@@ -1,4 +1,8 @@
-## 1.18.0 (Dev 3, 2017)
+## 1.18.1 (Dec 27, 2017)
+
+* Whatsapp share button: fixed displaying "undefined" when title was not provided (fixes #84, thanks @aautio!)
+
+## 1.18.0 (Dec 3, 2017)
 
 * Added LiveJournal and Mail.Ru sharebuttons (thanks @pvpshoot!)
 

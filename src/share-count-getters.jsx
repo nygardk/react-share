@@ -1,7 +1,6 @@
 import jsonp from 'jsonp';
-import platform from 'platform';
 
-import { objectToGetParams } from './utils';
+import { isInternetExplorerBefore, objectToGetParams } from './utils';
 
 
 export function getFacebookShareCount(shareUrl, callback) {
@@ -15,7 +14,7 @@ export function getFacebookShareCount(shareUrl, callback) {
 }
 
 export function getGooglePlusShareCount(shareUrl, callback) {
-  if (platform.name === 'IE' && parseInt(platform.version, 10) < 11) {
+  if (isInternetExplorerBefore(11)) {
     /* eslint-disable no-console */
     console.error('Google plus share count is not supported in <=IE10!');
     /* eslint-enable no-console */

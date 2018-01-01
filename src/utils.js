@@ -1,12 +1,22 @@
-/* eslint-disable prefer-template */
-import platform from 'platform';
+/*
+ * This detection method identifies Internet Explorers up until version 11.
+ *
+ * Reference: https://msdn.microsoft.com/en-us/library/ms537503(v=vs.85).aspx
+ */
+export function isInternetExplorerBefore(version) {
+  const iematch = (/MSIE ([0-9]+)/g.exec(window.navigator.userAgent));
 
+  return iematch ? +iematch[1] < version : false;
+}
+
+/* eslint-disable prefer-template */
 export function objectToGetParams(object) {
   return '?' + Object.keys(object)
     .filter(key => !!object[key])
     .map(key => `${key}=${encodeURIComponent(object[key])}`)
     .join('&');
 }
+/* eslint-enable prefer-template */
 
 export function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose) {
   const left = (window.outerWidth / 2)
@@ -32,7 +42,7 @@ export function windowOpen(url, { name, height = 400, width = 550 }, onShareWind
 
   const shareDialog = window.open(
     url,
-    platform.name === 'IE' && parseInt(platform.version, 10) < 10 ? '' : name,
+    isInternetExplorerBefore(10) ? '' : name,
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', ')
   );
 

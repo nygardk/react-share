@@ -1,3 +1,7 @@
+## 1.19.0 (Jan 1, 2018)
+
+* Removed `platform` dependency and replace <=IE10 check with a utility function (thanks @aautio!).
+
 ## 1.18.1 (Dec 27, 2017)
 
 * Whatsapp share button: fixed displaying "undefined" when title was not provided (fixes #84, thanks @aautio!)

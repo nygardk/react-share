@@ -1,52 +1,44 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var ENV = process.env.NODE_ENV;
-
 module.exports = {
-  debug: true,
   devtool: '#inline-source-map',
   entry: {
-    demo0: ['./demos/demo0/index.jsx'],
+    demo0: [
+      'react-hot-loader/patch',
+      './demos/demo0/index.jsx'
+    ],
   },
-  contentBase: './demos',
   output: {
     filename: '[name]/bundle.js',
     publicPath: '/',
     path: path.resolve(__dirname, 'demos')
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loader: 'eslint',
-        exclude: /node_modules|lib/
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        exclude: /node_modules/
       },
-    ],
-    loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ENV === 'development'
-          ? ['react-hot', 'babel']
-          : ['babel'],
-        exclude: /node_modules|lib/
+        loader: 'babel-loader',
+        options: {
+          forceEnv: 'with_react_hot_loader'
+        },
+        exclude: /node_modules/
       },
       {
         test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
         loader: 'url-loader?limit=1',
-        exclude: /node_modules|lib/
+        exclude: /node_modules/
       }
     ]
   },
   resolve: {
-    root: [path.resolve('./src')],
-    extensions: ['', '.js', '.jsx']
-  },
-  plugins: ENV === 'development'
-    ? [new webpack.HotModuleReplacementPlugin()]
-    : [],
-  eslint: {configFile: '.eslintrc'},
-  node: {
-    fs: 'empty'
+    alias: {'react-share': path.resolve('./src')},
+    extensions: ['.js', '.jsx']
   }
 };

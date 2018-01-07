@@ -1,4 +1,5 @@
 node_modules/
 lib/
+es/
 *.log
 demos/demo0/bundle.js

@@ -3,7 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Demo from './Demo';
 
-ReactDOM.render(<Demo />, document.querySelector('#content'));
+const rootElement = document.createElement('div');
+
+if (!document.querySelector('div')) {
+  document.body.appendChild(rootElement);
+}
+
+ReactDOM.render(<Demo />, rootElement);
 
 if (module.hot) {
   module.hot.accept();

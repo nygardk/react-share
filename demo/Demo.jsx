@@ -1,7 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable import/no-unresolved, import/extensions, import/no-extraneous-dependencies */
 import React, { Component } from 'react';
-
 import {
   FacebookShareCount,
   GooglePlusShareCount,
@@ -43,8 +42,8 @@ import {
   LivejournalIcon,
 } from 'react-share';
 
+import './Demo.css';
 import exampleImage from './react-share-pin-example.png';
-
 
 class Demo extends Component {
   render() {

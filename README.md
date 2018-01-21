@@ -44,8 +44,8 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 [View demo](http://nygardk.github.io/react-share/)
 
-To run demos: clone repo and run `npm install && npm run run-demos`
-and open `http://localhost:8080/demo0/`.
+To run demo: clone repo and run `npm install && npm run run-demo`
+and open `http://localhost:8080`.
 
 ## Install
 

@@ -3,9 +3,11 @@
 [![npm version](https://badge.fury.io/js/react-share.svg)](https://badge.fury.io/js/react-share)
 [![Download Count](http://img.shields.io/npm/dm/react-share.svg?style=flat-square)](https://npmjs.org/package/react-share)
 
-> Easy social media share buttons and share counts.
+> Social media share buttons and share counts for React.
 
 <img src="example.png" alt="Share buttons and counts example" />
+
+Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 ### Features
 
@@ -40,6 +42,8 @@
 
 #### Demo
 
+[View demo](http://nygardk.github.io/react-share/)
+
 To run demos: clone repo and run `npm install && npm run run-demos`
 and open `http://localhost:8080/demo0/`.
 
@@ -58,22 +62,16 @@ working only on IE11 and newer (XHR CORS problem).
 
 ## Compatibility
 
-Compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.
+__Version 1.x.x__: compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.
+
+__Version 2.x.x__: comptiblity is tested with React 15 and 16.
 
 ## API
-
-```js
-import {
-  ShareButtons,
-  ShareCounts,
-  generateShareIcon
-} from 'react-share';
-```
 
 ### Share buttons
 
 ```js
-const {
+import {
   FacebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
@@ -87,7 +85,7 @@ const {
   TumblrShareButton,
   LivejournalShareButton,
   EmailShareButton,
-} = ShareButtons;
+} from 'react-share';
 ```
 
 ##### Share button props
@@ -113,7 +111,7 @@ const {
 ### Share counts
 
 ```js
-const {
+import {
   FacebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
@@ -122,7 +120,7 @@ const {
   OKShareCount,
   RedditShareCount,
   TumblrShareCount,
-} = ShareCounts;
+} from 'react-share';
 ```
 
 All share count components take in only one mandatory prop: `url`, which is the
@@ -149,20 +147,22 @@ argument and returns an element:
 ### Icons
 
 ```js
-const FacebookIcon = generateShareIcon('facebook');
-const TwitterIcon = generateShareIcon('twitter');
-const TelegramIcon = generateShareIcon('telegram');
-const WhatsappIcon = generateShareIcon('whatsapp');
-const GooglePlusIcon = generateShareIcon('google');
-const LinkedinIcon = generateShareIcon('linkedin');
-const PinterestIcon = generateShareIcon('pinterest');
-const VKIcon = generateShareIcon('vk');
-const OKIcon = generateShareIcon('ok');
-const RedditIcon = generateShareIcon('reddit');
-const TumblrIcon = generateShareIcon('tumblr');
-const LivejournalIcon = generateShareIcon('livejournal');
-const MailruIcon = generateShareIcon('mailru');
-const EmailIcon = generateShareIcon('email');
+import {
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+  GooglePlusIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  VKIcon,
+  OKIcon,
+  RedditIcon,
+  TumblrIcon,
+  LivejournalIcon,
+  MailruIcon,
+  EmailIcon,
+} from 'react-share';
 ```
 
 Props:

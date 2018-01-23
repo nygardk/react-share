@@ -53,7 +53,7 @@ npm install react-share --save
 
 ShareButtons work on all browsers.
 
-ShareCounts works on all browsers, with the exception of Goolge Plus share count
+ShareCounts works on all browsers, with the exception of Google Plus share count
 working only on IE11 and newer (XHR CORS problem).
 
 ## Compatibility

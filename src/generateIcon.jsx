@@ -56,7 +56,7 @@ export function generateIcon(network) {
           </g>
 
           <g>
-            <path d={iconConfig.icon} />
+            <path d={iconConfig.icon} fill={logoFillColor}/>
           </g>
         </svg>
       </div>

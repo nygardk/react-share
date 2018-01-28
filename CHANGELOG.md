@@ -1,10 +1,17 @@
+## 2.0.0-beta.0 (Jan 21, 2018)
+
+* Major project refactoring (thanks @aautio!)
+* CommonJS modules are buit to `./lib`, es-modules are built to `./es`
+* Share buttons, share counts and icons are now separately importable and support tree-shaking
+* Demo is now found at http://nygardk.github.io/react-share/
+
 ## 1.19.1 (Jan 28, 2018)
 
 * Minor fix to how `logoFillColor` is passed to the icon path
 
 ## 1.19.0 (Jan 1, 2018)
 
-* Removed `platform` dependency and replace <=IE10 check with a utility function (thanks @aautio!).
+* Removed `platform` dependency and replace <=IE10 check with a utility function (thanks @aautio!)
 
 ## 1.18.1 (Dec 27, 2017)
 

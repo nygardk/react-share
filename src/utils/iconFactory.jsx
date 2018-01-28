@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import icons from './icons';
-
-export function generateIcon(network) {
-  if (!icons[network.toLowerCase()]) {
-    throw new Error('invalid network name for a social icon');
-  }
-
-  const iconConfig = icons[network.toLowerCase()];
-
+export default function iconFactory(network, iconConfig) {
   const Icon = (props) => {
     const {
       className,
@@ -26,10 +18,6 @@ export function generateIcon(network) {
 
     const classes = `social-icon social-icon--${network} ${className}`;
 
-    const finalIconBgStyle = {
-      ...iconBgStyle,
-    };
-
     return (
       <div style={baseStyle}>
         <svg
@@ -43,14 +31,14 @@ export function generateIcon(network) {
                 width="64"
                 height="64"
                 fill={iconConfig.color}
-                style={finalIconBgStyle} />
+                style={iconBgStyle} />
             ) : (
               <circle
                 cx="32"
                 cy="32"
                 r="31"
                 fill={iconConfig.color}
-                style={finalIconBgStyle} />
+                style={iconBgStyle} />
             ))}
           </g>
 
@@ -72,6 +60,7 @@ export function generateIcon(network) {
 
   Icon.defaultProps = {
     className: '',
+    iconBgStyle: {},
     logoFillColor: 'white',
     size: 64,
   };

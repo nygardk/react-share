@@ -1,14 +1,16 @@
 /* eslint-disable react/prefer-stateless-function */
+/* eslint-disable import/no-unresolved, import/extensions, import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import {
-  ShareButtons,
-  ShareCounts,
-  generateShareIcon,
-} from 'react-share';
+  FacebookShareCount,
+  GooglePlusShareCount,
+  LinkedinShareCount,
+  PinterestShareCount,
+  VKShareCount,
+  OKShareCount,
+  RedditShareCount,
+  TumblrShareCount,
 
-import exampleImage from './react-share-pin-example.png';
-
-const {
   FacebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
@@ -23,33 +25,25 @@ const {
   TumblrShareButton,
   LivejournalShareButton,
   MailruShareButton,
-} = ShareButtons;
 
-const {
-  FacebookShareCount,
-  GooglePlusShareCount,
-  LinkedinShareCount,
-  PinterestShareCount,
-  VKShareCount,
-  OKShareCount,
-  RedditShareCount,
-  TumblrShareCount,
-} = ShareCounts;
+  FacebookIcon,
+  TwitterIcon,
+  GooglePlusIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  VKIcon,
+  OKIcon,
+  TelegramIcon,
+  WhatsappIcon,
+  RedditIcon,
+  TumblrIcon,
+  MailruIcon,
+  EmailIcon,
+  LivejournalIcon,
+} from 'react-share';
 
-const FacebookIcon = generateShareIcon('facebook');
-const TwitterIcon = generateShareIcon('twitter');
-const GooglePlusIcon = generateShareIcon('google');
-const LinkedinIcon = generateShareIcon('linkedin');
-const PinterestIcon = generateShareIcon('pinterest');
-const VKIcon = generateShareIcon('vk');
-const OKIcon = generateShareIcon('ok');
-const TelegramIcon = generateShareIcon('telegram');
-const WhatsappIcon = generateShareIcon('whatsapp');
-const RedditIcon = generateShareIcon('reddit');
-const TumblrIcon = generateShareIcon('tumblr');
-const MailruIcon = generateShareIcon('mailru');
-const EmailIcon = generateShareIcon('email');
-const LivejournalIcon = generateShareIcon('livejournal');
+import './Demo.css';
+import exampleImage from './react-share-pin-example.png';
 
 class Demo extends Component {
   render() {

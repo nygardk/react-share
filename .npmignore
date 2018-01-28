@@ -1,5 +1,6 @@
 src
-demos
+demo
+docs
 .babelrc
 .eslintrc
 .gitignore

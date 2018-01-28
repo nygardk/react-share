@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -55,8 +55,7 @@ function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose
   return shareDialog;
 }
 
-
-class ShareButton extends Component {
+class ShareButton extends PureComponent {
   static propTypes = {
     additionalProps: PropTypes.object,
     children: PropTypes.node,

@@ -1,4 +1,4 @@
-## 2.0.0-beta.0 (Jan 21, 2018)
+## 2.0.0 (Jan 28, 2018)
 
 * Major project refactoring (thanks @aautio!)
 * CommonJS modules are buit to `./lib`, es-modules are built to `./es`

@@ -1,6 +1,6 @@
 {
   "name": "react-share",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "Social media share buttons and share counts for React.",
   "main": "./lib/index.js",
   "module": "./es/index.js",

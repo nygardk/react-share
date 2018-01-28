@@ -1,3 +1,7 @@
+## 1.19.1 (Jan 28, 2018)
+
+* Minor fix to how `logoFillColor` is passed to the icon path
+
 ## 1.19.0 (Jan 1, 2018)
 
 * Removed `platform` dependency and replace <=IE10 check with a utility function (thanks @aautio!).

@@ -22,7 +22,6 @@ export default function iconFactory(network, iconConfig) {
       <div style={baseStyle}>
         <svg
           viewBox="0 0 64 64"
-          fill={logoFillColor}
           width={size}
           height={size}
           className={classes}>
@@ -44,7 +43,7 @@ export default function iconFactory(network, iconConfig) {
           </g>
 
           <g>
-            <path d={iconConfig.icon} />
+            <path d={iconConfig.icon} fill={logoFillColor} />
           </g>
         </svg>
       </div>

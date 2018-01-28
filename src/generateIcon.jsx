@@ -34,7 +34,6 @@ export function generateIcon(network) {
       <div style={baseStyle}>
         <svg
           viewBox="0 0 64 64"
-          fill={logoFillColor}
           width={size}
           height={size}
           className={classes}>
@@ -56,7 +55,7 @@ export function generateIcon(network) {
           </g>
 
           <g>
-            <path d={iconConfig.icon} fill={logoFillColor}/>
+            <path d={iconConfig.icon} fill={logoFillColor} />
           </g>
         </svg>
       </div>

@@ -4,7 +4,7 @@ import objectToGetParams from './utils/objectToGetParams';
 import shareCountFactory from './utils/shareCountFactory';
 
 function getTumblrShareCount(shareUrl, callback) {
-  const endpoint = 'http://api.tumblr.com/v2/share/stats';
+  const endpoint = 'https://api.tumblr.com/v2/share/stats';
 
   return jsonp(endpoint + objectToGetParams({
     url: shareUrl,

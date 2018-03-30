@@ -1,3 +1,9 @@
+## 2.1.0 (Mar 30, 2018)
+
+* Fix: use `https` for TumblrShareCount
+* Fix: use `url` as the default email body (instead of `subject`)
+* Fix: invoke `beforeOnClick` also for EmailShareButton
+
 ## 2.0.0 (Jan 28, 2018)
 
 * Major project refactoring (thanks @aautio!)

@@ -91,6 +91,7 @@ class ShareButton extends PureComponent {
       disabled,
       onClick,
       openWindow,
+      beforeOnClick,
     } = this.props;
 
     if (disabled) {
@@ -101,12 +102,18 @@ class ShareButton extends PureComponent {
 
     const link = this.link();
 
-    if (openWindow) {
-      this.openWindow(link);
-    }
+    const clickHandler = openWindow ? () => this.openWindow(link) : () => onClick(link);
 
-    if (onClick) {
-      onClick(link);
+    if (beforeOnClick) {
+      const returnVal = beforeOnClick();
+
+      if (isPromise(returnVal)) {
+        returnVal.then(clickHandler);
+      } else {
+        clickHandler();
+      }
+    } else {
+      clickHandler();
     }
   }
 
@@ -118,7 +125,6 @@ class ShareButton extends PureComponent {
 
   openWindow = (link) => {
     const {
-      beforeOnClick,
       onShareWindowClose,
       windowWidth,
       windowHeight,
@@ -129,19 +135,7 @@ class ShareButton extends PureComponent {
       width: windowWidth,
     };
 
-    const windowOpenBound = () => windowOpen(link, windowOptions, onShareWindowClose);
-
-    if (beforeOnClick) {
-      const returnVal = beforeOnClick();
-
-      if (isPromise(returnVal)) {
-        returnVal.then(windowOpenBound);
-      } else {
-        windowOpenBound();
-      }
-    } else {
-      windowOpenBound();
-    }
+    windowOpen(link, windowOptions, onShareWindowClose);
   }
 
   link() {

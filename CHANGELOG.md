@@ -1,3 +1,7 @@
+## 2.1.1 (Apr 8, 2018)
+
+* Added support for `webpack 4` tree shaking with `sideEffects: false`-flag in `package.json`
+
 ## 2.1.0 (Mar 30, 2018)
 
 * Fix: use `https` for TumblrShareCount

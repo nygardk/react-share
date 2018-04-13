@@ -1,4 +1,4 @@
-## 2.1.1 (Apr 8, 2018)
+## 2.1.1 (Apr 13, 2018)
 
 * Added support for `webpack 4` tree shaking with `sideEffects: false`-flag in `package.json`
 

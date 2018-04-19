@@ -5,11 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function viberLink(url, { title = ''}) {
+function viberLink(url, { title }) {
   assert(url, 'viber.url');
-
   return 'viber://forward' + objectToGetParams({
-    text: `${title} ${url}`,
+    text: `${title || ''} ${url}`,
   });
 }
 

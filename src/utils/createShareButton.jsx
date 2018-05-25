@@ -118,7 +118,7 @@ class ShareButton extends PureComponent {
   }
 
   onKeyPress = (e) => {
-    if (e.key === 'Enter' || e.key === 13) {
+    if (e.key === 'Enter' || e.key === 13 || e.key === ' ' || e.key === 32) {
       this.onClick(e);
     }
   }

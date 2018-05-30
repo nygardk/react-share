@@ -21,6 +21,7 @@ export { default as EmailShareButton } from './EmailShareButton';
 export { default as TumblrShareButton } from './TumblrShareButton';
 export { default as LivejournalShareButton } from './LivejournalShareButton';
 export { default as MailruShareButton } from './MailruShareButton';
+export { default as ViberShareButton } from './ViberShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';
@@ -36,3 +37,4 @@ export { default as TumblrIcon } from './TumblrIcon';
 export { default as MailruIcon } from './MailruIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as LivejournalIcon } from './LivejournalIcon';
+export { default as ViberIcon } from './ViberIcon';

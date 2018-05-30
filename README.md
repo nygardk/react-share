@@ -27,6 +27,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Tumblr
   - Mail.Ru
   - LiveJournal
+  - Viber
   - email
 * share counts for
   - Facebook
@@ -84,6 +85,7 @@ import {
   RedditShareButton,
   TumblrShareButton,
   LivejournalShareButton,
+  ViberShareButton,
   EmailShareButton,
 } from 'react-share';
 ```
@@ -106,6 +108,7 @@ import {
 |TumblrShareButton|-|__`title`__: Title of the shared page (string)<br/>__`tags`__: (array)<br/>__`caption`__: Description of the shared page (string)|
 |LivejournalShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |MailruShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
+|ViberShareButton|-|__`title`__: Title of the shared page (string)<br/>|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts
@@ -162,6 +165,7 @@ import {
   LivejournalIcon,
   MailruIcon,
   EmailIcon,
+  ViberIcon,
 } from 'react-share';
 ```
 

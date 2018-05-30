@@ -1,3 +1,9 @@
+## 2.2.0 (May 30, 2018)
+
+* Added `<ViberShareButton />`
+* Support `name` prop in share buttons
+* Fix minor accessibility issue (#156)
+
 ## 2.1.1 (Apr 13, 2018)
 
 * Added support for `webpack 4` tree shaking with `sideEffects: false`-flag in `package.json`

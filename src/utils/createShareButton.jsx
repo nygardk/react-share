@@ -62,6 +62,7 @@ class ShareButton extends PureComponent {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     disabledStyle: PropTypes.object,
+    name: PropTypes.string,
     network: PropTypes.string.isRequired,
     networkLink: PropTypes.func.isRequired,
     onClick: PropTypes.func,
@@ -150,6 +151,7 @@ class ShareButton extends PureComponent {
       className,
       disabled,
       disabledStyle,
+      name,
       network,
       role,
       style,
@@ -168,6 +170,7 @@ class ShareButton extends PureComponent {
 
     return (
       <div
+        name={name}
         {...additionalProps}
         role={role}
         tabIndex={tabIndex}

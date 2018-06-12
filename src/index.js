@@ -22,6 +22,7 @@ export { default as TumblrShareButton } from './TumblrShareButton';
 export { default as LivejournalShareButton } from './LivejournalShareButton';
 export { default as MailruShareButton } from './MailruShareButton';
 export { default as ViberShareButton } from './ViberShareButton';
+export { default as WeiboShareButton } from './WeiboShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';

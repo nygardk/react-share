@@ -26,6 +26,7 @@ import {
   LivejournalShareButton,
   MailruShareButton,
   ViberShareButton,
+  WeiboShareButton,
 
   FacebookIcon,
   TwitterIcon,
@@ -269,6 +270,15 @@ class Demo extends Component {
               size={32}
               round />
           </ViberShareButton>
+        </div>
+        <div className="Demo__some-network">
+          <WeiboShareButton
+            url={shareUrl}
+            title={title}
+            pic={`${String(window.location)}/${exampleImage}`}
+            className="Demo__some-network__share-button">
+            <img className="Demo__some-network__custom-icon" src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png" alt="Weibo share button" />
+          </WeiboShareButton>
         </div>
       </div>
     );

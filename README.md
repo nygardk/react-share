@@ -85,6 +85,7 @@ import {
   RedditShareButton,
   TumblrShareButton,
   LivejournalShareButton,
+  MailruShareButton,
   ViberShareButton,
   EmailShareButton,
 } from 'react-share';

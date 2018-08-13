@@ -1,7 +1,7 @@
 {
-  "name": "react-share",
+  "name": "react-share-stc",
   "version": "2.2.0",
-  "description": "Social media share buttons and share counts for React.",
+  "description": "Temporary fork of react-share",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "sideEffects": false,

@@ -73,6 +73,5 @@ SocialMediaShareCount.defaultProps = {
 };
 
 export default function shareCountFactory(getCount) {
-  return props =>
-    <SocialMediaShareCount getCount={getCount} {...props} />;
+  return props => <SocialMediaShareCount getCount={getCount} {...props} />;
 }

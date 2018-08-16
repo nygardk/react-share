@@ -4,8 +4,9 @@ import cx from 'classnames';
 
 import isInternetExplorerBefore from './ieDetection';
 
-const isPromise = obj =>
-  !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+const isPromise = obj => !!obj
+  && (typeof obj === 'object' || typeof obj === 'function')
+  && typeof obj.then === 'function';
 
 function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose) {
   /* eslint-disable no-mixed-operators */

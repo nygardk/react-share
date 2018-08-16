@@ -1,3 +1,9 @@
+# Changelog
+
+## 2.3.0 (Aug 16, 2018)
+
+* Added `<WorkplaceShareButton />` (Facebook Workplace)
+
 ## 2.2.0 (May 30, 2018)
 
 * Added `<ViberShareButton />`

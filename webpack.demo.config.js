@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  mode: 'development',
   devtool: PRODUCTION ? 'source-map' : 'inline-source-map',
   entry: [
     !PRODUCTION && 'react-hot-loader/patch',
@@ -53,24 +55,8 @@ module.exports = {
       filename: 'index.html',
       title: 'react-share demo | Social media share buttons and share counts for React.',
     }),
-    PRODUCTION && new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: true,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true
-      },
-      output: {
-        comments: false,
-        ascii_only: true
-      },
-      sourceMap: true
-    })
-  ].filter(p => !!p)
+  ],
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  }
 };

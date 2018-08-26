@@ -76,7 +76,10 @@ class ShareButton extends PureComponent {
     windowHeight: PropTypes.number,
     beforeOnClick: PropTypes.func,
     onShareWindowClose: PropTypes.func,
-    tabIndex: PropTypes.string,
+    tabIndex: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
   };
 
   static defaultProps = {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.1 (Aug 26, 2018)
+
+* `tabIndex` prop can now also be a number
+
 ## 2.3.0 (Aug 16, 2018)
 
 * Added `<WorkplaceShareButton />` (Facebook Workplace)

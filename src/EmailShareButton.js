@@ -4,7 +4,7 @@ import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
 function emailLink(url, { subject, body }) {
-  return 'mailto:' + objectToGetParams({ subject, body: body || url });
+  return 'https://mail.google.com/mail/?view=cm&fs=1&' + objectToGetParams({ subject, body: body || url });
 }
 
 const EmailShareButton = createShareButton('email', emailLink, props => ({

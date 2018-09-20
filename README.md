@@ -29,6 +29,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - LiveJournal
   - Viber
   - Workplace
+  - Line
   - email
 * share counts for
   - Facebook
@@ -89,6 +90,7 @@ import {
   MailruShareButton,
   ViberShareButton,
   WorkplaceShareButton,
+  LineShareButton,
   EmailShareButton,
 } from 'react-share';
 ```
@@ -113,6 +115,7 @@ import {
 |MailruShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |ViberShareButton|-|__`title`__: Title of the shared page (string)<br/>|
 |WorkplaceShareButton|-|__`quote`__: A quote to be shared along with the link. (string)<br/>__`hashtag`__: A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol. (string)|
+|LineShareButton|-|__`title`__: Title of the shared page (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts
@@ -170,6 +173,7 @@ import {
   MailruIcon,
   ViberIcon,
   WorkplaceIcon,
+  LineIcon,
   EmailIcon,
 } from 'react-share';
 ```

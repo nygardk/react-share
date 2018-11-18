@@ -7,6 +7,7 @@ export default function iconFactory(network, iconConfig) {
       className,
       iconBgStyle,
       logoFillColor,
+      logoStrokeColor,
       round,
       size,
     } = props;
@@ -43,7 +44,7 @@ export default function iconFactory(network, iconConfig) {
           </g>
 
           <g>
-            <path d={iconConfig.icon} fill={logoFillColor} />
+            <path d={iconConfig.icon} fill={logoFillColor} stroke={logoStrokeColor} />
           </g>
         </svg>
       </div>
@@ -54,6 +55,7 @@ export default function iconFactory(network, iconConfig) {
     className: PropTypes.string,
     iconBgStyle: PropTypes.object,
     logoFillColor: PropTypes.string,
+    logoStrokeColor: PropTypes.string,
     round: PropTypes.bool,
     size: PropTypes.number,
   };
@@ -62,6 +64,7 @@ export default function iconFactory(network, iconConfig) {
     className: '',
     iconBgStyle: {},
     logoFillColor: 'white',
+    logoStrokeColor: 'white',
     size: 64,
   };
 

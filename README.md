@@ -184,6 +184,8 @@ Props:
 
 * `logoFillColor`: customize logo's fill color (string, default = 'white')
 
+* `logoStrokeColor`: customize logo's stroke color (string, default = 'white')
+
 Example:
 ```
 <TwitterIcon size={32} round={true} />

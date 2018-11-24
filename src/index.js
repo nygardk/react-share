@@ -24,6 +24,7 @@ export { default as MailruShareButton } from './MailruShareButton';
 export { default as ViberShareButton } from './ViberShareButton';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
 export { default as LineShareButton } from './LineShareButton';
+export { default as WeiboShareButton } from './WeiboShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';

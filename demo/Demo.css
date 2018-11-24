@@ -23,3 +23,8 @@ body {
 .Demo__some-network__share-button:hover:not(:active) {
   opacity: 0.75;
 }
+
+.Demo__some-network__custom-icon {
+  width:32px;
+  height:32px;
+}

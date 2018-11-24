@@ -30,6 +30,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Viber
   - Workplace
   - Line
+  - Weibo
   - email
 * share counts for
   - Facebook
@@ -116,6 +117,7 @@ import {
 |ViberShareButton|-|__`title`__: Title of the shared page (string)<br/>|
 |WorkplaceShareButton|-|__`quote`__: A quote to be shared along with the link. (string)<br/>__`hashtag`__: A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol. (string)|
 |LineShareButton|-|__`title`__: Title of the shared page (string)|
+|WeiboShareButton|-|__`title`__: Title of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts

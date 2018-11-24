@@ -5,23 +5,23 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function weiboLink(url, { title, pic }) {
+function weiboLink(url, { title, image }) {
   assert(url, 'weibo.url');
-  assert(pic, 'weibo.pic');
+  assert(image, 'weibo.image');
 
   return 'http://service.weibo.com/share/share.php?' + objectToGetParams({
     url,
     title,
-    pic,
+    pic: image,
   });
 }
 
 const WeiboShareButton = createShareButton('weibo', weiboLink, props => ({
   title: props.title,
-  pic: props.pic,
+  image: props.image,
 }), {
   title: PropTypes.string,
-  pic: PropTypes.string,
+  image: PropTypes.string,
 }, {
   windowWidth: 550,
   windowHeight: 400,

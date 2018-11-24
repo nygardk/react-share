@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.0 (Nov 24, 2018)
+
+* Added `<LineShareButton />` and `<WeiboShareButton />`
+
 ## 2.3.1 (Aug 26, 2018)
 
 * `tabIndex` prop can now also be a number

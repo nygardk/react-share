@@ -170,6 +170,7 @@ class ShareButton extends PureComponent {
 
     return (
       <div
+        aria-label={network}
         {...additionalProps}
         role={role}
         tabIndex={tabIndex}

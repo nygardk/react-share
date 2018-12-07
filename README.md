@@ -34,7 +34,6 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - email
 * share counts for
   - Facebook
-  - Google+
   - Linkedin
   - Pinterest
   - VK
@@ -61,8 +60,7 @@ npm install react-share --save
 
 ShareButtons work on all browsers.
 
-ShareCounts works on all browsers, with the exception of Google Plus share count
-working only on IE11 and newer (XHR CORS problem).
+ShareCounts works on all browsers.
 
 ## Compatibility
 
@@ -125,7 +123,6 @@ import {
 ```js
 import {
   FacebookShareCount,
-  GooglePlusShareCount,
   LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,

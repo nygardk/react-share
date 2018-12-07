@@ -129,7 +129,6 @@ class Demo extends Component {
         <div className="Demo__some-network">
           <LinkedinShareButton
             url={shareUrl}
-            title={title}
             windowWidth={750}
             windowHeight={600}
             className="Demo__some-network__share-button">

@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import {
   FacebookShareCount,
-  LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,
   OKShareCount,
@@ -138,12 +137,6 @@ class Demo extends Component {
               size={32}
               round />
           </LinkedinShareButton>
-
-          <LinkedinShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
-            {count => count}
-          </LinkedinShareCount>
         </div>
 
         <div className="Demo__some-network">

@@ -34,7 +34,6 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - email
 * share counts for
   - Facebook
-  - Linkedin
   - Pinterest
   - VK
   - Odnoklassniki
@@ -123,7 +122,6 @@ import {
 ```js
 import {
   FacebookShareCount,
-  LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,
   OKShareCount,

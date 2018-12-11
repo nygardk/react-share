@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import {
   FacebookShareCount,
-  GooglePlusShareCount,
   LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,
@@ -12,7 +11,6 @@ import {
   TumblrShareCount,
 
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   PinterestShareButton,
@@ -32,7 +30,6 @@ import {
 
   FacebookIcon,
   TwitterIcon,
-  GooglePlusIcon,
   LinkedinIcon,
   PinterestIcon,
   VKIcon,
@@ -116,22 +113,6 @@ class Demo extends Component {
           <div className="Demo__some-network__share-count">
             &nbsp;
           </div>
-        </div>
-
-        <div className="Demo__some-network">
-          <GooglePlusShareButton
-            url={shareUrl}
-            className="Demo__some-network__share-button">
-            <GooglePlusIcon
-              size={32}
-              round />
-          </GooglePlusShareButton>
-
-          <GooglePlusShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
-            {count => count}
-          </GooglePlusShareCount>
         </div>
 
         <div className="Demo__some-network">

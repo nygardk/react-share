@@ -29,6 +29,8 @@ import {
   WorkplaceShareButton,
   LineShareButton,
   WeiboShareButton,
+  PocketShareButton,
+  InstapaperShareButton,
 
   FacebookIcon,
   TwitterIcon,
@@ -47,6 +49,8 @@ import {
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
+  PocketIcon,
+  InstapaperIcon,
 } from 'react-share';
 
 import './Demo.css';
@@ -306,6 +310,28 @@ class Demo extends Component {
             className="Demo__some-network__share-button">
             <img className="Demo__some-network__custom-icon" src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png" alt="Weibo share button" />
           </WeiboShareButton>
+        </div>
+
+        <div className="Demo__some-network">
+          <PocketShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <PocketIcon
+              size={32}
+              round />
+          </PocketShareButton>
+        </div>
+
+        <div className="Demo__some-network">
+          <InstapaperShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <InstapaperIcon
+              size={32}
+              round />
+          </InstapaperShareButton>
         </div>
       </div>
     );

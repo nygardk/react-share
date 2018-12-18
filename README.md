@@ -31,6 +31,8 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Workplace
   - Line
   - Weibo
+  - Pocket
+  - Instapaper
   - email
 * share counts for
   - Facebook
@@ -92,6 +94,8 @@ import {
   ViberShareButton,
   WorkplaceShareButton,
   LineShareButton,
+  PocketShareButton,
+  InstapaperShareButton,
   EmailShareButton,
 } from 'react-share';
 ```
@@ -118,6 +122,8 @@ import {
 |WorkplaceShareButton|-|__`quote`__: A quote to be shared along with the link. (string)<br/>__`hashtag`__: A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol. (string)|
 |LineShareButton|-|__`title`__: Title of the shared page (string)|
 |WeiboShareButton|-|__`title`__: Title of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
+|PocketShareButton|-|__`title`__: Title of the shared page (string). Note that if Pocket detects a title tag on the page being saved, this parameter will be ignored and the title tag of the saved page will be used instead.|
+|InstapaperShareButton|-|__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
 
 ### Share counts
@@ -176,6 +182,8 @@ import {
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
+  PocketIcon,
+  InstapaperIcon,
   EmailIcon,
 } from 'react-share';
 ```

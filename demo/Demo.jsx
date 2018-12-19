@@ -253,7 +253,6 @@ class Demo extends Component {
           <ViberShareButton
             url={shareUrl}
             title={title}
-            body="body"
             className="Demo__some-network__share-button">
             <ViberIcon
               size={32}

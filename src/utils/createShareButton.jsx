@@ -2,13 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import isInternetExplorerBefore from './ieDetection';
-
 const isPromise = obj => !!obj
   && (typeof obj === 'object' || typeof obj === 'function')
   && typeof obj.then === 'function';
 
-function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose) {
+function windowOpen(url, { height = 400, width = 550 }, onShareWindowClose) {
   /* eslint-disable no-mixed-operators */
   const left = (window.outerWidth / 2)
     + (window.screenX || window.screenLeft || 0) - (width / 2);
@@ -34,7 +32,7 @@ function windowOpen(url, { name, height = 400, width = 550 }, onShareWindowClose
 
   const shareDialog = window.open(
     url,
-    isInternetExplorerBefore(10) ? '' : name,
+    '',
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', '),
   );
 
@@ -63,7 +61,6 @@ class ShareButton extends PureComponent {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     disabledStyle: PropTypes.object,
-    name: PropTypes.string,
     network: PropTypes.string.isRequired,
     networkLink: PropTypes.func.isRequired,
     onClick: PropTypes.func,
@@ -155,7 +152,6 @@ class ShareButton extends PureComponent {
       className,
       disabled,
       disabledStyle,
-      name,
       network,
       role,
       style,
@@ -174,7 +170,7 @@ class ShareButton extends PureComponent {
 
     return (
       <div
-        name={name}
+        aria-label={network}
         {...additionalProps}
         role={role}
         tabIndex={tabIndex}

@@ -1,6 +1,4 @@
 export { default as FacebookShareCount } from './FacebookShareCount';
-export { default as GooglePlusShareCount } from './GooglePlusShareCount';
-export { default as LinkedinShareCount } from './LinkedinShareCount';
 export { default as PinterestShareCount } from './PinterestShareCount';
 export { default as VKShareCount } from './VKShareCount';
 export { default as OKShareCount } from './OKShareCount';

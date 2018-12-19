@@ -17,7 +17,6 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Facebook
   - Twitter
   - Telegram
-  - Google+
   - Whatsapp
   - LinkedIn
   - Pinterest
@@ -74,7 +73,6 @@ __Version 2.x.x__: comptiblity is tested with React 15 and 16.
 ```js
 import {
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
@@ -99,7 +97,6 @@ import {
 |-------|--------|--------------|
 |__All__|__`children`__: A React node (e.g. string or element)<br />__`url`__: URL of the shared page (string)|__`disabled`__: Disables click action and adds `disabled` class (bool)<br/>__`disabledStyle`__: Style when button is disabled (object, default = { opacity: 0.6 })<br/>__`windowWidth`, `windowHeight`__: opened window dimensions (int, different defaults for all share buttons)<br>__`beforeOnClick`__: Takes a function that returns a Promise to be fulfilled before calling `onClick`. If you do not return promise, `onClick` is called immediately.<br>__`onShareWindowClose`__: Takes a function to be called after closing share dialog.<br>__`additionalProps`__: An object to pass any additional properties, such as `aria-*` attributes. Provides an override possibility for the default `aria-label`.|
 |FacebookShareButton|-|__`quote`__: A quote to be shared along with the link. (string)<br/>__`hashtag`__: A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol. (string)|
-|GooglePlusShareButton|-|-|
 |LinkedinShareButton|-|-|
 |TwitterShareButton|-|__`title`__: Title of the shared page (string)<br/>__`via`__: (string)<br/>__`hashtags`__: (array)|
 |TelegramShareButton|-|__`title`__: Title of the shared page (string)<br/>|
@@ -159,7 +156,6 @@ import {
   TwitterIcon,
   TelegramIcon,
   WhatsappIcon,
-  GooglePlusIcon,
   LinkedinIcon,
   PinterestIcon,
   VKIcon,

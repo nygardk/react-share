@@ -6,7 +6,6 @@ export { default as RedditShareCount } from './RedditShareCount';
 export { default as TumblrShareCount } from './TumblrShareCount';
 
 export { default as FacebookShareButton } from './FacebookShareButton';
-export { default as GooglePlusShareButton } from './GooglePlusShareButton';
 export { default as LinkedinShareButton } from './LinkedinShareButton';
 export { default as TwitterShareButton } from './TwitterShareButton';
 export { default as PinterestShareButton } from './PinterestShareButton';
@@ -26,7 +25,6 @@ export { default as WeiboShareButton } from './WeiboShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';
-export { default as GooglePlusIcon } from './GooglePlusIcon';
 export { default as LinkedinIcon } from './LinkedinIcon';
 export { default as PinterestIcon } from './PinterestIcon';
 export { default as VKIcon } from './VKIcon';

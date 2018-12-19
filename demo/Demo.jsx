@@ -10,7 +10,6 @@ import {
   TumblrShareCount,
 
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   PinterestShareButton,
@@ -30,7 +29,6 @@ import {
 
   FacebookIcon,
   TwitterIcon,
-  GooglePlusIcon,
   LinkedinIcon,
   PinterestIcon,
   VKIcon,
@@ -114,16 +112,6 @@ class Demo extends Component {
           <div className="Demo__some-network__share-count">
             &nbsp;
           </div>
-        </div>
-
-        <div className="Demo__some-network">
-          <GooglePlusShareButton
-            url={shareUrl}
-            className="Demo__some-network__share-button">
-            <GooglePlusIcon
-              size={32}
-              round />
-          </GooglePlusShareButton>
         </div>
 
         <div className="Demo__some-network">

@@ -118,7 +118,7 @@ import {
 |WorkplaceShareButton|-|__`quote`__: A quote to be shared along with the link. (string)<br/>__`hashtag`__: A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol. (string)|
 |LineShareButton|-|__`title`__: Title of the shared page (string)|
 |WeiboShareButton|-|__`title`__: Title of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
-|EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
+|EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), will be prepended to the url.<br/>__`separator`__: Separates body from the url, default: " " (string)|
 
 ### Share counts
 

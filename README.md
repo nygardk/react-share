@@ -7,6 +7,8 @@
 
 <img src="example.png" alt="Share buttons and counts example" />
 
+Migrating from v2 to v3? Read [changelog](./CHANGELOG.md).
+
 Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 ### Features
@@ -65,6 +67,8 @@ ShareCounts works on all browsers.
 __Version 1.x.x__: compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.
 
 __Version 2.x.x__: comptiblity is tested with React 15 and 16.
+
+__Version 3.x.x__: comptiblity is tested with React 15 and 16.
 
 ## API
 

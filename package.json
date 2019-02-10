@@ -19,7 +19,7 @@
     "build:es": "rimraf ./es && cross-env BABEL_ENV=es babel ./src --out-dir ./es",
     "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",
     "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
-    "lint": "eslint --ext .jsx --ext .js ./src ./demos",
+    "lint": "eslint --ext .jsx --ext .js ./src ./demo",
     "prepublishOnly": "npm run build",
     "start": "npm run run-demos"
   },

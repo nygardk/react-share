@@ -45,15 +45,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.4.0",
+    "@babel/plugin-proposal-class-properties": "7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.4.0",
+    "@babel/plugin-transform-react-jsx": "7.3.0",
+    "@babel/plugin-transform-runtime": "7.4.0",
+    "@babel/preset-env": "7.4.2",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "10.0.1",
-    "babel-loader": "7.1.5",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.7.0",
+    "babel-loader": "^8.0.5",
     "cross-env": "5.2.0",
     "css-loader": "2.1.1",
     "eslint": "5.15.3",
@@ -77,7 +78,7 @@
     "webpack-dev-server": "3.2.1"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
+    "@babel/runtime": "^7.4.2",
     "classnames": "^2.2.5",
     "jsonp": "^0.2.1",
     "prop-types": "^15.5.8"

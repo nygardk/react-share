@@ -29,7 +29,7 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              forceEnv: PRODUCTION ? 'commonjs' : 'with_react_hot_loader',
+              envName: PRODUCTION ? 'commonjs' : 'with_react_hot_loader',
             },
           },
           'react-hot-loader/webpack',

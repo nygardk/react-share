@@ -1,37 +1,45 @@
 {
   "env": {
     "commonjs": {
-      "presets": ["env"],
+      "presets": [
+        ["@babel/preset-env", { "targets": "> 0.25%, not dead" }],
+        "@babel/preset-react"
+      ],
       "plugins": [
-        "transform-runtime",
-        "transform-react-jsx",
-        "transform-class-properties",
-        "transform-object-rest-spread"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread"
       ]
     },
     "es": {
       "presets": [
         [
-          "env",
-          { "modules": false }
+          "@babel/preset-env",
+          { "modules": false, "targets": "> 0.25%, not dead" },
+          "@babel/preset-react"
         ]
       ],
       "plugins": [
-        "transform-runtime",
-        "transform-react-jsx",
-        "transform-class-properties",
-        "transform-object-rest-spread"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread"
       ]
     },
     "with_react_hot_loader": {
-      "presets": ["env"],
+      "presets": [
+        ["@babel/preset-env", { "targets": "> 0.25%, not dead" }],
+        "@babel/preset-react"
+      ],
       "plugins": [
-        "transform-runtime",
-        "transform-react-jsx",
-        "transform-class-properties",
-        "transform-object-rest-spread",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
         "react-hot-loader/babel"
       ]
     }
-  }
+  },
+  "comments": true
 }

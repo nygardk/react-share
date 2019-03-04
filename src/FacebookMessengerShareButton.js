@@ -5,8 +5,8 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function messengerLink(url, { redirectUri, appId }) {
-  assert(url, 'messenger.url');
+function facebookMessengerLink(url, { redirectUri, appId }) {
+  assert(url, 'facebookmessenger.url');
 
   return 'http://www.facebook.com/dialog/send' + objectToGetParams({
     app_id: appId,
@@ -15,7 +15,7 @@ function messengerLink(url, { redirectUri, appId }) {
   });
 }
 
-const MessengerShareButton = createShareButton('messenger', messengerLink, props => ({
+const FacebookMessengerShareButton = createShareButton('facebookmessenger', facebookMessengerLink, props => ({
   redirectUri: props.redirectUri,
   appId: props.appId,
 }), {
@@ -26,4 +26,4 @@ const MessengerShareButton = createShareButton('messenger', messengerLink, props
   windowHeight: 460,
 });
 
-export default MessengerShareButton;
+export default FacebookMessengerShareButton;

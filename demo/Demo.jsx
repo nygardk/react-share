@@ -29,7 +29,7 @@ import {
   WorkplaceShareButton,
   LineShareButton,
   WeiboShareButton,
-  MessengerShareButton,
+  FacebookMessengerShareButton,
 
   FacebookIcon,
   TwitterIcon,
@@ -48,7 +48,7 @@ import {
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
-  MessengerIcon,
+  FacebookMessengerIcon,
 } from 'react-share';
 
 import './Demo.css';
@@ -82,15 +82,15 @@ class Demo extends Component {
         </div>
 
         <div className="Demo__some-network">
-          <MessengerShareButton
+          <FacebookMessengerShareButton
             url={shareUrl}
             appId={appId}
             redirectUri={redirectUri}
             className="Demo__some-network__share-button">
-            <MessengerIcon
+            <FacebookMessengerIcon
               size={32}
               round />
-          </MessengerShareButton>
+          </FacebookMessengerShareButton>
         </div>
 
         <div className="Demo__some-network">

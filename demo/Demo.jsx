@@ -29,6 +29,7 @@ import {
   WorkplaceShareButton,
   LineShareButton,
   WeiboShareButton,
+  MessengerShareButton,
 
   FacebookIcon,
   TwitterIcon,
@@ -47,6 +48,7 @@ import {
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
+  MessengerIcon,
 } from 'react-share';
 
 import './Demo.css';
@@ -56,6 +58,7 @@ class Demo extends Component {
   render() {
     const shareUrl = 'http://github.com';
     const title = 'GitHub';
+    const appId = '952372368119577';
 
     return (
       <div className="Demo__container">
@@ -74,6 +77,18 @@ class Demo extends Component {
             className="Demo__some-network__share-count">
             {count => count}
           </FacebookShareCount>
+        </div>
+
+        <div className="Demo__some-network">
+          <MessengerShareButton
+            url={shareUrl}
+            appId={appId}
+            redirectUri="https://www.google.com"
+            className="Demo__some-network__share-button">
+            <MessengerIcon
+              size={32}
+              round />
+          </MessengerShareButton>
         </div>
 
         <div className="Demo__some-network">

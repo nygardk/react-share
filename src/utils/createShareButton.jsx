@@ -76,6 +76,8 @@ class ShareButton extends PureComponent {
     windowHeight: PropTypes.number,
     beforeOnClick: PropTypes.func,
     onShareWindowClose: PropTypes.func,
+    appId: PropTypes.string,
+    redirectUri: PropTypes.string,
     tabIndex: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,

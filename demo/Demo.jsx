@@ -59,6 +59,8 @@ class Demo extends Component {
     const shareUrl = 'http://github.com';
     const title = 'GitHub';
     const appId = '952372368119577';
+    const redirectUri = 'http://github.com';
+
 
     return (
       <div className="Demo__container">
@@ -83,7 +85,7 @@ class Demo extends Component {
           <MessengerShareButton
             url={shareUrl}
             appId={appId}
-            redirectUri="https://www.google.com"
+            redirectUri={redirectUri}
             className="Demo__some-network__share-button">
             <MessengerIcon
               size={32}

@@ -1,6 +1,6 @@
 {
-  "name": "react-share",
-  "version": "2.4.0",
+  "name": "react-social-shared",
+  "version": "1.0.0",
   "description": "Social media share buttons and share counts for React.",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -32,12 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nygardk/react-share"
-  },
-  "author": {
-    "name": "Klaus Nygård",
-    "email": "klaus.nygard@gmail.com",
-    "url": "http://klausnygard.fi"
+    "url": "https://github.com/thisJJ/react-share"
   },
   "license": "MIT",
   "devDependencies": {

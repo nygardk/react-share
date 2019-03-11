@@ -15,6 +15,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 * opens a popup share-window
 * share buttons for:
   - Facebook
+  - Facebook Messenger
   - Twitter
   - Telegram
   - Google+

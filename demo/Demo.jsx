@@ -164,8 +164,6 @@ class Demo extends Component {
           <OKShareButton
             url={shareUrl}
             image={`${String(window.location)}/${exampleImage}`}
-            windowWidth={660}
-            windowHeight={460}
             className="Demo__some-network__share-button">
             <OKIcon
               size={32}

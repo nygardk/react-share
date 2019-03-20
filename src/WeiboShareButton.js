@@ -22,8 +22,9 @@ const WeiboShareButton = createShareButton('weibo', weiboLink, props => ({
   title: PropTypes.string,
   image: PropTypes.string,
 }, {
-  windowWidth: 550,
-  windowHeight: 400,
+  windowWidth: 650,
+  windowHeight: 350,
+  windowPosition: 'screenCenter',
 });
 
 export default WeiboShareButton;

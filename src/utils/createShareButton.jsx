@@ -6,19 +6,22 @@ const isPromise = obj => !!obj
   && (typeof obj === 'object' || typeof obj === 'function')
   && typeof obj.then === 'function';
 
-function windowOpen(url, { height = 400, width = 550 }, onShareWindowClose) {
-  /* eslint-disable no-mixed-operators */
-  const left = (window.outerWidth / 2)
-    + (window.screenX || window.screenLeft || 0) - (width / 2);
-  const top = (window.outerHeight / 2)
-    + (window.screenY || window.screenTop || 0) - (height / 2);
-  /* eslint-enable no-mixed-operators */
+const getBoxPositionOnWindowCenter = (width, height) => ({
+  left: (window.outerWidth / 2)
+    + (window.screenX || window.screenLeft || 0) - (width / 2),
+  top: (window.outerHeight / 2)
+    + (window.screenY || window.screenTop || 0) - (height / 2),
+});
 
+const getBoxPositionOnScreenCenter = (width, height) => ({
+  top: (window.screen.height - height) / 2,
+  left: (window.screen.width - width) / 2,
+});
+
+function windowOpen(url, { height = 400, width = 550, ...configRest }, onClose) {
   const config = {
     height,
     width,
-    left,
-    top,
     location: 'no',
     toolbar: 'no',
     status: 'no',
@@ -28,6 +31,7 @@ function windowOpen(url, { height = 400, width = 550 }, onShareWindowClose) {
     resizable: 'no',
     centerscreen: 'yes',
     chrome: 'yes',
+    ...configRest,
   };
 
   const shareDialog = window.open(
@@ -36,12 +40,12 @@ function windowOpen(url, { height = 400, width = 550 }, onShareWindowClose) {
     Object.keys(config).map(key => `${key}=${config[key]}`).join(', '),
   );
 
-  if (onShareWindowClose) {
+  if (onClose) {
     const interval = window.setInterval(() => {
       try {
         if (shareDialog === null || shareDialog.closed) {
           window.clearInterval(interval);
-          onShareWindowClose(shareDialog);
+          onClose(shareDialog);
         }
       } catch (e) {
         /* eslint-disable no-console */
@@ -71,6 +75,7 @@ class ShareButton extends PureComponent {
     style: PropTypes.object,
     windowWidth: PropTypes.number,
     windowHeight: PropTypes.number,
+    windowPosition: PropTypes.oneOf(['windowCenter', 'screenCenter']),
     beforeOnClick: PropTypes.func,
     onShareWindowClose: PropTypes.func,
     tabIndex: PropTypes.oneOfType([
@@ -85,6 +90,7 @@ class ShareButton extends PureComponent {
     },
     openWindow: true,
     role: 'button',
+    windowPosition: 'windowCenter',
     tabIndex: '0',
   }
 
@@ -127,17 +133,22 @@ class ShareButton extends PureComponent {
 
   openWindow = (link) => {
     const {
+      windowPosition,
       onShareWindowClose,
       windowWidth,
       windowHeight,
     } = this.props;
 
-    const windowOptions = {
+    const windowConfig = {
       height: windowHeight,
       width: windowWidth,
+      ...(windowPosition === 'windowCenter'
+        ? getBoxPositionOnWindowCenter(windowWidth, windowHeight)
+        : getBoxPositionOnScreenCenter(windowWidth, windowHeight)
+      ),
     };
 
-    windowOpen(link, windowOptions, onShareWindowClose);
+    windowOpen(link, windowConfig, onShareWindowClose);
   }
 
   link() {

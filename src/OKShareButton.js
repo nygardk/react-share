@@ -25,8 +25,9 @@ const OKShareButton = createShareButton('ok', okLink, props => ({
   description: PropTypes.string,
   image: PropTypes.string,
 }, {
-  windowWidth: 660,
-  windowHeight: 460,
+  windowWidth: 588,
+  windowHeight: 480,
+  windowPosition: 'screenCenter',
 });
 
 export default OKShareButton;

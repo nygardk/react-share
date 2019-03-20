@@ -8,7 +8,7 @@ import createShareButton from './utils/createShareButton';
 function weiboLink(url, { title, image }) {
   assert(url, 'weibo.url');
 
-  return 'http://service.weibo.com/share/share.php?' + objectToGetParams({
+  return 'http://service.weibo.com/share/share.php' + objectToGetParams({
     url,
     title,
     pic: image,

@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 (Feb ?, 2018)
+## 3.0.0 (March ?, 2018)
 
 * Added `<PocketShareButton>`
 * Added `<InstapaperShareButton>`
@@ -11,7 +11,8 @@
 * Fix: `<EmailShareButton/>` includes `body` before `url`.
 * Fix: `<EmailShareButton/>` and `<ViberShareButton/>` allow customization of `separator`.
 * Fix: `<WeiboShareButton/>` no longer requires `image` prop
-* Thanks @finppp, @madkoding, @andrewl913 and @jwrubel!
+* Fix: `<WeiboShareButton/>` includes url correctly when shared
+* Thanks @finppp, @madkoding, @andrewl913, @jwrubel and @sinchang!
 
 ## 2.4.0 (Nov 24, 2018)
 

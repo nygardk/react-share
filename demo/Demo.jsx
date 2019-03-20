@@ -278,7 +278,7 @@ class Demo extends Component {
           <WeiboShareButton
             url={shareUrl}
             title={title}
-            pic={`${String(window.location)}/${exampleImage}`}
+            image={`${String(window.location)}/${exampleImage}`}
             className="Demo__some-network__share-button">
             <img className="Demo__some-network__custom-icon" src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png" alt="Weibo share button" />
           </WeiboShareButton>

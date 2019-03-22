@@ -12,6 +12,7 @@
 * Fix: `<EmailShareButton/>` and `<ViberShareButton/>` allow customization of `separator`.
 * Fix: `<WeiboShareButton/>` no longer requires `image` prop
 * Fix: `<WeiboShareButton/>` includes url correctly when shared
+* Fix: `<WeiboShareButton/>` and `<OKShareButton/>` open in screen center to prevent window from jumping after opening 
 * Thanks @finppp, @madkoding, @andrewl913, @jwrubel and @sinchang!
 
 ## 2.4.0 (Nov 24, 2018)

@@ -31,7 +31,7 @@ class SocialMediaShareCount extends Component {
         isLoading: true,
       });
 
-      this.props.getCount(url, (count) => {
+      this.props.getCount(url, count => {
         if (this._isMounted) {
           this.setState({
             count,
@@ -43,15 +43,9 @@ class SocialMediaShareCount extends Component {
   }
 
   render() {
-    const {
-      count,
-      isLoading,
-    } = this.state;
+    const { count, isLoading } = this.state;
 
-    const {
-      children,
-      className,
-    } = this.props;
+    const { children, className } = this.props;
 
     return (
       <div className={cx('SocialMediaShareCount', className)}>

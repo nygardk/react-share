@@ -6,11 +6,15 @@ import shareCountFactory from './utils/shareCountFactory';
 function getTumblrShareCount(shareUrl, callback) {
   const endpoint = 'https://api.tumblr.com/v2/share/stats';
 
-  return jsonp(endpoint + objectToGetParams({
-    url: shareUrl,
-  }), (err, data) => {
-    callback(data ? data.note_count : undefined);
-  });
+  return jsonp(
+    endpoint +
+      objectToGetParams({
+        url: shareUrl,
+      }),
+    (err, data) => {
+      callback(data ? data.note_count : undefined);
+    },
+  );
 }
 
 export default shareCountFactory(getTumblrShareCount);

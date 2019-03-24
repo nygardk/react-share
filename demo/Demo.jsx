@@ -8,7 +8,6 @@ import {
   OKShareCount,
   RedditShareCount,
   TumblrShareCount,
-
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
@@ -28,7 +27,6 @@ import {
   WeiboShareButton,
   PocketShareButton,
   InstapaperShareButton,
-
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
@@ -63,15 +61,12 @@ class Demo extends Component {
           <FacebookShareButton
             url={shareUrl}
             quote={title}
-            className="Demo__some-network__share-button">
-            <FacebookIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <FacebookIcon size={32} round />
           </FacebookShareButton>
 
-          <FacebookShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
+          <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
             {count => count}
           </FacebookShareCount>
         </div>
@@ -80,28 +75,24 @@ class Demo extends Component {
           <TwitterShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <TwitterIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <TwitterIcon size={32} round />
           </TwitterShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
+          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
           <TelegramShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
+            className="Demo__some-network__share-button"
+          >
             <TelegramIcon size={32} round />
           </TelegramShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
+          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
@@ -109,13 +100,12 @@ class Demo extends Component {
             url={shareUrl}
             title={title}
             separator=":: "
-            className="Demo__some-network__share-button">
+            className="Demo__some-network__share-button"
+          >
             <WhatsappIcon size={32} round />
           </WhatsappShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
+          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
@@ -123,10 +113,9 @@ class Demo extends Component {
             url={shareUrl}
             windowWidth={750}
             windowHeight={600}
-            className="Demo__some-network__share-button">
-            <LinkedinIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <LinkedinIcon size={32} round />
           </LinkedinShareButton>
         </div>
 
@@ -136,12 +125,12 @@ class Demo extends Component {
             media={`${String(window.location)}/${exampleImage}`}
             windowWidth={1000}
             windowHeight={730}
-            className="Demo__some-network__share-button">
+            className="Demo__some-network__share-button"
+          >
             <PinterestIcon size={32} round />
           </PinterestShareButton>
 
-          <PinterestShareCount url={shareUrl}
-            className="Demo__some-network__share-count" />
+          <PinterestShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
 
         <div className="Demo__some-network">
@@ -150,28 +139,24 @@ class Demo extends Component {
             image={`${String(window.location)}/${exampleImage}`}
             windowWidth={660}
             windowHeight={460}
-            className="Demo__some-network__share-button">
-            <VKIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <VKIcon size={32} round />
           </VKShareButton>
 
-          <VKShareCount url={shareUrl}
-            className="Demo__some-network__share-count" />
+          <VKShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
 
         <div className="Demo__some-network">
           <OKShareButton
             url={shareUrl}
             image={`${String(window.location)}/${exampleImage}`}
-            className="Demo__some-network__share-button">
-            <OKIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <OKIcon size={32} round />
           </OKShareButton>
 
-          <OKShareCount url={shareUrl}
-            className="Demo__some-network__share-count" />
+          <OKShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
 
         <div className="Demo__some-network">
@@ -180,14 +165,12 @@ class Demo extends Component {
             title={title}
             windowWidth={660}
             windowHeight={460}
-            className="Demo__some-network__share-button">
-            <RedditIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <RedditIcon size={32} round />
           </RedditShareButton>
 
-          <RedditShareCount url={shareUrl}
-            className="Demo__some-network__share-count" />
+          <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
 
         <div className="Demo__some-network">
@@ -196,14 +179,12 @@ class Demo extends Component {
             title={title}
             windowWidth={660}
             windowHeight={460}
-            className="Demo__some-network__share-button">
-            <TumblrIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <TumblrIcon size={32} round />
           </TumblrShareButton>
 
-          <TumblrShareCount url={shareUrl}
-            className="Demo__some-network__share-count" />
+          <TumblrShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
 
         <div className="Demo__some-network">
@@ -221,10 +202,9 @@ class Demo extends Component {
           <MailruShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <MailruIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <MailruIcon size={32} round />
           </MailruShareButton>
         </div>
 
@@ -233,20 +213,18 @@ class Demo extends Component {
             url={shareUrl}
             subject={title}
             body="body"
-            className="Demo__some-network__share-button">
-            <EmailIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <EmailIcon size={32} round />
           </EmailShareButton>
         </div>
         <div className="Demo__some-network">
           <ViberShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <ViberIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <ViberIcon size={32} round />
           </ViberShareButton>
         </div>
 
@@ -254,10 +232,9 @@ class Demo extends Component {
           <WorkplaceShareButton
             url={shareUrl}
             quote={title}
-            className="Demo__some-network__share-button">
-            <WorkplaceIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <WorkplaceIcon size={32} round />
           </WorkplaceShareButton>
         </div>
 
@@ -265,10 +242,9 @@ class Demo extends Component {
           <LineShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <LineIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <LineIcon size={32} round />
           </LineShareButton>
         </div>
 
@@ -277,8 +253,13 @@ class Demo extends Component {
             url={shareUrl}
             title={title}
             image={`${String(window.location)}/${exampleImage}`}
-            className="Demo__some-network__share-button">
-            <img className="Demo__some-network__custom-icon" src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png" alt="Weibo share button" />
+            className="Demo__some-network__share-button"
+          >
+            <img
+              className="Demo__some-network__custom-icon"
+              src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png"
+              alt="Weibo share button"
+            />
           </WeiboShareButton>
         </div>
 
@@ -286,10 +267,9 @@ class Demo extends Component {
           <PocketShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <PocketIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <PocketIcon size={32} round />
           </PocketShareButton>
         </div>
 
@@ -297,10 +277,9 @@ class Demo extends Component {
           <InstapaperShareButton
             url={shareUrl}
             title={title}
-            className="Demo__some-network__share-button">
-            <InstapaperIcon
-              size={32}
-              round />
+            className="Demo__some-network__share-button"
+          >
+            <InstapaperIcon size={32} round />
           </InstapaperShareButton>
         </div>
       </div>

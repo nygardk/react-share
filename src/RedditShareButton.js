@@ -8,19 +8,28 @@ import createShareButton from './utils/createShareButton';
 function redditLink(url, { title }) {
   assert(url, 'reddit.url');
 
-  return 'https://www.reddit.com/submit' + objectToGetParams({
-    url,
-    title,
-  });
+  return (
+    'https://www.reddit.com/submit' +
+    objectToGetParams({
+      url,
+      title,
+    })
+  );
 }
 
-const RedditShareButton = createShareButton('reddit', redditLink, props => ({
-  title: props.title,
-}), {
-  title: PropTypes.string,
-}, {
-  windowWidth: 660,
-  windowHeight: 460,
-});
+const RedditShareButton = createShareButton(
+  'reddit',
+  redditLink,
+  props => ({
+    title: props.title,
+  }),
+  {
+    title: PropTypes.string,
+  },
+  {
+    windowWidth: 660,
+    windowHeight: 460,
+  },
+);
 
 export default RedditShareButton;

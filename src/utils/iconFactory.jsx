@@ -2,15 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function iconFactory(network, iconConfig) {
-  const Icon = (props) => {
-    const {
-      className,
-      iconBgStyle,
-      logoFillColor,
-      borderRadius,
-      round,
-      size,
-    } = props;
+  const Icon = props => {
+    const { className, iconBgStyle, logoFillColor, borderRadius, round, size } = props;
 
     const baseStyle = {
       width: size,
@@ -21,28 +14,20 @@ export default function iconFactory(network, iconConfig) {
 
     return (
       <div style={baseStyle}>
-        <svg
-          viewBox="0 0 64 64"
-          width={size}
-          height={size}
-          className={classes}>
+        <svg viewBox="0 0 64 64" width={size} height={size} className={classes}>
           <g>
-            {(!round ? (
+            {!round ? (
               <rect
                 width="64"
                 height="64"
                 rx={borderRadius}
                 ry={borderRadius}
                 fill={iconConfig.color}
-                style={iconBgStyle} />
+                style={iconBgStyle}
+              />
             ) : (
-              <circle
-                cx="32"
-                cy="32"
-                r="31"
-                fill={iconConfig.color}
-                style={iconBgStyle} />
-            ))}
+              <circle cx="32" cy="32" r="31" fill={iconConfig.color} style={iconBgStyle} />
+            )}
           </g>
 
           <g>

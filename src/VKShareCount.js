@@ -18,11 +18,14 @@ function getVKShareCount(shareUrl, callback) {
 
   window.VK.callbacks.push(callback);
 
-  return jsonp(url + objectToGetParams({
-    act: 'count',
-    index,
-    url: shareUrl,
-  }));
+  return jsonp(
+    url +
+      objectToGetParams({
+        act: 'count',
+        index,
+        url: shareUrl,
+      }),
+  );
 }
 
 export default shareCountFactory(getVKShareCount);

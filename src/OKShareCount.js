@@ -18,14 +18,21 @@ function getOKShareCount(shareUrl, callback) {
   const url = 'https://connect.ok.ru/dk';
   const index = window.OK.callbacks.length;
 
-  window.ODKL = { updateCount(a, b) { window.OK.callbacks[index](b); } };
+  window.ODKL = {
+    updateCount(a, b) {
+      window.OK.callbacks[index](b);
+    },
+  };
   window.OK.callbacks.push(callback);
 
-  return jsonp(url + (0, objectToGetParams)({
-    'st.cmd': 'extLike',
-    uid: 'odklcnt0',
-    ref: shareUrl,
-  }));
+  return jsonp(
+    url +
+      (0, objectToGetParams)({
+        'st.cmd': 'extLike',
+        uid: 'odklcnt0',
+        ref: shareUrl,
+      }),
+  );
 }
 
 export default shareCountFactory(getOKShareCount);

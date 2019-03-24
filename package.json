@@ -14,7 +14,7 @@
     "es/**/*"
   ],
   "scripts": {
-    "build": "npm run lint && npm run build:commonjs && npm run build:es && npm run build-demo",
+    "build": "npm run lint && npm run build:commonjs && npm run build:es",
     "build:commonjs": "rimraf ./lib && cross-env BABEL_ENV=commonjs babel ./src --out-dir ./lib",
     "build:es": "rimraf ./es && cross-env BABEL_ENV=es babel ./src --out-dir ./es",
     "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",

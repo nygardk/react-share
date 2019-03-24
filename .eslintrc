@@ -1,11 +1,24 @@
 {
-  "plugins": ["babel", "react", "prettier"],
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["@typescript-eslint", "prettier", "react", "import", "jsx-a11y"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
   "env": {
     "es6": true,
     "browser": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-first-prop-new-line": 0,
@@ -24,5 +37,10 @@
         "devDependencies": ["demo/**"]
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

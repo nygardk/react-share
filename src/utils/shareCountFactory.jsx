@@ -66,6 +66,8 @@ SocialMediaShareCount.defaultProps = {
   children: shareCount => shareCount,
 };
 
+/* eslint-disable react/display-name */
 export default function shareCountFactory(getCount) {
   return props => <SocialMediaShareCount getCount={getCount} {...props} />;
 }
+/* eslint-enable react/display-name */

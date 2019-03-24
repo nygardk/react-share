@@ -1,7 +1,6 @@
 src
 demo
 docs
-.babelrc
 .tsconfig
 .eslintrc
 .gitignore

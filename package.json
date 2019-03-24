@@ -10,7 +10,10 @@
     "node": ">=6.9.0",
     "npm": ">=5.0.0"
   },
-  "files": ["lib/**/*", "es/**/*"],
+  "files": [
+    "lib/**/*",
+    "es/**/*"
+  ],
   "scripts": {
     "build": "npm run lint && npm run build:commonjs && npm run build:es",
     "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
@@ -49,14 +52,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-loader": "7.1.5",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.7.0",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/parser": "^1.5.0",
     "cross-env": "5.2.0",
@@ -78,6 +73,7 @@
     "rimraf": "^2.6.3",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
+    "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
     "url-loader": "1.1.2",
     "webpack": "4.29.6",

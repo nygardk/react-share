@@ -26,11 +26,11 @@
     "with_react_hot_loader": {
       "presets": ["env"],
       "plugins": [
-        "react-hot-loader/babel",
         "transform-runtime",
         "transform-react-jsx",
         "transform-class-properties",
-        "transform-object-rest-spread"
+        "transform-object-rest-spread",
+        "react-hot-loader/babel"
       ]
     }
   }

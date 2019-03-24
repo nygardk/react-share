@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function iconFactory(network, iconConfig) {
-  const Icon = props => {
+type Props = {
+  borderRadius: number;
+  className?: string;
+  iconBgStyle: React.CSSProperties;
+  logoFillColor: string;
+  round?: boolean;
+  size: number;
+};
+
+export default function iconFactory(network: string, iconConfig: { color: string; icon: string }) {
+  const Icon: React.SFC<Props> = props => {
     const { className, iconBgStyle, logoFillColor, borderRadius, round, size } = props;
 
     const baseStyle = {
@@ -39,16 +48,15 @@ export default function iconFactory(network, iconConfig) {
   };
 
   Icon.propTypes = {
+    borderRadius: PropTypes.number.isRequired,
     className: PropTypes.string,
-    iconBgStyle: PropTypes.object,
-    logoFillColor: PropTypes.string,
+    iconBgStyle: PropTypes.object.isRequired,
+    logoFillColor: PropTypes.string.isRequired,
     round: PropTypes.bool,
-    size: PropTypes.number,
-    borderRadius: PropTypes.number,
+    size: PropTypes.number.isRequired,
   };
 
   Icon.defaultProps = {
-    className: '',
     iconBgStyle: {},
     logoFillColor: 'white',
     size: 64,

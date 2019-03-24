@@ -52,6 +52,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@types/assert": "^1.4.2",
+    "@types/classnames": "^2.2.7",
+    "@types/prop-types": "^15.7.0",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.3",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/parser": "^1.5.0",
     "cross-env": "5.2.0",

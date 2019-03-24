@@ -3,20 +3,18 @@
   "version": "3.0.1",
   "description": "Social media share buttons and share counts for React.",
   "main": "./lib/index.js",
+  "types": "/lib/index.d.ts",
   "module": "./es/index.js",
   "sideEffects": false,
   "engines": {
     "node": ">=6.9.0",
     "npm": ">=5.0.0"
   },
-  "files": [
-    "lib/**/*",
-    "es/**/*"
-  ],
+  "files": ["lib/**/*", "es/**/*"],
   "scripts": {
     "build": "npm run lint && npm run build:commonjs && npm run build:es",
-    "build:commonjs": "rimraf ./lib && cross-env BABEL_ENV=commonjs babel ./src --out-dir ./lib",
-    "build:es": "rimraf ./es && cross-env BABEL_ENV=es babel ./src --out-dir ./es",
+    "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
+    "build:es": "rimraf ./es && tsc -p . --outDir ./es --module es2015",
     "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",
     "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --ext .jsx --ext .js ./src ./demo",
@@ -43,6 +41,12 @@
     "email": "klaus.nygard@gmail.com",
     "url": "http://klausnygard.fi"
   },
+  "contributors": [
+    {
+      "name": "Ari Autio",
+      "email": "ari.autio@iki.fi"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -74,6 +78,7 @@
     "rimraf": "^2.6.3",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
+    "typescript": "^3.3.4000",
     "url-loader": "1.1.2",
     "webpack": "4.29.6",
     "webpack-cli": "3.3.0",

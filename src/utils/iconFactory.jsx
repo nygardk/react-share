@@ -7,6 +7,7 @@ export default function iconFactory(network, iconConfig) {
       className,
       iconBgStyle,
       logoFillColor,
+      borderRadius,
       round,
       size,
     } = props;
@@ -30,6 +31,8 @@ export default function iconFactory(network, iconConfig) {
               <rect
                 width="64"
                 height="64"
+                rx={borderRadius}
+                ry={borderRadius}
                 fill={iconConfig.color}
                 style={iconBgStyle} />
             ) : (
@@ -56,6 +59,7 @@ export default function iconFactory(network, iconConfig) {
     logoFillColor: PropTypes.string,
     round: PropTypes.bool,
     size: PropTypes.number,
+    borderRadius: PropTypes.number,
   };
 
   Icon.defaultProps = {
@@ -63,6 +67,7 @@ export default function iconFactory(network, iconConfig) {
     iconBgStyle: {},
     logoFillColor: 'white',
     size: 64,
+    borderRadius: 0,
   };
 
   return Icon;

@@ -9,6 +9,10 @@
     "node": ">=6.9.0",
     "npm": ">=5.0.0"
   },
+  "files": [
+    "lib/**/*",
+    "es/**/*"
+  ],
   "scripts": {
     "build": "npm run lint && npm run build:commonjs && npm run build:es && npm run build-demo",
     "build:commonjs": "rimraf ./lib && cross-env BABEL_ENV=commonjs babel ./src --out-dir ./lib",

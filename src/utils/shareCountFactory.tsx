@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import cx from 'classnames';
 
-class SocialMediaShareCount extends Component {
+type countFetchFn = {
+  url: string, callback: (shareCount: number) => void;
+}
+
+type SocialMediaShareCountProps = {
+  children: (shareCount: number) => React.ReactNode;
+  className?: string;
+  getCount: (url: string, callback: (shareCount: number) => void);
+  url: string;
+};
+
+type StateTypes  = {
+  count?: number;
+  isLoading: boolean;
+}
+
+class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateTypes> {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
-
-    this._isMounted = false;
-    this.state = { count: 0 };
+    this.state = { count: 0, isLoading: false };
   }
 
   componentDidMount() {
@@ -25,8 +41,7 @@ class SocialMediaShareCount extends Component {
     this._isMounted = false;
   }
 
-  updateCount(url) {
-    if (this.props.getCount) {
+  updateCount(url: string) {
       this.setState({
         isLoading: true,
       });
@@ -39,7 +54,6 @@ class SocialMediaShareCount extends Component {
           });
         }
       });
-    }
   }
 
   render() {

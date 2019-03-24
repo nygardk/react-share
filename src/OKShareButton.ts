@@ -5,7 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function okLink(url, { title, description, image }) {
+function okLink(
+  url: string,
+  { title, description, image }: { title?: string; description?: string; image?: string },
+) {
   assert(url, 'ok.url');
 
   return (

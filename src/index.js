@@ -25,6 +25,7 @@ export { default as ViberShareButton } from './ViberShareButton';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
 export { default as LineShareButton } from './LineShareButton';
 export { default as WeiboShareButton } from './WeiboShareButton';
+export { default as FacebookMessengerShareButton } from './FacebookMessengerShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';
@@ -43,3 +44,4 @@ export { default as LivejournalIcon } from './LivejournalIcon';
 export { default as ViberIcon } from './ViberIcon';
 export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as LineIcon } from './LineIcon';
+export { default as FacebookMessengerIcon } from './FacebookMessengerIcon';

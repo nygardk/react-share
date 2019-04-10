@@ -93,6 +93,7 @@ import {
   WorkplaceShareButton,
   LineShareButton,
   EmailShareButton,
+  FacebookMessengerShareButton,
 } from 'react-share';
 ```
 
@@ -119,6 +120,7 @@ import {
 |LineShareButton|-|__`title`__: Title of the shared page (string)|
 |WeiboShareButton|-|__`title`__: Title of the shared page (string)<br/>__`image`__: An absolute link to the image that will be shared (string)|
 |EmailShareButton|-|__`subject`__: Title of the shared page (string)<br/>__`body`__: Body of the email (string), defaults to shared url.|
+|FacebookMessengerShareButton|__`appId`__: Facebook application id (string)|__`redirectUri`__: The URL (string) to redirect to after a person clicks a button on the dialog, default to shared url.<br/>__`display`__: Determines how the dialog is rendered (string).<br/>__`to`__: A user ID (string) of a recipient. Once the dialog comes up, the sender can specify additional people as recipients.|
 
 ### Share counts
 
@@ -177,6 +179,7 @@ import {
   WorkplaceIcon,
   LineIcon,
   EmailIcon,
+  FacebookMessengerIcon,
 } from 'react-share';
 ```
 

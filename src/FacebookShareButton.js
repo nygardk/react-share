@@ -9,7 +9,7 @@ function facebookLink(url, { quote, hashtag }) {
   assert(url, 'facebook.url');
 
   return 'https://www.facebook.com/sharer/sharer.php' + objectToGetParams({
-    u: url,
+    href: url,
     quote,
     hashtag,
   });

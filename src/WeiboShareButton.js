@@ -9,7 +9,7 @@ function weiboLink(url, { title, image }) {
   assert(url, 'weibo.url');
   assert(image, 'weibo.image');
 
-  return 'http://service.weibo.com/share/share.php?' + objectToGetParams({
+  return 'http://service.weibo.com/share/share.php' + objectToGetParams({
     url,
     title,
     pic: image,

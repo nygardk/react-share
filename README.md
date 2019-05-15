@@ -189,6 +189,8 @@ Props:
 
 * `round`: Whether to show round or rect icons (bool)
 
+* `borderRadius`: Allow rounded corners if using rect icons (number)
+
 * `iconBgStyle`: customize background style, e.g. `fill` (object)
 
 * `logoFillColor`: customize logo's fill color (string, default = 'white')

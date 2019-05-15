@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import {
   FacebookShareCount,
-  GooglePlusShareCount,
-  LinkedinShareCount,
   PinterestShareCount,
   VKShareCount,
   OKShareCount,
@@ -12,7 +10,6 @@ import {
   TumblrShareCount,
 
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   PinterestShareButton,
@@ -29,10 +26,11 @@ import {
   WorkplaceShareButton,
   LineShareButton,
   WeiboShareButton,
+  PocketShareButton,
+  InstapaperShareButton,
 
   FacebookIcon,
   TwitterIcon,
-  GooglePlusIcon,
   LinkedinIcon,
   PinterestIcon,
   VKIcon,
@@ -47,6 +45,8 @@ import {
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
+  PocketIcon,
+  InstapaperIcon,
 } from 'react-share';
 
 import './Demo.css';
@@ -119,25 +119,8 @@ class Demo extends Component {
         </div>
 
         <div className="Demo__some-network">
-          <GooglePlusShareButton
-            url={shareUrl}
-            className="Demo__some-network__share-button">
-            <GooglePlusIcon
-              size={32}
-              round />
-          </GooglePlusShareButton>
-
-          <GooglePlusShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
-            {count => count}
-          </GooglePlusShareCount>
-        </div>
-
-        <div className="Demo__some-network">
           <LinkedinShareButton
             url={shareUrl}
-            title={title}
             windowWidth={750}
             windowHeight={600}
             className="Demo__some-network__share-button">
@@ -145,12 +128,6 @@ class Demo extends Component {
               size={32}
               round />
           </LinkedinShareButton>
-
-          <LinkedinShareCount
-            url={shareUrl}
-            className="Demo__some-network__share-count">
-            {count => count}
-          </LinkedinShareCount>
         </div>
 
         <div className="Demo__some-network">
@@ -187,8 +164,6 @@ class Demo extends Component {
           <OKShareButton
             url={shareUrl}
             image={`${String(window.location)}/${exampleImage}`}
-            windowWidth={660}
-            windowHeight={460}
             className="Demo__some-network__share-button">
             <OKIcon
               size={32}
@@ -268,7 +243,6 @@ class Demo extends Component {
           <ViberShareButton
             url={shareUrl}
             title={title}
-            body="body"
             className="Demo__some-network__share-button">
             <ViberIcon
               size={32}
@@ -302,10 +276,32 @@ class Demo extends Component {
           <WeiboShareButton
             url={shareUrl}
             title={title}
-            pic={`${String(window.location)}/${exampleImage}`}
+            image={`${String(window.location)}/${exampleImage}`}
             className="Demo__some-network__share-button">
             <img className="Demo__some-network__custom-icon" src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png" alt="Weibo share button" />
           </WeiboShareButton>
+        </div>
+
+        <div className="Demo__some-network">
+          <PocketShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <PocketIcon
+              size={32}
+              round />
+          </PocketShareButton>
+        </div>
+
+        <div className="Demo__some-network">
+          <InstapaperShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button">
+            <InstapaperIcon
+              size={32}
+              round />
+          </InstapaperShareButton>
         </div>
       </div>
     );

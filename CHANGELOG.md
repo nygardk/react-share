@@ -1,5 +1,21 @@
 # Changelog
 
+## 3.0.0 (March 24, 2019)
+
+* Added `<PocketShareButton>`
+* Added `<InstapaperShareButton>`
+* Added `borderRadius` prop for icons
+* A default `aria-label` is generated for the share buttons. It is based on the network name. Use `additionalProps` to override.
+* Removed support for Google+.
+* Removed support for `<LinkedInShareCount/>`. LinkedIn no longer provides an API to fetch share counts.
+* Removed `title` and `description` from `<LinkedInShareButtons/>`.
+* Fix: `<EmailShareButton/>` includes `body` before `url`.
+* Fix: `<EmailShareButton/>` and `<ViberShareButton/>` allow customization of `separator`.
+* Fix: `<WeiboShareButton/>` no longer requires `image` prop
+* Fix: `<WeiboShareButton/>` includes url correctly when shared
+* Fix: `<WeiboShareButton/>` and `<OKShareButton/>` open in screen center to prevent window from jumping after opening
+* Thanks @finppp, @madkoding, @andrewl913, @jwrubel, @sinchang and @sergioribeiro!
+
 ## 2.4.0 (Nov 24, 2018)
 
 * Added `<LineShareButton />` and `<WeiboShareButton />`

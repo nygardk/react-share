@@ -7,7 +7,6 @@ import createShareButton from './utils/createShareButton';
 
 function weiboLink(url, { title, image }) {
   assert(url, 'weibo.url');
-  assert(image, 'weibo.image');
 
   return 'http://service.weibo.com/share/share.php' + objectToGetParams({
     url,
@@ -23,8 +22,9 @@ const WeiboShareButton = createShareButton('weibo', weiboLink, props => ({
   title: PropTypes.string,
   image: PropTypes.string,
 }, {
-  windowWidth: 550,
-  windowHeight: 400,
+  windowWidth: 650,
+  windowHeight: 350,
+  windowPosition: 'screenCenter',
 });
 
 export default WeiboShareButton;

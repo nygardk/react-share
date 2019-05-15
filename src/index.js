@@ -1,6 +1,4 @@
 export { default as FacebookShareCount } from './FacebookShareCount';
-export { default as GooglePlusShareCount } from './GooglePlusShareCount';
-export { default as LinkedinShareCount } from './LinkedinShareCount';
 export { default as PinterestShareCount } from './PinterestShareCount';
 export { default as VKShareCount } from './VKShareCount';
 export { default as OKShareCount } from './OKShareCount';
@@ -8,7 +6,6 @@ export { default as RedditShareCount } from './RedditShareCount';
 export { default as TumblrShareCount } from './TumblrShareCount';
 
 export { default as FacebookShareButton } from './FacebookShareButton';
-export { default as GooglePlusShareButton } from './GooglePlusShareButton';
 export { default as LinkedinShareButton } from './LinkedinShareButton';
 export { default as TwitterShareButton } from './TwitterShareButton';
 export { default as PinterestShareButton } from './PinterestShareButton';
@@ -25,10 +22,11 @@ export { default as ViberShareButton } from './ViberShareButton';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
 export { default as LineShareButton } from './LineShareButton';
 export { default as WeiboShareButton } from './WeiboShareButton';
+export { default as PocketShareButton } from './PocketShareButton';
+export { default as InstapaperShareButton } from './InstapaperShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';
-export { default as GooglePlusIcon } from './GooglePlusIcon';
 export { default as LinkedinIcon } from './LinkedinIcon';
 export { default as PinterestIcon } from './PinterestIcon';
 export { default as VKIcon } from './VKIcon';
@@ -43,3 +41,5 @@ export { default as LivejournalIcon } from './LivejournalIcon';
 export { default as ViberIcon } from './ViberIcon';
 export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as LineIcon } from './LineIcon';
+export { default as PocketIcon } from './PocketIcon';
+export { default as InstapaperIcon } from './InstapaperIcon';

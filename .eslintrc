@@ -1,13 +1,11 @@
 {
-  "extends": "airbnb",
+  "plugins": ["babel", "react"],
+  "extends": ["airbnb"],
   "env": {
     "es6": true,
     "browser": true
   },
   "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
   "rules": {
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-first-prop-new-line": 0,

@@ -38,7 +38,8 @@ class SocialMediaShareCount extends Component {
             isLoading: false,
           });
         }
-      });
+      }, 
+      (this.props.accessToken ? this.props.accessToken : null));
     }
   }
 
@@ -66,6 +67,7 @@ SocialMediaShareCount.propTypes = {
   className: PropTypes.string,
   getCount: PropTypes.func,
   url: PropTypes.string.isRequired,
+  accessToken: PropTypes.string
 };
 
 SocialMediaShareCount.defaultProps = {

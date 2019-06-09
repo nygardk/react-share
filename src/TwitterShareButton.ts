@@ -5,7 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function twitterLink(url, { title, via, hashtags = [] }) {
+function twitterLink(
+  url: string,
+  { title, via, hashtags = [] }: { title?: string; via?: string; hashtags?: string[] },
+) {
   assert(url, 'twitter.url');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
@@ -20,7 +23,7 @@ function twitterLink(url, { title, via, hashtags = [] }) {
   );
 }
 
-const TwitterShareButton = createShareButton(
+const TwitterShareButton = createShareButton<{ title?: string; via?: string; hashtags?: string[] }>(
   'twitter',
   twitterLink,
   props => ({
@@ -29,7 +32,7 @@ const TwitterShareButton = createShareButton(
     via: props.via,
   }),
   {
-    hashtags: PropTypes.arrayOf(PropTypes.string),
+    hashtags: PropTypes.arrayOf(PropTypes.string.isRequired),
     title: PropTypes.string,
     via: PropTypes.string,
   },

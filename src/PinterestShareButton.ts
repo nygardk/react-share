@@ -5,7 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function pinterestLink(url, { media, description }) {
+function pinterestLink(
+  url: string,
+  { media, description }: { media: string; description?: string },
+) {
   assert(url, 'pinterest.url');
   assert(media, 'pinterest.media');
 
@@ -19,7 +22,7 @@ function pinterestLink(url, { media, description }) {
   );
 }
 
-const PinterestShareButton = createShareButton(
+const PinterestShareButton = createShareButton<{ media: string; description?: string }>(
   'pinterest',
   pinterestLink,
   props => ({

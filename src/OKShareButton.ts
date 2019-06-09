@@ -22,7 +22,7 @@ function okLink(
   );
 }
 
-const OKShareButton = createShareButton(
+const OKShareButton = createShareButton<{ title?: string; description?: string; image?: string }>(
   'ok',
   okLink,
   props => ({

@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function viberLink(url, { title, separator }) {
+function viberLink(url: string, { title, separator }: { title?: string; separator?: string }) {
   assert(url, 'viber.url');
   return (
     'viber://forward' +
@@ -15,7 +15,7 @@ function viberLink(url, { title, separator }) {
   );
 }
 
-const ViberShareButton = createShareButton(
+const ViberShareButton = createShareButton<{ title?: string; separator?: string }>(
   'viber',
   viberLink,
   props => ({

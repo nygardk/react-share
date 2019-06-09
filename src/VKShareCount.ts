@@ -3,7 +3,18 @@ import jsonp from 'jsonp';
 import objectToGetParams from './utils/objectToGetParams';
 import shareCountFactory from './utils/shareCountFactory';
 
-function getVKShareCount(shareUrl, callback) {
+declare global {
+  interface Window {
+    VK: {
+      Share: {
+        count: (index: number, count: number) => void;
+      };
+      callbacks: ((count?: number) => void)[];
+    };
+  }
+}
+
+function getVKShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   if (!window.VK) {
     window.VK = {
       Share: {

@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function workplaceLink(url, { quote, hashtag }) {
+function workplaceLink(url: string, { quote, hashtag }: { quote?: string; hashtag?: string }) {
   assert(url, 'workplace.url');
 
   return (
@@ -18,7 +18,7 @@ function workplaceLink(url, { quote, hashtag }) {
   );
 }
 
-const WorkplaceShareButton = createShareButton(
+const WorkplaceShareButton = createShareButton<{ quote?: string; hashtag?: string }>(
   'workplace',
   workplaceLink,
   props => ({

@@ -5,7 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function mailruLink(url, { title, description, image }) {
+function mailruLink(
+  url: string,
+  { title, description, image }: { title?: string; description?: string; image?: string },
+) {
   assert(url, 'mailru.url');
 
   return (
@@ -19,7 +22,11 @@ function mailruLink(url, { title, description, image }) {
   );
 }
 
-const MailruShareButton = createShareButton(
+const MailruShareButton = createShareButton<{
+  title?: string;
+  description?: string;
+  image?: string;
+}>(
   'mailru',
   mailruLink,
   props => ({

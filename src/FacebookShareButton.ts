@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function facebookLink(url, { quote, hashtag }) {
+function facebookLink(url: string, { quote, hashtag }: { quote?: string; hashtag?: string }) {
   assert(url, 'facebook.url');
 
   return (
@@ -18,30 +18,13 @@ function facebookLink(url, { quote, hashtag }) {
   );
 }
 
-const FacebookShareButton = createShareButton(
+const FacebookShareButton = createShareButton<{ quote?: string; hashtag?: string }>(
   'facebook',
   facebookLink,
-  props => {
-    /* eslint-disable no-console */
-    if (props.picture) {
-      console.warn('FacebookShareButton warning: picture is a deprecated prop.');
-    }
-
-    if (props.title) {
-      console.warn('FacebookShareButton warning: title is a deprecated prop. Use "quote" instead.');
-    }
-
-    if (props.description) {
-      console.warn(`FacebookShareButton warning: description is a deprecated prop.
-      Use "quote" instead.`);
-    }
-    /* eslint-enable no-console */
-
-    return {
-      quote: props.quote,
-      hashtag: props.hashtag,
-    };
-  },
+  props => ({
+    quote: props.quote,
+    hashtag: props.hashtag,
+  }),
   {
     quote: PropTypes.string,
     hashtag: PropTypes.string,

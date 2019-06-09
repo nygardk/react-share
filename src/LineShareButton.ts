@@ -5,7 +5,7 @@ import assert from 'assert';
 import createShareButton from './utils/createShareButton';
 import objectToGetParams from './utils/objectToGetParams';
 
-function lineLink(url, { title }) {
+function lineLink(url: string, { title }: { title?: string }) {
   assert(url, 'line.url');
 
   return (
@@ -17,7 +17,7 @@ function lineLink(url, { title }) {
   );
 }
 
-const LineShareButton = createShareButton(
+const LineShareButton = createShareButton<{ title?: string }>(
   'line',
   lineLink,
   props => ({

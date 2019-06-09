@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function redditLink(url, { title }) {
+function redditLink(url: string, { title }: { title?: string }) {
   assert(url, 'reddit.url');
 
   return (
@@ -17,7 +17,7 @@ function redditLink(url, { title }) {
   );
 }
 
-const RedditShareButton = createShareButton(
+const RedditShareButton = createShareButton<{ title?: string }>(
   'reddit',
   redditLink,
   props => ({

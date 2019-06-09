@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function telegramLink(url, { title }) {
+function telegramLink(url: string, { title }: { title?: string }) {
   assert(url, 'telegram.url');
 
   return (
@@ -17,16 +17,14 @@ function telegramLink(url, { title }) {
   );
 }
 
-const TelegramShareButton = createShareButton(
+const TelegramShareButton = createShareButton<{ title?: string }>(
   'telegram',
   telegramLink,
   props => ({
     title: props.title,
-    via: props.via,
   }),
   {
     title: PropTypes.string,
-    via: PropTypes.string,
   },
   {
     windowWidth: 550,

@@ -3,12 +3,26 @@ import jsonp from 'jsonp';
 import objectToGetParams from './utils/objectToGetParams';
 import shareCountFactory from './utils/shareCountFactory';
 
-function getOKShareCount(shareUrl, callback) {
+declare global {
+  interface Window {
+    OK: {
+      Share: {
+        count: (index: number, _count: number) => void;
+      };
+      callbacks: ((count?: number) => void)[];
+    };
+    ODKL: {
+      updateCount: (a: any, b: any) => void;
+    };
+  }
+}
+
+function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   if (!window.OK) {
     window.OK = {
       Share: {
         count: function count(index, _count) {
-          return window.OK.callbacks[index](_count);
+          window.OK.callbacks[index](_count);
         },
       },
       callbacks: [],
@@ -27,7 +41,7 @@ function getOKShareCount(shareUrl, callback) {
 
   return jsonp(
     url +
-      (0, objectToGetParams)({
+      objectToGetParams({
         'st.cmd': 'extLike',
         uid: 'odklcnt0',
         ref: shareUrl,

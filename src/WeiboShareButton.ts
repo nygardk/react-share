@@ -5,7 +5,7 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function weiboLink(url, { title, image }) {
+function weiboLink(url: string, { title, image }: { title?: string; image?: string }) {
   assert(url, 'weibo.url');
 
   return (
@@ -18,7 +18,7 @@ function weiboLink(url, { title, image }) {
   );
 }
 
-const WeiboShareButton = createShareButton(
+const WeiboShareButton = createShareButton<{ title?: string; image?: string }>(
   'weibo',
   weiboLink,
   props => ({

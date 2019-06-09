@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
-
-type countFetchFn = {
-  url: string, callback: (shareCount: number) => void;
-}
 
 type SocialMediaShareCountProps = {
   children: (shareCount: number) => React.ReactNode;
   className?: string;
-  getCount: (url: string, callback: (shareCount: number) => void);
+  getCount: (url: string, callback: (shareCount?: number) => void) => void;
   url: string;
 };
 
-type StateTypes  = {
+type StateTypes = {
   count?: number;
   isLoading: boolean;
-}
+};
 
 class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateTypes> {
   _isMounted = false;
 
-  constructor(props) {
+  static propTypes = {
+    children: PropTypes.func,
+    className: PropTypes.string,
+    getCount: PropTypes.func,
+    url: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    children: (shareCount: number) => shareCount,
+  };
+
+  constructor(props: SocialMediaShareCountProps) {
     super(props);
     this.state = { count: 0, isLoading: false };
   }
@@ -31,8 +38,8 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
     this.updateCount(this.props.url);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.url !== this.props.url) {
+  componentDidUpdate(prevProps: SocialMediaShareCountProps) {
+    if (this.props.url !== prevProps.url) {
       this.updateCount(this.props.url);
     }
   }
@@ -42,18 +49,18 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   }
 
   updateCount(url: string) {
-      this.setState({
-        isLoading: true,
-      });
+    this.setState({
+      isLoading: true,
+    });
 
-      this.props.getCount(url, count => {
-        if (this._isMounted) {
-          this.setState({
-            count,
-            isLoading: false,
-          });
-        }
-      });
+    this.props.getCount(url, count => {
+      if (this._isMounted) {
+        this.setState({
+          count,
+          isLoading: false,
+        });
+      }
+    });
   }
 
   render() {
@@ -69,19 +76,8 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   }
 }
 
-SocialMediaShareCount.propTypes = {
-  children: PropTypes.func,
-  className: PropTypes.string,
-  getCount: PropTypes.func,
-  url: PropTypes.string.isRequired,
-};
-
-SocialMediaShareCount.defaultProps = {
-  children: shareCount => shareCount,
-};
-
-/* eslint-disable react/display-name */
-export default function shareCountFactory(getCount) {
-  return props => <SocialMediaShareCount getCount={getCount} {...props} />;
+export default function shareCountFactory(getCount: SocialMediaShareCountProps['getCount']) {
+  return (props: SocialMediaShareCountProps) => (
+    <SocialMediaShareCount getCount={getCount} {...props} />
+  );
 }
-/* eslint-enable react/display-name */

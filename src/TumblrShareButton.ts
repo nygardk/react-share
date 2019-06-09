@@ -5,7 +5,15 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function tumblrLink(url, { title, caption, tags, posttype }) {
+function tumblrLink(
+  url: string,
+  {
+    title,
+    caption,
+    tags,
+    posttype,
+  }: { title?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+) {
   assert(url, 'tumblr.url');
 
   return (
@@ -20,7 +28,16 @@ function tumblrLink(url, { title, caption, tags, posttype }) {
   );
 }
 
-const TumblrShareButton = createShareButton(
+type Options = {
+  title?: string;
+  caption?: string;
+  posttype?: 'link' | string;
+};
+
+const TumblrShareButton = createShareButton<
+  Options & { tags: string[] },
+  Options & { tags: string }
+>(
   'tumblr',
   tumblrLink,
   props => ({
@@ -33,7 +50,7 @@ const TumblrShareButton = createShareButton(
     title: PropTypes.string,
     caption: PropTypes.string,
     posttype: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   },
   {
     tags: [],

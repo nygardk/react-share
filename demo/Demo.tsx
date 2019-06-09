@@ -45,7 +45,7 @@ import {
   LineIcon,
   PocketIcon,
   InstapaperIcon,
-} from 'react-share';
+} from '../src';
 
 import './Demo.css';
 import exampleImage from './react-share-pin-example.png';

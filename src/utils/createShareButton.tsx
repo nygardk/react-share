@@ -1,6 +1,6 @@
-import React, { PureComponent, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
+import React, { PureComponent, ReactNode, WeakValidationMap } from 'react';
 
 const isPromise = (obj: any | Promise<any>) =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
@@ -76,9 +76,9 @@ export interface CommonShareButtonProps {
    */
   disabledStyle?: React.StyleHTMLAttributes<HTMLDivElement>;
   network: string;
-  networkLink: (url: string, options: object) => string;
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  opts?: object;
+  networkLink: (url: string, options: { [key: string]: string | undefined }) => string;
+  onClick?: (link: string, event: React.MouseEvent<HTMLElement>) => void;
+  opts?: { [key: string]: string | undefined };
   openWindow?: boolean;
   /** aria role */
   role?: string;
@@ -87,8 +87,8 @@ export interface CommonShareButtonProps {
    */
   url: string;
   style?: React.StyleHTMLAttributes<HTMLDivElement>;
-  windowWidth?: number;
-  windowHeight?: number;
+  windowWidth: number;
+  windowHeight: number;
   windowPosition: 'windowCenter' | 'screenCenter';
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
@@ -99,7 +99,7 @@ export interface CommonShareButtonProps {
    * Takes a function to be called after closing share dialog.
    */
   onShareWindowClose?: () => void;
-  tabIndex?: string | number;
+  tabIndex?: number;
 }
 
 class ShareButton extends PureComponent<CommonShareButtonProps> {
@@ -117,9 +117,9 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
     url: PropTypes.string.isRequired,
     role: PropTypes.string,
     style: PropTypes.object,
-    windowWidth: PropTypes.number,
-    windowHeight: PropTypes.number,
-    windowPosition: PropTypes.oneOf(['windowCenter', 'screenCenter']),
+    windowWidth: PropTypes.number.isRequired,
+    windowHeight: PropTypes.number.isRequired,
+    windowPosition: PropTypes.oneOf(['windowCenter', 'screenCenter']).isRequired,
     beforeOnClick: PropTypes.func,
     onShareWindowClose: PropTypes.func,
     tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -132,7 +132,7 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
     openWindow: true,
     role: 'button',
     windowPosition: 'windowCenter',
-    tabIndex: '0',
+    tabIndex: 0,
   };
 
   onClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -146,7 +146,9 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
 
     const link = this.link();
 
-    const clickHandler = openWindow ? () => this.openWindow(link) : () => onClick && onClick(link);
+    const clickHandler = openWindow
+      ? () => this.openWindow(link)
+      : () => onClick && onClick(link, e);
 
     if (beforeOnClick) {
       const returnVal = beforeOnClick();
@@ -163,7 +165,8 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
 
   onKeyPress = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter' || e.key === '13' || e.key === ' ' || e.key === '32') {
-      this.onClick(e);
+      // TODO: get rid of this hack -> refactor props.onClick to props.onOpen
+      this.onClick((e as unknown) as React.MouseEvent<HTMLElement>);
     }
   };
 
@@ -182,7 +185,7 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
   };
 
   link() {
-    const { url, opts, networkLink } = this.props;
+    const { url, opts = {}, networkLink } = this.props;
     return networkLink(url, opts);
   }
 
@@ -231,11 +234,17 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
 
 export interface HiddenShareButtonProps {
   networkLink: string;
-  opts: object;
+  opts: { [key: string]: string | undefined };
 }
 
-function createShareButton((network: string, link: string, optsMap = () => ({}), propTypes, defaultProps = {}): React.SFC<CommonShareButtonProps> {
-  const CreatedButton: React.SFC<CommonShareButtonProps> = React.forwardRef((props, ref) => (
+function createShareButton<OptionProps = any, MappedOptions = {}>(
+  network: string,
+  link: (url: string, options: MappedOptions) => string,
+  optsMap: (props: CommonShareButtonProps & OptionProps) => MappedOptions,
+  propTypes: WeakValidationMap<CommonShareButtonProps & OptionProps>,
+  defaultProps = {},
+) {
+  const CreatedButton: React.SFC<CommonShareButtonProps & OptionProps> = React.forwardRef((props, ref) => (
     <ShareButton {...props} network={network} networkLink={link} opts={optsMap(props)} ref={ref} />
   );
 

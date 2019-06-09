@@ -5,7 +5,10 @@ import assert from 'assert';
 import createShareButton from './utils/createShareButton';
 import objectToGetParams from './utils/objectToGetParams';
 
-function instapaperLink(url, { title, description }) {
+function instapaperLink(
+  url: string,
+  { title, description }: { title?: string; description?: string },
+) {
   assert(url, 'instapaper.url');
 
   return (
@@ -18,7 +21,7 @@ function instapaperLink(url, { title, description }) {
   );
 }
 
-const InstapaperShareButton = createShareButton(
+const InstapaperShareButton = createShareButton<{ title?: string; description?: string }>(
   'instapaper',
   instapaperLink,
   props => ({

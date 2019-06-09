@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function emailLink(url, { subject, body, separator }) {
+function emailLink(
+  url: string,
+  { subject, body, separator }: { subject?: string; body?: string; separator?: string },
+) {
   return 'mailto:' + objectToGetParams({ subject, body: body ? body + separator + url : url });
 }
 
-const EmailShareButton = createShareButton(
+const EmailShareButton = createShareButton<{ subject?: string; body?: string; separator?: string }>(
   'email',
   emailLink,
   props => ({
@@ -23,7 +26,7 @@ const EmailShareButton = createShareButton(
   {
     separator: ' ',
     openWindow: false,
-    onClick: link => {
+    onClick: (link: string) => {
       window.location.href = link;
     },
   },

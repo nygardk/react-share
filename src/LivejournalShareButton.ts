@@ -5,7 +5,10 @@ import assert from 'assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 
-function livejournalLink(url, { title, description }) {
+function livejournalLink(
+  url: string,
+  { title, description }: { title?: string; description?: string },
+) {
   assert(url, 'livejournal.url');
 
   return (
@@ -17,7 +20,7 @@ function livejournalLink(url, { title, description }) {
   );
 }
 
-const LivejournalShareButton = createShareButton(
+const LivejournalShareButton = createShareButton<{ title?: string; description?: string }>(
   'livejournal',
   livejournalLink,
   props => ({

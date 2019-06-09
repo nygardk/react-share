@@ -9,7 +9,7 @@ function isMobileOrTablet() {
   return /(android|iphone|ipad|mobile)/i.test(navigator.userAgent);
 }
 
-function whatsappLink(url, { title, separator }) {
+function whatsappLink(url: string, { title, separator }: { title?: string; separator?: string }) {
   assert(url, 'whatsapp.url');
   return (
     'https://' +
@@ -21,7 +21,7 @@ function whatsappLink(url, { title, separator }) {
   );
 }
 
-const WhatsappShareButton = createShareButton(
+const WhatsappShareButton = createShareButton<{ title?: string; separator?: string }>(
   'whatsapp',
   whatsappLink,
   props => ({

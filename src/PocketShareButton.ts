@@ -5,7 +5,7 @@ import assert from 'assert';
 import createShareButton from './utils/createShareButton';
 import objectToGetParams from './utils/objectToGetParams';
 
-function pocketLink(url, { title }) {
+function pocketLink(url: string, { title }: { title?: string }) {
   assert(url, 'pocket.url');
 
   return (
@@ -17,7 +17,7 @@ function pocketLink(url, { title }) {
   );
 }
 
-const PocketShareButton = createShareButton(
+const PocketShareButton = createShareButton<{ title?: string }>(
   'pocket',
   pocketLink,
   props => ({

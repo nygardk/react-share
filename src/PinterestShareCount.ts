@@ -3,10 +3,10 @@ import jsonp from 'jsonp';
 import objectToGetParams from './utils/objectToGetParams';
 import shareCountFactory from './utils/shareCountFactory';
 
-function getPinterestShareCount(shareUrl, callback) {
+function getPinterestShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   const url = 'https://api.pinterest.com/v1/urls/count.json';
 
-  return jsonp(
+  jsonp(
     url +
       objectToGetParams({
         url: shareUrl,

@@ -37,7 +37,12 @@ module.exports = {
       },
       {
         test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
-        loader: 'url-loader?limit=1',
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 1,
+          },
+        },
         exclude: /node_modules/,
       },
       {

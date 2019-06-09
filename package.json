@@ -54,6 +54,7 @@
   "devDependencies": {
     "@types/assert": "^1.4.2",
     "@types/classnames": "^2.2.8",
+    "@types/jsonp": "^0.2.0",
     "@types/prop-types": "^15.7.1",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",

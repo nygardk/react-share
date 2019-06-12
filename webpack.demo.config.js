@@ -8,10 +8,7 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: 'development',
   devtool: PRODUCTION ? 'source-map' : 'inline-source-map',
-  entry: [
-    !PRODUCTION && 'react-hot-loader/patch',
-    './demo'
-  ].filter(e => !!e),
+  entry: ['./demo'].filter(e => !!e),
   output: {
     filename: '[name].[hash].bundle.js',
     // publicPath: '',
@@ -27,10 +24,16 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        options: {
-          forceEnv: PRODUCTION ? 'commonjs' : 'with_react_hot_loader',
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              forceEnv: PRODUCTION ? 'commonjs' : 'with_react_hot_loader',
+            },
+          },
+          'react-hot-loader/webpack',
+        ],
         exclude: /node_modules/
       },
       {

@@ -305,7 +305,7 @@ class Demo extends Component {
               round />
           </InstapaperShareButton>
         </div>
-        
+
         <div className="Demo__some-network">
           <FacebookMessengerShareButton
             url={shareUrl}
@@ -313,9 +313,6 @@ class Demo extends Component {
             className="Demo__some-network__share-button">
             <FacebookMessengerIcon size={32} round />
           </FacebookMessengerShareButton>
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
         </div>
       </div>
     );

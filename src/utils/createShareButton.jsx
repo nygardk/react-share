@@ -199,12 +199,13 @@ class ShareButton extends PureComponent {
 }
 
 function createShareButton(network, link, optsMap = () => ({}), propTypes, defaultProps = {}) {
-  const CreatedButton = props => (
+  const CreatedButton = React.forwardRef((props, ref) => (
     <ShareButton {...props}
+      ref={ref}
       network={network}
       networkLink={link}
       opts={optsMap(props)} />
-  );
+  ));
 
   CreatedButton.propTypes = propTypes;
   CreatedButton.defaultProps = defaultProps;

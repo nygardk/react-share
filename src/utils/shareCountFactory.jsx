@@ -15,9 +15,9 @@ class SocialMediaShareCount extends Component {
     this.updateCount(this.props.url);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.url !== this.props.url) {
-      this.updateCount(nextProps.url);
+  componentDidUpdate(prevProps) {
+    if (prevProps.url !== this.props.url) {
+      this.updateCount(this.props.url);
     }
   }
 

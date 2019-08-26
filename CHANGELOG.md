@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1 (August 26, 2019)
+
+* Forward `ref` on to the share buttons
+* use `componentDidUpdate` instead of `componentWillUpdate`
+
 ## 3.0.0 (March 24, 2019)
 
 * Added `<PocketShareButton>`

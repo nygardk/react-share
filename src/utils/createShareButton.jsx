@@ -70,7 +70,10 @@ class ShareButton extends PureComponent {
     onClick: PropTypes.func,
     opts: PropTypes.object,
     openWindow: PropTypes.bool,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func,
+    ]).isRequired,
     role: PropTypes.string,
     style: PropTypes.object,
     windowWidth: PropTypes.number,
@@ -94,7 +97,7 @@ class ShareButton extends PureComponent {
     tabIndex: '0',
   }
 
-  onClick = (e) => {
+  onClick = async (e) => {
     const {
       disabled,
       onClick,
@@ -108,7 +111,7 @@ class ShareButton extends PureComponent {
 
     e.preventDefault();
 
-    const link = this.link();
+    const link = await this.link();
 
     const clickHandler = openWindow ? () => this.openWindow(link) : () => onClick(link);
 
@@ -151,8 +154,14 @@ class ShareButton extends PureComponent {
     windowOpen(link, windowConfig, onShareWindowClose);
   }
 
-  link() {
-    const { url, opts, networkLink } = this.props;
+  async link() {
+    let { url } = this.props;
+    const { opts, networkLink } = this.props;
+
+    if (typeof url === 'function') {
+      url = await Promise.resolve(url());
+    }
+
     return networkLink(url, opts);
   }
 

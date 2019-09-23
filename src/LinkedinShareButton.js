@@ -6,7 +6,7 @@ import createShareButton from './utils/createShareButton';
 function linkedinLink(url) {
   assert(url, 'linkedin.url');
 
-  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url });
+  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url }) + '&mini=true';
 }
 
 const LinkedinShareButton = createShareButton('linkedin', linkedinLink, undefined, undefined, {

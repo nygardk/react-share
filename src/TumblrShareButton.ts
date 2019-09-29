@@ -35,14 +35,14 @@ type Options = {
 };
 
 const TumblrShareButton = createShareButton<
-  Options & { tags: string[] },
+  Options & { tags?: string[] },
   Options & { tags: string }
 >(
   'tumblr',
   tumblrLink,
   props => ({
     title: props.title,
-    tags: props.tags.join(','),
+    tags: (props.tags || []).join(','),
     caption: props.caption,
     posttype: props.posttype,
   }),

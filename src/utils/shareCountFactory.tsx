@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+const defaultChildren = (shareCount: number) => shareCount;
+
 type SocialMediaShareCountProps = {
-  children: (shareCount: number) => React.ReactNode;
+  children?: (shareCount: number) => React.ReactNode;
   className?: string;
   getCount: (url: string, callback: (shareCount?: number) => void) => void;
   url: string;
@@ -22,10 +24,6 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
     className: PropTypes.string,
     getCount: PropTypes.func,
     url: PropTypes.string.isRequired,
-  };
-
-  static defaultProps = {
-    children: (shareCount: number) => shareCount,
   };
 
   constructor(props: SocialMediaShareCountProps) {
@@ -66,7 +64,7 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   render() {
     const { count, isLoading } = this.state;
 
-    const { children, className } = this.props;
+    const { children = defaultChildren, className } = this.props;
 
     return (
       <div className={cx('SocialMediaShareCount', className)}>
@@ -77,7 +75,7 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
 }
 
 export default function shareCountFactory(getCount: SocialMediaShareCountProps['getCount']) {
-  return (props: SocialMediaShareCountProps) => (
+  return (props: Omit<SocialMediaShareCountProps, 'getCount'>) => (
     <SocialMediaShareCount getCount={getCount} {...props} />
   );
 }

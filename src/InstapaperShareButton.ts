@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import assert from 'assert';
 
 import createShareButton from './utils/createShareButton';
@@ -31,6 +29,7 @@ const InstapaperShareButton = createShareButton<{ title?: string; description?: 
   {
     windowWidth: 500,
     windowHeight: 500,
+    windowPosition: 'windowCenter',
   },
 );
 

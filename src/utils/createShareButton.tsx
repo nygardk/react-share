@@ -244,8 +244,8 @@ function createShareButton<OptionProps = any, MappedOptions = {}>(
   propTypes: WeakValidationMap<CommonShareButtonProps & OptionProps>,
   defaultProps = {},
 ) {
-  const CreatedButton: React.SFC<CommonShareButtonProps & OptionProps> = React.forwardRef((props, ref) => (
-    <ShareButton {...props} network={network} networkLink={link} opts={optsMap(props)} ref={ref} />
+  const CreatedButton: React.SFC<CommonShareButtonProps & OptionProps> = props => (
+    <ShareButton {...props} network={network} networkLink={link} opts={optsMap(props)} />
   );
 
   CreatedButton.propTypes = propTypes;

@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 type Props = {
-  borderRadius: number;
+  borderRadius?: number;
   className?: string;
-  iconBgStyle: React.CSSProperties;
-  logoFillColor: string;
+  iconBgStyle?: React.CSSProperties;
+  logoFillColor?: string;
   round?: boolean;
-  size: number;
+  size?: number;
 };
 
 export default function iconFactory(network: string, iconConfig: { color: string; icon: string }) {

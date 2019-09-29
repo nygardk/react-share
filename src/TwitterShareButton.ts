@@ -32,11 +32,6 @@ const TwitterShareButton = createShareButton<{ title?: string; via?: string; has
     via: props.via,
   }),
   {
-    hashtags: PropTypes.arrayOf(PropTypes.string.isRequired),
-    title: PropTypes.string,
-    via: PropTypes.string,
-  },
-  {
     windowWidth: 550,
     windowHeight: 400,
   },

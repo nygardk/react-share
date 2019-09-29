@@ -29,10 +29,6 @@ const WhatsappShareButton = createShareButton<{ title?: string; separator?: stri
     separator: props.separator,
   }),
   {
-    title: PropTypes.string,
-    separator: PropTypes.string,
-  },
-  {
     separator: ' ',
     windowWidth: 550,
     windowHeight: 400,

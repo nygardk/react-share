@@ -47,13 +47,7 @@ const TumblrShareButton = createShareButton<
     posttype: props.posttype,
   }),
   {
-    title: PropTypes.string,
-    caption: PropTypes.string,
-    posttype: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  },
-  {
-    tags: [],
+    tags: [] as string[],
     posttype: 'link',
     windowWidth: 660,
     windowHeight: 460,

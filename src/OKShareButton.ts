@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
@@ -30,11 +28,6 @@ const OKShareButton = createShareButton<{ title?: string; description?: string; 
     description: props.description,
     image: props.image,
   }),
-  {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-  },
   {
     windowWidth: 588,
     windowHeight: 480,

@@ -13,7 +13,6 @@ const LinkedinShareButton = createShareButton(
   'linkedin',
   linkedinLink,
   () => ({}),
-  {},
   {
     windowWidth: 750,
     windowHeight: 600,

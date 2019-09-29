@@ -30,10 +30,6 @@ const PinterestShareButton = createShareButton<{ media: string; description?: st
     description: props.description,
   }),
   {
-    media: PropTypes.string.isRequired,
-    description: PropTypes.string,
-  },
-  {
     windowWidth: 1000,
     windowHeight: 730,
   },

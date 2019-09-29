@@ -28,10 +28,6 @@ const LivejournalShareButton = createShareButton<{ title?: string; description?:
     description: props.description,
   }),
   {
-    title: PropTypes.string,
-    description: PropTypes.string,
-  },
-  {
     windowWidth: 660,
     windowHeight: 460,
   },

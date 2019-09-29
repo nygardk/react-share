@@ -29,10 +29,6 @@ const InstapaperShareButton = createShareButton<{ title?: string; description?: 
     description: props.description,
   }),
   {
-    title: PropTypes.string,
-    description: PropTypes.string,
-  },
-  {
     windowWidth: 500,
     windowHeight: 500,
   },

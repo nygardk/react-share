@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
@@ -24,11 +22,9 @@ const RedditShareButton = createShareButton<{ title?: string }>(
     title: props.title,
   }),
   {
-    title: PropTypes.string,
-  },
-  {
     windowWidth: 660,
     windowHeight: 460,
+    windowPosition: 'windowCenter',
   },
 );
 

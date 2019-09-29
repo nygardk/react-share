@@ -26,10 +26,6 @@ const FacebookShareButton = createShareButton<{ quote?: string; hashtag?: string
     hashtag: props.hashtag,
   }),
   {
-    quote: PropTypes.string,
-    hashtag: PropTypes.string,
-  },
-  {
     windowWidth: 550,
     windowHeight: 400,
   },

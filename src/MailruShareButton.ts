@@ -35,11 +35,6 @@ const MailruShareButton = createShareButton<{
     image: props.image,
   }),
   {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-  },
-  {
     windowWidth: 660,
     windowHeight: 460,
   },

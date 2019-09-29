@@ -23,10 +23,6 @@ const ViberShareButton = createShareButton<{ title?: string; separator?: string 
     separator: props.separator,
   }),
   {
-    title: PropTypes.string,
-    separator: PropTypes.string,
-  },
-  {
     separator: ' ',
     windowWidth: 660,
     windowHeight: 460,

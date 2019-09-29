@@ -26,10 +26,6 @@ const WeiboShareButton = createShareButton<{ title?: string; image?: string }>(
     image: props.image,
   }),
   {
-    title: PropTypes.string,
-    image: PropTypes.string,
-  },
-  {
     windowWidth: 650,
     windowHeight: 350,
     windowPosition: 'screenCenter',

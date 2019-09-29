@@ -1,6 +1,7 @@
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 import React, { PureComponent, ReactNode, WeakValidationMap } from 'react';
+
+type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 const isPromise = (obj: any | Promise<any>) =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
@@ -61,7 +62,7 @@ function windowOpen(
   return shareDialog;
 }
 
-export interface CommonShareButtonProps {
+export interface CommonShareButtonProps<LinkOptions> {
   /**
    * An object to pass any additional properties, such as `aria-*` attributes.
    */
@@ -76,9 +77,9 @@ export interface CommonShareButtonProps {
    */
   disabledStyle?: React.StyleHTMLAttributes<HTMLDivElement>;
   network: string;
-  networkLink: (url: string, options: { [key: string]: string | undefined }) => string;
+  networkLink: NetworkLink<LinkOptions>;
   onClick?: (link: string, event: React.MouseEvent<HTMLElement>) => void;
-  opts?: { [key: string]: string | undefined };
+  opts: LinkOptions;
   openWindow?: boolean;
   /** aria role */
   role?: string;
@@ -102,29 +103,7 @@ export interface CommonShareButtonProps {
   tabIndex?: number;
 }
 
-class ShareButton extends PureComponent<CommonShareButtonProps> {
-  static propTypes = {
-    additionalProps: PropTypes.object,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    disabledStyle: PropTypes.object,
-    network: PropTypes.string.isRequired,
-    networkLink: PropTypes.func.isRequired,
-    onClick: PropTypes.func,
-    opts: PropTypes.object,
-    openWindow: PropTypes.bool,
-    url: PropTypes.string.isRequired,
-    role: PropTypes.string,
-    style: PropTypes.object,
-    windowWidth: PropTypes.number.isRequired,
-    windowHeight: PropTypes.number.isRequired,
-    windowPosition: PropTypes.oneOf(['windowCenter', 'screenCenter']).isRequired,
-    beforeOnClick: PropTypes.func,
-    onShareWindowClose: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
-
+class ShareButton<LinkOptions> extends PureComponent<CommonShareButtonProps<LinkOptions>> {
   static defaultProps = {
     disabledStyle: {
       opacity: 0.6,
@@ -185,7 +164,7 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
   };
 
   link() {
-    const { url, opts = {}, networkLink } = this.props;
+    const { url, opts, networkLink } = this.props;
     return networkLink(url, opts);
   }
 
@@ -232,24 +211,23 @@ class ShareButton extends PureComponent<CommonShareButtonProps> {
   }
 }
 
-export interface HiddenShareButtonProps {
-  networkLink: string;
-  opts: { [key: string]: string | undefined };
-}
-
-function createShareButton<OptionProps = any, MappedOptions = {}>(
+function createShareButton<OptionProps extends {}, LinkOptions = OptionProps>(
   network: string,
-  link: (url: string, options: MappedOptions) => string,
-  optsMap: (props: CommonShareButtonProps & OptionProps) => MappedOptions,
-  propTypes: WeakValidationMap<CommonShareButtonProps & OptionProps>,
-  defaultProps = {},
+  link: (url: string, options: LinkOptions) => string,
+  optsMap: (props: OptionProps) => LinkOptions,
+  defaultProps: Partial<CommonShareButtonProps<LinkOptions> & OptionProps>,
 ) {
-  const CreatedButton: React.FC<CommonShareButtonProps & OptionProps> = props => (
-    <ShareButton {...props} network={network} networkLink={link} opts={optsMap(props)} />
+  const CreatedButton: React.FC<
+    Omit<CommonShareButtonProps<LinkOptions>, 'network' | 'networkLink' | 'opts'> & OptionProps
+  > = props => (
+    <ShareButton<LinkOptions>
+      {...props}
+      {...defaultProps}
+      network={network}
+      networkLink={link}
+      opts={optsMap(props)}
+    />
   );
-
-  CreatedButton.propTypes = propTypes;
-  CreatedButton.defaultProps = defaultProps;
 
   return CreatedButton;
 }

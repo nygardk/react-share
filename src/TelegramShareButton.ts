@@ -24,9 +24,6 @@ const TelegramShareButton = createShareButton<{ title?: string }>(
     title: props.title,
   }),
   {
-    title: PropTypes.string,
-  },
-  {
     windowWidth: 550,
     windowHeight: 400,
   },

@@ -19,11 +19,6 @@ const EmailShareButton = createShareButton<{ subject?: string; body?: string; se
     separator: props.separator,
   }),
   {
-    subject: PropTypes.string,
-    body: PropTypes.string,
-    separator: PropTypes.string,
-  },
-  {
     separator: ' ',
     openWindow: false,
     onClick: (link: string) => {

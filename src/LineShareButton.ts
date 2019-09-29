@@ -24,9 +24,6 @@ const LineShareButton = createShareButton<{ title?: string }>(
     title: props.title,
   }),
   {
-    title: PropTypes.string,
-  },
-  {
     windowWidth: 500,
     windowHeight: 500,
   },

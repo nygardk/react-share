@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function iconFactory(network: string, iconConfig: { color: string; icon: string }) {
-  const Icon: React.SFC<Props> = props => {
+  const Icon: React.FC<Props> = props => {
     const { className, iconBgStyle, logoFillColor, borderRadius, round, size } = props;
 
     const baseStyle = {

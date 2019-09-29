@@ -3,6 +3,14 @@ import React, { PureComponent, ReactNode, WeakValidationMap } from 'react';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
+type WindowPosition = 'windowCenter' | 'screenCenter';
+
+type RequiredDefaultProps = {
+  windowHeight: number;
+  windowWidth: number;
+  windowPosition: WindowPosition;
+};
+
 const isPromise = (obj: any | Promise<any>) =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 
@@ -90,7 +98,7 @@ export interface CommonShareButtonProps<LinkOptions> {
   style?: React.StyleHTMLAttributes<HTMLDivElement>;
   windowWidth: number;
   windowHeight: number;
-  windowPosition: 'windowCenter' | 'screenCenter';
+  windowPosition: WindowPosition;
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.
@@ -215,7 +223,8 @@ function createShareButton<OptionProps extends {}, LinkOptions = OptionProps>(
   network: string,
   link: (url: string, options: LinkOptions) => string,
   optsMap: (props: OptionProps) => LinkOptions,
-  defaultProps: Partial<CommonShareButtonProps<LinkOptions> & OptionProps>,
+  defaultProps: Partial<Omit<CommonShareButtonProps<LinkOptions>, keyof RequiredDefaultProps>> &
+    RequiredDefaultProps,
 ) {
   const CreatedButton: React.FC<
     Omit<CommonShareButtonProps<LinkOptions>, 'network' | 'networkLink' | 'opts'> & OptionProps

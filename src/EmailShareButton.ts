@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './utils/createShareButton';
 

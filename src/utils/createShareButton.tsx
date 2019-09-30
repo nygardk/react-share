@@ -1,5 +1,5 @@
+import React, { PureComponent } from 'react';
 import cx from 'classnames';
-import React, { PureComponent, ReactNode, WeakValidationMap } from 'react';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
@@ -69,7 +69,7 @@ export interface CommonShareButtonProps<LinkOptions> {
    * An object to pass any additional properties, such as `aria-*` attributes.
    */
   additionalProps?: React.HTMLAttributes<HTMLDivElement>;
-  children?: ReactNode;
+  children?: React.ReactNode;
   className?: string;
   /** Disables click action and adds `disabled` class */
   disabled?: boolean;

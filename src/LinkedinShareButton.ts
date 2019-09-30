@@ -9,14 +9,9 @@ function linkedinLink(url: string) {
   return 'https://linkedin.com/shareArticle' + objectToGetParams({ url });
 }
 
-const LinkedinShareButton = createShareButton(
-  'linkedin',
-  linkedinLink,
-  () => ({}),
-  {
-    windowWidth: 750,
-    windowHeight: 600,
-  },
-);
+const LinkedinShareButton = createShareButton('linkedin', linkedinLink, () => ({}), {
+  windowWidth: 750,
+  windowHeight: 600,
+});
 
 export default LinkedinShareButton;

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';

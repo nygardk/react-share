@@ -224,9 +224,11 @@ function createShareButton<OptionProps extends {}, LinkOptions = OptionProps>(
   optsMap: (props: OptionProps) => LinkOptions,
   defaultProps: Partial<CommonShareButtonProps<LinkOptions> & OptionProps>,
 ) {
-  const CreatedButton: React.FC<
-    Omit<CommonShareButtonProps<LinkOptions>, 'network' | 'networkLink' | 'opts'> & OptionProps
-  > = props => (
+  const CreatedButton: React.FC<Omit<
+    CommonShareButtonProps<LinkOptions>,
+    'network' | 'networkLink' | 'opts'
+  > &
+    OptionProps> = props => (
     <ShareButton<LinkOptions>
       {...props}
       {...defaultProps}

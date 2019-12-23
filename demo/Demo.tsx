@@ -48,7 +48,7 @@ import {
 } from '../src';
 
 import './Demo.css';
-const exampleImage = require('./react-share-pin-example.png');
+import exampleImage from './react-share-pin-example.png';
 
 class Demo extends Component {
   render() {

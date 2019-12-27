@@ -5,7 +5,7 @@ import createShareButton from './utils/createShareButton';
 
 function mailruLink(
   url: string,
-  { title, description, image }: { title?: string; description?: string; image?: string },
+  { title, description, imageUrl }: { title?: string; description?: string; imageUrl?: string },
 ) {
   assert(url, 'mailru.url');
 
@@ -15,7 +15,7 @@ function mailruLink(
       url,
       title,
       description,
-      imageurl: image,
+      image_url: imageUrl,
     })
   );
 }
@@ -23,14 +23,14 @@ function mailruLink(
 const MailruShareButton = createShareButton<{
   title?: string;
   description?: string;
-  image?: string;
+  imageUrl?: string;
 }>(
   'mailru',
   mailruLink,
   props => ({
     title: props.title,
     description: props.description,
-    image: props.image,
+    imageUrl: props.imageUrl,
   }),
   {
     windowWidth: 660,

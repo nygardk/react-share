@@ -1,11 +1,12 @@
 {
-  "plugins": ["@typescript-eslint", "prettier", "react", "import", "jsx-a11y"],
+  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks", "import", "jsx-a11y"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "prettier",
     "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "es6": true,
@@ -21,12 +22,17 @@
   },
   "rules": {
     "prettier/prettier": "error",
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/rules-of-hooks": "error",
     "react/jsx-first-prop-new-line": 0,
     "react/jsx-filename-extension": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
     "react/destructuring-assignment": 0,
     "react/no-multi-comp": 0,
+    "react/prop-types": 0,
     "jsx-a11y/href-no-hash": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "no-underscore-dangle": 0,

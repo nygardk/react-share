@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
@@ -105,29 +105,21 @@ export type Props<LinkOptions> = Omit<
 > &
   CustomProps<LinkOptions>;
 
-function ShareButton<LinkOptions>({
-  beforeOnClick,
-  children,
-  className,
-  disabled,
-  disabledStyle = { opacity: 0.6 },
-  networkLink,
-  networkName,
-  onClick,
-  onShareWindowClose,
-  openShareDialogOnClick = true,
-  opts,
-  resetButtonStyle = true,
-  style,
-  url,
-  windowHeight = 400,
-  windowPosition = 'windowCenter',
-  windowWidth = 550,
-  ...rest
-}: Props<LinkOptions>) {
-  const link = networkLink(url, opts);
+export default class ShareButton<LinkOptions> extends Component<Props<LinkOptions>> {
+  static defaultProps = {
+    disabledStyle: { opacity: 0.6 },
+    openShareDialogOnClick: true,
+    resetButtonStyle: true,
+  };
 
-  const openShareDialog = (link: string) => {
+  openShareDialog = (link: string) => {
+    const {
+      onShareWindowClose,
+      windowHeight = 400,
+      windowPosition = 'windowCenter',
+      windowWidth = 550,
+    } = this.props;
+
     const windowConfig = {
       height: windowHeight,
       width: windowWidth,
@@ -139,7 +131,19 @@ function ShareButton<LinkOptions>({
     windowOpen(link, windowConfig, onShareWindowClose);
   };
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const {
+      beforeOnClick,
+      disabled,
+      networkLink,
+      onClick,
+      url,
+      openShareDialogOnClick,
+      opts,
+    } = this.props;
+
+    const link = networkLink(url, opts);
+
     if (disabled) {
       return;
     }
@@ -155,7 +159,7 @@ function ShareButton<LinkOptions>({
     }
 
     if (openShareDialogOnClick) {
-      openShareDialog(link);
+      this.openShareDialog(link);
     }
 
     if (onClick) {
@@ -163,48 +167,62 @@ function ShareButton<LinkOptions>({
     }
   };
 
-  const newStyle = useMemo(
-    () =>
-      resetButtonStyle
-        ? {
-            backgroundColor: 'transparent',
-            border: 'none',
-            padding: 0,
-            font: 'inherit',
-            color: 'inherit',
-            mozAppearance: 'none',
-            webkitAppearance: 'none',
-            cursor: 'pointer',
-            ...style,
-            ...(disabled && disabledStyle),
-          }
-        : {
-            ...style,
-            ...(disabled && disabledStyle),
-          },
-    [disabled, disabledStyle, resetButtonStyle, style],
-  );
+  render() {
+    const {
+      beforeOnClick,
+      children,
+      className,
+      disabled,
+      disabledStyle,
+      networkLink,
+      networkName,
+      onShareWindowClose,
+      openShareDialogOnClick,
+      opts,
+      resetButtonStyle,
+      style,
+      url,
+      windowHeight,
+      windowPosition,
+      windowWidth,
+      ...rest
+    } = this.props;
 
-  const newClassName = cx(
-    'SocialMediaShareButton',
-    {
-      'SocialMediaShareButton--disabled': !!disabled,
-      disabled: !!disabled,
-    },
-    className,
-  );
+    const newClassName = cx(
+      'SocialMediaShareButton',
+      {
+        'SocialMediaShareButton--disabled': !!disabled,
+        disabled: !!disabled,
+      },
+      className,
+    );
 
-  return (
-    <button
-      {...rest}
-      aria-label={rest['aria-label'] || networkName}
-      className={newClassName}
-      onClick={(handleClick as unknown) as (e: React.MouseEvent<HTMLButtonElement>) => void}
-      style={newStyle}
-    >
-      {children}
-    </button>
-  );
+    const newStyle = resetButtonStyle
+      ? {
+          backgroundColor: 'transparent',
+          border: 'none',
+          padding: 0,
+          font: 'inherit',
+          color: 'inherit',
+          cursor: 'pointer',
+          ...style,
+          ...(disabled && disabledStyle),
+        }
+      : {
+          ...style,
+          ...(disabled && disabledStyle),
+        };
+
+    return (
+      <button
+        {...rest}
+        aria-label={rest['aria-label'] || networkName}
+        className={newClassName}
+        onClick={this.handleClick}
+        style={newStyle}
+      >
+        {children}
+      </button>
+    );
+  }
 }
-
-export default ShareButton;

@@ -1,9 +1,9 @@
 import React from 'react';
 
 type Props = Omit<React.SVGProps<SVGSVGElement>, 'width' | 'height'> & {
+  bgStyle?: React.CSSProperties;
   borderRadius?: number;
-  iconBgStyle?: React.CSSProperties;
-  logoFillColor?: string;
+  iconFillColor?: string;
   round?: boolean;
   size?: number;
 };
@@ -17,16 +17,16 @@ type IconConfig = {
 
 export default function iconFactory(iconConfig: IconConfig) {
   const Icon: React.FC<Props> = ({
-    iconBgStyle,
-    logoFillColor,
+    bgStyle,
     borderRadius,
+    iconFillColor,
     round,
     size,
     ...rest
   }) => (
     <svg viewBox="0 0 64 64" width={size} height={size} {...rest}>
       {round ? (
-        <circle cx="32" cy="32" r="31" fill={iconConfig.color} style={iconBgStyle} />
+        <circle cx="32" cy="32" r="31" fill={iconConfig.color} style={bgStyle} />
       ) : (
         <rect
           width="64"
@@ -34,19 +34,19 @@ export default function iconFactory(iconConfig: IconConfig) {
           rx={borderRadius}
           ry={borderRadius}
           fill={iconConfig.color}
-          style={iconBgStyle}
+          style={bgStyle}
         />
       )}
 
-      <path d={iconConfig.path} fill={logoFillColor} />
+      <path d={iconConfig.path} fill={iconFillColor} />
     </svg>
   );
 
   Icon.defaultProps = {
-    iconBgStyle: {},
-    logoFillColor: 'white',
-    size: 64,
+    bgStyle: {},
     borderRadius: 0,
+    iconFillColor: 'white',
+    size: 64,
   };
 
   return Icon;

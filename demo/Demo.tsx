@@ -45,6 +45,7 @@ import {
   LineIcon,
   PocketIcon,
   InstapaperIcon,
+  WeiboIcon,
 } from '../src';
 
 import './Demo.css';
@@ -255,11 +256,7 @@ class Demo extends Component {
             image={`${String(window.location)}/${exampleImage}`}
             className="Demo__some-network__share-button"
           >
-            <img
-              className="Demo__some-network__custom-icon"
-              src="http://icons.iconarchive.com/icons/martz90/circle-addon2/512/weibo-icon.png"
-              alt="Weibo share button"
-            />
+            <WeiboIcon size={32} round />
           </WeiboShareButton>
         </div>
 

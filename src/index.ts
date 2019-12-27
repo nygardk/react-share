@@ -43,3 +43,4 @@ export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as LineIcon } from './LineIcon';
 export { default as PocketIcon } from './PocketIcon';
 export { default as InstapaperIcon } from './InstapaperIcon';
+export { default as WeiboIcon } from './WeiboIcon';

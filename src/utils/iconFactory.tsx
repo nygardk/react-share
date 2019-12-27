@@ -25,24 +25,20 @@ export default function iconFactory(iconConfig: IconConfig) {
     ...rest
   }) => (
     <svg viewBox="0 0 64 64" width={size} height={size} {...rest}>
-      <g>
-        {round ? (
-          <circle cx="32" cy="32" r="31" fill={iconConfig.color} style={iconBgStyle} />
-        ) : (
-          <rect
-            width="64"
-            height="64"
-            rx={borderRadius}
-            ry={borderRadius}
-            fill={iconConfig.color}
-            style={iconBgStyle}
-          />
-        )}
-      </g>
+      {round ? (
+        <circle cx="32" cy="32" r="31" fill={iconConfig.color} style={iconBgStyle} />
+      ) : (
+        <rect
+          width="64"
+          height="64"
+          rx={borderRadius}
+          ry={borderRadius}
+          fill={iconConfig.color}
+          style={iconBgStyle}
+        />
+      )}
 
-      <g>
-        <path d={iconConfig.path} fill={logoFillColor} />
-      </g>
+      <path d={iconConfig.path} fill={logoFillColor} />
     </svg>
   );
 

@@ -67,9 +67,11 @@ class Demo extends Component {
             <FacebookIcon size={32} round />
           </FacebookShareButton>
 
-          <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
-            {count => count}
-          </FacebookShareCount>
+          <div>
+            <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
+              {count => count}
+            </FacebookShareCount>
+          </div>
         </div>
 
         <div className="Demo__some-network">
@@ -124,7 +126,9 @@ class Demo extends Component {
             <PinterestIcon size={32} round />
           </PinterestShareButton>
 
-          <PinterestShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          <div>
+            <PinterestShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
 
         <div className="Demo__some-network">
@@ -136,7 +140,9 @@ class Demo extends Component {
             <VKIcon size={32} round />
           </VKShareButton>
 
-          <VKShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          <div>
+            <VKShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
 
         <div className="Demo__some-network">
@@ -148,7 +154,9 @@ class Demo extends Component {
             <OKIcon size={32} round />
           </OKShareButton>
 
-          <OKShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          <div>
+            <OKShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
 
         <div className="Demo__some-network">
@@ -162,7 +170,9 @@ class Demo extends Component {
             <RedditIcon size={32} round />
           </RedditShareButton>
 
-          <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          <div>
+            <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
 
         <div className="Demo__some-network">
@@ -174,7 +184,9 @@ class Demo extends Component {
             <TumblrIcon size={32} round />
           </TumblrShareButton>
 
-          <TumblrShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          <div>
+            <TumblrShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
 
         <div className="Demo__some-network">

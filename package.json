@@ -55,7 +55,6 @@
     "@types/assert": "^1.4.3",
     "@types/classnames": "^2.2.9",
     "@types/jsonp": "^0.2.0",
-    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
@@ -89,8 +88,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "jsonp": "^0.2.1",
-    "prop-types": "^15.5.8"
+    "jsonp": "^0.2.1"
   },
   "peerDependencies": {
     "react": "^16.3.0"

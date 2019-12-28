@@ -12,7 +12,7 @@ function getTumblrShareCount(shareUrl: string, callback: (shareCount?: number) =
         url: shareUrl,
       }),
     (err, data) => {
-      callback(data ? data.note_count : undefined);
+      callback(!err && data && data.response ? data.response.note_count : undefined);
     },
   );
 }

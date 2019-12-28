@@ -1,6 +1,6 @@
 import jsonp from 'jsonp';
 
-import shareCountFactory from './utils/shareCountFactory';
+import createShareCount from './utils/createShareCount';
 
 function getFacebookShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   const endpoint = `https://graph.facebook.com/?id=${shareUrl}`;
@@ -12,4 +12,4 @@ function getFacebookShareCount(shareUrl: string, callback: (shareCount?: number)
   });
 }
 
-export default shareCountFactory(getFacebookShareCount);
+export default createShareCount(getFacebookShareCount);

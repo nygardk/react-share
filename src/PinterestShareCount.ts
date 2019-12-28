@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 
 import objectToGetParams from './utils/objectToGetParams';
-import shareCountFactory from './utils/shareCountFactory';
+import createShareCount from './utils/createShareCount';
 
 function getPinterestShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   const url = 'https://api.pinterest.com/v1/urls/count.json';
@@ -17,4 +17,4 @@ function getPinterestShareCount(shareUrl: string, callback: (shareCount?: number
   );
 }
 
-export default shareCountFactory(getPinterestShareCount);
+export default createShareCount(getPinterestShareCount);

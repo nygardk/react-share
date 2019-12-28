@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 
 import objectToGetParams from './utils/objectToGetParams';
-import shareCountFactory from './utils/shareCountFactory';
+import createShareCount from './utils/createShareCount';
 
 declare global {
   interface Window {
@@ -39,4 +39,4 @@ function getVKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   );
 }
 
-export default shareCountFactory(getVKShareCount);
+export default createShareCount(getVKShareCount);

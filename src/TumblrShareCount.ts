@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 
 import objectToGetParams from './utils/objectToGetParams';
-import shareCountFactory from './utils/shareCountFactory';
+import createShareCount from './utils/createShareCount';
 
 function getTumblrShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   const endpoint = 'https://api.tumblr.com/v2/share/stats';
@@ -17,4 +17,4 @@ function getTumblrShareCount(shareUrl: string, callback: (shareCount?: number) =
   );
 }
 
-export default shareCountFactory(getTumblrShareCount);
+export default createShareCount(getTumblrShareCount);

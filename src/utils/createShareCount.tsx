@@ -74,7 +74,7 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   }
 }
 
-export default function shareCountFactory(getCount: SocialMediaShareCountProps['getCount']) {
+export default function createShareCount(getCount: SocialMediaShareCountProps['getCount']) {
   const ShareCount = (props: Omit<SocialMediaShareCountProps, 'getCount'>) => (
     <SocialMediaShareCount getCount={getCount} {...props} />
   );

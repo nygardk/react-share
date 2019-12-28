@@ -9,6 +9,8 @@ import {
   RedditShareCount,
   TumblrShareCount,
   FacebookShareButton,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
   PinterestShareButton,
@@ -72,6 +74,16 @@ class Demo extends Component {
               {count => count}
             </FacebookShareCount>
           </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <FacebookMessengerShareButton
+            url={shareUrl}
+            appId="521270401588372"
+            className="Demo__some-network__share-button"
+          >
+            <FacebookMessengerIcon size={32} round />
+          </FacebookMessengerShareButton>
         </div>
 
         <div className="Demo__some-network">

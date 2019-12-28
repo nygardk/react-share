@@ -24,6 +24,7 @@ export { default as LineShareButton } from './LineShareButton';
 export { default as WeiboShareButton } from './WeiboShareButton';
 export { default as PocketShareButton } from './PocketShareButton';
 export { default as InstapaperShareButton } from './InstapaperShareButton';
+export { default as FacebookMessengerShareButton } from './FacebookMessengerShareButton';
 
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as TwitterIcon } from './TwitterIcon';
@@ -44,3 +45,4 @@ export { default as LineIcon } from './LineIcon';
 export { default as PocketIcon } from './PocketIcon';
 export { default as InstapaperIcon } from './InstapaperIcon';
 export { default as WeiboIcon } from './WeiboIcon';
+export { default as FacebookMessengerIcon } from './FacebookMessengerIcon';

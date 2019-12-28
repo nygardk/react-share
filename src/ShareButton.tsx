@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Ref } from 'react';
 import cx from 'classnames';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
@@ -74,6 +74,7 @@ interface CustomProps<LinkOptions> {
    * @default { opacity: 0.6 }
    */
   disabledStyle?: React.CSSProperties;
+  forwardedRef?: Ref<HTMLButtonElement>;
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
@@ -174,6 +175,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       className,
       disabled,
       disabledStyle,
+      forwardedRef,
       networkLink,
       networkName,
       onShareWindowClose,
@@ -219,6 +221,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
         aria-label={rest['aria-label'] || networkName}
         className={newClassName}
         onClick={this.handleClick}
+        ref={forwardedRef}
         style={newStyle}
       >
         {children}

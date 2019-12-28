@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const EmailIcon = createIcon({
   color: '#7f7f7f',

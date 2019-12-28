@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const TumblrIcon = createIcon({
   color: '#2c4762',

@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 
 function workplaceLink(url: string, { quote, hashtag }: { quote?: string; hashtag?: string }) {
   assert(url, 'workplace.url');

@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 
 function isMobileOrTablet() {
   return /(android|iphone|ipad|mobile)/i.test(navigator.userAgent);

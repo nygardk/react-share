@@ -1,6 +1,6 @@
 import jsonp from 'jsonp';
 
-import createShareCount from './utils/createShareCount';
+import createShareCount from './hocs/createShareCount';
 
 function getRedditShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
   const endpoint = `https://www.reddit.com/api/info.json?limit=1&url=${shareUrl}`;

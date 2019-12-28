@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const InstapaperIcon = createIcon({
   color: '#1F1F1F',

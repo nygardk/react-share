@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 
 import objectToGetParams from './utils/objectToGetParams';
-import createShareCount from './utils/createShareCount';
+import createShareCount from './hocs/createShareCount';
 
 declare global {
   interface Window {

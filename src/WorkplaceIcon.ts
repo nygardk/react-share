@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const WorkplaceIcon = createIcon({
   color: '#3b3d4a',

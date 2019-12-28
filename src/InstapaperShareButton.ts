@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 import objectToGetParams from './utils/objectToGetParams';
 
 function instapaperLink(

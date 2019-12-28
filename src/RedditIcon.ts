@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const RedditIcon = createIcon({
   color: '#5f99cf',

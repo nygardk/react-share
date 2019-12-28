@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const WhatsappIcon = createIcon({
   color: '#2cb742',

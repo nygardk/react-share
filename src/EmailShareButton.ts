@@ -1,5 +1,5 @@
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 
 type Options = {
   body?: string;

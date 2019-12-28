@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const TwitterIcon = createIcon({
   color: '#00aced',

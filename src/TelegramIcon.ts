@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const TelegramIcon = createIcon({
   color: '#37aee2',

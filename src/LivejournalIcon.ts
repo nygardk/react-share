@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const LivejournalIcon = createIcon({
   color: '#21A5D8',

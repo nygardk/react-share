@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const MailruIcon = createIcon({
   color: '#168DE2',

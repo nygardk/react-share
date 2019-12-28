@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 
 function weiboLink(url: string, { title, image }: { title?: string; image?: string }) {
   assert(url, 'weibo.url');

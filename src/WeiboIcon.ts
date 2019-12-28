@@ -1,4 +1,4 @@
-import createIcon from './utils/createIcon';
+import createIcon from './hocs/createIcon';
 
 const WeiboIcon = createIcon({
   color: '#CD201F',

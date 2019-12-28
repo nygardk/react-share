@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './utils/createShareButton';
+import createShareButton from './hocs/createShareButton';
 
 type Options = {
   /** The url-encoded title value that you wish you use. */

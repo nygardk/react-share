@@ -119,8 +119,6 @@ class Demo extends Component {
           <PinterestShareButton
             url={String(window.location)}
             media={`${String(window.location)}/${exampleImage}`}
-            windowWidth={1000}
-            windowHeight={730}
             className="Demo__some-network__share-button"
           >
             <PinterestIcon size={32} round />
@@ -133,8 +131,6 @@ class Demo extends Component {
           <VKShareButton
             url={shareUrl}
             image={`${String(window.location)}/${exampleImage}`}
-            windowWidth={660}
-            windowHeight={460}
             className="Demo__some-network__share-button"
           >
             <VKIcon size={32} round />
@@ -173,8 +169,6 @@ class Demo extends Component {
           <TumblrShareButton
             url={shareUrl}
             title={title}
-            windowWidth={660}
-            windowHeight={460}
             className="Demo__some-network__share-button"
           >
             <TumblrIcon size={32} round />

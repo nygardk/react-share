@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const defaultChildren = (shareCount: number) => shareCount;
 
-type SocialMediaShareCountProps = {
+type SocialMediaShareCountProps = React.HTMLAttributes<HTMLSpanElement> & {
   children?: (shareCount: number) => React.ReactNode;
-  className?: string;
   getCount: (url: string, callback: (shareCount?: number) => void) => void;
   url: string;
 };
@@ -18,13 +16,6 @@ type StateTypes = {
 
 class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateTypes> {
   _isMounted = false;
-
-  static propTypes = {
-    children: PropTypes.func,
-    className: PropTypes.string,
-    getCount: PropTypes.func,
-    url: PropTypes.string.isRequired,
-  };
 
   constructor(props: SocialMediaShareCountProps) {
     super(props);
@@ -64,12 +55,12 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   render() {
     const { count, isLoading } = this.state;
 
-    const { children = defaultChildren, className } = this.props;
+    const { children = defaultChildren, className, ...rest } = this.props;
 
     return (
-      <div className={cx('SocialMediaShareCount', className)}>
-        {!isLoading && children(count || 0)}
-      </div>
+      <span className={cx('react-share__ShareCount', className)} {...rest}>
+        {!isLoading && count !== undefined && children(count)}
+      </span>
     );
   }
 }

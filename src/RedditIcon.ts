@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const RedditIcon = iconFactory({
+const RedditIcon = createIcon({
   color: '#5f99cf',
   networkName: 'reddit',
   path:

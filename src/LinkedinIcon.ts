@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const LinkedinIcon = iconFactory({
+const LinkedinIcon = createIcon({
   color: '#007fb1',
   networkName: 'linkedin',
   path:

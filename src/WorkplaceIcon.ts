@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const WorkplaceIcon = iconFactory({
+const WorkplaceIcon = createIcon({
   color: '#3b3d4a',
   networkName: 'workplace',
   path:

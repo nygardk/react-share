@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const LivejournalIcon = iconFactory({
+const LivejournalIcon = createIcon({
   color: '#21A5D8',
   networkName: 'livejournal',
   path:

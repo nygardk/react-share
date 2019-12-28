@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const WeiboIcon = iconFactory({
+const WeiboIcon = createIcon({
   color: '#CD201F',
   networkName: 'weibo',
   path:

@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const MailruIcon = iconFactory({
+const MailruIcon = createIcon({
   color: '#168DE2',
   networkName: 'mailru',
   path:

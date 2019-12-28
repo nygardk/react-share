@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const TelegramIcon = iconFactory({
+const TelegramIcon = createIcon({
   color: '#37aee2',
   networkName: 'telegram',
   path:

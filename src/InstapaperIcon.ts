@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const InstapaperIcon = iconFactory({
+const InstapaperIcon = createIcon({
   color: '#1F1F1F',
   networkName: 'instapaper',
   path:

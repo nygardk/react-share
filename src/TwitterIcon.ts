@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const TwitterIcon = iconFactory({
+const TwitterIcon = createIcon({
   color: '#00aced',
   networkName: 'twitter',
   path:

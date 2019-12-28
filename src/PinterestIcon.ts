@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const PinterestIcon = iconFactory({
+const PinterestIcon = createIcon({
   color: '#cb2128',
   networkName: 'pinterest',
   path:

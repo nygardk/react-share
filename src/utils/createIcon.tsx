@@ -15,7 +15,7 @@ type IconConfig = {
   path: string;
 };
 
-export default function iconFactory(iconConfig: IconConfig) {
+export default function createIcon(iconConfig: IconConfig) {
   const Icon: React.FC<Props> = ({
     bgStyle,
     borderRadius,

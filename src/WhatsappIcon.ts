@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const WhatsappIcon = iconFactory({
+const WhatsappIcon = createIcon({
   color: '#2cb742',
   networkName: 'whatsapp',
   path:

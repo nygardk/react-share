@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const TumblrIcon = iconFactory({
+const TumblrIcon = createIcon({
   color: '#2c4762',
   networkName: 'tumblr',
   path:

@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const LineIcon = iconFactory({
+const LineIcon = createIcon({
   color: '#00b800',
   networkName: 'line',
   path:

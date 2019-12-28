@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const OKIcon = iconFactory({
+const OKIcon = createIcon({
   color: '#f2720c',
   networkName: 'ok',
   path:

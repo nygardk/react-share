@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const VKIcon = iconFactory({
+const VKIcon = createIcon({
   color: '#45668e',
   networkName: 'vk',
   path:

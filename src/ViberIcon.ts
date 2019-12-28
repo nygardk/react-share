@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const ViberIcon = iconFactory({
+const ViberIcon = createIcon({
   color: '#7C529E',
   networkName: 'viber',
   path:

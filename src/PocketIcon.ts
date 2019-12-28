@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const PocketIcon = iconFactory({
+const PocketIcon = createIcon({
   color: '#EF3F56',
   networkName: 'pocket',
   path:

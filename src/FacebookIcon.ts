@@ -1,6 +1,6 @@
-import iconFactory from './utils/iconFactory';
+import createIcon from './utils/createIcon';
 
-const FacebookIcon = iconFactory({
+const FacebookIcon = createIcon({
   color: '#3b5998',
   networkName: 'facebook',
   path:

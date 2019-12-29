@@ -72,6 +72,10 @@ __Version 2.x.x__: compatiblity is tested with React 15 and 16.
 
 __Version 3.x.x__: compatiblity is tested with React 15 and 16.
 
+__Version 3.0.1__: compatible with React ^16.3.
+
+__Version 4.x.x__: compatible with React >=16.3.
+
 ## API
 
 ### Share buttons

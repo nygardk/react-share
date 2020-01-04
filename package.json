@@ -3,7 +3,7 @@
   "version": "4.0.0-rc.0",
   "description": "Social media share buttons and share counts for React.",
   "main": "./lib/index.js",
-  "types": "/lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "module": "./es/index.js",
   "sideEffects": false,
   "engines": {

@@ -24,8 +24,8 @@ const WeiboShareButton = createShareButton<{ title?: string; image?: string }>(
     image: props.image,
   }),
   {
-    windowWidth: 650,
-    windowHeight: 350,
+    windowWidth: 660,
+    windowHeight: 550,
     windowPosition: 'screenCenter',
   },
 );

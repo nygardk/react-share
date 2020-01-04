@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.0.0 (January 4, 2020)
 
 - React 16.3.0 or newer is now required
 - Refactored to TypeScript, type definitions are now included

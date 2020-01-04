@@ -65,7 +65,7 @@ function windowOpen(
 }
 
 interface CustomProps<LinkOptions> {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
   /** Disables click action and adds `disabled` class */
   disabled?: boolean;

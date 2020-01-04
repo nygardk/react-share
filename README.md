@@ -58,12 +58,6 @@ and open `http://localhost:8080`.
 npm install react-share --save
 ```
 
-## Browser
-
-ShareButtons work on all browsers.
-
-ShareCounts works on all browsers.
-
 ## Compatibility
 
 **Version 1.x.x**: compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.

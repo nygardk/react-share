@@ -12,45 +12,49 @@ module.exports = {
   output: {
     filename: '[name].[hash].bundle.js',
     // publicPath: '',
-    path: path.resolve(__dirname, 'docs')
+    path: path.resolve(__dirname, 'docs'),
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx?|tsx?)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx?|tsx?)$/,
         use: [
+          'react-hot-loader/webpack',
           {
-            loader: 'babel-loader',
+            loader: 'ts-loader',
             options: {
-              cacheDirectory: true,
-              forceEnv: PRODUCTION ? 'commonjs' : 'with_react_hot_loader',
+              configFile: 'tsconfig.demo.json',
             },
           },
-          'react-hot-loader/webpack',
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
-        loader: 'url-loader?limit=1',
-        exclude: /node_modules/
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 1,
+          },
+        },
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
         loader: ['style-loader', 'css-loader'],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    alias: {'react-share': path.resolve('./src')},
-    extensions: ['.js', '.jsx']
+    alias: { 'react-share': path.resolve('./src') },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -60,6 +64,6 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimizer: [new TerserPlugin()]
-  }
+    minimizer: [new TerserPlugin()],
+  },
 };

@@ -7,11 +7,16 @@ body {
 .Demo__some-network {
   vertical-align: top;
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 10px;
   text-align: center;
 }
 
 .Demo__some-network__share-count {
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: visible;
+  width: 0;
   margin-top: 3px;
   font-size: 12px;
 }

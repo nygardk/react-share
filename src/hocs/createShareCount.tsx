@@ -55,7 +55,7 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
   render() {
     const { count, isLoading } = this.state;
 
-    const { children = defaultChildren, className, ...rest } = this.props;
+    const { children = defaultChildren, className, getCount: _, ...rest } = this.props;
 
     return (
       <span className={cx('react-share__ShareCount', className)} {...rest}>

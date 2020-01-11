@@ -174,7 +174,7 @@ import {
   TwitterIcon,
   ViberIcon,
   VKIcon,
-  WeiboIcon
+  WeiboIcon,
   WhatsappIcon,
   WorkplaceIcon,
 } from "react-share";

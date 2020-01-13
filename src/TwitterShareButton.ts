@@ -14,7 +14,7 @@ function twitterLink(
 ) {
   assert(url, 'twitter.url');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
-  assert(Array.isArray(hashtags), 'twitter.related is not an array');
+  assert(Array.isArray(related), 'twitter.related is not an array');
 
   return (
     'https://twitter.com/share' +

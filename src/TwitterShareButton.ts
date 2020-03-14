@@ -16,7 +16,7 @@ function twitterLink(
       url,
       text: title,
       via,
-      hashtags: hashtags.join(','),
+      hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
     })
   );
 }

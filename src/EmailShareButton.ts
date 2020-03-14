@@ -17,10 +17,9 @@ const EmailShareButton = createShareButton<Options>(
   props => ({
     subject: props.subject,
     body: props.body,
-    separator: props.separator,
+    separator: props.separator || ' ',
   }),
   {
-    separator: ' ',
     openShareDialogOnClick: false,
     onClick: (_, link: string) => {
       window.location.href = link;

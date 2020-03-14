@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.1.0 (Mar 14, 2020)
+
+- Fix: `TwitterShareButton` won't have hashtags as empty string (#284, #293)
+- Fix: `OKShareCount` now supports multiple different share counts per page (#289)
+- Fix: share buttons won't pass link options as props (#286)
+- Fix: `EmailShareButton` now has default `separator` correctly as `` #287)
+- Fix: `WhatsappShareButton` now has default `separator` correctly as ``
+- Fix: `TumblrShareButton` now has default `posttype` correctly as `link`
+- Feature: `TwitterShareButton` now supports "related" array (#281)
+
 ## 4.0.0 (January 4, 2020)
 
 - React 16.3.0 or newer is now required

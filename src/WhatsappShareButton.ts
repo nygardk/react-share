@@ -24,10 +24,9 @@ const WhatsappShareButton = createShareButton<{ title?: string; separator?: stri
   whatsappLink,
   props => ({
     title: props.title,
-    separator: props.separator,
+    separator: props.separator || ' ',
   }),
   {
-    separator: ' ',
     windowWidth: 550,
     windowHeight: 400,
   },

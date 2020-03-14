@@ -34,7 +34,8 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
 
   window.ODKL = {
     updateCount(a, b) {
-      window.OK.callbacks[parseInt(a)](b);
+      const callbackIndex = parseInt(a.replace('react-share-', ''), 10);
+      window.OK.callbacks[callbackIndex](b);
     },
   };
   window.OK.callbacks.push(callback);
@@ -43,7 +44,7 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
     url +
       objectToGetParams({
         'st.cmd': 'extLike',
-        uid: index,
+        uid: `react-share-${index}`,
         ref: shareUrl,
       }),
   );

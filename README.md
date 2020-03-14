@@ -76,7 +76,7 @@ npm install react-share --save
 
 ```js
 import {
-  EmailShareButton
+  EmailShareButton,
   FacebookShareButton,
   InstapaperShareButton,
   LineShareButton,
@@ -174,7 +174,7 @@ import {
   TwitterIcon,
   ViberIcon,
   VKIcon,
-  WeiboIcon
+  WeiboIcon,
   WhatsappIcon,
   WorkplaceIcon,
 } from "react-share";

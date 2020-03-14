@@ -15,10 +15,19 @@ function createShareButton<OptionProps extends {}, LinkOptions = OptionProps>(
     OptionProps;
 
   function CreatedButton(props: Props, ref: Ref<HTMLButtonElement>) {
+    const opts = optsMap(props);
+    const passedProps = { ...props };
+
+    // remove keys from passed props that are passed as opts
+    const optsKeys = Object.keys(opts);
+    optsKeys.forEach(key => {
+      delete (passedProps as any)[key];
+    });
+
     return (
       <ShareButton<LinkOptions>
         {...defaultProps}
-        {...props}
+        {...passedProps}
         forwardedRef={ref}
         networkName={networkName}
         networkLink={link}

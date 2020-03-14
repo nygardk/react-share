@@ -23,7 +23,7 @@ function twitterLink(
       text: title,
       via,
       hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
-      related: related.join(','),
+      related: related.length > 0 ? related.join(',') : undefined,
     })
   );
 }

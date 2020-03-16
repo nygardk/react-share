@@ -93,7 +93,7 @@ import {
   ViberShareButton,
   VKShareButton,
   WhatsappShareButton,
-  WorkplaceShareButton,
+  WorkplaceShareButton
 } from "react-share";
 ```
 
@@ -130,8 +130,8 @@ import {
   OKShareCount,
   PinterestShareCount,
   RedditShareCount,
-  TumblrShareCount
-  VKShareCount,
+  TumblrShareCount,
+  VKShareCount
 } from "react-share";
 ```
 
@@ -176,7 +176,7 @@ import {
   VKIcon,
   WeiboIcon,
   WhatsappIcon,
-  WorkplaceIcon,
+  WorkplaceIcon
 } from "react-share";
 ```
 

@@ -6,41 +6,15 @@ type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 type WindowPosition = 'windowCenter' | 'screenCenter';
 
 /**
- * Extracted from cordova.InAppBrowser.open()
+ * Options from cordova.InAppBrowser.open()
  * See [InAppBrowser docs](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/index.html#cordovainappbrowseropen) for details
  */
-interface WebViewOptions {
-  target?: '_blank' | '_self' | '_system';
-  closebuttoncaption?: string;
-  location?: 'yes' | 'no';
-  hidden?: 'yes' | 'no';
-  beforeload?: 'get' | 'post' | 'yes';
-  clearcache?: 'yes' | 'no';
-  clearsessioncache?: 'yes' | 'no';
-  closebuttoncolor?: string;
-  hidenavigationbuttons?: 'yes' | 'no';
-  navigationbuttoncolor?: string;
-  toolbar?: 'yes' | 'no';
-  toolbarcolor?: string;
-  lefttoright?: 'yes' | 'no';
-  /* Android only */
-  footer?: 'yes' | 'no';
-  footercolor?: string;
-  hardwareback?: 'yes' | 'no';
-  hideurlbar?: 'yes' | 'no';
-  zoom?: 'yes' | 'no';
-  useWideViewPort?: 'yes' | 'no';
-  /* iOS only */
-  usewkwebview?: 'yes' | 'no';
-  disallowoverscroll?: 'yes' | 'no';
-  enableViewportScale?: 'yes' | 'no';
-  cleardata?: 'yes' | 'no';
-  toolbarposition?: 'top' | 'bottom';
-  presentationstyle?: 'pagesheet' | 'formsheet' | 'fullscreen';
-  transitionstyle?: 'fliphorizontal' | 'crossdissolve' | 'coververtical';
+interface CordovaOptions {
+  target: string;
+  [key: string]: string;
 }
 
-type InAppBrowserOptions = Omit<WebViewOptions, 'target'>;
+type InAppBrowserOptions = Omit<CordovaOptions, 'target'>;
 
 const isPromise = (obj: any | Promise<any>) =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
@@ -101,32 +75,31 @@ function windowOpen(
   return shareDialog;
 }
 
-function windowOpenFromWebView(
-  url: string,
-  webViewOptions: WebViewOptions,
-  onClose?: (dialog: Window | null) => void,
-) {
-  const target = webViewOptions.target || '_blank';
-  if (webViewOptions.target) delete webViewOptions.target;
+function windowOpenFromWebView(url: string, cordovaOptions: CordovaOptions, onClose?: () => void) {
+  const { target } = cordovaOptions;
+  delete cordovaOptions.target;
 
-  if (!Object.prototype.hasOwnProperty.call(window, 'cordova'))
-    throw new Error('You can use webViewOptions in Cordova envirorment only');
-
-  if (!Object.prototype.hasOwnProperty.call((window as any).cordova, 'InAppBrowser'))
-    throw new Error('InAppBrowser not installed or deviceReady event not triggeted yet');
-
+  /* eslint-disable no-console */
+  if (!Object.prototype.hasOwnProperty.call(window, 'cordova')) {
+    console.error('You can use cordovaOptions only in Cordova environment');
+    return;
+  }
+  if (!Object.prototype.hasOwnProperty.call((window as any).cordova, 'InAppBrowser')) {
+    console.error('InAppBrowser not installed or deviceReady event not yet triggered');
+    return;
+  }
   if (onClose && target !== '_blank')
-    throw new Error('onClose() can be used witin InAppBrowser only (set target: "_blank")');
+    console.error('onClose() can only be used within InAppBrowser (set target: "_blank")');
+  /* eslint-enable no-console */
 
+  // Suggested non-default optimizations
   const config: InAppBrowserOptions = {
-    closebuttoncaption: 'Done',
     clearcache: 'no',
     clearsessioncache: 'no',
-    toolbar: 'yes',
-    enableViewportScale: 'no',
-    presentationstyle: 'fullscreen',
-    transitionstyle: 'coververtical',
-    ...webViewOptions,
+    toolbar: 'no',
+    hideurlbar: 'yes',
+    zoom: 'no',
+    ...cordovaOptions,
   };
 
   const launchIntent = (window as any).cordova.InAppBrowser.open(
@@ -137,21 +110,7 @@ function windowOpenFromWebView(
       .join(', '),
   );
 
-  if (onClose) {
-    const interval = window.setInterval(() => {
-      try {
-        if (launchIntent === null || launchIntent.closed) {
-          onClose(launchIntent);
-        }
-      } catch (e) {
-        /* eslint-disable no-console */
-        console.error(e);
-        /* eslint-enable no-console */
-      } finally {
-        window.clearInterval(interval);
-      }
-    }, 1000);
-  }
+  if (onClose && target == '_blank') launchIntent.addEventListener('exit', onClose);
 
   return launchIntent;
 }
@@ -191,10 +150,10 @@ interface CustomProps<LinkOptions> {
   onShareWindowClose?: () => void;
   resetButtonStyle?: boolean;
   /**
-   * Options to trigger InAppBrowser on cordova-based apps
+   * Options to trigger InAppBrowser plugin on cordova apps
    * See [Cordova docs](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/index.html#cordovainappbrowseropen)
    */
-  webViewOptions?: WebViewOptions;
+  cordovaOptions?: CordovaOptions;
 }
 
 export type Props<LinkOptions> = Omit<
@@ -229,10 +188,9 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     windowOpen(link, windowConfig, onShareWindowClose);
   };
 
-  openFromWebView = (link: string, webViewOptions: WebViewOptions) => {
+  openFromWebView = (link: string, cordovaOptions: CordovaOptions) => {
     const { onShareWindowClose } = this.props;
-
-    windowOpenFromWebView(link, webViewOptions, onShareWindowClose);
+    windowOpenFromWebView(link, cordovaOptions, onShareWindowClose);
   };
 
   handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -244,7 +202,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       url,
       openShareDialogOnClick,
       opts,
-      webViewOptions,
+      cordovaOptions,
     } = this.props;
 
     const link = networkLink(url, opts);
@@ -263,10 +221,10 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       }
     }
 
-    if (openShareDialogOnClick) {
+    if (cordovaOptions) {
+      this.openFromWebView(link, cordovaOptions);
+    } else if (openShareDialogOnClick) {
       this.openShareDialog(link);
-    } else if (webViewOptions) {
-      this.openFromWebView(link, webViewOptions);
     }
 
     if (onClick) {

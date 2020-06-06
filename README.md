@@ -132,8 +132,8 @@ import {
   OKShareCount,
   PinterestShareCount,
   RedditShareCount,
-  TumblrShareCount
-  VKShareCount,
+  TumblrShareCount,
+  VKShareCount
 } from "react-share";
 ```
 

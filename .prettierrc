@@ -5,14 +5,16 @@
       "files": ["*.js", "*.jsx"],
       "options": {
         "singleQuote": true,
-        "trailingComma": "all"
+        "trailingComma": "all",
+        "arrowParens": "avoid"
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
       "options": {
         "singleQuote": true,
-        "trailingComma": "all"
+        "trailingComma": "all",
+        "arrowParens": "avoid"
       }
     },
     {

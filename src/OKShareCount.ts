@@ -12,7 +12,7 @@ declare global {
       callbacks: ((count?: number) => void)[];
     };
     ODKL: {
-      updateCount: (a: any, b: any) => void;
+      updateCount: (index: string, count: string) => void;
     };
   }
 }
@@ -33,9 +33,9 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   const index = window.OK.callbacks.length;
 
   window.ODKL = {
-    updateCount(a, b) {
-      const callbackIndex = parseInt(a.replace('react-share-', ''), 10);
-      window.OK.callbacks[callbackIndex](b);
+    updateCount(index, count) {
+      const callbackIndex = index === '' ? 0 : parseInt(index.replace('react-share-', ''), 10);
+      window.OK.callbacks[callbackIndex](count === '' ? undefined : parseInt(count, 10));
     },
   };
   window.OK.callbacks.push(callback);

@@ -132,7 +132,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     windowOpen(link, windowConfig, onShareWindowClose);
   };
 
-  handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       beforeOnClick,
       disabled,
@@ -149,7 +149,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       return;
     }
 
-    e.preventDefault();
+    event.preventDefault();
 
     if (beforeOnClick) {
       const returnVal = beforeOnClick();
@@ -164,7 +164,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     }
 
     if (onClick) {
-      onClick(e, link);
+      onClick(event, link);
     }
   };
 

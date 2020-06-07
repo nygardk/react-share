@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.2.0 (Jun 07, 2020)
+
+- Added: `FacebookMessengerShareButton` docs are now included in the readme
+- Fix: Prevent `VKShareCount` from colliding with an existing `window.VK` object
+- Fix: Default separator in `ViberShareButton` is now `' '`
+- Fix: `WhatsappIcon` green color to match with WhatsApp brand
+- Fix: Allow `ShareButton` `beforeOnClick` to return `void`
+- Fix: Guard against unexpected behaviour with `OKShareCount` for the returned index parameter by adding a sensible fallback
+
 ## 4.1.0 (Mar 14, 2020)
 
 - Fix: `TwitterShareButton` won't have hashtags as empty string (#284, #293)

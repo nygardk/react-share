@@ -44,3 +44,6 @@ export { default as WhatsappIcon } from './WhatsappIcon';
 export { default as WhatsappShareButton } from './WhatsappShareButton';
 export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
+export { default as HatenaIcon } from './HatenaIcon';
+export { default as HatenaShareButton } from './HatenaShareButton';
+export { default as HatenaShareCount } from './HatenaShareCount';

@@ -1,18 +1,11 @@
 import assert from 'assert';
 
-import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 
 function hatenaLink(url: string, { title }: { title?: string }) {
   assert(url, 'hatena.url');
 
-  return (
-    'https://b.hatena.ne.jp/add?mode=confirm' +
-    objectToGetParams({
-      url,
-      title,
-    })
-  );
+  return `http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`;
 }
 
 const HatenaShareButton = createShareButton<{ title?: string }>(

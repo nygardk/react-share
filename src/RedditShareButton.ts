@@ -1,5 +1,4 @@
-import assert from 'assert';
-
+import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 

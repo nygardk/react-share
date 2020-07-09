@@ -5,7 +5,7 @@ type Props = Omit<React.SVGProps<SVGSVGElement>, 'width' | 'height'> & {
   borderRadius?: number;
   iconFillColor?: string;
   round?: boolean;
-  size?: number;
+  size?: number | string;
 };
 
 type IconConfig = {

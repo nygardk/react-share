@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.2.1 (Jul 09, 2020)
+
+- Fix: added internal `assert` utility to get rid of Node.js `assert` dependency (MINOR BREAKING CHANGE: the error thrown is slightly different)
+
 ## 4.2.0 (Jun 07, 2020)
 
 - Added: `FacebookMessengerShareButton` docs are now included in the readme

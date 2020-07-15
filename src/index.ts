@@ -1,46 +1,97 @@
-export { default as EmailIcon } from './EmailIcon';
-export { default as EmailShareButton } from './EmailShareButton';
-export { default as FacebookIcon } from './FacebookIcon';
-export { default as FacebookMessengerIcon } from './FacebookMessengerIcon';
-export { default as FacebookMessengerShareButton } from './FacebookMessengerShareButton';
-export { default as FacebookShareButton } from './FacebookShareButton';
-export { default as FacebookShareCount } from './FacebookShareCount';
-export { default as InstapaperIcon } from './InstapaperIcon';
-export { default as InstapaperShareButton } from './InstapaperShareButton';
-export { default as LineIcon } from './LineIcon';
-export { default as LineShareButton } from './LineShareButton';
-export { default as LinkedinIcon } from './LinkedinIcon';
-export { default as LinkedinShareButton } from './LinkedinShareButton';
-export { default as LivejournalIcon } from './LivejournalIcon';
-export { default as LivejournalShareButton } from './LivejournalShareButton';
-export { default as MailruIcon } from './MailruIcon';
-export { default as MailruShareButton } from './MailruShareButton';
-export { default as OKIcon } from './OKIcon';
-export { default as OKShareButton } from './OKShareButton';
-export { default as OKShareCount } from './OKShareCount';
-export { default as PinterestIcon } from './PinterestIcon';
-export { default as PinterestShareButton } from './PinterestShareButton';
-export { default as PinterestShareCount } from './PinterestShareCount';
-export { default as PocketIcon } from './PocketIcon';
-export { default as PocketShareButton } from './PocketShareButton';
-export { default as RedditIcon } from './RedditIcon';
-export { default as RedditShareButton } from './RedditShareButton';
-export { default as RedditShareCount } from './RedditShareCount';
-export { default as TelegramIcon } from './TelegramIcon';
-export { default as TelegramShareButton } from './TelegramShareButton';
-export { default as TumblrIcon } from './TumblrIcon';
-export { default as TumblrShareButton } from './TumblrShareButton';
-export { default as TumblrShareCount } from './TumblrShareCount';
-export { default as TwitterIcon } from './TwitterIcon';
-export { default as TwitterShareButton } from './TwitterShareButton';
-export { default as ViberIcon } from './ViberIcon';
-export { default as ViberShareButton } from './ViberShareButton';
-export { default as VKIcon } from './VKIcon';
-export { default as VKShareButton } from './VKShareButton';
-export { default as VKShareCount } from './VKShareCount';
-export { default as WeiboIcon } from './WeiboIcon';
-export { default as WeiboShareButton } from './WeiboShareButton';
-export { default as WhatsappIcon } from './WhatsappIcon';
-export { default as WhatsappShareButton } from './WhatsappShareButton';
-export { default as WorkplaceIcon } from './WorkplaceIcon';
-export { default as WorkplaceShareButton } from './WorkplaceShareButton';
+declare module 'react-share' {
+    const EmailIcon: any;
+    const EmailShareButton: any;
+    const FacebookIcon: any;
+    const FacebookMessengerIcon: any;
+    const FacebookMessengerShareButton: any;
+    const FacebookShareButton: any;
+    const FacebookShareCount: any;
+    const InstapaperIcon: any;
+    const InstapaperShareButton: any;
+    const LineIcon: any;
+    const LineShareButton: any;
+    const LinkedinIcon: any;
+    const LinkedinShareButton: any;
+    const LivejournalIcon: any;
+    const LivejournalShareButton: any;
+    const MailruIcon: any;
+    const MailruShareButton: any;
+    const OKIcon: any;
+    const OKShareButton: any;
+    const OKShareCount: any;
+    const PinterestIcon: any;
+    const PinterestShareButton: any;
+    const PinterestShareCount: any;
+    const PocketIcon: any;
+    const PocketShareButton: any;
+    const RedditIcon: any;
+    const RedditShareButton: any;
+    const RedditShareCount: any;
+    const TelegramIcon: any;
+    const TelegramShareButton: any;
+    const TumblrIcon: any;
+    const TumblrShareButton: any;
+    const TumblrShareCount: any;
+    const TwitterIcon: any;
+    const TwitterShareButton: any;
+    const ViberIcon: any;
+    const ViberShareButton: any;
+    const VKIcon: any;
+    const VKShareButton: any;
+    const VKShareCount: any;
+    const WeiboIcon: any;
+    const WeiboShareButton: any;
+    const WhatsappIcon: any;
+    const WhatsappShareButton: any;
+    const WorkplaceIcon: any;
+    const WorkplaceShareButton: any;
+  
+    export {
+        EmailIcon,
+        EmailShareButton,
+        FacebookIcon,
+        FacebookMessengerIcon,
+        FacebookMessengerShareButton,
+        FacebookShareButton,
+        FacebookShareCount,
+        InstapaperIcon,
+        InstapaperShareButton,
+        LineIcon,
+        LineShareButton,
+        LinkedinIcon,
+        LinkedinShareButton,
+        LivejournalIcon,
+        LivejournalShareButton,
+        MailruIcon,
+        MailruShareButton,
+        OKIcon,
+        OKShareButton,
+        OKShareCount,
+        PinterestIcon,
+        PinterestShareButton,
+        PinterestShareCount,
+        PocketIcon,
+        PocketShareButton,
+        RedditIcon,
+        RedditShareButton,
+        RedditShareCount,
+        TelegramIcon,
+        TelegramShareButton,
+        TumblrIcon,
+        TumblrShareButton,
+        TumblrShareCount,
+        TwitterIcon,
+        TwitterShareButton,
+        ViberIcon,
+        ViberShareButton,
+        VKIcon,
+        VKShareButton,
+        VKShareCount,
+        WeiboIcon,
+        WeiboShareButton,
+        WhatsappIcon,
+        WhatsappShareButton,
+        WorkplaceIcon,
+        WorkplaceShareButton,
+    }
+  }

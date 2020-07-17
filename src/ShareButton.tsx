@@ -81,9 +81,9 @@ interface CustomProps<LinkOptions> {
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
   /**
-   * URL of the shared page
+   * URL of the shared page, can be an async function that resolves a URL
    */
-  url: string;
+  url: string | (() => Promise<string>);
   style?: React.CSSProperties;
   windowWidth?: number;
   windowHeight?: number;
@@ -93,6 +93,7 @@ interface CustomProps<LinkOptions> {
    * `onClick`. If you do not return promise, `onClick` is called immediately.
    */
   beforeOnClick?: () => Promise<void> | void;
+
   /**
    * Takes a function to be called after closing share dialog.
    */
@@ -138,10 +139,15 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       disabled,
       networkLink,
       onClick,
-      url,
       openShareDialogOnClick,
       opts,
     } = this.props;
+
+    let url = this.props.url;
+
+    if (typeof url == 'function') {
+      url = await url();
+    }
 
     const link = networkLink(url, opts);
 

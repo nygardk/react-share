@@ -1,7 +1,7 @@
 {
-  "name": "react-share",
-  "version": "4.2.1",
-  "description": "Social media share buttons and share counts for React.",
+  "name": "@kashuab/react-share",
+  "version": "4.3.0",
+  "description": "A forked version of react-share, a library of social media share buttons and share counts for React built by Klaus Nygård. This package is temporary, as I am awaiting a pull request to be merged.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "module": "./es/index.js",
@@ -37,14 +37,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nygardk/react-share"
+    "url": "https://github.com/Kashuab/react-share"
   },
   "author": {
-    "name": "Klaus Nygård",
-    "email": "klaus.nygard@gmail.com",
-    "url": "http://klausnygard.fi"
+    "name": "Kyle Kashuba",
+    "email": "kyle@heliumdev.com"
   },
   "contributors": [
+    {
+      "name": "Klaus Nygård",
+      "email": "klaus.nygard@gmail.com",
+      "url": "http://klausnygard.fi"
+    },
     {
       "name": "Ari Autio",
       "email": "ari.autio@iki.fi"

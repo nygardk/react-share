@@ -114,7 +114,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     resetButtonStyle: true,
   };
 
-  openShareDialog = (link: string) => {
+  openShareDialog = (link: string): Window | null => {
     const {
       onShareWindowClose,
       windowHeight = 400,
@@ -130,8 +130,25 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
         : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
     };
 
-    windowOpen(link, windowConfig, onShareWindowClose);
+    return windowOpen(link, windowConfig, onShareWindowClose);
   };
+
+  async awaitLinkOpts(opts: any) {
+    const callableProperties = ['quote', 'title'];
+
+    for (const i in callableProperties) {
+      const propName = callableProperties[i];
+      let option = opts[propName];
+
+      if (typeof option == 'function') {
+        option = option();
+
+        if (isPromise(option)) option = await option;
+
+        opts[propName] = option;
+      }
+    }
+  }
 
   handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
@@ -143,13 +160,18 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       opts,
     } = this.props;
 
-    let url = this.props.url;
+    let url = this.props.url,
+      shareDialog;
 
-    if (typeof url == 'function') {
-      url = await url();
+    if (openShareDialogOnClick) {
+      shareDialog = this.openShareDialog('');
     }
 
+    if (typeof url == 'function') url = await url();
+    await this.awaitLinkOpts(opts);
+
     const link = networkLink(url, opts);
+    if (shareDialog) shareDialog.location.href = link;
 
     if (disabled) {
       return;
@@ -163,10 +185,6 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       if (isPromise(returnVal)) {
         await returnVal;
       }
-    }
-
-    if (openShareDialogOnClick) {
-      this.openShareDialog(link);
     }
 
     if (onClick) {

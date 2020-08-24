@@ -195,6 +195,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       windowHeight,
       windowPosition,
       windowWidth,
+      hasBlankTarget,
       ...rest
     } = this.props;
 

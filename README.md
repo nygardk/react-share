@@ -1,3 +1,7 @@
+# Outpost React Share
+
+A fork of [react-share](https://github.com/nygardk/react-share) that allows share windows to open in a new tab. I'm publishing this module while I'm waiting for react-share to accept my pull request.
+
 # react-share
 
 [![npm version](https://badge.fury.io/js/react-share.svg)](https://badge.fury.io/js/react-share)

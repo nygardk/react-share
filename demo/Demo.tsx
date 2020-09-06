@@ -8,6 +8,7 @@ import {
   OKShareCount,
   RedditShareCount,
   TumblrShareCount,
+  HatenaShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
@@ -29,6 +30,7 @@ import {
   WeiboShareButton,
   PocketShareButton,
   InstapaperShareButton,
+  HatenaShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
@@ -48,6 +50,7 @@ import {
   PocketIcon,
   InstapaperIcon,
   WeiboIcon,
+  HatenaIcon,
 } from '../src';
 
 import './Demo.css';
@@ -291,6 +294,22 @@ class Demo extends Component {
           >
             <InstapaperIcon size={32} round />
           </InstapaperShareButton>
+        </div>
+
+        <div className="Demo__some-network">
+          <HatenaShareButton
+            url={shareUrl}
+            title={title}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button"
+          >
+            <HatenaIcon size={32} round />
+          </HatenaShareButton>
+
+          <div>
+            <HatenaShareCount url={shareUrl} className="Demo__some-network__share-count" />
+          </div>
         </div>
       </div>
     );

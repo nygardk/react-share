@@ -35,6 +35,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Weibo
   - Pocket
   - Instapaper
+  - Hatena
   - email
 - share counts for
   - Facebook
@@ -43,6 +44,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Odnoklassniki
   - Reddit
   - Tumblr
+  - Hatena
 - social media icons included in the library
 - supports also custom icons
 
@@ -79,6 +81,7 @@ npm install react-share --save
 import {
   EmailShareButton,
   FacebookShareButton,
+  HatenaShareButton,
   InstapaperShareButton,
   LineShareButton,
   LinkedinShareButton,
@@ -106,6 +109,7 @@ import {
 | EmailShareButton             | -                                                                                           | **`subject`** (string): Title of the shared page<br/>**`body`** (string): Email, will be prepended to the url.<br/>**`separator`** (string, default=`" "`): Separates body from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | FacebookShareButton          | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | FacebookMessengerShareButton | **`appId`** (string): Facebook application id                                               | **`redirectUri`** (string): The URL to redirect to after sharing (default: the shared url).<br />**`to`** (string): A user ID of a recipient. Once the dialog comes up, the sender can specify additional people as recipients.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| HatenaShareButton | -                                               | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | InstapaperShareButton        | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`description`** (string): Description of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | LinkedinShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`summary`** (string): Description of the shared page<br/>**`source`** (string): Source of the content (e.g. your website or application name)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | LineShareButton              | -                                                                                           | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -129,6 +133,7 @@ import {
 ```js
 import {
   FacebookShareCount,
+  HatenaShareCount,
   OKShareCount,
   PinterestShareCount,
   RedditShareCount,
@@ -163,6 +168,7 @@ import {
   EmailIcon,
   FacebookIcon,
   FacebookMessengerIcon,
+  HatenaIcon,
   InstapaperIcon,
   LineIcon,
   LinkedinIcon,

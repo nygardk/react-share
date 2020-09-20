@@ -2,7 +2,7 @@
 
 ## 4.3.0 (Aug 06, 2020)
 
-- Added: `HateShareButton` and `HatenaShareCount`
+- Added: `HatenaShareButton` and `HatenaShareCount`
 
 ## 4.2.1 (Jul 09, 2020)
 

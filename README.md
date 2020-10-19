@@ -148,7 +148,7 @@ URL you are sharing. `className` prop is optional.
 Example:
 
 ```jsx
-<FacebookShareCount url={shareUrl} />
+<FacebookShareCount url={shareUrl} accessToken="FB_APP_ACCESS_TOKEN" />
 ```
 
 If you want to render anything else but the count,
@@ -156,7 +156,7 @@ you can provide a function as a child element that takes in `shareCount` as an
 argument and returns an element:
 
 ```jsx
-<FacebookShareCount url={shareUrl}>
+<FacebookShareCount url={shareUrl} accessToken="FB_APP_ACCESS_TOKEN" >
   {shareCount => <span className="myShareCountWrapper">{shareCount}</span>}
 </FacebookShareCount>
 ```

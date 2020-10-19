@@ -2,13 +2,13 @@ import jsonp from 'jsonp';
 
 import createShareCount from './hocs/createShareCount';
 
-function getFacebookShareCount(shareUrl: string, callback: (shareCount?: number) => void) {
-  const endpoint = `https://graph.facebook.com/?id=${shareUrl}&fields=og_object{engagement}`;
-
+function getFacebookShareCount(shareUrl: string, accessToken: string, callback: (shareCount?: number) => void) {
+  const endpoint = `https://graph.facebook.com/?id=${shareUrl}&fields=engagement&access_token=${accessToken}`;
+  
   jsonp(endpoint, (err, data) => {
     callback(
-      !err && data && data.og_object && data.og_object.engagement
-        ? data.og_object.engagement.count
+      !err && data && data.engagement
+        ? data.engagement.share_count
         : undefined,
     );
   });

@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.4.0 (Feb 23, 2021)
+
+- Fix: Support React 17 in `peerDependencies` (#379)
+- Fix: Updated Telegram link for shares custom URLs (#377)
+- Fix: Updated Reddit logo background colour (#366)
+
 ## 4.3.0 (Aug 06, 2020)
 
 - Added: `HatenaShareButton` and `HatenaShareCount`

@@ -1,5 +1,7 @@
 export { default as EmailIcon } from './EmailIcon';
 export { default as EmailShareButton } from './EmailShareButton';
+export { default as SMSIcon } from './SMSIcon';
+export { default as SMSShareButton } from './SMSShareButton';
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as FacebookMessengerIcon } from './FacebookMessengerIcon';
 export { default as FacebookMessengerShareButton } from './FacebookMessengerShareButton';

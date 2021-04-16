@@ -22,7 +22,8 @@
     "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
-    "start": "npm run run-demos"
+    "start": "npm run run-demos",
+    "prepare": "yarn run lint && yarn run build:commonjs && yarn run build:es"
   },
   "keywords": [
     "react",

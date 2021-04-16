@@ -23,7 +23,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
     "start": "npm run run-demos",
-    "prepare": "yarn run lint && yarn run build:commonjs && yarn run build:es"
+    "prepack": "yarn run lint && yarn run build:commonjs && yarn run build:es"
   },
   "keywords": [
     "react",

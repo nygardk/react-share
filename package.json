@@ -53,7 +53,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/assert": "^1.5.2",
-    "@types/classnames": "^2.2.10",
     "@types/jsonp": "^0.2.0",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
@@ -87,7 +86,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
+    "clsx": "^1.1.1",
     "jsonp": "^0.2.1"
   },
   "peerDependencies": {

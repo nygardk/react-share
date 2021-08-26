@@ -1,5 +1,5 @@
 import React, { Component, Ref } from 'react';
-import cx from 'classnames';
+import clsx from 'clsx';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
@@ -190,7 +190,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       ...rest
     } = this.props;
 
-    const newClassName = cx(
+    const newClassName = clsx(
       'react-share__ShareButton',
       {
         'react-share__ShareButton--disabled': !!disabled,

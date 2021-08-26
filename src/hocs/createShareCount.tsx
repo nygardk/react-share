@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cx from 'classnames';
+import clsx from 'clsx';
 
 const defaultChildren = (shareCount: number) => shareCount;
 
@@ -58,7 +58,7 @@ class SocialMediaShareCount extends Component<SocialMediaShareCountProps, StateT
     const { children = defaultChildren, className, getCount: _, ...rest } = this.props;
 
     return (
-      <span className={cx('react-share__ShareCount', className)} {...rest}>
+      <span className={clsx('react-share__ShareCount', className)} {...rest}>
         {!isLoading && count !== undefined && children(count)}
       </span>
     );

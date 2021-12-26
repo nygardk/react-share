@@ -81,6 +81,7 @@ npm install react-share --save
 import {
   EmailShareButton,
   FacebookShareButton,
+  GabShareButton,
   HatenaShareButton,
   InstapaperShareButton,
   LineShareButton,

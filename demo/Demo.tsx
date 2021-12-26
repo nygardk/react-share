@@ -20,6 +20,7 @@ import {
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
+  GabShareButton,
   EmailShareButton,
   TumblrShareButton,
   LivejournalShareButton,
@@ -40,6 +41,7 @@ import {
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
+  GabIcon,
   TumblrIcon,
   MailruIcon,
   EmailIcon,
@@ -188,6 +190,18 @@ class Demo extends Component {
           <div>
             <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
           </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <GabShareButton
+            url={shareUrl}
+            title={title}
+            windowWidth={660}
+            windowHeight={640}
+            className="Demo__some-network__share-button"
+          >
+            <GabIcon size={32} round />
+          </GabShareButton>
         </div>
 
         <div className="Demo__some-network">

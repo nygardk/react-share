@@ -1,6 +1,6 @@
 {
-  "name": "react-share",
-  "version": "5.0.3",
+  "name": "@minware/react-share",
+  "version": "5.0.4",
   "description": "Social media share buttons and share counts for React.",
   "type": "module",
   "main": "./dist/index.cjs",

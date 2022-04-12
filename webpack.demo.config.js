@@ -1,18 +1,17 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
+const SRC_DIR = path.resolve(__dirname, 'demo');
+const DIST_DIR = path.resolve(__dirname, 'docs');
+
 module.exports = {
-  mode: 'development',
   devtool: PRODUCTION ? 'source-map' : 'inline-source-map',
-  entry: ['./demo'].filter(e => !!e),
+  entry: `${SRC_DIR}/index.tsx`,
   output: {
+    path: DIST_DIR,
     filename: '[name].[hash].bundle.js',
-    // publicPath: '',
-    path: path.resolve(__dirname, 'docs'),
   },
   module: {
     rules: [
@@ -20,35 +19,28 @@ module.exports = {
         test: /\.(jsx?|tsx?)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        exclude: /node_modules/,
       },
       {
-        test: /\.(jsx?|tsx?)$/,
-        use: [
-          'react-hot-loader/webpack',
-          {
-            loader: 'ts-loader',
-            options: {
-              configFile: 'tsconfig.demo.json',
-            },
+        test: /\.tsx?/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFile: 'tsconfig.demo.json',
           },
-        ],
-        exclude: /node_modules/,
+        },
       },
       {
-        test: /\.(svg|jpg|jpeg|png)[\?]?.*$/,
+        test: /\.(svg|jpg|jpeg|png)[?]?.*$/,
         use: {
           loader: 'url-loader',
           options: {
             limit: 1,
           },
         },
-        exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        loader: ['style-loader', 'css-loader'],
-        exclude: /node_modules/,
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
@@ -63,7 +55,9 @@ module.exports = {
       title: 'react-share demo | Social media share buttons and share counts for React.',
     }),
   ],
-  optimization: {
-    minimizer: [new TerserPlugin()],
+  devServer: {
+    compress: true,
+    hot: true,
+    open: true,
   },
 };

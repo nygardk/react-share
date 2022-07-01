@@ -1,6 +1,6 @@
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './hocs/createShareButton
+import createShareButton from './hocs/createShareButton';
 
 function whatsappLink(url: string, { title, separator }: { title?: string; separator?: string }) {
   assert(url, 'whatsapp.url');

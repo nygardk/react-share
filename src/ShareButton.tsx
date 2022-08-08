@@ -81,9 +81,9 @@ interface CustomProps<LinkOptions> {
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
   /**
-   * URL of the shared page
+   * URL of the shared page, can be an async function that resolves a URL
    */
-  url: string;
+  url: string | (() => Promise<string>);
   style?: React.CSSProperties;
   windowWidth?: number;
   windowHeight?: number;
@@ -93,6 +93,7 @@ interface CustomProps<LinkOptions> {
    * `onClick`. If you do not return promise, `onClick` is called immediately.
    */
   beforeOnClick?: () => Promise<void> | void;
+
   /**
    * Takes a function to be called after closing share dialog.
    */
@@ -113,7 +114,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     resetButtonStyle: true,
   };
 
-  openShareDialog = (link: string) => {
+  openShareDialog = (link: string): Window | null => {
     const {
       onShareWindowClose,
       windowHeight = 400,
@@ -129,8 +130,25 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
         : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
     };
 
-    windowOpen(link, windowConfig, onShareWindowClose);
+    return windowOpen(link, windowConfig, onShareWindowClose);
   };
+
+  async awaitLinkOpts(opts: any) {
+    const callableProperties = ['quote', 'title'];
+
+    for (const i in callableProperties) {
+      const propName = callableProperties[i];
+      let option = opts[propName];
+
+      if (typeof option == 'function') {
+        option = option();
+
+        if (isPromise(option)) option = await option;
+
+        opts[propName] = option;
+      }
+    }
+  }
 
   handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
@@ -138,12 +156,22 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       disabled,
       networkLink,
       onClick,
-      url,
       openShareDialogOnClick,
       opts,
     } = this.props;
 
+    let url = this.props.url,
+      shareDialog;
+
+    if (openShareDialogOnClick) {
+      shareDialog = this.openShareDialog('');
+    }
+
+    if (typeof url == 'function') url = await url();
+    await this.awaitLinkOpts(opts);
+
     const link = networkLink(url, opts);
+    if (shareDialog) shareDialog.location.href = link;
 
     if (disabled) {
       return;
@@ -157,10 +185,6 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       if (isPromise(returnVal)) {
         await returnVal;
       }
-    }
-
-    if (openShareDialogOnClick) {
-      this.openShareDialog(link);
     }
 
     if (onClick) {

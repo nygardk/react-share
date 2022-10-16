@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 4.4.1 (Oct 16, 2022)
 
 - Chore: upgraded build deps
 - Fix: Support React 18 in `peerDependencies`

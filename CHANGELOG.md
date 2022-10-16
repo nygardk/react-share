@@ -3,6 +3,7 @@
 ## Next
 
 - Chore: upgraded build deps
+- Fix: Support React 18 in `peerDependencies`
 
 ## 4.4.0 (Feb 23, 2021)
 

@@ -1,6 +1,6 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
@@ -16,12 +16,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(jsx?|tsx?)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        exclude: /node_modules/,
-      },
       {
         test: /\.(jsx?|tsx?)$/,
         use: [
@@ -47,7 +41,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],
         exclude: /node_modules/,
       },
     ],
@@ -64,6 +58,14 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimizer: [new TerserPlugin()],
+    minimizer: [
+      new ESLintPlugin({
+        files: './src/**/*.{ts,tsx}',
+        cache: true,
+        exclude: '/node_modules/',
+        threads: true,
+      }),
+      new TerserPlugin(),
+    ],
   },
 };

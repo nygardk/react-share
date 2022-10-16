@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+- Chore: upgraded build deps
+
 ## 4.4.0 (Feb 23, 2021)
 
 - Fix: Support React 17 in `peerDependencies` (#379)

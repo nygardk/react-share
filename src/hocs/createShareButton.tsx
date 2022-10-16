@@ -4,7 +4,7 @@ import ShareButton, { Props as ShareButtonProps } from '../ShareButton';
 
 function createShareButton<
   OptionProps extends Record<string, any>,
-  LinkOptions extends Record<string, any> = OptionProps
+  LinkOptions extends Record<string, any> = OptionProps,
 >(
   networkName: string,
   link: (url: string, options: LinkOptions) => string,

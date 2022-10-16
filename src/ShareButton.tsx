@@ -133,15 +133,8 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
   };
 
   handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const {
-      beforeOnClick,
-      disabled,
-      networkLink,
-      onClick,
-      url,
-      openShareDialogOnClick,
-      opts,
-    } = this.props;
+    const { beforeOnClick, disabled, networkLink, onClick, url, openShareDialogOnClick, opts } =
+      this.props;
 
     const link = networkLink(url, opts);
 

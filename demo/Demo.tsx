@@ -51,6 +51,8 @@ import {
   InstapaperIcon,
   WeiboIcon,
   HatenaIcon,
+  InstagramShareButton,
+  InstagramIcon,
 } from '../src';
 
 import './Demo.css';
@@ -77,6 +79,16 @@ class Demo extends Component {
               {count => count}
             </FacebookShareCount>
           </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <InstagramShareButton
+            url={shareUrl}
+            quote={title}
+            className="Demo__some-network__share-button"
+          >
+            <InstagramIcon size={32} round />
+          </InstagramShareButton>
         </div>
 
         <div className="Demo__some-network">

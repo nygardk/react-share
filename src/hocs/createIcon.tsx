@@ -8,14 +8,21 @@ type Props = Omit<React.SVGProps<SVGSVGElement>, 'width' | 'height'> & {
   size?: number | string;
 };
 
+type InnerPathObject = {
+  innerPath: string;
+  innerColor: string;
+};
+
 type IconConfig = {
   color: string;
   networkName: string;
   /** SVG path */
   path: string;
+  innerPaths?: Array<InnerPathObject>;
 };
 
 export default function createIcon(iconConfig: IconConfig) {
+  const { innerPaths = [] } = iconConfig;
   const Icon: React.FC<Props> = ({
     bgStyle,
     borderRadius,
@@ -37,8 +44,14 @@ export default function createIcon(iconConfig: IconConfig) {
           style={bgStyle}
         />
       )}
-
       <path d={iconConfig.path} fill={iconFillColor} />
+      {innerPaths.length !== 0 && (
+        <g>
+          {innerPaths.map((pathObject, index) => (
+            <path key={index} d={pathObject.innerPath} fill={pathObject.innerColor} />
+          ))}
+        </g>
+      )}
     </svg>
   );
 

@@ -2,9 +2,7 @@ import copyToClipboard from './utils/clipboard';
 import createShareButton from './hocs/createShareButton';
 
 type Options = {
-  body?: string;
-  separator?: string;
-  subject?: string;
+  onCopySuccess?: object;
 };
 
 function copiedLink(url: string) {

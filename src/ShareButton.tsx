@@ -97,6 +97,7 @@ interface CustomProps<LinkOptions> {
    * Takes a function to be called after closing share dialog.
    */
   onShareWindowClose?: () => void;
+  onCopySuccess?: () => void;
   resetButtonStyle?: boolean;
 }
 
@@ -133,8 +134,16 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
   };
 
   handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { beforeOnClick, disabled, networkLink, onClick, url, openShareDialogOnClick, opts } =
-      this.props;
+    const {
+      beforeOnClick,
+      disabled,
+      networkLink,
+      onClick,
+      onCopySuccess,
+      url,
+      openShareDialogOnClick,
+      opts,
+    } = this.props;
 
     const link = networkLink(url, opts);
 
@@ -157,7 +166,12 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     }
 
     if (onClick) {
-      onClick(event, link);
+      const p = new Promise(resolve => {
+        resolve(onClick(event, link));
+      });
+      if (typeof onCopySuccess === 'function') {
+        p.then(() => onCopySuccess());
+      }
     }
   };
 
@@ -172,6 +186,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       networkLink,
       networkName,
       onShareWindowClose,
+      onCopySuccess,
       openShareDialogOnClick,
       opts,
       resetButtonStyle,

@@ -1,3 +1,5 @@
+export { default as CopyIcon } from './CopyIcon';
+export { default as CopyShareButton } from './CopyShareButton';
 export { default as EmailIcon } from './EmailIcon';
 export { default as EmailShareButton } from './EmailShareButton';
 export { default as FacebookIcon } from './FacebookIcon';

@@ -10,10 +10,7 @@
     "node": ">=6.9.0",
     "npm": ">=5.0.0"
   },
-  "files": [
-    "lib/**/*",
-    "es/**/*"
-  ],
+  "files": ["lib/**/*", "es/**/*"],
   "scripts": {
     "build": "npm run lint && npm run build:commonjs && npm run build:es",
     "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
@@ -22,6 +19,7 @@
     "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "start": "npm run run-demos"
   },
   "keywords": [

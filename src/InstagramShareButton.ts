@@ -1,26 +1,17 @@
 import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 
-function facebookLink(url: string, { quote, hashtag }: { quote?: string; hashtag?: string }) {
-  assert(url, 'facebook.url');
+function instagramLink(username: string) {
+  assert(username, 'instagram.url');
 
-  return (
-    'https://www.facebook.com/sharer/sharer.php' +
-    objectToGetParams({
-      u: url,
-      quote,
-      hashtag,
-    })
-  );
+  return `https://www.instagram.com/${username}`;
 }
 
-const InstagramShareButton = createShareButton<{ quote?: string; hashtag?: string }>(
-  'facebook',
-  facebookLink,
+const InstagramShareButton = createShareButton(
+  'instagram',
+  instagramLink,
   props => ({
-    quote: props.quote,
-    hashtag: props.hashtag,
+    username: props.username,
   }),
   {
     windowWidth: 550,

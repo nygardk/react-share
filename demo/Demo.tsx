@@ -21,6 +21,7 @@ import {
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
+  SMSShareButton,
   TumblrShareButton,
   LivejournalShareButton,
   MailruShareButton,
@@ -43,6 +44,7 @@ import {
   TumblrIcon,
   MailruIcon,
   EmailIcon,
+  SMSIcon,
   LivejournalIcon,
   ViberIcon,
   WorkplaceIcon,
@@ -234,6 +236,11 @@ class Demo extends Component {
           >
             <EmailIcon size={32} round />
           </EmailShareButton>
+        </div>
+        <div className="Demo__some-network">
+          <SMSShareButton url={shareUrl} body="body" className="Demo__some-network__share-button">
+            <SMSIcon size={32} round />
+          </SMSShareButton>
         </div>
         <div className="Demo__some-network">
           <ViberShareButton

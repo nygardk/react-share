@@ -37,6 +37,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Instapaper
   - Hatena
   - email
+  - sms
 - share counts for
   - Facebook
   - Pinterest
@@ -80,6 +81,7 @@ npm install react-share --save
 ```js
 import {
   EmailShareButton,
+  SMSShareButton,
   FacebookShareButton,
   HatenaShareButton,
   InstapaperShareButton,
@@ -107,6 +109,7 @@ import {
 | ---------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **All**                      | **`children`** (string/element): React node<br />**`url`** (string): URL of the shared page | **`disabled`** (bool): Disables click action and adds "disabled" class<br/>**`disabledStyle`** (object, default=`{ opacity: 0.6 }`): Disabled style<br/>**`windowWidth`, `windowHeight`** (number, different default for all share buttons): opened window dimensions<br />**`beforeOnClick`** (`() => Promise`/`() => void`): Takes a function that returns a Promise to be fulfilled before calling `onClick`. If you do not return promise, `onClick` is called immediately.<br/>**`openShareDialogOnClick`** (boolean): Open dialog on click. Defaults to `true` except on EmailShareButton<br/>**`onShareWindowClose`** (`() => void`): Takes a function to be called after closing share dialog.<br/>**`resetButtonStyle`** (boolean, default=`true`): Reset `button` element style. Preferred to be set to `false` if you want to customize the button style. |
 | EmailShareButton             | -                                                                                           | **`subject`** (string): Title of the shared page<br/>**`body`** (string): Email, will be prepended to the url.<br/>**`separator`** (string, default=`" "`): Separates body from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| SMSShareButton               | -                                                                                           | **`body`** (string): Message, will be prepended to the url.<br/>**`separator`** (string, default=`" "`): Separates body from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | FacebookShareButton          | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | FacebookMessengerShareButton | **`appId`** (string): Facebook application id                                               | **`redirectUri`** (string): The URL to redirect to after sharing (default: the shared url).<br />**`to`** (string): A user ID of a recipient. Once the dialog comes up, the sender can specify additional people as recipients.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | HatenaShareButton | -                                               | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -166,6 +169,7 @@ argument and returns an element:
 ```js
 import {
   EmailIcon,
+  SMSIcon,
   FacebookIcon,
   FacebookMessengerIcon,
   HatenaIcon,
@@ -217,5 +221,8 @@ MIT
 
 ## Icons
 
-Icon paths provided by:
+Social Icon paths provided by:
 [react-social-icons](https://github.com/jaketrent/react-social-icons).
+
+SMS Icon by:
+[svgrepo.com](https://www.svgrepo.com/svg/24823/sms)

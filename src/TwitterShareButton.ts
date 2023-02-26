@@ -16,7 +16,7 @@ function twitterLink(
   assert(Array.isArray(related), 'twitter.related is not an array');
 
   return (
-    'https://twitter.com/share' +
+    'https://twitter.com/intent/tweet' +
     objectToGetParams({
       url,
       text: title,

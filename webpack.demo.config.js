@@ -47,14 +47,15 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: { 'react-share': path.resolve('./src') },
+    alias: { '@nicolasepiscopo/react-share': path.resolve('./src') },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       hash: false,
       filename: 'index.html',
-      title: 'react-share demo | Social media share buttons and share counts for React.',
+      title:
+        '@nicolasepiscopo/react-share demo | Social media share buttons and share counts for React.',
     }),
   ],
   optimization: {

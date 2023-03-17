@@ -1,6 +1,9 @@
 {
-  "name": "react-share",
-  "version": "4.4.1",
+  "name": "@nicolasepiscopo/react-share",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0-development",
   "description": "Social media share buttons and share counts for React.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -22,7 +25,8 @@
     "run-demos": "NODE_OPTIONS=--no-experimental-fetch webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
-    "start": "npm run run-demos"
+    "start": "npm run run-demos",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "react",
@@ -37,19 +41,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nygardk/react-share"
+    "url": "https://github.com/nicolasepiscopo/react-share"
   },
   "author": {
-    "name": "Klaus Nygård",
-    "email": "klaus.nygard@gmail.com",
-    "url": "http://klausnygard.fi"
+    "name": "Nico Episcopo",
+    "email": "nicolasepiscopo@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Ari Autio",
-      "email": "ari.autio@iki.fi"
-    }
-  ],
+  "contributors": [],
   "license": "MIT",
   "devDependencies": {
     "@types/assert": "1.5.6",
@@ -83,7 +81,8 @@
     "url-loader": "4.1.1",
     "webpack": "5.74.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.11.1"
+    "webpack-dev-server": "4.11.1",
+    "semantic-release": "^20.1.1"
   },
   "dependencies": {
     "classnames": "^2.3.2",

@@ -1,15 +1,11 @@
 # react-share
 
-[![npm version](https://badge.fury.io/js/react-share.svg)](https://badge.fury.io/js/react-share)
-[![Download Count](http://img.shields.io/npm/dm/react-share.svg?style=flat-square)](https://npmjs.org/package/react-share)
+[![npm version](https://badge.fury.io/js/@nicolasepiscopo/react-share.svg)](https://badge.fury.io/js/@nicolasepiscopo/react-share)
+[![Download Count](http://img.shields.io/npm/dm/@nicolasepiscopo/react-share.svg?style=flat-square)](https://npmjs.org/package/@nicolasepiscopo/react-share)
 
 > Social media share buttons and share counts for React.
 
 <img src="example.png" alt="Share buttons and counts example" />
-
-Migrating from v2 to v3? Read [changelog](./CHANGELOG.md).
-
-Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 ### Features
 
@@ -51,7 +47,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 #### Demo
 
-[View demo](http://nygardk.github.io/react-share/)
+[View demo](http://nicolasepiscopo.github.io/react-share/)
 
 To run demo: clone repo and run `npm install && npm run run-demos`
 and open `http://localhost:8080`.
@@ -59,20 +55,18 @@ and open `http://localhost:8080`.
 ## Install
 
 ```shell
-npm install react-share --save
+npm install @nicolasepiscopo/react-share --save
+```
+
+Or with Yarn:
+
+```shell
+yarn add @nicolasepiscopo/react-share
 ```
 
 ## Compatibility
 
-**Version 1.x.x**: compatible with React versions `0.13.x`, `0.14.x` and `15.x.x`.
-
-**Version 2.x.x**: compatiblity is tested with React 15 and 16.
-
-**Version 3.x.x**: compatiblity is tested with React 15 and 16.
-
-**Version 3.0.1**: compatible with React ^16.3.
-
-**Version 4.x.x**: compatible with React >=16.3.
+Compatible with React >= 16.3
 
 ## API
 
@@ -80,6 +74,7 @@ npm install react-share --save
 
 ```js
 import {
+  CopyLinkButton,
   EmailShareButton,
   FacebookShareButton,
   HatenaShareButton,
@@ -107,6 +102,7 @@ import {
 |                              | Required props                                                                              | Optional props                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ---------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **All**                      | **`children`** (string/element): React node<br />**`url`** (string): URL of the shared page | **`disabled`** (bool): Disables click action and adds "disabled" class<br/>**`disabledStyle`** (object, default=`{ opacity: 0.6 }`): Disabled style<br/>**`windowWidth`, `windowHeight`** (number, different default for all share buttons): opened window dimensions<br />**`beforeOnClick`** (`() => Promise`/`() => void`): Takes a function that returns a Promise to be fulfilled before calling `onClick`. If you do not return promise, `onClick` is called immediately.<br/>**`openShareDialogOnClick`** (boolean): Open dialog on click. Defaults to `true` except on EmailShareButton<br/>**`onShareWindowClose`** (`() => void`): Takes a function to be called after closing share dialog.<br/>**`resetButtonStyle`** (boolean, default=`true`): Reset `button` element style. Preferred to be set to `false` if you want to customize the button style. |
+| CopyLinkButton             | -                                                                                           | **`url`** (string): Link to be shared<br/>**`onCopySuccess`** (`() => void`): called when the link has been successfully copied.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | EmailShareButton             | -                                                                                           | **`subject`** (string): Title of the shared page<br/>**`body`** (string): Email, will be prepended to the url.<br/>**`separator`** (string, default=`" "`): Separates body from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | FacebookShareButton          | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | FacebookMessengerShareButton | **`appId`** (string): Facebook application id                                               | **`redirectUri`** (string): The URL to redirect to after sharing (default: the shared url).<br />**`to`** (string): A user ID of a recipient. Once the dialog comes up, the sender can specify additional people as recipients.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -129,6 +125,37 @@ import {
 | WhatsappShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`separator`** (string, default=`" "`): Separates title from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | WorkplaceShareButton         | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
+
+#### Custom Share Buttons
+
+You can create custom share buttons by doing:
+
+```tsx
+import { createShareButton } from '@nicolasepiscopo/react-share';
+
+type Options = {
+  // Here your custom options.
+  myOption: string;
+};
+
+function link = (url: string, options: Options) => url;
+
+const CustomShareButton = createShareButton<Options>(
+  'custom-share-button',
+  link,
+  ({ myOption }) => ({ myOption }),
+  {
+    openShareDialogOnClick: false,
+    onClick: async (_, link: string, options: Options) => {
+      // do something
+      console.log(options.myOption);
+    },
+  },
+);
+
+export default CustomShareButton;
+```
+
 ### Share counts
 
 ```js
@@ -140,7 +167,7 @@ import {
   RedditShareCount,
   TumblrShareCount,
   VKShareCount
-} from "react-share";
+} from "@nicolasepiscopo/react-share";
 ```
 
 All share count components take in only one mandatory prop: `url`, which is the
@@ -162,10 +189,31 @@ argument and returns an element:
 </FacebookShareCount>
 ```
 
+#### Custom Share Counts
+
+You can create custom share counts by doing:
+
+```tsx
+import { createShareCount } from '@nicolasepiscopo/react-share';
+
+const CustomShareCount = createShareCount((shareUrl, callback) => {
+  jsonp(process.env.CUSTOM_COUNT_ENDPOINT, (err, data) => {
+    callback(
+      !err && data?.count
+        ? data.count
+        : undefined,
+    );
+  });
+});
+
+export default CustomShareCount;
+```
+
 ### Icons
 
 ```js
 import {
+  CopyLinkIcon,
   EmailIcon,
   FacebookIcon,
   FacebookMessengerIcon,
@@ -187,7 +235,7 @@ import {
   WeiboIcon,
   WhatsappIcon,
   WorkplaceIcon
-} from "react-share";
+} from "@nicolasepiscopo/react-share";
 ```
 
 Props:
@@ -208,9 +256,25 @@ Example:
 <TwitterIcon size={32} round={true} />
 ```
 
-### About semantic versioning
+#### Custom Icons
 
-This library uses the standard semver convention. However, the share buttons and and counts are prone to lots of changes that are not in control of this library. For example: if Facebook decides to change or deprecate it's API in a major way, this library will not get a major version bump just because of that. Keep this in mind when you are planning the maintenance of your application.
+You can create custom icons by doing:
+
+```jsx
+import { createIcon } from '@nicolasepiscopo/react-share';
+
+const CustomIcon = createIcon({
+  color: '#fff',
+  networkName: 'custom-icon',
+  path: 'svg-path-here',
+});
+
+export default CustomIcon;
+```
+
+### This repo uses semantic-release
+
+Every push to master branch would end up in a new version of the package and will be published instantly.
 
 ## License
 

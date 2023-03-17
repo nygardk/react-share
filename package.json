@@ -18,8 +18,8 @@
     "build": "npm run lint && npm run build:commonjs && npm run build:es",
     "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
     "build:es": "rimraf ./es && tsc -p . --outDir ./es --module es2015 --moduleResolution Node",
-    "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",
-    "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
+    "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack --mode=production --env=production --config webpack.demo.config.js",
+    "run-demos": "NODE_OPTIONS=--no-experimental-fetch webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
     "start": "npm run run-demos"

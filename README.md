@@ -36,7 +36,8 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
   - Pocket
   - Instapaper
   - Hatena
-  - email
+  - E-mail
+  - Copy Link
 - share counts for
   - Facebook
   - Pinterest

@@ -77,7 +77,11 @@ interface CustomProps<LinkOptions> {
   forwardedRef?: Ref<HTMLButtonElement>;
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
+  onClick?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    link: string,
+    options: LinkOptions,
+  ) => void;
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
   /**
@@ -157,7 +161,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     }
 
     if (onClick) {
-      onClick(event, link);
+      onClick(event, link, opts);
     }
   };
 

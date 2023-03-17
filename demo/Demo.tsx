@@ -51,6 +51,8 @@ import {
   InstapaperIcon,
   WeiboIcon,
   HatenaIcon,
+  CopyLinkShareButton,
+  CopyLinkIcon,
 } from '../src';
 
 import './Demo.css';
@@ -310,6 +312,19 @@ class Demo extends Component {
           <div>
             <HatenaShareCount url={shareUrl} className="Demo__some-network__share-count" />
           </div>
+        </div>
+
+        <div className="Demo__some-network">
+          <CopyLinkShareButton
+            url={shareUrl}
+            title={title}
+            windowWidth={660}
+            windowHeight={460}
+            className="Demo__some-network__share-button"
+            onCopySuccess={() => alert('Copied!')}
+          >
+            <CopyLinkIcon size={32} round />
+          </CopyLinkShareButton>
         </div>
       </div>
     );

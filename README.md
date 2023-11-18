@@ -50,7 +50,7 @@ Migrating from v1 to v2? Read [migration notes](./migrate-v1-to-v2.md).
 
 #### Demo
 
-[View demo](http://nygardk.github.io/react-share/)
+[View demo](https://npm-react-share-demo.netlify.app)
 
 To run demo: clone repo and run `npm install && npm run run-demos`
 and open `http://localhost:8080`.

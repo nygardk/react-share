@@ -64,11 +64,7 @@ class Demo extends Component {
     return (
       <div className="Demo__container">
         <div className="Demo__some-network">
-          <FacebookShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
+          <FacebookShareButton url={shareUrl} className="Demo__some-network__share-button">
             <FacebookIcon size={32} round />
           </FacebookShareButton>
 

@@ -2,10 +2,17 @@ import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 
-function pinterestLink(
-  url: string,
-  { media, description }: { media: string; description?: string },
-) {
+interface PinterestShareProps {
+  media: string;
+  description?: string;
+  pinId?: string;
+}
+
+function pinterestLink(url: string, { media, description, pinId }: PinterestShareProps) {
+  if (pinId) {
+    return `https://pinterest.com/pin/${pinId}/repin/x/`;
+  }
+
   assert(url, 'pinterest.url');
   assert(media, 'pinterest.media');
 
@@ -19,12 +26,13 @@ function pinterestLink(
   );
 }
 
-const PinterestShareButton = createShareButton<{ media: string; description?: string }>(
+const PinterestShareButton = createShareButton<PinterestShareProps>(
   'pinterest',
   pinterestLink,
   props => ({
     media: props.media,
     description: props.description,
+    pinId: props.pinId,
   }),
   {
     windowWidth: 1000,

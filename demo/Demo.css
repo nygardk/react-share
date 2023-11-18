@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: white;
   padding: 20px;
 }
@@ -30,6 +30,6 @@ body {
 }
 
 .Demo__some-network__custom-icon {
-  width:32px;
-  height:32px;
+  width: 32px;
+  height: 32px;
 }

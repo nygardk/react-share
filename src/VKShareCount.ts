@@ -18,7 +18,7 @@ function getVKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   if (!window.VK) window.VK = {};
   window.VK.Share = {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    count: (index, count) => window.VK.callbacks![index](count),
+    count: (index, count) => window.VK.callbacks?.[index]?.(count),
   };
   window.VK.callbacks = [];
 

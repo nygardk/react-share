@@ -1,11 +1,11 @@
-import React, { Component, Ref } from 'react';
+import React, { Ref } from 'react';
 import cx from 'classnames';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
 
-const isPromise = (obj: any | Promise<any>) =>
+const isPromise = (obj: any): obj is Promise<unknown> =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 
 const getBoxPositionOnWindowCenter = (width: number, height: number) => ({
@@ -100,42 +100,34 @@ interface CustomProps<LinkOptions> {
   resetButtonStyle?: boolean;
 }
 
-export type Props<LinkOptions> = Omit<
+export type Props<LinkOptions extends Record<string, unknown>> = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   keyof CustomProps<LinkOptions>
 > &
   CustomProps<LinkOptions>;
 
-export default class ShareButton<LinkOptions> extends Component<Props<LinkOptions>> {
-  static defaultProps = {
-    disabledStyle: { opacity: 0.6 },
-    openShareDialogOnClick: true,
-    resetButtonStyle: true,
-  };
-
-  openShareDialog = (link: string) => {
-    const {
-      onShareWindowClose,
-      windowHeight = 400,
-      windowPosition = 'windowCenter',
-      windowWidth = 550,
-    } = this.props;
-
-    const windowConfig = {
-      height: windowHeight,
-      width: windowWidth,
-      ...(windowPosition === 'windowCenter'
-        ? getBoxPositionOnWindowCenter(windowWidth, windowHeight)
-        : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
-    };
-
-    windowOpen(link, windowConfig, onShareWindowClose);
-  };
-
-  handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { beforeOnClick, disabled, networkLink, onClick, url, openShareDialogOnClick, opts } =
-      this.props;
-
+export default function ShareButton<LinkOptions extends Record<string, unknown>>({
+  beforeOnClick,
+  children,
+  className,
+  disabled,
+  disabledStyle = { opacity: 0.6 },
+  forwardedRef,
+  networkLink,
+  networkName,
+  onClick,
+  onShareWindowClose,
+  openShareDialogOnClick = true,
+  opts,
+  resetButtonStyle = true,
+  style,
+  url,
+  windowHeight = 400,
+  windowPosition = 'windowCenter',
+  windowWidth = 550,
+  ...rest
+}: Props<LinkOptions>) {
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const link = networkLink(url, opts);
 
     if (disabled) {
@@ -153,7 +145,15 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     }
 
     if (openShareDialogOnClick) {
-      this.openShareDialog(link);
+      const windowConfig = {
+        height: windowHeight,
+        width: windowWidth,
+        ...(windowPosition === 'windowCenter'
+          ? getBoxPositionOnWindowCenter(windowWidth, windowHeight)
+          : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
+      };
+
+      windowOpen(link, windowConfig, onShareWindowClose);
     }
 
     if (onClick) {
@@ -161,64 +161,40 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
     }
   };
 
-  render() {
-    const {
-      beforeOnClick,
-      children,
-      className,
-      disabled,
-      disabledStyle,
-      forwardedRef,
-      networkLink,
-      networkName,
-      onShareWindowClose,
-      openShareDialogOnClick,
-      opts,
-      resetButtonStyle,
-      style,
-      url,
-      windowHeight,
-      windowPosition,
-      windowWidth,
-      ...rest
-    } = this.props;
+  const newClassName = cx(
+    'react-share__ShareButton',
+    {
+      'react-share__ShareButton--disabled': !!disabled,
+      disabled: !!disabled,
+    },
+    className,
+  );
 
-    const newClassName = cx(
-      'react-share__ShareButton',
-      {
-        'react-share__ShareButton--disabled': !!disabled,
-        disabled: !!disabled,
-      },
-      className,
-    );
+  const newStyle = resetButtonStyle
+    ? {
+        backgroundColor: 'transparent',
+        border: 'none',
+        padding: 0,
+        font: 'inherit',
+        color: 'inherit',
+        cursor: 'pointer',
+        ...style,
+        ...(disabled && disabledStyle),
+      }
+    : {
+        ...style,
+        ...(disabled && disabledStyle),
+      };
 
-    const newStyle = resetButtonStyle
-      ? {
-          backgroundColor: 'transparent',
-          border: 'none',
-          padding: 0,
-          font: 'inherit',
-          color: 'inherit',
-          cursor: 'pointer',
-          ...style,
-          ...(disabled && disabledStyle),
-        }
-      : {
-          ...style,
-          ...(disabled && disabledStyle),
-        };
-
-    return (
-      <button
-        {...rest}
-        aria-label={rest['aria-label'] || networkName}
-        className={newClassName}
-        onClick={this.handleClick}
-        ref={forwardedRef}
-        style={newStyle}
-      >
-        {children}
-      </button>
-    );
-  }
+  return (
+    <button
+      {...rest}
+      className={newClassName}
+      onClick={handleClick}
+      ref={forwardedRef}
+      style={newStyle}
+    >
+      {children}
+    </button>
+  );
 }

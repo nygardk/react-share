@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './Root';
+import { Demo } from './Demo';
+import './Demo.css';
 
-const rootElement = document.createElement('div');
-
-if (!document.querySelector('div')) {
-  document.body.appendChild(rootElement);
-}
-
-ReactDOM.render(<Root />, rootElement);
+ReactDOM.render(
+  <React.StrictMode>
+    <Demo />
+  </React.StrictMode>,
+  document.getElementById('root'),
+);

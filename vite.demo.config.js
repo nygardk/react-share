@@ -6,7 +6,7 @@ export default defineConfig({
   root: './demo',
   plugins: [react()],
   build: {
-    outDir: '../docs',
+    outDir: '../demo',
     emptyOutDir: true,
     cssMinify: false,
   },

@@ -28,6 +28,8 @@ export { default as PocketIcon } from './PocketIcon';
 export { default as PocketShareButton } from './PocketShareButton';
 export { default as RedditIcon } from './RedditIcon';
 export { default as RedditShareButton } from './RedditShareButton';
+export { default as GabShareButton } from './GabShareButton';
+export { default as GabIcon } from './GabIcon';
 export { default as RedditShareCount } from './RedditShareCount';
 export { default as TelegramIcon } from './TelegramIcon';
 export { default as TelegramShareButton } from './TelegramShareButton';

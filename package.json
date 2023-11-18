@@ -25,7 +25,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
     "start": "npm run run-demos",
-    "release": "npm build && changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "keywords": [
     "react",

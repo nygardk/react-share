@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.1
+
+### Patch Changes
+
+- 8dd0134: `@changesets/cli` was accidentally added in `dependencies`. It is now moved to `devDependencies`.
+
 ## 5.0.0
 
 ### Major Changes

@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "lib": true,
+    "**/node_modules": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "stylelint.validate": ["typescript", "typescriptreact"]
+}

@@ -189,7 +189,6 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   return (
     <button
       {...rest}
-      aria-label={rest['aria-label'] || networkName}
       className={newClassName}
       onClick={handleClick}
       ref={forwardedRef}

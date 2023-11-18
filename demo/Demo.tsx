@@ -32,7 +32,7 @@ import {
   InstapaperShareButton,
   HatenaShareButton,
   FacebookIcon,
-  TwitterIcon,
+  XIcon,
   LinkedinIcon,
   PinterestIcon,
   VKIcon,
@@ -95,7 +95,7 @@ class Demo extends Component {
             title={title}
             className="Demo__some-network__share-button"
           >
-            <TwitterIcon size={32} round />
+            <XIcon size={32} round />
           </TwitterShareButton>
 
           <div className="Demo__some-network__share-count">&nbsp;</div>

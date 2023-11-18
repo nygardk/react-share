@@ -47,3 +47,4 @@ export { default as WhatsappIcon } from './WhatsappIcon';
 export { default as WhatsappShareButton } from './WhatsappShareButton';
 export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
+export { default as XIcon } from './XIcon';

@@ -2,55 +2,55 @@
 /* eslint-disable import/no-unresolved, import/extensions, import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import {
-  FacebookShareCount,
-  PinterestShareCount,
-  VKShareCount,
-  OKShareCount,
-  RedditShareCount,
-  TumblrShareCount,
-  HatenaShareCount,
-  FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
-  LinkedinShareButton,
-  TwitterShareButton,
-  PinterestShareButton,
-  VKShareButton,
-  OKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
-  HatenaShareButton,
-  FacebookIcon,
-  XIcon,
-  LinkedinIcon,
-  PinterestIcon,
-  VKIcon,
-  OKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+  FacebookShareCount,
   HatenaIcon,
+  HatenaShareButton,
+  HatenaShareCount,
+  InstapaperIcon,
+  InstapaperShareButton,
+  LineIcon,
+  LineShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  LivejournalIcon,
+  LivejournalShareButton,
+  MailruIcon,
+  MailruShareButton,
+  OKIcon,
+  OKShareButton,
+  OKShareCount,
+  PinterestIcon,
+  PinterestShareButton,
+  PinterestShareCount,
+  PocketIcon,
+  PocketShareButton,
+  RedditIcon,
+  RedditShareButton,
+  RedditShareCount,
+  TelegramIcon,
+  TelegramShareButton,
+  TumblrIcon,
+  TumblrShareButton,
+  TumblrShareCount,
+  TwitterShareButton,
+  ViberIcon,
+  ViberShareButton,
+  VKIcon,
+  VKShareButton,
+  VKShareCount,
+  WeiboIcon,
+  WeiboShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+  WorkplaceIcon,
+  WorkplaceShareButton,
+  XIcon,
 } from '../src';
 
 import './Demo.css';
@@ -93,8 +93,6 @@ class Demo extends Component {
           >
             <XIcon size={32} round />
           </TwitterShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
@@ -105,8 +103,6 @@ class Demo extends Component {
           >
             <TelegramIcon size={32} round />
           </TelegramShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
@@ -118,8 +114,6 @@ class Demo extends Component {
           >
             <WhatsappIcon size={32} round />
           </WhatsappShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
         </div>
 
         <div className="Demo__some-network">
@@ -231,6 +225,7 @@ class Demo extends Component {
             <EmailIcon size={32} round />
           </EmailShareButton>
         </div>
+
         <div className="Demo__some-network">
           <ViberShareButton
             url={shareUrl}

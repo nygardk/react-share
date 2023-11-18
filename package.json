@@ -82,6 +82,7 @@
     "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "classnames": "^2.3.2",
     "jsonp": "^0.2.1"
   },

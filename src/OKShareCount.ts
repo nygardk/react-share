@@ -22,7 +22,7 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
     window.OK = {
       Share: {
         count: function count(index, _count) {
-          window.OK.callbacks[index](_count);
+          window.OK.callbacks[index]?.(_count);
         },
       },
       callbacks: [],
@@ -35,7 +35,7 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   window.ODKL = {
     updateCount(index, count) {
       const callbackIndex = index === '' ? 0 : parseInt(index.replace('react-share-', ''), 10);
-      window.OK.callbacks[callbackIndex](count === '' ? undefined : parseInt(count, 10));
+      window.OK.callbacks[callbackIndex]?.(count === '' ? undefined : parseInt(count, 10));
     },
   };
   window.OK.callbacks.push(callback);

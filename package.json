@@ -2,20 +2,25 @@
   "name": "react-share",
   "version": "4.4.1",
   "description": "Social media share buttons and share counts for React.",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "module": "./es/index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "sideEffects": false,
   "files": [
-    "lib/**/*",
-    "es/**/*"
+    "dist"
   ],
   "scripts": {
-    "build": "npm run lint && npm run build:commonjs && npm run build:es",
-    "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
-    "build:es": "rimraf ./es && tsc -p . --outDir ./es --module es2015 --moduleResolution Node",
-    "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",
-    "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
+    "build": "vite build",
+    "build-demo": "vite build --config vite.demo.config.js",
+    "demo": "vite --config vite.demo.config.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
     "start": "npm run run-demos"
@@ -54,8 +59,7 @@
     "@types/react-dom": "^17.0.23",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "cross-env": "7.0.3",
-    "css-loader": "6.7.1",
+    "@vitejs/plugin-react": "^4.2.0",
     "eslint": "8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "^5.3.1",
@@ -64,22 +68,12 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.31.10",
     "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-webpack-plugin": "^3.2.0",
-    "file-loader": "6.2.0",
-    "html-webpack-plugin": "5.5.0",
     "prettier": "2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hot-loader": "4.13.0",
-    "rimraf": "^3.0.2",
-    "style-loader": "3.3.1",
-    "terser-webpack-plugin": "5.3.6",
-    "ts-loader": "9.4.1",
     "typescript": "^5.2.2",
-    "url-loader": "4.1.1",
-    "webpack": "5.74.0",
-    "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.11.1"
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
     "@changesets/cli": "^2.26.2",

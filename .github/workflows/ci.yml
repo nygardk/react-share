@@ -1,0 +1,35 @@
+name: "CI"
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+env:
+  FORCE_COLOR: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/npm-install
+      - run: npm run lint
+
+  check-types:
+    name: Check types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/npm-install
+      - run: npm run check-types
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/npm-install
+      - run: npm run build
+

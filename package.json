@@ -20,10 +20,12 @@
   "scripts": {
     "build": "vite build",
     "build-demo": "vite build --config vite.demo.config.js",
+    "check-types": "tsc --noEmit",
     "demo": "vite --config vite.demo.config.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
-    "start": "npm run run-demos"
+    "start": "npm run run-demos",
+    "release": "npm build && changeset publish"
   },
   "keywords": [
     "react",

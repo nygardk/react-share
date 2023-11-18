@@ -24,7 +24,7 @@
     "demo": "vite --config vite.demo.config.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "npm run build",
-    "start": "npm run run-demos",
+    "start": "npm run demo",
     "release": "npm run build && changeset publish"
   },
   "keywords": [

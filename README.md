@@ -47,9 +47,11 @@
 
 #### Demo
 
-[View demo](https://npm-react-share-demo.netlify.app)
+[View deployed demo](https://npm-react-share-demo.netlify.app)
 
-To run demo: clone repo and run `npm install && npm run run-demos`
+[Codesandbox example](https://codesandbox.io/p/sandbox/react-share-demo-474q4k)
+
+To run demo locally: clone repo and run `npm install && npm run run-demos`
 and open `http://localhost:8080`.
 
 ## Install

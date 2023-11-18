@@ -185,7 +185,8 @@ import {
   VKIcon,
   WeiboIcon,
   WhatsappIcon,
-  WorkplaceIcon
+  WorkplaceIcon,
+  XIcon
 } from "react-share";
 ```
 

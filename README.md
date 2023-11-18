@@ -32,6 +32,7 @@
   - Pocket
   - Instapaper
   - Hatena
+  - Gab
   - email
 - share counts for
   - Facebook
@@ -76,6 +77,7 @@ npm install react-share
 import {
   EmailShareButton,
   FacebookShareButton,
+  GabShareButton,
   HatenaShareButton,
   InstapaperShareButton,
   LineShareButton,
@@ -163,6 +165,7 @@ import {
   EmailIcon,
   FacebookIcon,
   FacebookMessengerIcon,
+  GabIcon,
   HatenaIcon,
   InstapaperIcon,
   LineIcon,

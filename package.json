@@ -1,6 +1,6 @@
 {
   "name": "react-share",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Social media share buttons and share counts for React.",
   "type": "module",
   "main": "./dist/index.cjs",

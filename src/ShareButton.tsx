@@ -5,7 +5,7 @@ type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
 
-const isPromise = (obj: any | Promise<any>) =>
+const isPromise = (obj: any): obj is Promise<unknown> =>
   !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 
 const getBoxPositionOnWindowCenter = (width: number, height: number) => ({

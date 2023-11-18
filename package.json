@@ -6,10 +6,6 @@
   "types": "./lib/index.d.ts",
   "module": "./es/index.js",
   "sideEffects": false,
-  "engines": {
-    "node": ">=6.9.0",
-    "npm": ">=5.0.0"
-  },
   "files": [
     "lib/**/*",
     "es/**/*"

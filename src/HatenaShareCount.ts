@@ -12,7 +12,7 @@ function getHatenaShareCount(shareUrl: string, callback: (shareCount?: number) =
         url: shareUrl,
       }),
     (err, data) => {
-      callback(data ? data : undefined);
+      callback(data ?? undefined);
     },
   );
 }

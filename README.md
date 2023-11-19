@@ -6,7 +6,13 @@
 
 ![Share buttons screenshot](example.png)
 
-### Features
+## Install
+
+```shell
+npm install react-share
+```
+
+## Features
 
 - no external script loading, i.e. no dependencies on SDKs
 - supports tree shaking with ES modules
@@ -45,19 +51,13 @@
 - social media icons included in the library
 - supports also custom icons
 
-#### Demo
+## Demo
 
 - [Deployed demo](https://npm-react-share-demo.netlify.app) (from [`./demo`](./demo/))
 
 - [Codesandbox example](https://codesandbox.io/p/sandbox/react-share-demo-474q4k)
 
 - Locally: clone the repository and run `npm install && npm run demo`.
-
-## Install
-
-```shell
-npm install react-share
-```
 
 ## React compatibility
 

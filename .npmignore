@@ -1,9 +1,0 @@
-src
-demo
-docs
-.tsconfig
-.eslintrc
-.gitignore
-.git
-*.png
-*.config.js

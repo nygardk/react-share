@@ -1,15 +1,15 @@
 # react-share
 
-[![npm version](https://badge.fury.io/js/react-share.svg)](https://badge.fury.io/js/react-share)
-[![Download Count](http://img.shields.io/npm/dm/react-share.svg?style=flat-square)](https://npmjs.org/package/react-share)
+[![NPM](https://img.shields.io/npm/v/react-share.svg)](https://www.npmjs.com/package/react-share) ![npm bundle size](https://img.shields.io/bundlephobia/min/react-share) [![downloads](https://img.shields.io/npm/dm/react-share.svg?label=monthly%20downloads)](https://www.npmjs.com/package/react-share) [![downloads](https://img.shields.io/npm/dt/react-share.svg?label=total%20downloads)](https://www.npmjs.com/package/react-share)
 
-> Social media share buttons and share counts for your React project.
+> Social media share buttons and share counts for your React apps.
 
 ![Share buttons screenshot](example.png)
 
 ### Features
 
 - no external script loading, i.e. no dependencies on SDKs
+- supports tree shaking with ES modules
 - opens a popup share-window
 - share buttons for:
   - Facebook

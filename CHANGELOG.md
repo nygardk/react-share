@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.2
+
+### Patch Changes
+
+- b1da2d9: Fix Reddit logo in `RedditIcon`.
+- 2588f97: Fixed colors for: `FacebookIcon`, `LinkedinIcon`, `OKIcon`, `PinterestIcon`, `RedditIcon`, `TelegramIcon`, `TumblrIcon`, `VKIcon`, `ViberIcon`, `WeiboIcon`, `WorkplaceIcon`.
+- 6a43137: Fixed WhatsApp sharring issue on Android described [here](https://github.com/nygardk/react-share/issues/484).
+
 ## 5.0.1
 
 ### Patch Changes

@@ -20,7 +20,7 @@ npm install react-share
 - share buttons for:
   - Facebook
   - Facebook Messenger
-  - Twitter
+  - X (formerly Twitter)
   - Telegram
   - Whatsapp
   - LinkedIn

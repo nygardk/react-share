@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.3
+
+### Patch Changes
+
+- ddcf9c8: Fixed invalid `exports` configuration (reference to `dist/index.cjs`).
+
 ## 5.0.2
 
 ### Patch Changes

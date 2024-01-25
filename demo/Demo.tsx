@@ -89,6 +89,7 @@ export function Demo() {
           url={shareUrl}
           title={title}
           className="Demo__some-network__share-button"
+          htmlTitle="Share on Twitter"
         >
           <XIcon size={32} round />
         </TwitterShareButton>

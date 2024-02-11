@@ -7,7 +7,17 @@ import dts from 'vite-plugin-dts';
 const { dependencies, peerDependencies } = JSON.parse(fs.readFileSync(`./package.json`, 'utf8'));
 
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [
+    react(),
+    dts({
+      rollupTypes: true,
+      afterBuild: () => {
+        // https://github.com/qmhc/vite-plugin-dts/issues/267
+        fs.copyFileSync('dist/index.d.ts', 'dist/index.d.cts');
+      },
+    }),
+  ],
+
   build: {
     target: 'es2017',
     lib: {

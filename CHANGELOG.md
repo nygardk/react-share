@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0
+
+### Minor Changes
+
+- 4e74597: Added `htmlTitle` prop for the share button. This prop will be passed as the native `title` attribute for the `button` element.
+
 ## 5.0.4
 
 ### Patch Changes

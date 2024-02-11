@@ -65,6 +65,11 @@ function windowOpen(
 }
 
 interface CustomProps<LinkOptions> {
+  /**
+   *  Takes a function that returns a Promise to be fulfilled before calling
+   * `onClick`. If you do not return promise, `onClick` is called immediately.
+   */
+  beforeOnClick?: () => Promise<void> | void;
   children: React.ReactNode;
   className?: string;
   /** Disables click action and adds `disabled` class */
@@ -78,8 +83,13 @@ interface CustomProps<LinkOptions> {
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
+  /**
+   * Takes a function to be called after closing share dialog.
+   */
+  onShareWindowClose?: () => void;
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
+  resetButtonStyle?: boolean;
   /**
    * URL of the shared page
    */
@@ -88,16 +98,6 @@ interface CustomProps<LinkOptions> {
   windowWidth?: number;
   windowHeight?: number;
   windowPosition?: WindowPosition;
-  /**
-   *  Takes a function that returns a Promise to be fulfilled before calling
-   * `onClick`. If you do not return promise, `onClick` is called immediately.
-   */
-  beforeOnClick?: () => Promise<void> | void;
-  /**
-   * Takes a function to be called after closing share dialog.
-   */
-  onShareWindowClose?: () => void;
-  resetButtonStyle?: boolean;
 }
 
 export type Props<LinkOptions extends Record<string, unknown>> = Omit<

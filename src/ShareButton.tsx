@@ -80,6 +80,10 @@ interface CustomProps<LinkOptions> {
    */
   disabledStyle?: React.CSSProperties;
   forwardedRef?: Ref<HTMLButtonElement>;
+  /**
+   * Passes as the native `title` atribute for the `button` element.
+   */
+  htmlTitle?: HTMLButtonElement['title'];
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
@@ -113,6 +117,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   disabled,
   disabledStyle = { opacity: 0.6 },
   forwardedRef,
+  htmlTitle,
   networkLink,
   networkName,
   onClick,
@@ -193,6 +198,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
       onClick={handleClick}
       ref={forwardedRef}
       style={newStyle}
+      title={htmlTitle}
     >
       {children}
     </button>

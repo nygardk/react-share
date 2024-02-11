@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.4
+
+### Patch Changes
+
+- 1c50111: Fixed `exports` in package.json to comply with the `publint` and `attw` tools. May solve issues when your project uses CommonJS modules and Node.js v16 or newer.
+
 ## 5.0.3
 
 ### Patch Changes

@@ -23,6 +23,7 @@
     "check-types": "tsc --noEmit",
     "demo": "vite --config vite.demo.config.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./demo",
+    "lint-package": "npx publint && npx @arethetypeswrong/cli --pack .",
     "prepublishOnly": "npm run build",
     "start": "npm run demo",
     "release": "npm run build && changeset publish"

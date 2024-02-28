@@ -126,6 +126,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   opts,
   resetButtonStyle = true,
   style,
+  title, // deconstructed from ...rest to prevent passing it to the button element
   url,
   windowHeight = 400,
   windowPosition = 'windowCenter',

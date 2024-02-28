@@ -122,6 +122,8 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   opts,
   resetButtonStyle = true,
   style,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  title, // deconstructed from ...rest to prevent passing it to the button element
   url,
   windowHeight = 400,
   windowPosition = 'windowCenter',

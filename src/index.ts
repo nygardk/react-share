@@ -33,6 +33,8 @@ export { default as GabIcon } from './GabIcon';
 export { default as RedditShareCount } from './RedditShareCount';
 export { default as TelegramIcon } from './TelegramIcon';
 export { default as TelegramShareButton } from './TelegramShareButton';
+export { default as ThreadsIcon } from './ThreadsIcon';
+export { default as ThreadsShareButton } from './ThreadsShareButton';
 export { default as TumblrIcon } from './TumblrIcon';
 export { default as TumblrShareButton } from './TumblrShareButton';
 export { default as TumblrShareCount } from './TumblrShareCount';

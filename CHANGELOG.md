@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.1
+
+### Patch Changes
+
+- e4c1704: This patch fixes an issue with the Reddit sharing functionality, where the shared link was not automatically populated in Reddit’s share preview. By appending /web before /submit in the Reddit share URL, the link now populates correctly, improving the user experience for Reddit sharing.
+
 ## 5.1.0
 
 ### Minor Changes

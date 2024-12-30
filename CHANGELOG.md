@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.2
+
+### Patch Changes
+
+- e5f3488: Support React 19 in peerDependencies
+
 ## 5.1.1
 
 ### Patch Changes

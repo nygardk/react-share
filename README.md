@@ -39,6 +39,7 @@ npm install react-share
   - Instapaper
   - Hatena
   - Gab
+  - Bluesky
   - email
 - share counts for
   - Facebook
@@ -186,6 +187,7 @@ import {
   WhatsappIcon,
   WorkplaceIcon,
   XIcon,
+  BlueskyIcon,
 } from "react-share";
 ```
 

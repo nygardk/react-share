@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  BlueskyIcon,
+  BlueskyShareButton,
   EmailIcon,
   EmailShareButton,
   FacebookIcon,
@@ -304,6 +306,17 @@ export function Demo() {
         <div>
           <HatenaShareCount url={shareUrl} className="Demo__some-network__share-count" />
         </div>
+      </div>
+      <div className="Demo__some-network">
+        <BlueskyShareButton
+          url={shareUrl}
+          title={title}
+          windowWidth={660}
+          windowHeight={460}
+          className="Demo__some-network__share-button"
+        >
+          <BlueskyIcon size={32} round />
+        </BlueskyShareButton>
       </div>
     </div>
   );

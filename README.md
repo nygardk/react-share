@@ -40,6 +40,7 @@ npm install react-share
   - Hatena
   - Gab
   - email
+  - KakaoTalk
 - share counts for
   - Facebook
   - Pinterest
@@ -96,6 +97,7 @@ import {
   VKShareButton,
   WhatsappShareButton,
   WorkplaceShareButton,
+  KakaoShareButton,
 } from "react-share";
 ```
 
@@ -125,6 +127,7 @@ import {
 | WeiboShareButton             | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`image`** (string): An absolute link to the image that will be shared                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | WhatsappShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`separator`** (string, default=`" "`): Separates title from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | WorkplaceShareButton         | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| KakaoShareButton             | **`kakaoJsKey`** (string): Kakao JavaScript Key<br/>**`webUrl`** (string): URL of the shared page (must be a domain registered in the [Kakao Developer Console](https://developers.kakao.com/))<br/>**`title`** (string): Title of the shared page<br/>                                           | **`mobileWebUrl`** (string): Mobile-specific URL (must also be a registered domain in the Kakao Developer Console)<br/>**`description`** (string): Description of the shared page<br/>**`imageUrl`** (string): External URL of the image to display<br/>**`buttonTitle`** (string): Text for the button inside KakaoTalk.<br/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ### Share counts
 
@@ -186,6 +189,7 @@ import {
   WhatsappIcon,
   WorkplaceIcon,
   XIcon,
+  KakaoIcon,
 } from "react-share";
 ```
 

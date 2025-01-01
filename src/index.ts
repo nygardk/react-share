@@ -50,3 +50,5 @@ export { default as WhatsappShareButton } from './WhatsappShareButton';
 export { default as WorkplaceIcon } from './WorkplaceIcon';
 export { default as WorkplaceShareButton } from './WorkplaceShareButton';
 export { default as XIcon } from './XIcon';
+export { default as KakaoIcon } from './KakaoIcon';
+export { default as KakaoShareButton } from './KakaoShareButton';

@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  BlueskyIcon,
+  BlueskyShareButton,
   EmailIcon,
   EmailShareButton,
   FacebookIcon,
@@ -316,6 +318,18 @@ export function Demo() {
         >
           <ThreadsIcon size={32} round />
         </ThreadsShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <BlueskyShareButton
+          url={shareUrl}
+          title={title}
+          windowWidth={660}
+          windowHeight={460}
+          className="Demo__some-network__share-button"
+        >
+          <BlueskyIcon size={32} round />
+        </BlueskyShareButton>
       </div>
     </div>
   );

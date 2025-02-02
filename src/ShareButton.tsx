@@ -1,12 +1,15 @@
-import React, { Ref } from 'react';
+import type React from 'react';
 import cx from 'classnames';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
 
-const isPromise = (obj: any): obj is Promise<unknown> =>
-  !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+const isPromise = (obj: unknown): obj is Promise<unknown> =>
+  !!obj &&
+  (typeof obj === 'object' || typeof obj === 'function') &&
+  'then' in obj &&
+  typeof (obj as Promise<unknown>).then === 'function';
 
 const getBoxPositionOnWindowCenter = (width: number, height: number) => ({
   left: window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2,
@@ -20,7 +23,7 @@ const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
 
 function windowOpen(
   url: string,
-  { height, width, ...configRest }: { height: number; width: number; [key: string]: any },
+  { height, width, ...configRest }: { height: number; width: number; [key: string]: unknown },
   onClose?: (dialog: Window | null) => void,
 ) {
   const config: { [key: string]: string | number } = {
@@ -54,9 +57,7 @@ function windowOpen(
           onClose(shareDialog);
         }
       } catch (e) {
-        /* eslint-disable no-console */
         console.error(e);
-        /* eslint-enable no-console */
       }
     }, 1000);
   }
@@ -64,7 +65,8 @@ function windowOpen(
   return shareDialog;
 }
 
-interface CustomProps<LinkOptions> {
+export interface Props<LinkOptions>
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.
@@ -79,7 +81,7 @@ interface CustomProps<LinkOptions> {
    * @default { opacity: 0.6 }
    */
   disabledStyle?: React.CSSProperties;
-  forwardedRef?: Ref<HTMLButtonElement>;
+  forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * Passes as the native `title` atribute for the `button` element.
    */
@@ -104,12 +106,6 @@ interface CustomProps<LinkOptions> {
   windowPosition?: WindowPosition;
 }
 
-export type Props<LinkOptions extends Record<string, unknown>> = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  keyof CustomProps<LinkOptions>
-> &
-  CustomProps<LinkOptions>;
-
 export default function ShareButton<LinkOptions extends Record<string, unknown>>({
   beforeOnClick,
   children,
@@ -119,7 +115,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   forwardedRef,
   htmlTitle,
   networkLink,
-  networkName,
+  // networkName, // TODO
   onClick,
   onShareWindowClose,
   openShareDialogOnClick = true,

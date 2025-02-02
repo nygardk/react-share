@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- 373add6: Added `BlueskyShareButton` and `BlueskyIcon`. This button will take a title and url parameter, and then use [Bluesky Intent Links](https://docs.bsky.app/docs/advanced-guides/intent-links) to share that content. There is also an overrideable seperator parameter (defaults as ' ') that seperates the title and url.
+- d45d811: Added `ThreadsShareButton` and `ThreadsIcon`.
+
+### Patch Changes
+
+- 8a5016a: Build tooling updates. May affect the distributed files.
+- 15e830f: The `title` prop is no longer passed to the `button` element, which may have caused e.g. warnings in the console before. Note that to set the native `title` attribute for the share buttons, you may use the `htmlTitle` prop.
+- d172111: Internal type fixes.
+
 ## 5.1.2
 
 ### Patch Changes

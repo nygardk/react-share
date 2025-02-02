@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "jsx": "react",
-    "declaration": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "checkJs": false
   },
   "include": ["src"]
 }

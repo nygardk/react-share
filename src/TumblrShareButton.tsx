@@ -10,7 +10,14 @@ function tumblrLink(
     caption,
     tags,
     posttype,
-  }: { title?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+    content,
+  }: {
+    title?: string;
+    caption?: string;
+    tags?: string;
+    posttype?: 'link' | string;
+    content?: string;
+  },
 ) {
   assert(url, 'tumblr.url');
 
@@ -22,6 +29,7 @@ function tumblrLink(
       caption,
       tags,
       posttype,
+      content,
     })
   );
 }
@@ -29,14 +37,15 @@ function tumblrLink(
 type Options = {
   title?: string;
   caption?: string;
-  posttype?: 'link' | string;
+  posttype?: 'link' | 'text' | 'quote' | 'photo' | 'chat' | 'video' | string;
+  content?: string;
 };
 
 type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>, 'title'> &
   Options & { tags?: string[] };
 
 const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
-  ({ caption, posttype, tags, title, ...props }, ref) => (
+  ({ caption, posttype, tags, title, content, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
@@ -47,6 +56,7 @@ const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
         tags: (tags || []).join(','),
         caption,
         posttype: posttype || 'link',
+        content,
       }}
       windowHeight={460}
       windowWidth={660}

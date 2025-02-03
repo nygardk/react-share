@@ -86,7 +86,6 @@ export interface Props<LinkOptions>
    * Passes as the native `title` atribute for the `button` element.
    */
   htmlTitle?: HTMLButtonElement['title'];
-  networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
   /**
@@ -115,7 +114,6 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   forwardedRef,
   htmlTitle,
   networkLink,
-  // networkName, // TODO
   onClick,
   onShareWindowClose,
   openShareDialogOnClick = true,

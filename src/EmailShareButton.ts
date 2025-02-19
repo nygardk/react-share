@@ -1,4 +1,3 @@
-import type React from 'react';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 
@@ -22,11 +21,8 @@ const EmailShareButton = createShareButton<Options>(
   }),
   {
     openShareDialogOnClick: false,
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
-      const link = event.currentTarget.getAttribute('data-link');
-      if (link) {
-        window.location.href = link;
-      }
+    onClick: (_, link: string) => {
+      window.location.href = link;
     },
   },
 );

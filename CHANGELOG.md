@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.2.1
+
+### Patch Changes
+
+- 47c2906: Fix `EmailShareButton`: a bug slipped in that broke the sharing functionality.
+
 ## 5.2.0
 
 ### Minor Changes

@@ -115,7 +115,8 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   forwardedRef,
   htmlTitle,
   networkLink,
-  // networkName, // TODO
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
   onShareWindowClose,
   openShareDialogOnClick = true,

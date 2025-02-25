@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.2.2
+
+### Patch Changes
+
+- d04d084: Fix warning of passing extraneous `networkName` for the share buttons.
+
 ## 5.2.1
 
 ### Patch Changes

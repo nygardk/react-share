@@ -9,7 +9,14 @@ function tumblrLink(
     caption,
     tags,
     posttype,
-  }: { title?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+    content,
+  }: {
+    title?: string;
+    caption?: string;
+    tags?: string;
+    posttype?: 'link' | string;
+    content?: string;
+  },
 ) {
   assert(url, 'tumblr.url');
 
@@ -21,6 +28,7 @@ function tumblrLink(
       caption,
       tags,
       posttype,
+      content,
     })
   );
 }
@@ -28,7 +36,8 @@ function tumblrLink(
 type Options = {
   title?: string;
   caption?: string;
-  posttype?: 'link' | string;
+  posttype?: 'link' | 'text' | 'quote' | 'photo' | 'chat' | 'video' | string;
+  content?: string;
 };
 
 const TumblrShareButton = createShareButton<
@@ -42,6 +51,7 @@ const TumblrShareButton = createShareButton<
     tags: (props.tags || []).join(','),
     caption: props.caption,
     posttype: props.posttype || 'link',
+    content: props.content,
   }),
   {
     windowWidth: 660,

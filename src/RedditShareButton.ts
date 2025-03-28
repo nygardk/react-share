@@ -6,7 +6,7 @@ function redditLink(url: string, { title }: { title?: string }) {
   assert(url, 'reddit.url');
 
   return (
-    'https://www.reddit.com/web/submit' +
+    'https://www.reddit.com/submit' +
     objectToGetParams({
       url,
       title,

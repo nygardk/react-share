@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  BlueskyIcon,
+  BlueskyShareButton,
   EmailIcon,
   EmailShareButton,
   FacebookIcon,
@@ -35,6 +37,8 @@ import {
   RedditShareCount,
   TelegramIcon,
   TelegramShareButton,
+  ThreadsIcon,
+  ThreadsShareButton,
   TumblrIcon,
   TumblrShareButton,
   TumblrShareCount,
@@ -323,6 +327,26 @@ export function Demo() {
         >
           <KakaoIcon size={32} round />
         </KakaoShareButton>
+      <div className="Demo__some-network">
+        <ThreadsShareButton
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <ThreadsIcon size={32} round />
+        </ThreadsShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <BlueskyShareButton
+          url={shareUrl}
+          title={title}
+          windowWidth={660}
+          windowHeight={460}
+          className="Demo__some-network__share-button"
+        >
+          <BlueskyIcon size={32} round />
+        </BlueskyShareButton>
       </div>
     </div>
   );

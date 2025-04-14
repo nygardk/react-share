@@ -5,7 +5,7 @@ class AssertionError extends Error {
   }
 }
 
-export default function assert(value: any, message: string) {
+export default function assert(value: unknown, message: string) {
   if (!value) {
     throw new AssertionError(message);
   }

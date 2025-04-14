@@ -2,11 +2,11 @@ import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import createShareButton from './hocs/createShareButton';
 
-interface PinterestShareProps {
+type PinterestShareProps = {
   media: string;
   description?: string;
   pinId?: string;
-}
+};
 
 function pinterestLink(url: string, { media, description, pinId }: PinterestShareProps) {
   if (pinId) {

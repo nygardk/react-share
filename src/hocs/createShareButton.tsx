@@ -1,9 +1,11 @@
-import React, { Ref, forwardRef } from 'react';
+import type { ForwardRefRenderFunction, PropsWithoutRef } from 'react';
+import { forwardRef } from 'react';
 
-import ShareButton, { Props as ShareButtonProps } from '../ShareButton';
+import type { Props as ShareButtonProps } from '../ShareButton';
+import ShareButton from '../ShareButton';
 
 function createShareButton<
-  OptionProps extends Record<string, any>,
+  OptionProps extends Record<string, unknown>,
   LinkOptions extends Record<string, unknown> = OptionProps,
 >(
   networkName: string,
@@ -17,13 +19,17 @@ function createShareButton<
   > &
     OptionProps;
 
-  function CreatedButton(props: Props, ref: Ref<HTMLButtonElement>) {
-    const opts = optsMap(props);
-    const passedProps = { ...props };
+  const CreatedButton: ForwardRefRenderFunction<HTMLButtonElement, PropsWithoutRef<Props>> = (
+    props,
+    ref,
+  ) => {
+    const opts = optsMap(props as OptionProps);
+    const passedProps = { ...props } as Props;
 
     // remove keys from passed props that are passed as opts
     const optsKeys = Object.keys(opts);
     optsKeys.forEach(key => {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete passedProps[key];
     });
 
@@ -34,10 +40,10 @@ function createShareButton<
         forwardedRef={ref}
         networkName={networkName}
         networkLink={link}
-        opts={optsMap(props)}
+        opts={opts}
       />
     );
-  }
+  };
 
   CreatedButton.displayName = `ShareButton-${networkName}`;
 

@@ -55,6 +55,8 @@ import {
   WorkplaceIcon,
   WorkplaceShareButton,
   XIcon,
+  KakaoIcon,
+  KakaoShareButton,
 } from '../src';
 
 import './Demo.css';
@@ -63,6 +65,8 @@ import exampleImage from './react-share-pin-example.png';
 export function Demo() {
   const shareUrl = 'http://github.com';
   const title = 'GitHub';
+  const exampleImageUrl = `https://gist.github.com/user-attachments/assets/a3ffebb3-f2f1-4e44-a786-e1994d39c8c9`;
+  const KAKAO_JS_KEY = import.meta.env.VITE_KAKAO_JS_KEY;
 
   return (
     <div className="Demo__container">
@@ -310,6 +314,19 @@ export function Demo() {
         </div>
       </div>
 
+      <div className="Demo__some-network" aria-label="Kakao">
+        <KakaoShareButton
+          kakaoJsKey={KAKAO_JS_KEY}
+          webUrl={shareUrl}
+          mobileWebUrl={shareUrl}
+          title={title}
+          description={'description'}
+          buttonTitle={'buttonTitle'}
+          imageUrl={exampleImageUrl}
+          className="Demo__some-network__share-button"
+        >
+          <KakaoIcon size={32} round />
+        </KakaoShareButton>
       <div className="Demo__some-network">
         <ThreadsShareButton
           url={shareUrl}

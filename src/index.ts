@@ -47,6 +47,8 @@ export { default as TumblrShareButton } from './TumblrShareButton';
 /** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as TumblrShareCount } from './TumblrShareCount';
 export { default as TwitterIcon } from './TwitterIcon';
+export { default as XShareButton } from './XShareButton';
+/** @deprecated Use XShareButton instead. */
 export { default as TwitterShareButton } from './TwitterShareButton';
 export { default as ViberIcon } from './ViberIcon';
 export { default as ViberShareButton } from './ViberShareButton';

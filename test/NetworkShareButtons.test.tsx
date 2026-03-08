@@ -23,7 +23,7 @@ import WorkplaceShareButton from '../src/WorkplaceShareButton';
 
 type ShareButtonCase = {
   children: string;
-  Component: React.ComponentType<Record<string, unknown>>;
+  Component: React.ElementType;
   expectedUrl: string;
   props: Record<string, unknown>;
 };
@@ -31,7 +31,7 @@ type ShareButtonCase = {
 const shareButtonCases: ShareButtonCase[] = [
   {
     children: 'Share on Bluesky',
-    Component: BlueskyShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: BlueskyShareButton,
     expectedUrl: 'https://bsky.app/intent/compose?text=Example%20title%20https%3A%2F%2Fexample.com',
     props: {
       title: 'Example title',
@@ -40,7 +40,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Facebook',
-    Component: FacebookShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: FacebookShareButton,
     expectedUrl:
       'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com&hashtag=%23reactshare',
     props: {
@@ -50,7 +50,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Gab',
-    Component: GabShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: GabShareButton,
     expectedUrl: 'https://gab.com/compose?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       title: 'Example title',
@@ -59,7 +59,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Hatena',
-    Component: HatenaShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: HatenaShareButton,
     expectedUrl: 'http://b.hatena.ne.jp/add?mode=confirm&url=https://example.com&title=Example',
     props: {
       title: 'Example',
@@ -68,7 +68,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Instapaper',
-    Component: InstapaperShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: InstapaperShareButton,
     expectedUrl:
       'http://www.instapaper.com/hello2?url=https%3A%2F%2Fexample.com&title=Example%20title&description=Example%20description',
     props: {
@@ -79,7 +79,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Line',
-    Component: LineShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: LineShareButton,
     expectedUrl:
       'https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
@@ -89,7 +89,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on LinkedIn',
-    Component: LinkedinShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: LinkedinShareButton,
     expectedUrl:
       'https://linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com&mini=true&title=Example%20title&summary=Example%20summary&source=Example%20source',
     props: {
@@ -101,7 +101,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on LiveJournal',
-    Component: LivejournalShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: LivejournalShareButton,
     expectedUrl:
       'https://www.livejournal.com/update.bml?subject=Example%20title&event=Example%20description',
     props: {
@@ -112,7 +112,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Mail.ru',
-    Component: MailruShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: MailruShareButton,
     expectedUrl:
       'https://connect.mail.ru/share?url=https%3A%2F%2Fexample.com&title=Example%20title&description=Example%20description&image_url=https%3A%2F%2Fexample.com%2Fimage.png',
     props: {
@@ -124,7 +124,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on OK',
-    Component: OKShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: OKShareButton,
     expectedUrl:
       'https://connect.ok.ru/offer?url=https%3A%2F%2Fexample.com&title=Example%20title&description=Example%20description&imageUrl=https%3A%2F%2Fexample.com%2Fimage.png',
     props: {
@@ -136,7 +136,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Pocket',
-    Component: PocketShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: PocketShareButton,
     expectedUrl: 'https://getpocket.com/save?url=https%3A%2F%2Fexample.com&title=Example%20title',
     props: {
       title: 'Example title',
@@ -145,7 +145,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Telegram',
-    Component: TelegramShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: TelegramShareButton,
     expectedUrl: 'https://telegram.me/share/url?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       title: 'Example title',
@@ -154,7 +154,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Threads',
-    Component: ThreadsShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: ThreadsShareButton,
     expectedUrl: 'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       title: 'Example title',
@@ -163,7 +163,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Tumblr',
-    Component: TumblrShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: TumblrShareButton,
     expectedUrl:
       'https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com&title=Example%20title&caption=Example%20caption&tags=react%2Cshare&posttype=link',
     props: {
@@ -175,7 +175,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Viber',
-    Component: ViberShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: ViberShareButton,
     expectedUrl: 'viber://forward?text=Example%20title%20https%3A%2F%2Fexample.com',
     props: {
       title: 'Example title',
@@ -184,7 +184,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on VK',
-    Component: VKShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: VKShareButton,
     expectedUrl:
       'https://vk.com/share.php?url=https%3A%2F%2Fexample.com&title=Example%20title&image=https%3A%2F%2Fexample.com%2Fimage.png&noparse=1&no_vk_links=1',
     props: {
@@ -197,7 +197,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Weibo',
-    Component: WeiboShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: WeiboShareButton,
     expectedUrl:
       'http://service.weibo.com/share/share.php?url=https%3A%2F%2Fexample.com&title=Example%20title&pic=https%3A%2F%2Fexample.com%2Fimage.png',
     props: {
@@ -208,7 +208,7 @@ const shareButtonCases: ShareButtonCase[] = [
   },
   {
     children: 'Share on Workplace',
-    Component: WorkplaceShareButton as React.ComponentType<Record<string, unknown>>,
+    Component: WorkplaceShareButton,
     expectedUrl:
       'https://work.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com&quote=Example%20quote&hashtag=%23reactshare',
     props: {

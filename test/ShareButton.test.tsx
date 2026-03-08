@@ -165,10 +165,10 @@ describe('ShareButton', () => {
   it('calls onShareWindowClose when the popup closes', () => {
     vi.useFakeTimers();
 
-    const shareDialog = { closed: false } as Window;
+    const shareDialog = { closed: false };
     const onShareWindowClose = vi.fn();
 
-    vi.spyOn(window, 'open').mockReturnValue(shareDialog);
+    vi.spyOn(window, 'open').mockReturnValue(shareDialog as unknown as Window);
 
     render(
       <ShareButton
@@ -198,10 +198,10 @@ describe('ShareButton', () => {
       get closed() {
         throw error;
       },
-    } as Window;
+    };
     const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
-    vi.spyOn(window, 'open').mockReturnValue(shareDialog);
+    vi.spyOn(window, 'open').mockReturnValue(shareDialog as unknown as Window);
 
     render(
       <ShareButton
@@ -256,7 +256,7 @@ describe('ShareButton', () => {
 
     expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
       display: 'inline-flex',
-      outlineOffset: '1px',
+      outlineOffset: '2px',
     });
   });
 

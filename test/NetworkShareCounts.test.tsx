@@ -18,12 +18,28 @@ import VKShareCount from '../src/VKShareCount';
 
 const jsonpMock = vi.mocked(jsonp);
 
+const getJsonpCallback = (callIndex: number) => {
+  const call = jsonpMock.mock.calls[callIndex];
+
+  if (!call) {
+    throw new Error(`Expected jsonp call ${callIndex} to exist`);
+  }
+
+  const callback = call.at(-1);
+
+  if (typeof callback !== 'function') {
+    throw new Error(`Expected jsonp call ${callIndex} to end with a callback`);
+  }
+
+  return callback;
+};
+
 describe('network share count modules', () => {
   beforeEach(() => {
     jsonpMock.mockReset();
-    delete window.OK;
-    delete window.ODKL;
-    delete window.VK;
+    Reflect.deleteProperty(window, 'OK');
+    Reflect.deleteProperty(window, 'ODKL');
+    Reflect.deleteProperty(window, 'VK');
   });
 
   it('requests and resolves Facebook share counts', async () => {
@@ -35,7 +51,7 @@ describe('network share count modules', () => {
     );
 
     act(() => {
-      const callback = jsonpMock.mock.calls[0][1] as (
+      const callback = getJsonpCallback(0) as (
         err: Error | null,
         data?: { og_object?: { engagement?: { count?: number } } },
       ) => void;
@@ -55,7 +71,7 @@ describe('network share count modules', () => {
     );
 
     act(() => {
-      const callback = jsonpMock.mock.calls[0][1] as (err: Error | null, data?: number) => void;
+      const callback = getJsonpCallback(0) as (err: Error | null, data?: number) => void;
 
       callback(null, 8);
     });
@@ -72,7 +88,7 @@ describe('network share count modules', () => {
     );
 
     act(() => {
-      const callback = jsonpMock.mock.calls[0][1] as (
+      const callback = getJsonpCallback(0) as (
         err: Error | null,
         data?: { count?: number },
       ) => void;
@@ -93,7 +109,7 @@ describe('network share count modules', () => {
     );
 
     act(() => {
-      const callback = jsonpMock.mock.calls[0][2] as (
+      const callback = getJsonpCallback(0) as (
         err: Error | null,
         data?: { data?: { children: Array<{ data: { score?: number } }> } },
       ) => void;
@@ -113,7 +129,7 @@ describe('network share count modules', () => {
     );
 
     act(() => {
-      const callback = jsonpMock.mock.calls[0][1] as (
+      const callback = getJsonpCallback(0) as (
         err: Error | null,
         data?: { response?: { note_count?: number } },
       ) => void;

@@ -20,7 +20,7 @@ export default defineConfig({
         fs.copyFileSync('dist/index.d.ts', 'dist/index.d.cts');
       },
       include: ['src'],
-      tsconfigPath: './tsconfig.json',
+      tsconfigPath: './tsconfig.build.json',
     }),
   ],
   build: {

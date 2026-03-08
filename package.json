@@ -17,7 +17,7 @@
   "scripts": {
     "build": "vite build",
     "build-demo": "vite build --config vite.demo.config.js",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.demo.json",
     "demo": "vite --config vite.demo.config.js",
     "lint": "eslint ./src ./demo",
     "lint-package": "npx publint && npx @arethetypeswrong/cli --pack .",
@@ -61,6 +61,7 @@
     "@testing-library/react": "^16.3.2",
     "@types/assert": "^1.5.11",
     "@types/jsonp": "^0.2.3",
+    "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.56.1",

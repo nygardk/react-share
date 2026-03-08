@@ -8,12 +8,10 @@ import {
   FacebookMessengerIcon,
   FacebookMessengerShareButton,
   FacebookShareButton,
-  FacebookShareCount,
   GabIcon,
   GabShareButton,
   HatenaIcon,
   HatenaShareButton,
-  HatenaShareCount,
   InstapaperIcon,
   InstapaperShareButton,
   LineIcon,
@@ -26,28 +24,23 @@ import {
   MailruShareButton,
   OKIcon,
   OKShareButton,
-  OKShareCount,
   PinterestIcon,
   PinterestShareButton,
-  PinterestShareCount,
   PocketIcon,
   PocketShareButton,
   RedditIcon,
   RedditShareButton,
-  RedditShareCount,
   TelegramIcon,
   TelegramShareButton,
   ThreadsIcon,
   ThreadsShareButton,
   TumblrIcon,
   TumblrShareButton,
-  TumblrShareCount,
   TwitterShareButton,
   ViberIcon,
   ViberShareButton,
   VKIcon,
   VKShareButton,
-  VKShareCount,
   WeiboIcon,
   WeiboShareButton,
   WhatsappIcon,
@@ -70,12 +63,6 @@ export function Demo() {
         <FacebookShareButton url={shareUrl} className="Demo__some-network__share-button">
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-
-        <div>
-          <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
-            {count => count}
-          </FacebookShareCount>
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -133,10 +120,6 @@ export function Demo() {
         >
           <PinterestIcon size={32} round />
         </PinterestShareButton>
-
-        <div>
-          <PinterestShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -147,10 +130,6 @@ export function Demo() {
         >
           <VKIcon size={32} round />
         </VKShareButton>
-
-        <div>
-          <VKShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -161,10 +140,6 @@ export function Demo() {
         >
           <OKIcon size={32} round />
         </OKShareButton>
-
-        <div>
-          <OKShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -177,10 +152,6 @@ export function Demo() {
         >
           <RedditIcon size={32} round />
         </RedditShareButton>
-
-        <div>
-          <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -203,10 +174,6 @@ export function Demo() {
         >
           <TumblrIcon size={32} round />
         </TumblrShareButton>
-
-        <div>
-          <TumblrShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">
@@ -304,10 +271,6 @@ export function Demo() {
         >
           <HatenaIcon size={32} round />
         </HatenaShareButton>
-
-        <div>
-          <HatenaShareCount url={shareUrl} className="Demo__some-network__share-count" />
-        </div>
       </div>
 
       <div className="Demo__some-network">

@@ -4,7 +4,7 @@ import cx from 'classnames';
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
-type Without<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
 
 const isPromise = (obj: unknown): obj is Promise<unknown> =>
   !!obj &&
@@ -66,10 +66,7 @@ function windowOpen(
   return shareDialog;
 }
 
-export interface Props<LinkOptions> extends Without<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  'onClick'
-> {
+export interface Props<LinkOptions> extends NativeButtonProps {
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.

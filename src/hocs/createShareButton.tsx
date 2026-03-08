@@ -4,7 +4,10 @@ import { forwardRef } from 'react';
 import type { Props as ShareButtonProps } from '../ShareButton';
 import ShareButton from '../ShareButton';
 
-type Without<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+type ShareButtonBaseProps<LinkOptions extends Record<string, unknown>> = Omit<
+  ShareButtonProps<LinkOptions>,
+  'forwardedRef' | 'networkName' | 'networkLink' | 'opts'
+>;
 
 function createShareButton<
   OptionProps extends Record<string, unknown>,
@@ -15,11 +18,7 @@ function createShareButton<
   optsMap: (props: OptionProps) => LinkOptions,
   defaultProps: Partial<ShareButtonProps<LinkOptions> & OptionProps>,
 ) {
-  type Props = Without<
-    ShareButtonProps<LinkOptions>,
-    'forwardedRef' | 'networkName' | 'networkLink' | 'opts'
-  > &
-    OptionProps;
+  type Props = ShareButtonBaseProps<LinkOptions> & OptionProps;
 
   const CreatedButton: ForwardRefRenderFunction<HTMLButtonElement, PropsWithoutRef<Props>> = (
     props,

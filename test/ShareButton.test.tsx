@@ -240,4 +240,37 @@ describe('ShareButton', () => {
     expect(button.style.border).toBe('');
     expect(button.style.padding).toBe('');
   });
+
+  it('uses inline-flex in the reset button styles to avoid icon baseline gaps', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({ display: 'inline-flex' });
+  });
+
+  it('lets callers override the default reset display style', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        opts={{}}
+        style={{ display: 'inline-block' }}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
+      display: 'inline-block',
+    });
+  });
 });

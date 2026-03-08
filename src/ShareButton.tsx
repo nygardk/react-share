@@ -186,6 +186,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        display: 'inline-flex',
         font: 'inherit',
         color: 'inherit',
         cursor: 'pointer',

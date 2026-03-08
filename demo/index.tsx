@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Demo } from './Demo';
 import './Demo.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Demo />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const rootNode = document.getElementById('root');
+
+if (rootNode) {
+  createRoot(rootNode).render(
+    <React.StrictMode>
+      <Demo />
+    </React.StrictMode>,
+  );
+}

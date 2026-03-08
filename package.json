@@ -53,29 +53,29 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "2.30.0",
-    "@types/assert": "1.5.11",
-    "@types/jsonp": "0.2.3",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@typescript-eslint/eslint-plugin": "8.22.0",
-    "@typescript-eslint/parser": "8.22.0",
-    "@vitejs/plugin-react": "4.3.4",
-    "eslint": "9.19.0",
-    "eslint-config-prettier": "10.0.1",
+    "@changesets/cli": "^2.30.0",
+    "@types/assert": "^1.5.11",
+    "@types/jsonp": "^0.2.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.2.3",
-    "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.1.0",
-    "globals": "15.14.0",
-    "prettier": "3.4.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "5.7.3",
-    "vite": "6.0.11",
-    "vite-plugin-dts": "4.5.0"
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -83,10 +83,5 @@
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19"
-  },
-  "overrides": {
-    "vite-plugin-dts": {
-      "@microsoft/api-extractor": "~7.48.0"
-    }
   }
 }

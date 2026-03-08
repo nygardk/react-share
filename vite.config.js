@@ -15,7 +15,8 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      rollupTypes: true,
+      // rollupTypes uses api-extractor and is brittle on some valid TS shapes.
+      rollupTypes: false,
       afterBuild: () => {
         // https://github.com/qmhc/vite-plugin-dts/issues/267
         fs.copyFileSync('dist/index.d.ts', 'dist/index.d.cts');

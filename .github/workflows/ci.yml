@@ -9,6 +9,14 @@ env:
   FORCE_COLOR: true
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/npm-install
+      - run: npm test
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -32,4 +40,3 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/npm-install
       - run: npm run build && npm run lint-package
-

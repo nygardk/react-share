@@ -53,7 +53,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "2.27.12",
+    "@changesets/cli": "2.30.0",
     "@types/assert": "1.5.11",
     "@types/jsonp": "0.2.3",
     "@types/react": "^18.3.18",

@@ -50,8 +50,6 @@ npm install react-share
 
 - [Deployed demo](https://npm-react-share-demo.netlify.app) (from [`./demo`](./demo/))
 
-- [Codesandbox example](https://codesandbox.io/p/sandbox/react-share-demo-474q4k)
-
 - Locally: clone the repository and run `npm install && npm run demo`.
 
 ## React compatibility

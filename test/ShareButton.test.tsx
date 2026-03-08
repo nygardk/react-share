@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import FacebookIcon from '../src/FacebookIcon';
 import ShareButton from '../src/ShareButton';
 
 describe('ShareButton', () => {
@@ -253,7 +254,40 @@ describe('ShareButton', () => {
       </ShareButton>,
     );
 
-    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({ display: 'inline-flex' });
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
+      display: 'inline-flex',
+      outlineOffset: '1px',
+    });
+  });
+
+  it('matches the button border radius to round icon children for focus outlines', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        opts={{}}
+        url="https://example.com"
+      >
+        <FacebookIcon round aria-label="facebook icon" />
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button')).toHaveStyle({ borderRadius: '50%' });
+  });
+
+  it('matches the button border radius to rounded rectangular icon children', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        opts={{}}
+        url="https://example.com"
+      >
+        <FacebookIcon aria-label="facebook icon" borderRadius={12} />
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button')).toHaveStyle({ borderRadius: '12px' });
   });
 
   it('lets callers override the default reset display style', () => {
@@ -262,15 +296,17 @@ describe('ShareButton', () => {
         networkLink={(url: string) => url}
         networkName="test"
         opts={{}}
-        style={{ display: 'inline-block' }}
+        style={{ borderRadius: 4, display: 'inline-block', outlineOffset: 3 }}
         url="https://example.com"
       >
-        Share
+        <FacebookIcon round aria-label="facebook icon" />
       </ShareButton>,
     );
 
-    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
+    expect(screen.getByRole('button')).toHaveStyle({
+      borderRadius: '4px',
       display: 'inline-block',
+      outlineOffset: '3px',
     });
   });
 });

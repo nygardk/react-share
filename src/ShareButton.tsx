@@ -1,3 +1,4 @@
+import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
 
@@ -5,6 +6,7 @@ type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
+type IconShapeProps = { borderRadius?: number; round?: boolean };
 
 const isPromise = (obj: unknown): obj is Promise<unknown> =>
   !!obj &&
@@ -21,6 +23,26 @@ const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
   top: (window.screen.height - height) / 2,
   left: (window.screen.width - width) / 2,
 });
+
+function getButtonBorderRadius(children: React.ReactNode) {
+  const childNodes = Children.toArray(children);
+
+  if (childNodes.length !== 1) {
+    return undefined;
+  }
+
+  const [child] = childNodes;
+
+  if (!isValidElement<IconShapeProps>(child)) {
+    return undefined;
+  }
+
+  if (child.props.round) {
+    return '50%';
+  }
+
+  return child.props.borderRadius ?? 0;
+}
 
 function windowOpen(
   url: string,
@@ -138,6 +160,8 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   windowWidth = 550,
   ...rest
 }: Props<LinkOptions>) {
+  const buttonBorderRadius = getButtonBorderRadius(children);
+
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) {
       return;
@@ -187,6 +211,8 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
         border: 'none',
         padding: 0,
         display: 'inline-flex',
+        borderRadius: buttonBorderRadius,
+        outlineOffset: 2,
         font: 'inherit',
         color: 'inherit',
         cursor: 'pointer',

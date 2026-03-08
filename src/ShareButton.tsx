@@ -134,11 +134,11 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   ...rest
 }: Props<LinkOptions>) {
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const link = networkLink(url, opts);
-
     if (disabled) {
       return;
     }
+
+    const link = networkLink(url, opts);
 
     event.preventDefault();
 
@@ -196,6 +196,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
     <button
       {...rest}
       className={newClassName}
+      disabled={disabled}
       onClick={handleClick}
       ref={forwardedRef}
       style={newStyle}

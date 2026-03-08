@@ -81,4 +81,29 @@ describe('ShareButton', () => {
 
     expect(openSpy).not.toHaveBeenCalled();
   });
+
+  it('applies native disabled semantics', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+    const onClick = vi.fn();
+
+    render(
+      <ShareButton
+        disabled
+        networkLink={(url: string) => url}
+        networkName="test"
+        onClick={onClick}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Share' });
+    fireEvent.click(button);
+
+    expect(button).toBeDisabled();
+    expect(openSpy).not.toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
+  });
 });

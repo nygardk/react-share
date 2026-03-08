@@ -39,4 +39,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/npm-install
-      - run: npm run build && npm run lint-package
+      - run: npm run build && npm run test:dist && npm run lint-package

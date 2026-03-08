@@ -24,6 +24,7 @@
     "prepublishOnly": "npm run build",
     "start": "npm run demo",
     "test": "vitest run",
+    "test:dist": "vitest run --config vitest.dist.config.ts",
     "test:coverage": "vitest run --coverage",
     "release": "npm run build && changeset publish"
   },

@@ -51,7 +51,8 @@ import {
 } from '../src';
 
 import './Demo.css';
-import exampleImage from './react-share-pin-example.png';
+
+const exampleImage = new URL('./react-share-pin-example.png', import.meta.url).href;
 
 export function Demo() {
   const shareUrl = 'http://github.com';

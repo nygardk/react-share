@@ -24,6 +24,7 @@
     "prepublishOnly": "npm run build",
     "start": "npm run demo",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "release": "npm run build && changeset publish"
   },
   "keywords": [
@@ -64,6 +65,7 @@
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
     "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-babel": "^5.3.1",

@@ -60,6 +60,18 @@ export function Demo() {
   return (
     <div className="Demo__container">
       <div className="Demo__some-network">
+        <WhatsappShareButton
+          aria-label="Share on WhatsApp"
+          url={shareUrl}
+          title={title}
+          separator=":: "
+          className="Demo__some-network__share-button"
+        >
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
+      </div>
+
+      <div className="Demo__some-network">
         <FacebookShareButton
           aria-label="Share on Facebook"
           url={shareUrl}
@@ -67,17 +79,6 @@ export function Demo() {
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <FacebookMessengerShareButton
-          aria-label="Share in Messenger"
-          url={shareUrl}
-          appId="521270401588372"
-          className="Demo__some-network__share-button"
-        >
-          <FacebookMessengerIcon size={32} round />
-        </FacebookMessengerShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -92,26 +93,14 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <TelegramShareButton
-          aria-label="Share on Telegram"
+        <FacebookMessengerShareButton
+          aria-label="Share in Messenger"
           url={shareUrl}
-          title={title}
+          appId="521270401588372"
           className="Demo__some-network__share-button"
         >
-          <TelegramIcon size={32} round />
-        </TelegramShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <WhatsappShareButton
-          aria-label="Share on WhatsApp"
-          url={shareUrl}
-          title={title}
-          separator=":: "
-          className="Demo__some-network__share-button"
-        >
-          <WhatsappIcon size={32} round />
-        </WhatsappShareButton>
+          <FacebookMessengerIcon size={32} round />
+        </FacebookMessengerShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -125,36 +114,14 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <PinterestShareButton
-          aria-label="Pin on Pinterest"
-          url={String(window.location)}
-          media={`${String(window.location)}/${exampleImage}`}
-          className="Demo__some-network__share-button"
-        >
-          <PinterestIcon size={32} round />
-        </PinterestShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <VKShareButton
-          aria-label="Share on VK"
+        <TelegramShareButton
+          aria-label="Share on Telegram"
           url={shareUrl}
-          image={`${String(window.location)}/${exampleImage}`}
+          title={title}
           className="Demo__some-network__share-button"
         >
-          <VKIcon size={32} round />
-        </VKShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <OKShareButton
-          aria-label="Share on OK"
-          url={shareUrl}
-          image={`${String(window.location)}/${exampleImage}`}
-          className="Demo__some-network__share-button"
-        >
-          <OKIcon size={32} round />
-        </OKShareButton>
+          <TelegramIcon size={32} round />
+        </TelegramShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -171,84 +138,37 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <GabShareButton
-          aria-label="Share on Gab"
-          url={shareUrl}
-          title={title}
-          windowWidth={660}
-          windowHeight={640}
+        <PinterestShareButton
+          aria-label="Pin on Pinterest"
+          url={String(window.location)}
+          media={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <GabIcon size={32} round />
-        </GabShareButton>
+          <PinterestIcon size={32} round />
+        </PinterestShareButton>
       </div>
 
       <div className="Demo__some-network">
-        <TumblrShareButton
-          aria-label="Share on Tumblr"
+        <ThreadsShareButton
+          aria-label="Share on Threads"
           url={shareUrl}
           title={title}
           className="Demo__some-network__share-button"
         >
-          <TumblrIcon size={32} round />
-        </TumblrShareButton>
+          <ThreadsIcon size={32} round />
+        </ThreadsShareButton>
       </div>
 
       <div className="Demo__some-network">
-        <LivejournalShareButton
-          aria-label="Share on LiveJournal"
+        <WeiboShareButton
+          aria-label="Share on Weibo"
           url={shareUrl}
           title={title}
-          description={shareUrl}
+          image={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <LivejournalIcon size={32} round />
-        </LivejournalShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <MailruShareButton
-          aria-label="Share on Mail.ru"
-          url={shareUrl}
-          title={title}
-          className="Demo__some-network__share-button"
-        >
-          <MailruIcon size={32} round />
-        </MailruShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <EmailShareButton
-          aria-label="Share by email"
-          url={shareUrl}
-          subject={title}
-          body="body"
-          className="Demo__some-network__share-button"
-        >
-          <EmailIcon size={32} round />
-        </EmailShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <ViberShareButton
-          aria-label="Share on Viber"
-          url={shareUrl}
-          title={title}
-          className="Demo__some-network__share-button"
-        >
-          <ViberIcon size={32} round />
-        </ViberShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <WorkplaceShareButton
-          aria-label="Share on Workplace"
-          url={shareUrl}
-          quote={title}
-          className="Demo__some-network__share-button"
-        >
-          <WorkplaceIcon size={32} round />
-        </WorkplaceShareButton>
+          <WeiboIcon size={32} round />
+        </WeiboShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -263,15 +183,39 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <WeiboShareButton
-          aria-label="Share on Weibo"
+        <BlueskyShareButton
+          aria-label="Share on Bluesky"
           url={shareUrl}
           title={title}
-          image={`${String(window.location)}/${exampleImage}`}
+          windowWidth={660}
+          windowHeight={460}
           className="Demo__some-network__share-button"
         >
-          <WeiboIcon size={32} round />
-        </WeiboShareButton>
+          <BlueskyIcon size={32} round />
+        </BlueskyShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <ViberShareButton
+          aria-label="Share on Viber"
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <ViberIcon size={32} round />
+        </ViberShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <EmailShareButton
+          aria-label="Share by email"
+          url={shareUrl}
+          subject={title}
+          body="body"
+          className="Demo__some-network__share-button"
+        >
+          <EmailIcon size={32} round />
+        </EmailShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -297,6 +241,62 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
+        <TumblrShareButton
+          aria-label="Share on Tumblr"
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <TumblrIcon size={32} round />
+        </TumblrShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <VKShareButton
+          aria-label="Share on VK"
+          url={shareUrl}
+          image={`${String(window.location)}/${exampleImage}`}
+          className="Demo__some-network__share-button"
+        >
+          <VKIcon size={32} round />
+        </VKShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <OKShareButton
+          aria-label="Share on OK"
+          url={shareUrl}
+          image={`${String(window.location)}/${exampleImage}`}
+          className="Demo__some-network__share-button"
+        >
+          <OKIcon size={32} round />
+        </OKShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <MailruShareButton
+          aria-label="Share on Mail.ru"
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <MailruIcon size={32} round />
+        </MailruShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <LivejournalShareButton
+          aria-label="Share on LiveJournal"
+          url={shareUrl}
+          title={title}
+          description={shareUrl}
+          className="Demo__some-network__share-button"
+        >
+          <LivejournalIcon size={32} round />
+        </LivejournalShareButton>
+      </div>
+
+      <div className="Demo__some-network">
         <HatenaShareButton
           aria-label="Share on Hatena"
           url={shareUrl}
@@ -310,27 +310,27 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <ThreadsShareButton
-          aria-label="Share on Threads"
+        <WorkplaceShareButton
+          aria-label="Share on Workplace"
           url={shareUrl}
-          title={title}
+          quote={title}
           className="Demo__some-network__share-button"
         >
-          <ThreadsIcon size={32} round />
-        </ThreadsShareButton>
+          <WorkplaceIcon size={32} round />
+        </WorkplaceShareButton>
       </div>
 
       <div className="Demo__some-network">
-        <BlueskyShareButton
-          aria-label="Share on Bluesky"
+        <GabShareButton
+          aria-label="Share on Gab"
           url={shareUrl}
           title={title}
           windowWidth={660}
-          windowHeight={460}
+          windowHeight={640}
           className="Demo__some-network__share-button"
         >
-          <BlueskyIcon size={32} round />
-        </BlueskyShareButton>
+          <GabIcon size={32} round />
+        </GabShareButton>
       </div>
     </div>
   );

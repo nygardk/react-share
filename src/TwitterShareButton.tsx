@@ -1,6 +1,8 @@
+import type { ComponentProps } from 'react';
+import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import createShareButton from './hocs/createShareButton';
+import ShareButton from './ShareButton';
 
 function twitterLink(
   url: string,
@@ -27,24 +29,42 @@ function twitterLink(
   );
 }
 
-const TwitterShareButton = createShareButton<{
+type TwitterShareButtonProps = Omit<
+  ComponentProps<
+    typeof ShareButton<{
+      title?: string;
+      via?: string;
+      hashtags?: string[];
+      related?: string[];
+    }>
+  >,
+  'networkName' | 'networkLink' | 'opts'
+> & {
   title?: string;
   via?: string;
   hashtags?: string[];
   related?: string[];
-}>(
-  'twitter',
-  twitterLink,
-  props => ({
-    hashtags: props.hashtags,
-    title: props.title,
-    via: props.via,
-    related: props.related,
-  }),
-  {
-    windowWidth: 550,
-    windowHeight: 400,
-  },
+};
+
+const TwitterShareButton = forwardRef<HTMLButtonElement, TwitterShareButtonProps>(
+  ({ hashtags, related, title, via, ...props }, ref) => (
+    <ShareButton
+      {...props}
+      forwardedRef={ref}
+      networkName="twitter"
+      networkLink={twitterLink}
+      opts={{
+        hashtags,
+        title,
+        via,
+        related,
+      }}
+      windowHeight={400}
+      windowWidth={550}
+    />
+  ),
 );
+
+TwitterShareButton.displayName = 'TwitterShareButton';
 
 export default TwitterShareButton;

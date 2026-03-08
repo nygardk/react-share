@@ -8,33 +8,6 @@ import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
 
-const shareButtonComponents = {
-  BlueskyShareButton: "button",
-  EmailShareButton: "button",
-  FacebookMessengerShareButton: "button",
-  FacebookShareButton: "button",
-  GabShareButton: "button",
-  HatenaShareButton: "button",
-  InstapaperShareButton: "button",
-  LineShareButton: "button",
-  LinkedinShareButton: "button",
-  LivejournalShareButton: "button",
-  MailruShareButton: "button",
-  OKShareButton: "button",
-  PinterestShareButton: "button",
-  PocketShareButton: "button",
-  RedditShareButton: "button",
-  TelegramShareButton: "button",
-  ThreadsShareButton: "button",
-  TumblrShareButton: "button",
-  TwitterShareButton: "button",
-  ViberShareButton: "button",
-  VKShareButton: "button",
-  WeiboShareButton: "button",
-  WhatsappShareButton: "button",
-  WorkplaceShareButton: "button",
-};
-
 export default [
   {
     ignores: [
@@ -77,12 +50,7 @@ export default [
       "react-hooks": reactHooks,
       "jsx-a11y": jsxA11y,
     },
-    settings: {
-      react: { version: "detect" },
-      "jsx-a11y": {
-        components: shareButtonComponents,
-      },
-    },
+    settings: { react: { version: "detect" } },
     rules: {
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,

@@ -67,9 +67,11 @@ npm install react-share
 
 ### Share buttons
 
-All share buttons render a native `<button>` element and pass through standard button attributes such as `aria-label`, `aria-describedby`, `name`, and `data-*`.
+All share buttons render a native `<button>` element and pass through standard button attributes such as `aria-label`, `aria-labelledby`, `aria-describedby`, `name`, and `data-*`.
 
 Buttons and icons are separate named exports. Import only the components you use to keep tree shaking effective, and pass any custom element as `children` if you want to use your own icon set instead of the bundled icons.
+
+Icon-only buttons need an accessible name. Pass `aria-label` or `aria-labelledby` when you render them in your app. `htmlTitle` only sets the native tooltip/title attribute and is not used as the button's accessible name.
 
 Shared props:
 
@@ -622,20 +624,22 @@ All exported icons share the same props:
 | `borderRadius`  | `number`                  | `0`       | Rounded corners when using the rectangular shape.                      |
 | `bgStyle`       | `CSSProperties`           | `{}`      | Custom background styles such as `fill`.                               |
 | `iconFillColor` | `string`                  | `"white"` | Fill color applied to icon paths that do not already specify one.      |
-| `...svgProps`   | `SVGProps<SVGSVGElement>` | -         | Standard SVG attributes such as `className`, `aria-hidden`, or `role`. |
+| `...svgProps`   | `SVGProps<SVGSVGElement>` | -         | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
 
 Example:
 
 ```jsx
 import { XIcon } from "react-share";
 
-<XIcon size={32} round />;
+<XIcon aria-hidden="true" size={32} round />;
 ```
+
+Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="true"`, or provide an accessible name when the icon itself conveys meaning.
 
 ## Troubleshooting
 
 - Popup blockers: share buttons use `window.open` from the click handler. If your app does async work in `beforeOnClick`, some browsers may treat the eventual popup as script-triggered and block it. In those cases, set `openShareDialogOnClick={false}` and manage the resulting URL yourself.
-- Accessibility: icon-only buttons should usually set an explicit `aria-label`.
+- Accessibility: icon-only buttons should always have an accessible name. Use `aria-label` or `aria-labelledby` on the share button; `htmlTitle` is only a tooltip.
 - Mobile app handoff: some platforms open the browser, an in-app browser, or an extra tab before handing off to a native app. This behavior is controlled by the target platform and browser, not by `react-share`.
 - iOS PWAs: standalone mode can show a blank intermediary page for schemes such as `mailto:` or native-app handoff URLs. This is a platform limitation.
 

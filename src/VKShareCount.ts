@@ -36,4 +36,9 @@ function getVKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   );
 }
 
-export default createShareCount(getVKShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const VKShareCount = createShareCount(getVKShareCount);
+
+export default VKShareCount;

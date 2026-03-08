@@ -152,6 +152,8 @@ Compatibility notes:
 
 ### Share counts
 
+Share count components are deprecated and will be removed in v6. They remain available in v5 as best-effort compatibility only, and upstream networks may stop returning counts without notice.
+
 ```js
 import {
   FacebookShareCount,

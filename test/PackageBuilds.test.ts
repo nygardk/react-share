@@ -57,6 +57,14 @@ describe('package builds', () => {
     await expect(access(distPaths.typesCjs)).resolves.toBeUndefined();
   });
 
+  it('marks share count exports as deprecated in the built type declarations', async () => {
+    const declarationBundle = await readFile(distPaths.types, 'utf8');
+
+    expect(declarationBundle).toContain('@deprecated Share counts are deprecated and will be removed in v6.');
+    expect(declarationBundle).toContain('FacebookShareCount');
+    expect(declarationBundle).toContain('PinterestShareCount');
+  });
+
   it('exports the same public surface from the ESM and CJS builds', async () => {
     const esmModule = await import(pathToFileURL(distPaths.esm).href);
     const cjsModule = require(distPaths.cjs) as Record<string, unknown>;

@@ -17,4 +17,9 @@ function getHatenaShareCount(shareUrl: string, callback: (shareCount?: number) =
   );
 }
 
-export default createShareCount(getHatenaShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const HatenaShareCount = createShareCount(getHatenaShareCount);
+
+export default HatenaShareCount;

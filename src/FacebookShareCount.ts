@@ -14,4 +14,9 @@ function getFacebookShareCount(shareUrl: string, callback: (shareCount?: number)
   });
 }
 
-export default createShareCount(getFacebookShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const FacebookShareCount = createShareCount(getFacebookShareCount);
+
+export default FacebookShareCount;

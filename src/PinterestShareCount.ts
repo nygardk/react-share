@@ -17,4 +17,9 @@ function getPinterestShareCount(shareUrl: string, callback: (shareCount?: number
   );
 }
 
-export default createShareCount(getPinterestShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const PinterestShareCount = createShareCount(getPinterestShareCount);
+
+export default PinterestShareCount;

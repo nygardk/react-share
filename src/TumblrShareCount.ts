@@ -17,4 +17,9 @@ function getTumblrShareCount(shareUrl: string, callback: (shareCount?: number) =
   );
 }
 
-export default createShareCount(getTumblrShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const TumblrShareCount = createShareCount(getTumblrShareCount);
+
+export default TumblrShareCount;

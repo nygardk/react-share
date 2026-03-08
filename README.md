@@ -41,7 +41,7 @@ npm install react-share
   - [Weibo](#weibosharebutton)
   - [Whatsapp](#whatsappsharebutton)
   - [Workplace](#workplacesharebutton)
-  - [X (formerly Twitter)](#twittersharebutton)
+  - [X](#xsharebutton)
 - [share counts](#share-counts) (deprecated)
 - social media icons included in the library
 - supports also custom icons
@@ -95,16 +95,16 @@ Required:
 The native button `title` attribute uses `htmlTitle` so it does not conflict with network share props named `title`:
 
 ```jsx
-import { TwitterShareButton, XIcon } from "react-share";
+import { XShareButton, XIcon } from "react-share";
 
-<TwitterShareButton
+<XShareButton
   title="Share title sent to X"
   htmlTitle="Native button tooltip"
   url={shareUrl}
   aria-label="Share on X"
 >
   <XIcon size={32} round />
-</TwitterShareButton>;
+</XShareButton>;
 ```
 
 Basic example:
@@ -445,7 +445,7 @@ import { TumblrShareButton, TumblrIcon } from "react-share";
 </TumblrShareButton>;
 ```
 
-#### TwitterShareButton
+#### XShareButton
 
 Optional props:
 
@@ -454,13 +454,13 @@ Optional props:
 - `hashtags` (`string[]`): Hashtags without the leading `#`.
 - `related` (`string[]`): Related accounts to recommend.
 - Notes:
-  - The component keeps its historical `TwitterShareButton` name for backwards compatibility even though X is the current brand.
   - X can ignore or rewrite some share fields.
+  - `TwitterShareButton` remains available as a deprecated alias for backwards compatibility.
 
 ```jsx
-import { TwitterShareButton, XIcon } from "react-share";
+import { XShareButton, XIcon } from "react-share";
 
-<TwitterShareButton
+<XShareButton
   title="Read this next"
   via="reactshare"
   hashtags={["react", "share"]}
@@ -468,7 +468,7 @@ import { TwitterShareButton, XIcon } from "react-share";
   aria-label="Share on X"
 >
   <XIcon size={32} round />
-</TwitterShareButton>;
+</XShareButton>;
 ```
 
 #### ViberShareButton

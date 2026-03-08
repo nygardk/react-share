@@ -1,13 +1,9 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
-type LineShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<{ title?: string }>>,
-  'networkName' | 'networkLink' | 'opts'
-> & {
+type LineShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
   title?: string;
 };
 

@@ -30,6 +30,8 @@ describe('TwitterShareButton', () => {
   });
 
   it('does not forward share option props to the button element', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
     render(
       <TwitterShareButton
         hashtags={['react']}
@@ -44,9 +46,16 @@ describe('TwitterShareButton', () => {
 
     const button = screen.getByRole('button', { name: 'Share on X' });
 
+    fireEvent.click(button);
+
     expect(button).toHaveAttribute('title', 'Native title');
     expect(button).not.toHaveAttribute('hashtags');
     expect(button).not.toHaveAttribute('related');
+    expect(openSpy).toHaveBeenCalledWith(
+      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Share%20title&hashtags=react&related=openai',
+      '',
+      expect.any(String),
+    );
   });
 
   it('omits empty hashtags and related parameters', () => {

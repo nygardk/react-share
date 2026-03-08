@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 function tumblrLink(
   url: string,
@@ -33,10 +32,7 @@ type Options = {
   posttype?: 'link' | string;
 };
 
-type TumblrShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<Options & { tags: string }>>,
-  'networkName' | 'networkLink' | 'opts'
-> &
+type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>, 'title'> &
   Options & { tags?: string[] };
 
 const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(

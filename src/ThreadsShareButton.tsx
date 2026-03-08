@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 function threadsLink(url: string, { title }: { title?: string }) {
   assert(url, 'threads.url');
@@ -16,13 +15,13 @@ function threadsLink(url: string, { title }: { title?: string }) {
   );
 }
 
-type ThreadsShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<{ title?: string }>>,
-  'networkName' | 'networkLink' | 'opts'
-> & {
+type ThreadsShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
+  /** @deprecated This prop is ignored and will be removed in v6. */
   hashtags?: string[];
+  /** @deprecated This prop is ignored and will be removed in v6. */
   related?: string[];
   title?: string;
+  /** @deprecated This prop is ignored and will be removed in v6. */
   via?: string;
 };
 

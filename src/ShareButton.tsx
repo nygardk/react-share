@@ -83,7 +83,9 @@ export interface Props<LinkOptions> extends NativeButtonProps {
   disabledStyle?: React.CSSProperties;
   forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
-   * Passes as the native `title` atribute for the `button` element.
+   * Passes as the native `title` attribute for the `button` element.
+   * This uses `htmlTitle` instead of `title` because many share buttons
+   * already use `title` for the share payload sent to the target network.
    */
   htmlTitle?: HTMLButtonElement['title'];
   networkName: string;
@@ -105,6 +107,11 @@ export interface Props<LinkOptions> extends NativeButtonProps {
   windowHeight?: number;
   windowPosition?: WindowPosition;
 }
+
+export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit<
+  Props<LinkOptions>,
+  'forwardedRef' | 'networkLink' | 'networkName' | 'opts'
+>;
 
 export default function ShareButton<LinkOptions extends Record<string, unknown>>({
   beforeOnClick,

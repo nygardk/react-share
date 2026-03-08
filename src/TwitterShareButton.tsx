@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 function twitterLink(
   url: string,
@@ -30,15 +29,13 @@ function twitterLink(
 }
 
 type TwitterShareButtonProps = Omit<
-  ComponentProps<
-    typeof ShareButton<{
-      title?: string;
-      via?: string;
-      hashtags?: string[];
-      related?: string[];
-    }>
-  >,
-  'networkName' | 'networkLink' | 'opts'
+  ShareButtonProps<{
+    title?: string;
+    via?: string;
+    hashtags?: string[];
+    related?: string[];
+  }>,
+  'title'
 > & {
   title?: string;
   via?: string;

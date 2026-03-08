@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type Options = {
   title?: string;
@@ -11,11 +10,7 @@ type Options = {
   noVkLinks?: boolean;
 };
 
-type VKShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<Options>>,
-  'networkName' | 'networkLink' | 'opts'
-> &
-  Options;
+type VKShareButtonProps = Omit<ShareButtonProps<Options>, 'title'> & Options;
 
 function vkLink(url: string, { title, image, noParse, noVkLinks }: Options) {
   assert(url, 'vk.url');

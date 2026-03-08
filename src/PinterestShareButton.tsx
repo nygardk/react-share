@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type PinterestShareProps = {
   media: string;
@@ -10,11 +9,7 @@ type PinterestShareProps = {
   pinId?: string;
 };
 
-type PinterestShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<PinterestShareProps>>,
-  'networkName' | 'networkLink' | 'opts'
-> &
-  PinterestShareProps;
+type PinterestShareButtonProps = ShareButtonProps<PinterestShareProps> & PinterestShareProps;
 
 function pinterestLink(url: string, { media, description, pinId }: PinterestShareProps) {
   if (pinId) {

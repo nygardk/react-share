@@ -1,8 +1,7 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type Options = {
   /** The url-encoded title value that you wish you use. */
@@ -13,11 +12,7 @@ type Options = {
   source?: string;
 };
 
-type LinkedinShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<Options>>,
-  'networkName' | 'networkLink' | 'opts'
-> &
-  Options;
+type LinkedinShareButtonProps = Omit<ShareButtonProps<Options>, 'title'> & Options;
 
 function linkedinLink(url: string, { title, summary, source }: Options) {
   assert(url, 'linkedin.url');

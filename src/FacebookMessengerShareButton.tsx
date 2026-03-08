@@ -1,7 +1,6 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type Options = {
   /** Your app's unique identifier. */
@@ -14,11 +13,7 @@ type Options = {
   to?: string;
 };
 
-type FacebookMessengerShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<Options>>,
-  'networkName' | 'networkLink' | 'opts'
-> &
-  Options;
+type FacebookMessengerShareButtonProps = ShareButtonProps<Options> & Options;
 
 function facebookMessengerLink(url: string, { appId, redirectUri, to }: Options) {
   return (

@@ -1,7 +1,6 @@
-import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import objectToGetParams from './utils/objectToGetParams';
-import ShareButton from './ShareButton';
+import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type Options = {
   body?: string;
@@ -9,10 +8,7 @@ type Options = {
   subject?: string;
 };
 
-type EmailShareButtonProps = Omit<
-  ComponentProps<typeof ShareButton<Options>>,
-  'networkName' | 'networkLink' | 'onClick' | 'openShareDialogOnClick' | 'opts'
-> &
+type EmailShareButtonProps = Omit<ShareButtonProps<Options>, 'onClick' | 'openShareDialogOnClick'> &
   Options;
 
 function emailLink(url: string, { subject, body, separator }: Options) {

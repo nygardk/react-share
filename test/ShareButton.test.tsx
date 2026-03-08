@@ -128,6 +128,66 @@ describe('ShareButton', () => {
     expect(screen.getByRole('button', { name: 'Share' })).toHaveAttribute('title', 'Native title');
   });
 
+  it('defaults the button type to button', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveAttribute('type', 'button');
+  });
+
+  it('does not submit an enclosing form by default', () => {
+    const onSubmit = vi.fn((event: React.FormEvent<HTMLFormElement>) => event.preventDefault());
+
+    render(
+      <form onSubmit={onSubmit}>
+        <ShareButton
+          networkLink={(url: string) => url}
+          networkName="test"
+          openShareDialogOnClick={false}
+          opts={{}}
+          url="https://example.com"
+        >
+          Share
+        </ShareButton>
+      </form>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it('preserves an explicit submit button type', () => {
+    render(
+      <form>
+        <ShareButton
+          networkLink={(url: string) => url}
+          networkName="test"
+          openShareDialogOnClick={false}
+          opts={{}}
+          type="submit"
+          url="https://example.com"
+        >
+          Share
+        </ShareButton>
+      </form>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Share' });
+
+    fireEvent.click(button);
+
+    expect(button).toHaveAttribute('type', 'submit');
+  });
+
   it('supports screen-centered positioning', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
@@ -273,6 +333,80 @@ describe('ShareButton', () => {
     );
 
     expect(screen.getByRole('button')).toHaveStyle({ borderRadius: '50%' });
+  });
+
+  it('adds a fallback aria-label for icon-only network buttons', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="facebook"
+        opts={{}}
+        url="https://example.com"
+      >
+        <FacebookIcon round />
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share on Facebook' })).toHaveAttribute(
+      'aria-label',
+      'Share on Facebook',
+    );
+  });
+
+  it('does not override an explicit aria-label', () => {
+    render(
+      <ShareButton
+        aria-label="Custom share label"
+        networkLink={(url: string) => url}
+        networkName="facebook"
+        opts={{}}
+        url="https://example.com"
+      >
+        <FacebookIcon round />
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Custom share label' })).toHaveAttribute(
+      'aria-label',
+      'Custom share label',
+    );
+  });
+
+  it('does not override aria-labelledby', () => {
+    render(
+      <>
+        <span id="share-label">Send this page</span>
+        <ShareButton
+          aria-labelledby="share-label"
+          networkLink={(url: string) => url}
+          networkName="facebook"
+          opts={{}}
+          url="https://example.com"
+        >
+          <FacebookIcon round />
+        </ShareButton>
+      </>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Send this page' })).toHaveAttribute(
+      'aria-labelledby',
+      'share-label',
+    );
+  });
+
+  it('does not add a fallback aria-label when visible text is present', () => {
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="facebook"
+        opts={{}}
+        url="https://example.com"
+      >
+        <span>Share now</span>
+      </ShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share now' })).not.toHaveAttribute('aria-label');
   });
 
   it('matches the button border radius to rounded rectangular icon children', () => {

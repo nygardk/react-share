@@ -8,6 +8,33 @@ type WindowPosition = 'windowCenter' | 'screenCenter';
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
 type IconShapeProps = { borderRadius?: number; round?: boolean };
 
+const DEFAULT_ARIA_LABELS = {
+  bluesky: 'Share on Bluesky',
+  email: 'Share by email',
+  facebook: 'Share on Facebook',
+  facebookmessenger: 'Share in Messenger',
+  gab: 'Share on Gab',
+  hatena: 'Share on Hatena',
+  instapaper: 'Save to Instapaper',
+  line: 'Share on Line',
+  linkedin: 'Share on LinkedIn',
+  livejournal: 'Share on LiveJournal',
+  mailru: 'Share on Mail.ru',
+  ok: 'Share on OK',
+  pinterest: 'Pin on Pinterest',
+  pocket: 'Save to Pocket',
+  reddit: 'Share on Reddit',
+  telegram: 'Share on Telegram',
+  threads: 'Share on Threads',
+  tumblr: 'Share on Tumblr',
+  twitter: 'Share on X',
+  viber: 'Share on Viber',
+  vk: 'Share on VK',
+  weibo: 'Share on Weibo',
+  whatsapp: 'Share on WhatsApp',
+  workplace: 'Share on Workplace',
+} as const;
+
 const isPromise = (obj: unknown): obj is Promise<unknown> =>
   !!obj &&
   (typeof obj === 'object' || typeof obj === 'function') &&
@@ -42,6 +69,24 @@ function getButtonBorderRadius(children: React.ReactNode) {
   }
 
   return child.props.borderRadius ?? 0;
+}
+
+function hasTextContent(children: React.ReactNode): boolean {
+  return Children.toArray(children).some(child => {
+    if (typeof child === 'string') {
+      return child.trim().length > 0;
+    }
+
+    if (typeof child === 'number') {
+      return true;
+    }
+
+    if (!isValidElement<{ children?: React.ReactNode }>(child)) {
+      return false;
+    }
+
+    return hasTextContent(child.props.children);
+  });
 }
 
 function windowOpen(
@@ -136,6 +181,8 @@ export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit
 >;
 
 export default function ShareButton<LinkOptions extends Record<string, unknown>>({
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   beforeOnClick,
   children,
   className,
@@ -144,7 +191,6 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   forwardedRef,
   htmlTitle,
   networkLink,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
   onShareWindowClose,
@@ -154,6 +200,7 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   style,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   title, // deconstructed from ...rest to prevent passing it to the button element
+  type = 'button',
   url,
   windowHeight = 400,
   windowPosition = 'windowCenter',
@@ -161,6 +208,10 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   ...rest
 }: Props<LinkOptions>) {
   const buttonBorderRadius = getButtonBorderRadius(children);
+  const fallbackAriaLabel =
+    !ariaLabel && !ariaLabelledBy && !hasTextContent(children)
+      ? DEFAULT_ARIA_LABELS[networkName as keyof typeof DEFAULT_ARIA_LABELS]
+      : undefined;
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) {
@@ -227,12 +278,15 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   return (
     <button
       {...rest}
+      aria-label={ariaLabel || fallbackAriaLabel}
+      aria-labelledby={ariaLabelledBy}
       className={newClassName}
       disabled={disabled}
       onClick={handleClick}
       ref={forwardedRef}
       style={newStyle}
       title={htmlTitle}
+      type={type}
     >
       {children}
     </button>

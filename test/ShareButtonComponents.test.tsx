@@ -2,7 +2,10 @@ import React, { createRef } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
+import EmailIcon from '../src/EmailIcon';
 import EmailShareButton from '../src/EmailShareButton';
+import PinterestIcon from '../src/PinterestIcon';
+import PinterestShareButton from '../src/PinterestShareButton';
 import ThreadsShareButton from '../src/ThreadsShareButton';
 import TumblrShareButton from '../src/TumblrShareButton';
 
@@ -88,5 +91,25 @@ describe('share button components', () => {
       '',
       expect.any(String),
     );
+  });
+
+  it('adds the email fallback label for icon-only buttons', () => {
+    render(
+      <EmailShareButton subject="Subject" url="https://example.com">
+        <EmailIcon round />
+      </EmailShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share by email' })).toBeInTheDocument();
+  });
+
+  it('adds the Pinterest fallback label for icon-only buttons', () => {
+    render(
+      <PinterestShareButton media="https://example.com/image.png" url="https://example.com">
+        <PinterestIcon round />
+      </PinterestShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Pin on Pinterest' })).toBeInTheDocument();
   });
 });

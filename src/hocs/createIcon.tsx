@@ -1,6 +1,8 @@
 import React from 'react';
 
-type Props = Omit<React.SVGProps<SVGSVGElement>, 'width' | 'height'> & {
+type Without<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+type Props = Without<React.SVGProps<SVGSVGElement>, 'width' | 'height'> & {
   bgStyle?: React.CSSProperties;
   borderRadius?: number;
   iconFillColor?: string;

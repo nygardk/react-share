@@ -4,6 +4,7 @@ import cx from 'classnames';
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
+type Without<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 const isPromise = (obj: unknown): obj is Promise<unknown> =>
   !!obj &&
@@ -65,7 +66,7 @@ function windowOpen(
   return shareDialog;
 }
 
-export interface Props<LinkOptions> extends Omit<
+export interface Props<LinkOptions> extends Without<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'onClick'
 > {

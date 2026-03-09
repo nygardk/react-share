@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.3.0
+
+### Minor Changes
+
+- 1625ede: Mark all share count exports as deprecated in the public types and README, noting that they will be removed in v6 while remaining available as best-effort compatibility in v5.
+- d040ae7: Clarify the share button API surface in v5 by documenting `htmlTitle` as the native button `title` attribute and marking the legacy `ThreadsShareButton` `hashtags`, `related`, and `via` props as deprecated no-ops ahead of their planned v6 removal.
+- 08358c8: Add `XShareButton` as the canonical X sharing export while keeping `TwitterShareButton` available as a deprecated backwards-compatibility alias.
+
+### Patch Changes
+
+- af3a338: Apply native disabled button behavior to share buttons so disabled buttons are actually non-interactive, matching the behavior requested in issue #533.
+- 8cc7a38: Use `api.whatsapp.com` for generated WhatsApp share links, following the behavior proposed in PR #459 and requested again in issue #575.
+- 0f5af18: Refresh several share icon brand colors to match current platform branding in the v5 badge set.
+- c17f650: Render reset share buttons as `inline-flex` so icon-only buttons do not include extra bottom space from the inline baseline gap, and match the button focus outline radius to round and rounded bundled icons with a `2px` outline offset.
+- 2afa235: Fix Reddit sharing to use the current `/submit` endpoint instead of `/web/submit`, which was causing "Page not found" failures reported in issues like #571 and addressed in PR #572.
+
 ## 5.2.2
 
 ### Patch Changes

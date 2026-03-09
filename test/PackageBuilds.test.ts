@@ -32,7 +32,6 @@ const isUsableExport = (value: unknown) =>
 const representativeExportNames = [
   'FacebookShareButton',
   'XShareButton',
-  'TwitterShareButton',
   'FacebookIcon',
   'PinterestShareCount',
 ] as const;
@@ -62,10 +61,10 @@ describe('package builds', () => {
     const declarationBundle = await readFile(distPaths.types, 'utf8');
 
     expect(declarationBundle).toContain('@deprecated Share counts are deprecated and will be removed in v6.');
-    expect(declarationBundle).toContain('@deprecated Use XShareButton instead.');
     expect(declarationBundle).toContain('FacebookShareCount');
     expect(declarationBundle).toContain('PinterestShareCount');
-    expect(declarationBundle).toContain('TwitterShareButton');
+    expect(declarationBundle).not.toContain('TwitterShareButton');
+    expect(declarationBundle).not.toContain('TwitterIcon');
   });
 
   it('exports the same public surface from the ESM and CJS builds', async () => {

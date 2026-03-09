@@ -36,7 +36,6 @@ import {
   ThreadsShareButton,
   TumblrIcon,
   TumblrShareButton,
-  TwitterShareButton,
   ViberIcon,
   ViberShareButton,
   VKIcon,
@@ -48,6 +47,7 @@ import {
   WorkplaceIcon,
   WorkplaceShareButton,
   XIcon,
+  XShareButton,
 } from '../src';
 
 import './Demo.css';
@@ -83,14 +83,14 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <TwitterShareButton
+        <XShareButton
           aria-label="Share on X"
           url={shareUrl}
           title={title}
           className="Demo__some-network__share-button"
         >
           <XIcon size={32} round />
-        </TwitterShareButton>
+        </XShareButton>
       </div>
 
       <div className="Demo__some-network">

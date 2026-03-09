@@ -3,19 +3,12 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import XShareButton from '../src/XShareButton';
-import TwitterShareButton from '../src/TwitterShareButton';
-
-const shareButtons = [
-  ['XShareButton', XShareButton],
-  ['TwitterShareButton', TwitterShareButton],
-] as const;
-
-describe.each(shareButtons)('%s', (_, ShareButtonComponent) => {
+describe('XShareButton', () => {
   it('builds a share url with hashtags and related accounts', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <ShareButtonComponent
+      <XShareButton
         hashtags={['react', 'share']}
         related={['openai', 'vitejs']}
         title="Example title"
@@ -23,7 +16,7 @@ describe.each(shareButtons)('%s', (_, ShareButtonComponent) => {
         via="reactshare"
       >
         Share on X
-      </ShareButtonComponent>,
+      </XShareButton>,
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Share on X' }));
@@ -39,7 +32,7 @@ describe.each(shareButtons)('%s', (_, ShareButtonComponent) => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <ShareButtonComponent
+      <XShareButton
         hashtags={['react']}
         htmlTitle="Native title"
         related={['openai']}
@@ -47,7 +40,7 @@ describe.each(shareButtons)('%s', (_, ShareButtonComponent) => {
         url="https://example.com"
       >
         Share on X
-      </ShareButtonComponent>,
+      </XShareButton>,
     );
 
     const button = screen.getByRole('button', { name: 'Share on X' });
@@ -68,9 +61,9 @@ describe.each(shareButtons)('%s', (_, ShareButtonComponent) => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <ShareButtonComponent hashtags={[]} related={[]} title="Example title" url="https://example.com">
+      <XShareButton hashtags={[]} related={[]} title="Example title" url="https://example.com">
         Share on X
-      </ShareButtonComponent>,
+      </XShareButton>,
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Share on X' }));

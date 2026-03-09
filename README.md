@@ -456,7 +456,6 @@ Optional props:
 - `related` (`string[]`): Related accounts to recommend.
 - Notes:
   - X can ignore or rewrite some share fields.
-  - `TwitterShareButton` remains available as a deprecated alias for backwards compatibility.
 
 ```jsx
 import { XShareButton, XIcon } from "react-share";

@@ -3,33 +3,39 @@ import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
-type WeiboShareButtonProps = Omit<ShareButtonProps<{ title?: string; image?: string }>, 'title'> & {
+type WeiboShareButtonProps = Omit<
+  ShareButtonProps<{ shareTitle?: string; image?: string }>,
+  'title'
+> & {
   image?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
-function weiboLink(url: string, { title, image }: { title?: string; image?: string }) {
+function weiboLink(
+  url: string,
+  { shareTitle, image }: { shareTitle?: string; image?: string },
+) {
   assert(url, 'weibo.url');
 
   return (
     'http://service.weibo.com/share/share.php' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
       pic: image,
     })
   );
 }
 
 const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonProps>(
-  ({ image, title, ...props }, ref) => (
+  ({ image, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="weibo"
       networkLink={weiboLink}
       opts={{
-        title,
+        shareTitle,
         image,
       }}
       windowHeight={550}

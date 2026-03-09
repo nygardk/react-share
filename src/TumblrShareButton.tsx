@@ -6,11 +6,11 @@ import ShareButton, { type ShareButtonProps } from './ShareButton';
 function tumblrLink(
   url: string,
   {
-    title,
+    postTitle,
     caption,
     tags,
     posttype,
-  }: { title?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+  }: { postTitle?: string; caption?: string; tags?: string; posttype?: 'link' | string },
 ) {
   assert(url, 'tumblr.url');
 
@@ -18,7 +18,7 @@ function tumblrLink(
     'https://www.tumblr.com/widgets/share/tool' +
     objectToGetParams({
       canonicalUrl: url,
-      title,
+      title: postTitle,
       caption,
       tags,
       posttype,
@@ -27,7 +27,7 @@ function tumblrLink(
 }
 
 type Options = {
-  title?: string;
+  postTitle?: string;
   caption?: string;
   posttype?: 'link' | string;
 };
@@ -36,14 +36,14 @@ type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>,
   Options & { tags?: string[] };
 
 const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
-  ({ caption, posttype, tags, title, ...props }, ref) => (
+  ({ caption, postTitle, posttype, tags, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="tumblr"
       networkLink={tumblrLink}
       opts={{
-        title,
+        postTitle,
         tags: (tags || []).join(','),
         caption,
         posttype: posttype || 'link',

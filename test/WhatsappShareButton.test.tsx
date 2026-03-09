@@ -9,7 +9,7 @@ describe('WhatsappShareButton', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <WhatsappShareButton title="Example" url="https://example.com">
+      <WhatsappShareButton message="Example" url="https://example.com">
         Share to WhatsApp
       </WhatsappShareButton>,
     );

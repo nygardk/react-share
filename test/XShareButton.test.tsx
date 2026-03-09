@@ -11,7 +11,7 @@ describe('XShareButton', () => {
       <XShareButton
         hashtags={['react', 'share']}
         related={['openai', 'vitejs']}
-        title="Example title"
+        text="Example title"
         url="https://example.com"
         via="reactshare"
       >
@@ -36,7 +36,7 @@ describe('XShareButton', () => {
         hashtags={['react']}
         htmlTitle="Native title"
         related={['openai']}
-        title="Share title"
+        text="Share title"
         url="https://example.com"
       >
         Share on X
@@ -61,7 +61,7 @@ describe('XShareButton', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <XShareButton hashtags={[]} related={[]} title="Example title" url="https://example.com">
+      <XShareButton hashtags={[]} related={[]} text="Example title" url="https://example.com">
         Share on X
       </XShareButton>,
     );

@@ -151,8 +151,8 @@ export interface Props<LinkOptions> extends NativeButtonProps {
   forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * Passes as the native `title` attribute for the `button` element.
-   * This uses `htmlTitle` instead of `title` because many share buttons
-   * already use `title` for the share payload sent to the target network.
+   * This uses `htmlTitle` instead of `title` so it does not collide with
+   * share payload props exposed by the button components.
    */
   htmlTitle?: HTMLButtonElement['title'];
   networkName: string;

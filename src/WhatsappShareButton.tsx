@@ -4,32 +4,35 @@ import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type WhatsappShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; separator?: string }>,
+  ShareButtonProps<{ message?: string; separator?: string }>,
   'title'
 > & {
+  message?: string;
   separator?: string;
-  title?: string;
 };
 
-function whatsappLink(url: string, { title, separator }: { title?: string; separator?: string }) {
+function whatsappLink(
+  url: string,
+  { message, separator }: { message?: string; separator?: string },
+) {
   assert(url, 'whatsapp.url');
   return (
     'https://api.whatsapp.com/send' +
     objectToGetParams({
-      text: title ? title + separator + url : url,
+      text: message ? message + separator + url : url,
     })
   );
 }
 
 const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
-  ({ separator, title, ...props }, ref) => (
+  ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="whatsapp"
       networkLink={whatsappLink}
       opts={{
-        title,
+        message,
         separator: separator || ' ',
       }}
       windowHeight={400}

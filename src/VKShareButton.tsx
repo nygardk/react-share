@@ -4,7 +4,7 @@ import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type Options = {
-  title?: string;
+  shareTitle?: string;
   image?: string;
   noParse?: boolean;
   noVkLinks?: boolean;
@@ -12,14 +12,14 @@ type Options = {
 
 type VKShareButtonProps = Omit<ShareButtonProps<Options>, 'title'> & Options;
 
-function vkLink(url: string, { title, image, noParse, noVkLinks }: Options) {
+function vkLink(url: string, { shareTitle, image, noParse, noVkLinks }: Options) {
   assert(url, 'vk.url');
 
   return (
     'https://vk.com/share.php' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
       image,
       noparse: noParse ? 1 : 0,
       no_vk_links: noVkLinks ? 1 : 0,
@@ -28,14 +28,14 @@ function vkLink(url: string, { title, image, noParse, noVkLinks }: Options) {
 }
 
 const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
-  ({ image, noParse, noVkLinks, title, ...props }, ref) => (
+  ({ image, noParse, noVkLinks, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="vk"
       networkLink={vkLink}
       opts={{
-        title,
+        shareTitle,
         image,
         noParse,
         noVkLinks,

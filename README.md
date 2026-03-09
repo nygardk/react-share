@@ -92,13 +92,13 @@ Required:
   Optional on popup-based share buttons:
 - `openShareDialogOnClick` (`boolean`, default `true`): Opens the popup automatically on click. `EmailShareButton` does not expose this prop because it always uses `mailto:` navigation.
 
-The native button `title` attribute uses `htmlTitle` so it does not conflict with network share props named `title`:
+The native button `title` attribute uses `htmlTitle` so it does not conflict with share payload props such as `text`, `message`, `shareTitle`, or `postTitle`:
 
 ```jsx
 import { XShareButton, XIcon } from "react-share";
 
 <XShareButton
-  title="Share title sent to X"
+  text="Share text sent to X"
   htmlTitle="Native button tooltip"
   url={shareUrl}
   aria-label="Share on X"
@@ -121,13 +121,13 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
-- `separator` (`string`, default `" "`): Separator between the title and URL.
+- `text` (`string`): Text to share before the URL.
+- `separator` (`string`, default `" "`): Separator between the text and URL.
 
 ```jsx
 import { BlueskyShareButton, BlueskyIcon } from "react-share";
 
-<BlueskyShareButton title="Read this next" url={shareUrl} aria-label="Share on Bluesky">
+<BlueskyShareButton text="Read this next" url={shareUrl} aria-label="Share on Bluesky">
   <BlueskyIcon size={32} round />
 </BlueskyShareButton>;
 ```
@@ -193,12 +193,12 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `text` (`string`): Text to share before the URL.
 
 ```jsx
 import { GabShareButton, GabIcon } from "react-share";
 
-<GabShareButton title="Read this next" url={shareUrl} aria-label="Share on Gab">
+<GabShareButton text="Read this next" url={shareUrl} aria-label="Share on Gab">
   <GabIcon size={32} round />
 </GabShareButton>;
 ```
@@ -207,12 +207,12 @@ import { GabShareButton, GabIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 
 ```jsx
 import { HatenaShareButton, HatenaIcon } from "react-share";
 
-<HatenaShareButton title="Read this next" url={shareUrl} aria-label="Share on Hatena">
+<HatenaShareButton shareTitle="Read this next" url={shareUrl} aria-label="Share on Hatena">
   <HatenaIcon size={32} round />
 </HatenaShareButton>;
 ```
@@ -221,14 +221,14 @@ import { HatenaShareButton, HatenaIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `description` (`string`): Description of the shared page.
 
 ```jsx
 import { InstapaperShareButton, InstapaperIcon } from "react-share";
 
 <InstapaperShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   description="Quick summary"
   url={shareUrl}
   aria-label="Save to Instapaper"
@@ -241,12 +241,12 @@ import { InstapaperShareButton, InstapaperIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `text` (`string`): Text to share before the URL.
 
 ```jsx
 import { LineShareButton, LineIcon } from "react-share";
 
-<LineShareButton title="Read this next" url={shareUrl} aria-label="Share on Line">
+<LineShareButton text="Read this next" url={shareUrl} aria-label="Share on Line">
   <LineIcon size={32} round />
 </LineShareButton>;
 ```
@@ -255,7 +255,7 @@ import { LineShareButton, LineIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `summary` (`string`): Description of the shared page.
 - `source` (`string`): Source label such as your app or site name.
 - Notes:
@@ -265,7 +265,7 @@ Optional props:
 import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
 <LinkedinShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   summary="Quick summary"
   source="example.com"
   url={shareUrl}
@@ -279,14 +279,14 @@ import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `description` (`string`): Description of the shared page.
 
 ```jsx
 import { LivejournalShareButton, LivejournalIcon } from "react-share";
 
 <LivejournalShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   description="Quick summary"
   url={shareUrl}
   aria-label="Share on LiveJournal"
@@ -299,7 +299,7 @@ import { LivejournalShareButton, LivejournalIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `description` (`string`): Description of the shared page.
 - `imageUrl` (`string`): Absolute image URL to include in the share payload.
 
@@ -307,7 +307,7 @@ Optional props:
 import { MailruShareButton, MailruIcon } from "react-share";
 
 <MailruShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   description="Quick summary"
   imageUrl={imageUrl}
   url={shareUrl}
@@ -321,7 +321,7 @@ import { MailruShareButton, MailruIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `description` (`string`): Description of the shared page.
 - `image` (`string`): Absolute image URL to include in the share payload.
 
@@ -329,7 +329,7 @@ Optional props:
 import { OKShareButton, OKIcon } from "react-share";
 
 <OKShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   description="Quick summary"
   image={imageUrl}
   url={shareUrl}
@@ -365,14 +365,14 @@ import { PinterestShareButton, PinterestIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - Notes:
   - If Pocket detects a title on the target page, it may ignore this prop and use page metadata instead.
 
 ```jsx
 import { PocketShareButton, PocketIcon } from "react-share";
 
-<PocketShareButton title="Read this next" url={shareUrl} aria-label="Save to Pocket">
+<PocketShareButton shareTitle="Read this next" url={shareUrl} aria-label="Save to Pocket">
   <PocketIcon size={32} round />
 </PocketShareButton>;
 ```
@@ -381,12 +381,12 @@ import { PocketShareButton, PocketIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 
 ```jsx
 import { RedditShareButton, RedditIcon } from "react-share";
 
-<RedditShareButton title="Read this next" url={shareUrl} aria-label="Share on Reddit">
+<RedditShareButton shareTitle="Read this next" url={shareUrl} aria-label="Share on Reddit">
   <RedditIcon size={32} round />
 </RedditShareButton>;
 ```
@@ -395,12 +395,12 @@ import { RedditShareButton, RedditIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `text` (`string`): Text to share before the URL.
 
 ```jsx
 import { TelegramShareButton, TelegramIcon } from "react-share";
 
-<TelegramShareButton title="Read this next" url={shareUrl} aria-label="Share on Telegram">
+<TelegramShareButton text="Read this next" url={shareUrl} aria-label="Share on Telegram">
   <TelegramIcon size={32} round />
 </TelegramShareButton>;
 ```
@@ -409,12 +409,12 @@ import { TelegramShareButton, TelegramIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `text` (`string`): Text to share before the URL.
 
 ```jsx
 import { ThreadsShareButton, ThreadsIcon } from "react-share";
 
-<ThreadsShareButton title="Read this next" url={shareUrl} aria-label="Share on Threads">
+<ThreadsShareButton text="Read this next" url={shareUrl} aria-label="Share on Threads">
   <ThreadsIcon size={32} round />
 </ThreadsShareButton>;
 ```
@@ -423,7 +423,7 @@ import { ThreadsShareButton, ThreadsIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `postTitle` (`string`): Title sent in the Tumblr post payload.
 - `tags` (`string[]`): Tags to attach to the post.
 - `caption` (`string`): Description shown with the shared page.
 - `posttype` (`string`, default `"link"`): Tumblr post type.
@@ -432,7 +432,7 @@ Optional props:
 import { TumblrShareButton, TumblrIcon } from "react-share";
 
 <TumblrShareButton
-  title="Read this next"
+  postTitle="Read this next"
   caption="Quick summary"
   tags={["react", "share"]}
   url={shareUrl}
@@ -446,7 +446,7 @@ import { TumblrShareButton, TumblrIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `text` (`string`): Text to share before the URL.
 - `via` (`string`): Account to attribute the share to.
 - `hashtags` (`string[]`): Hashtags without the leading `#`.
 - `related` (`string[]`): Related accounts to recommend.
@@ -457,7 +457,7 @@ Optional props:
 import { XShareButton, XIcon } from "react-share";
 
 <XShareButton
-  title="Read this next"
+  text="Read this next"
   via="reactshare"
   hashtags={["react", "share"]}
   url={shareUrl}
@@ -471,13 +471,13 @@ import { XShareButton, XIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
-- `separator` (`string`, default `" "`): Separator between the title and URL.
+- `message` (`string`): Message to share before the URL.
+- `separator` (`string`, default `" "`): Separator between the message and URL.
 
 ```jsx
 import { ViberShareButton, ViberIcon } from "react-share";
 
-<ViberShareButton title="Read this next" url={shareUrl} aria-label="Share on Viber">
+<ViberShareButton message="Read this next" url={shareUrl} aria-label="Share on Viber">
   <ViberIcon size={32} round />
 </ViberShareButton>;
 ```
@@ -486,7 +486,7 @@ import { ViberShareButton, ViberIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `image` (`string`): Absolute image URL to include in the share payload.
 - `noParse` (`boolean`): Prevent VK from retrieving URL information.
 - `noVkLinks` (`boolean`): Hide profile links in the window. Relevant on mobile devices.
@@ -495,7 +495,7 @@ Optional props:
 import { VKShareButton, VKIcon } from "react-share";
 
 <VKShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   image={imageUrl}
   noParse
   noVkLinks
@@ -510,14 +510,14 @@ import { VKShareButton, VKIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
+- `shareTitle` (`string`): Title sent in the share payload.
 - `image` (`string`): Absolute image URL to include in the share payload.
 
 ```jsx
 import { WeiboShareButton, WeiboIcon } from "react-share";
 
 <WeiboShareButton
-  title="Read this next"
+  shareTitle="Read this next"
   image={imageUrl}
   url={shareUrl}
   aria-label="Share on Weibo"
@@ -530,15 +530,15 @@ import { WeiboShareButton, WeiboIcon } from "react-share";
 
 Optional props:
 
-- `title` (`string`): Title of the shared page.
-- `separator` (`string`, default `" "`): Separator between the title and URL.
+- `message` (`string`): Message to share before the URL.
+- `separator` (`string`, default `" "`): Separator between the message and URL.
 - Notes:
   - Generates an `api.whatsapp.com` share URL.
 
 ```jsx
 import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
-<WhatsappShareButton title="Read this next" url={shareUrl} aria-label="Share on WhatsApp">
+<WhatsappShareButton message="Read this next" url={shareUrl} aria-label="Share on WhatsApp">
   <WhatsappIcon size={32} round />
 </WhatsappShareButton>;
 ```

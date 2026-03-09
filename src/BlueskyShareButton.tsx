@@ -4,33 +4,33 @@ import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type BlueskyShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; separator?: string }>,
+  ShareButtonProps<{ text?: string; separator?: string }>,
   'title'
 > & {
   separator?: string;
-  title?: string;
+  text?: string;
 };
 
-function blueskyLink(url: string, { title, separator }: { title?: string; separator?: string }) {
+function blueskyLink(url: string, { text, separator }: { text?: string; separator?: string }) {
   assert(url, 'bluesky.url');
 
   return (
     'https://bsky.app/intent/compose' +
     objectToGetParams({
-      text: title ? title + separator + url : url,
+      text: text ? text + separator + url : url,
     })
   );
 }
 
 const BlueskyShareButton = forwardRef<HTMLButtonElement, BlueskyShareButtonProps>(
-  ({ separator, title, ...props }, ref) => (
+  ({ separator, text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="bluesky"
       networkLink={blueskyLink}
       opts={{
-        title,
+        text,
         separator: separator || ' ',
       }}
       windowHeight={460}

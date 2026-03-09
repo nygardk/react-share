@@ -3,30 +3,30 @@ import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
-type GabShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
-  title?: string;
+type GabShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
+  text?: string;
 };
 
-function gabLink(url: string, { title }: { title?: string }) {
+function gabLink(url: string, { text }: { text?: string }) {
   assert(url, 'gab.url');
 
   return (
     'https://gab.com/compose' +
     objectToGetParams({
       url,
-      text: title,
+      text,
     })
   );
 }
 
 const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>(
-  ({ title, ...props }, ref) => (
+  ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="gab"
       networkLink={gabLink}
-      opts={{ title }}
+      opts={{ text }}
       windowHeight={640}
       windowPosition="windowCenter"
       windowWidth={660}

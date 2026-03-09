@@ -34,7 +34,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: BlueskyShareButton,
     expectedUrl: 'https://bsky.app/intent/compose?text=Example%20title%20https%3A%2F%2Fexample.com',
     props: {
-      title: 'Example title',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -53,7 +53,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: GabShareButton,
     expectedUrl: 'https://gab.com/compose?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
-      title: 'Example title',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -62,7 +62,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: HatenaShareButton,
     expectedUrl: 'http://b.hatena.ne.jp/add?mode=confirm&url=https://example.com&title=Example',
     props: {
-      title: 'Example',
+      shareTitle: 'Example',
       url: 'https://example.com',
     },
   },
@@ -73,7 +73,7 @@ const shareButtonCases: ShareButtonCase[] = [
       'http://www.instapaper.com/hello2?url=https%3A%2F%2Fexample.com&title=Example%20title&description=Example%20description',
     props: {
       description: 'Example description',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -83,7 +83,7 @@ const shareButtonCases: ShareButtonCase[] = [
     expectedUrl:
       'https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
-      title: 'Example title',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -95,7 +95,7 @@ const shareButtonCases: ShareButtonCase[] = [
     props: {
       source: 'Example source',
       summary: 'Example summary',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -106,7 +106,7 @@ const shareButtonCases: ShareButtonCase[] = [
       'https://www.livejournal.com/update.bml?subject=Example%20title&event=Example%20description',
     props: {
       description: 'Example description',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -118,7 +118,7 @@ const shareButtonCases: ShareButtonCase[] = [
     props: {
       description: 'Example description',
       imageUrl: 'https://example.com/image.png',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -130,7 +130,7 @@ const shareButtonCases: ShareButtonCase[] = [
     props: {
       description: 'Example description',
       image: 'https://example.com/image.png',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -139,7 +139,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: PocketShareButton,
     expectedUrl: 'https://getpocket.com/save?url=https%3A%2F%2Fexample.com&title=Example%20title',
     props: {
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -148,7 +148,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: TelegramShareButton,
     expectedUrl: 'https://telegram.me/share/url?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
-      title: 'Example title',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -157,7 +157,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: ThreadsShareButton,
     expectedUrl: 'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
-      title: 'Example title',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -168,8 +168,8 @@ const shareButtonCases: ShareButtonCase[] = [
       'https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com&title=Example%20title&caption=Example%20caption&tags=react%2Cshare&posttype=link',
     props: {
       caption: 'Example caption',
+      postTitle: 'Example title',
       tags: ['react', 'share'],
-      title: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -178,7 +178,7 @@ const shareButtonCases: ShareButtonCase[] = [
     Component: ViberShareButton,
     expectedUrl: 'viber://forward?text=Example%20title%20https%3A%2F%2Fexample.com',
     props: {
-      title: 'Example title',
+      message: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -191,7 +191,7 @@ const shareButtonCases: ShareButtonCase[] = [
       image: 'https://example.com/image.png',
       noParse: true,
       noVkLinks: true,
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },
@@ -202,7 +202,7 @@ const shareButtonCases: ShareButtonCase[] = [
       'http://service.weibo.com/share/share.php?url=https%3A%2F%2Fexample.com&title=Example%20title&pic=https%3A%2F%2Fexample.com%2Fimage.png',
     props: {
       image: 'https://example.com/image.png',
-      title: 'Example title',
+      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },

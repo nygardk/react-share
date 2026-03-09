@@ -4,32 +4,32 @@ import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type ViberShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; separator?: string }>,
+  ShareButtonProps<{ message?: string; separator?: string }>,
   'title'
 > & {
+  message?: string;
   separator?: string;
-  title?: string;
 };
 
-function viberLink(url: string, { title, separator }: { title?: string; separator?: string }) {
+function viberLink(url: string, { message, separator }: { message?: string; separator?: string }) {
   assert(url, 'viber.url');
   return (
     'viber://forward' +
     objectToGetParams({
-      text: title ? title + separator + url : url,
+      text: message ? message + separator + url : url,
     })
   );
 }
 
 const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
-  ({ separator, title, ...props }, ref) => (
+  ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="viber"
       networkLink={viberLink}
       opts={{
-        title,
+        message,
         separator: separator || ' ',
       }}
       windowHeight={460}

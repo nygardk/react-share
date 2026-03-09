@@ -9,7 +9,7 @@ describe('RedditShareButton', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <RedditShareButton title="Example title" url="https://example.com">
+      <RedditShareButton shareTitle="Example title" url="https://example.com">
         Share to Reddit
       </RedditShareButton>,
     );

@@ -48,8 +48,8 @@ describe('share button components', () => {
         caption="Example caption"
         openShareDialogOnClick={false}
         posttype="photo"
+        postTitle="Example title"
         tags={['react', 'share']}
-        title="Example title"
         url="https://example.com"
       >
         Share on Tumblr

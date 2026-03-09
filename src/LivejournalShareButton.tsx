@@ -4,37 +4,37 @@ import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
 type LivejournalShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; description?: string }>,
+  ShareButtonProps<{ shareTitle?: string; description?: string }>,
   'title'
 > & {
   description?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
 function livejournalLink(
   url: string,
-  { title, description }: { title?: string; description?: string },
+  { shareTitle, description }: { shareTitle?: string; description?: string },
 ) {
   assert(url, 'livejournal.url');
 
   return (
     'https://www.livejournal.com/update.bml' +
     objectToGetParams({
-      subject: title,
+      subject: shareTitle,
       event: description,
     })
   );
 }
 
 const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
-  ({ description, title, ...props }, ref) => (
+  ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="livejournal"
       networkLink={livejournalLink}
       opts={{
-        title,
+        shareTitle,
         description,
       }}
       windowHeight={460}

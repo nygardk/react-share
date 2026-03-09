@@ -3,30 +3,30 @@ import assert from './utils/assert';
 import objectToGetParams from './utils/objectToGetParams';
 import ShareButton, { type ShareButtonProps } from './ShareButton';
 
-type RedditShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
-  title?: string;
+type RedditShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 'title'> & {
+  shareTitle?: string;
 };
 
-function redditLink(url: string, { title }: { title?: string }) {
+function redditLink(url: string, { shareTitle }: { shareTitle?: string }) {
   assert(url, 'reddit.url');
 
   return (
     'https://www.reddit.com/submit' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
     })
   );
 }
 
 const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButtonProps>(
-  ({ title, ...props }, ref) => (
+  ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="reddit"
       networkLink={redditLink}
-      opts={{ title }}
+      opts={{ shareTitle }}
       windowHeight={460}
       windowPosition="windowCenter"
       windowWidth={660}

@@ -64,7 +64,7 @@ export function Demo() {
         <WhatsappShareButton
           aria-label="Share on WhatsApp"
           url={shareUrl}
-          title={title}
+          message={title}
           separator=":: "
           className="Demo__some-network__share-button"
         >
@@ -86,7 +86,7 @@ export function Demo() {
         <XShareButton
           aria-label="Share on X"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
           <XIcon size={32} round />
@@ -118,7 +118,7 @@ export function Demo() {
         <TelegramShareButton
           aria-label="Share on Telegram"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
           <TelegramIcon size={32} round />
@@ -129,7 +129,7 @@ export function Demo() {
         <RedditShareButton
           aria-label="Share on Reddit"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
@@ -153,7 +153,7 @@ export function Demo() {
         <ThreadsShareButton
           aria-label="Share on Threads"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
           <ThreadsIcon size={32} round />
@@ -164,7 +164,7 @@ export function Demo() {
         <WeiboShareButton
           aria-label="Share on Weibo"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           image={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
@@ -176,7 +176,7 @@ export function Demo() {
         <LineShareButton
           aria-label="Share on Line"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
           <LineIcon size={32} round />
@@ -187,7 +187,7 @@ export function Demo() {
         <BlueskyShareButton
           aria-label="Share on Bluesky"
           url={shareUrl}
-          title={title}
+          text={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
@@ -200,7 +200,7 @@ export function Demo() {
         <ViberShareButton
           aria-label="Share on Viber"
           url={shareUrl}
-          title={title}
+          message={title}
           className="Demo__some-network__share-button"
         >
           <ViberIcon size={32} round />
@@ -223,7 +223,7 @@ export function Demo() {
         <PocketShareButton
           aria-label="Save to Pocket"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           className="Demo__some-network__share-button"
         >
           <PocketIcon size={32} round />
@@ -234,7 +234,7 @@ export function Demo() {
         <InstapaperShareButton
           aria-label="Save to Instapaper"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           className="Demo__some-network__share-button"
         >
           <InstapaperIcon size={32} round />
@@ -245,7 +245,7 @@ export function Demo() {
         <TumblrShareButton
           aria-label="Share on Tumblr"
           url={shareUrl}
-          title={title}
+          postTitle={title}
           className="Demo__some-network__share-button"
         >
           <TumblrIcon size={32} round />
@@ -278,7 +278,7 @@ export function Demo() {
         <MailruShareButton
           aria-label="Share on Mail.ru"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           className="Demo__some-network__share-button"
         >
           <MailruIcon size={32} round />
@@ -289,7 +289,7 @@ export function Demo() {
         <LivejournalShareButton
           aria-label="Share on LiveJournal"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           description={shareUrl}
           className="Demo__some-network__share-button"
         >
@@ -301,7 +301,7 @@ export function Demo() {
         <HatenaShareButton
           aria-label="Share on Hatena"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
@@ -325,7 +325,7 @@ export function Demo() {
         <GabShareButton
           aria-label="Share on Gab"
           url={shareUrl}
-          title={title}
+          text={title}
           windowWidth={660}
           windowHeight={640}
           className="Demo__some-network__share-button"

@@ -6,11 +6,11 @@ import ShareButton, { type ShareButtonProps } from './ShareButton';
 function xLink(
   url: string,
   {
-    title,
+    text,
     via,
     hashtags = [],
     related = [],
-  }: { title?: string; via?: string; hashtags?: string[]; related?: string[] },
+  }: { text?: string; via?: string; hashtags?: string[]; related?: string[] },
 ) {
   assert(url, 'x.url');
   assert(Array.isArray(hashtags), 'x.hashtags is not an array');
@@ -20,7 +20,7 @@ function xLink(
     'https://twitter.com/intent/tweet' +
     objectToGetParams({
       url,
-      text: title,
+      text,
       via,
       hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
       related: related.length > 0 ? related.join(',') : undefined,
@@ -30,21 +30,21 @@ function xLink(
 
 type XShareButtonProps = Omit<
   ShareButtonProps<{
-    title?: string;
+    text?: string;
     via?: string;
     hashtags?: string[];
     related?: string[];
   }>,
   'title'
 > & {
-  title?: string;
+  text?: string;
   via?: string;
   hashtags?: string[];
   related?: string[];
 };
 
 const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
-  ({ hashtags, related, title, via, ...props }, ref) => (
+  ({ hashtags, related, text, via, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
@@ -52,7 +52,7 @@ const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
       networkLink={xLink}
       opts={{
         hashtags,
-        title,
+        text,
         via,
         related,
       }}

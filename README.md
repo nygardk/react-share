@@ -111,7 +111,7 @@ import { XShareButton, XIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on X"
 >
-  <XIcon size={32} round />
+  <XIcon size={32} />
 </XShareButton>;
 ```
 
@@ -121,7 +121,7 @@ Basic example:
 import { FacebookShareButton, FacebookIcon } from "react-share";
 
 <FacebookShareButton url={shareUrl} aria-label="Share this page on Facebook">
-  <FacebookIcon size={32} round />
+  <FacebookIcon size={32} />
 </FacebookShareButton>;
 ```
 
@@ -161,7 +161,7 @@ import { NativeShareButton, NativeShareIcon } from "react-share";
   url={shareUrl}
   aria-label="Share with your device"
 >
-  <NativeShareIcon size={32} round />
+  <NativeShareIcon size={32} />
 </NativeShareButton>;
 ```
 
@@ -176,7 +176,7 @@ Optional props:
 import { BlueskyShareButton, BlueskyIcon } from "react-share";
 
 <BlueskyShareButton text="Read this next" url={shareUrl} aria-label="Share on Bluesky">
-  <BlueskyIcon size={32} round />
+  <BlueskyIcon size={32} />
 </BlueskyShareButton>;
 ```
 
@@ -200,7 +200,7 @@ import { EmailShareButton, EmailIcon } from "react-share";
   url={shareUrl}
   aria-label="Share by email"
 >
-  <EmailIcon size={32} round />
+  <EmailIcon size={32} />
 </EmailShareButton>;
 ```
 
@@ -225,7 +225,7 @@ import { FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share
   url={shareUrl}
   aria-label="Send in Messenger"
 >
-  <FacebookMessengerIcon size={32} round />
+  <FacebookMessengerIcon size={32} />
 </FacebookMessengerShareButton>;
 ```
 
@@ -239,7 +239,7 @@ Optional props:
 import { FacebookShareButton, FacebookIcon } from "react-share";
 
 <FacebookShareButton hashtag="#reactshare" url={shareUrl} aria-label="Share on Facebook">
-  <FacebookIcon size={32} round />
+  <FacebookIcon size={32} />
 </FacebookShareButton>;
 ```
 
@@ -248,13 +248,12 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 Optional props:
 
 - `text` (`string`): Text to share before the URL.
-- `mobileBehavior` (`"web" | "app" | "auto"`, default `"web"`): `"app"` uses a Telegram app link and `"auto"` uses it only on detected mobile environments.
 
 ```jsx
 import { GabShareButton, GabIcon } from "react-share";
 
 <GabShareButton text="Read this next" url={shareUrl} aria-label="Share on Gab">
-  <GabIcon size={32} round />
+  <GabIcon size={32} />
 </GabShareButton>;
 ```
 
@@ -268,7 +267,7 @@ Optional props:
 import { HatenaShareButton, HatenaIcon } from "react-share";
 
 <HatenaShareButton shareTitle="Read this next" url={shareUrl} aria-label="Share on Hatena">
-  <HatenaIcon size={32} round />
+  <HatenaIcon size={32} />
 </HatenaShareButton>;
 ```
 
@@ -288,7 +287,7 @@ import { InstapaperShareButton, InstapaperIcon } from "react-share";
   url={shareUrl}
   aria-label="Save to Instapaper"
 >
-  <InstapaperIcon size={32} round />
+  <InstapaperIcon size={32} />
 </InstapaperShareButton>;
 ```
 
@@ -302,7 +301,7 @@ Optional props:
 import { LineShareButton, LineIcon } from "react-share";
 
 <LineShareButton text="Read this next" url={shareUrl} aria-label="Share on Line">
-  <LineIcon size={32} round />
+  <LineIcon size={32} />
 </LineShareButton>;
 ```
 
@@ -316,7 +315,7 @@ import { LineShareButton, LineIcon } from "react-share";
 import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
 <LinkedinShareButton url={shareUrl} aria-label="Share on LinkedIn">
-  <LinkedinIcon size={32} round />
+  <LinkedinIcon size={32} />
 </LinkedinShareButton>;
 ```
 
@@ -336,7 +335,7 @@ import { LivejournalShareButton, LivejournalIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on LiveJournal"
 >
-  <LivejournalIcon size={32} round />
+  <LivejournalIcon size={32} />
 </LivejournalShareButton>;
 ```
 
@@ -358,7 +357,7 @@ import { MailruShareButton, MailruIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Mail.ru"
 >
-  <MailruIcon size={32} round />
+  <MailruIcon size={32} />
 </MailruShareButton>;
 ```
 
@@ -380,7 +379,7 @@ import { OKShareButton, OKIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on OK"
 >
-  <OKIcon size={32} round />
+  <OKIcon size={32} />
 </OKShareButton>;
 ```
 
@@ -402,7 +401,7 @@ import { PinterestShareButton, PinterestIcon } from "react-share";
   url={shareUrl}
   aria-label="Pin on Pinterest"
 >
-  <PinterestIcon size={32} round />
+  <PinterestIcon size={32} />
 </PinterestShareButton>;
 ```
 
@@ -418,7 +417,7 @@ Optional props:
 import { PocketShareButton, PocketIcon } from "react-share";
 
 <PocketShareButton shareTitle="Read this next" url={shareUrl} aria-label="Save to Pocket">
-  <PocketIcon size={32} round />
+  <PocketIcon size={32} />
 </PocketShareButton>;
 ```
 
@@ -432,7 +431,7 @@ Optional props:
 import { RedditShareButton, RedditIcon } from "react-share";
 
 <RedditShareButton shareTitle="Read this next" url={shareUrl} aria-label="Share on Reddit">
-  <RedditIcon size={32} round />
+  <RedditIcon size={32} />
 </RedditShareButton>;
 ```
 
@@ -451,7 +450,7 @@ import { TelegramShareButton, TelegramIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Telegram"
 >
-  <TelegramIcon size={32} round />
+  <TelegramIcon size={32} />
 </TelegramShareButton>;
 ```
 
@@ -465,7 +464,7 @@ Optional props:
 import { ThreadsShareButton, ThreadsIcon } from "react-share";
 
 <ThreadsShareButton text="Read this next" url={shareUrl} aria-label="Share on Threads">
-  <ThreadsIcon size={32} round />
+  <ThreadsIcon size={32} />
 </ThreadsShareButton>;
 ```
 
@@ -488,7 +487,7 @@ import { TumblrShareButton, TumblrIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Tumblr"
 >
-  <TumblrIcon size={32} round />
+  <TumblrIcon size={32} />
 </TumblrShareButton>;
 ```
 
@@ -513,7 +512,7 @@ import { XShareButton, XIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on X"
 >
-  <XIcon size={32} round />
+  <XIcon size={32} />
 </XShareButton>;
 ```
 
@@ -534,7 +533,7 @@ import { ViberShareButton, ViberIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Viber"
 >
-  <ViberIcon size={32} round />
+  <ViberIcon size={32} />
 </ViberShareButton>;
 ```
 
@@ -558,7 +557,7 @@ import { VKShareButton, VKIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on VK"
 >
-  <VKIcon size={32} round />
+  <VKIcon size={32} />
 </VKShareButton>;
 ```
 
@@ -578,7 +577,7 @@ import { WeiboShareButton, WeiboIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Weibo"
 >
-  <WeiboIcon size={32} round />
+  <WeiboIcon size={32} />
 </WeiboShareButton>;
 ```
 
@@ -601,7 +600,7 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on WhatsApp"
 >
-  <WhatsappIcon size={32} round />
+  <WhatsappIcon size={32} />
 </WhatsappShareButton>;
 ```
 
@@ -621,13 +620,35 @@ import { WorkplaceShareButton, WorkplaceIcon } from "react-share";
   url={shareUrl}
   aria-label="Share on Workplace"
 >
-  <WorkplaceIcon size={32} round />
+  <WorkplaceIcon size={32} />
 </WorkplaceShareButton>;
 ```
 
 ### Icons
 
-All exported icons share the same props:
+v6 exports two icon families:
+
+- `*Icon`: raw, background-free network logos.
+- `*LegacyIcon`: the v5 badge-style icons with customizable backgrounds.
+
+Raw icons use a smaller, simpler prop surface:
+
+| Prop          | Type                      | Default | Description                                                            |
+| ------------- | ------------------------- | ------- | ---------------------------------------------------------------------- |
+| `size`        | `number \| string`        | `24`    | Icon size.                                                             |
+| `...svgProps` | `SVGProps<SVGSVGElement>` | -       | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
+
+Example:
+
+```jsx
+import { XIcon } from "react-share";
+
+<XIcon aria-hidden="true" size={32} />;
+```
+
+Most raw icons render with their default brand color. `NativeShareIcon` follows the current text color so it can blend into generic action UI.
+
+Legacy icons preserve the old badge look and prop contract:
 
 | Prop            | Type                      | Default   | Description                                                            |
 | --------------- | ------------------------- | --------- | ---------------------------------------------------------------------- |
@@ -638,12 +659,10 @@ All exported icons share the same props:
 | `iconFillColor` | `string`                  | `"white"` | Fill color applied to icon paths that do not already specify one.      |
 | `...svgProps`   | `SVGProps<SVGSVGElement>` | -         | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
 
-Example:
-
 ```jsx
-import { XIcon } from "react-share";
+import { XLegacyIcon } from "react-share";
 
-<XIcon aria-hidden="true" size={32} round />;
+<XLegacyIcon aria-hidden="true" size={32} round />;
 ```
 
 Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="true"`, or provide an accessible name when the icon itself conveys meaning.
@@ -664,7 +683,8 @@ This library uses the standard semver convention. However, the share buttons are
 
 MIT
 
-## Icons
+## Icon sources
 
-Icon paths provided by:
-[react-social-icons](https://github.com/jaketrent/react-social-icons).
+Raw icons are vendored from [Simple Icons](https://simpleicons.org/) where there is a strong canonical match, with a small set of repo-local custom glyphs for unsupported networks and the generic native-share icon.
+
+Legacy icon badge paths are preserved from the earlier [react-social-icons](https://github.com/jaketrent/react-social-icons)-based implementation.

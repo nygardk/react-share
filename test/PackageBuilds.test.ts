@@ -31,7 +31,9 @@ const isUsableExport = (value: unknown) =>
 
 const representativeExportNames = [
   'FacebookShareButton',
+  'FacebookLegacyIcon',
   'NativeShareIcon',
+  'NativeShareLegacyIcon',
   'NativeShareButton',
   'XShareButton',
   'canNativeShare',

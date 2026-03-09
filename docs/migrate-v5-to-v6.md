@@ -205,8 +205,32 @@ import { NativeShareButton, NativeShareIcon } from 'react-share';
   url={shareUrl}
   aria-label="Share with your device"
 >
-  <NativeShareIcon size={32} round />
+  <NativeShareIcon size={32} />
 </NativeShareButton>;
+```
+
+## Icons now have raw and legacy families
+
+In v5, `*Icon` exports were the badge-style icons with background props such as `round`, `bgStyle`, and `iconFillColor`.
+
+In v6:
+
+- `*Icon` now means the raw, background-free icon.
+- `*LegacyIcon` preserves the old badge-style visual and props.
+
+If you want the old icon look without changing visuals, rename your imports:
+
+- `FacebookIcon` -> `FacebookLegacyIcon`
+- `XIcon` -> `XLegacyIcon`
+- `NativeShareIcon` -> `NativeShareLegacyIcon`
+
+Example:
+
+```jsx
+import { FacebookLegacyIcon, XIcon } from 'react-share';
+
+<FacebookLegacyIcon size={32} round />;
+<XIcon size={32} />;
 ```
 
 ## New mobile app handoff option
@@ -238,5 +262,7 @@ Use `mobileBehavior="app"` and `mobileBehavior="auto"` only when best-effort app
 4. Rename every old share-button `title` prop to the correct v6 payload prop.
 5. Remove `hashtags`, `related`, and `via` from `ThreadsShareButton`.
 6. Remove `shareTitle`, `summary`, and `source` from `LinkedinShareButton`.
-7. Decide whether any messaging buttons should opt into `mobileBehavior`.
-8. For mobile/PWA or file-sharing flows, prefer `NativeShareButton` or `shareNative(...)`.
+7. Rename any old badge-style icon usage from `*Icon` to `*LegacyIcon`.
+8. Remove `round`, `borderRadius`, `bgStyle`, and `iconFillColor` from raw `*Icon` usage.
+9. Decide whether any messaging buttons should opt into `mobileBehavior`.
+10. For mobile/PWA or file-sharing flows, prefer `NativeShareButton` or `shareNative(...)`.

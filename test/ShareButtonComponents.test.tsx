@@ -66,7 +66,7 @@ describe('share button components', () => {
   it('adds the email fallback label for icon-only buttons', () => {
     render(
       <EmailShareButton subject="Subject" url="https://example.com">
-        <EmailIcon round />
+        <EmailIcon />
       </EmailShareButton>,
     );
 
@@ -76,7 +76,7 @@ describe('share button components', () => {
   it('adds the Pinterest fallback label for icon-only buttons', () => {
     render(
       <PinterestShareButton media="https://example.com/image.png" url="https://example.com">
-        <PinterestIcon round />
+        <PinterestIcon />
       </PinterestShareButton>,
     );
 

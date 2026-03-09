@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { FacebookIcon } from '../src/FacebookIcon';
+import { FacebookLegacyIcon } from '../src/FacebookLegacyIcon';
 import { ShareButton } from '../src/ShareButton';
 
 describe('ShareButton', () => {
@@ -328,7 +329,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round aria-label="facebook icon" />
+        <FacebookLegacyIcon round aria-label="facebook icon" />
       </ShareButton>,
     );
 
@@ -343,7 +344,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round />
+        <FacebookIcon />
       </ShareButton>,
     );
 
@@ -362,7 +363,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round />
+        <FacebookIcon />
       </ShareButton>,
     );
 
@@ -383,7 +384,7 @@ describe('ShareButton', () => {
           opts={{}}
           url="https://example.com"
         >
-          <FacebookIcon round />
+          <FacebookIcon />
         </ShareButton>
       </>,
     );
@@ -417,7 +418,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon aria-label="facebook icon" borderRadius={12} />
+        <FacebookLegacyIcon aria-label="facebook icon" borderRadius={12} />
       </ShareButton>,
     );
 
@@ -433,7 +434,7 @@ describe('ShareButton', () => {
         style={{ borderRadius: 4, display: 'inline-block', outlineOffset: 3 }}
         url="https://example.com"
       >
-        <FacebookIcon round aria-label="facebook icon" />
+        <FacebookIcon aria-label="facebook icon" />
       </ShareButton>,
     );
 

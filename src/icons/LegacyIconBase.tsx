@@ -3,7 +3,7 @@ import { Children, cloneElement, isValidElement } from 'react';
 
 type IconSvgProps = Omit<SVGProps<SVGSVGElement>, 'width' | 'height'>;
 
-export type IconProps = IconSvgProps & {
+export type LegacyIconProps = IconSvgProps & {
   bgStyle?: CSSProperties;
   borderRadius?: number;
   iconFillColor?: string;
@@ -11,7 +11,7 @@ export type IconProps = IconSvgProps & {
   size?: number | string;
 };
 
-type IconBaseProps = IconProps & {
+type LegacyIconBaseProps = LegacyIconProps & {
   children: ReactNode;
   color: string;
 };
@@ -26,7 +26,7 @@ function withDefaultFill(children: ReactNode, iconFillColor: string) {
   });
 }
 
-export function IconBase({
+export function LegacyIconBase({
   bgStyle = {},
   borderRadius = 0,
   children,
@@ -35,7 +35,7 @@ export function IconBase({
   round = false,
   size = 64,
   ...rest
-}: IconBaseProps) {
+}: LegacyIconBaseProps) {
   const content = withDefaultFill(children, iconFillColor);
 
   return (

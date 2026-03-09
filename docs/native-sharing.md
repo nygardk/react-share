@@ -65,7 +65,7 @@ This is the preferred path for:
   mobileBehavior="app"
   url={shareUrl}
 >
-  <WhatsappIcon size={32} round />
+  <WhatsappIcon size={32} />
 </WhatsappShareButton>
 ```
 
@@ -123,7 +123,7 @@ import { NativeShareButton, NativeShareIcon } from 'react-share';
   url={shareUrl}
   aria-label="Share with your device"
 >
-  <NativeShareIcon size={32} round />
+  <NativeShareIcon size={32} />
 </NativeShareButton>;
 ```
 

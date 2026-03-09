@@ -11,7 +11,6 @@ const iconExportNames = Object.keys(ReactShare)
 const representativeExportNames = [
   'FacebookShareButton',
   'XShareButton',
-  'FacebookShareCount',
   'FacebookIcon',
   'XIcon',
 ] as const;

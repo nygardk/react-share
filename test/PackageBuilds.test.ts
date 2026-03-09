@@ -33,7 +33,7 @@ const representativeExportNames = [
   'FacebookShareButton',
   'XShareButton',
   'FacebookIcon',
-  'PinterestShareCount',
+  'XIcon',
 ] as const;
 
 describe('package builds', () => {
@@ -57,12 +57,11 @@ describe('package builds', () => {
     await expect(access(distPaths.typesCjs)).resolves.toBeUndefined();
   });
 
-  it('marks share count exports as deprecated in the built type declarations', async () => {
+  it('does not emit removed share count or Twitter alias exports in the built type declarations', async () => {
     const declarationBundle = await readFile(distPaths.types, 'utf8');
 
-    expect(declarationBundle).toContain('@deprecated Share counts are deprecated and will be removed in v6.');
-    expect(declarationBundle).toContain('FacebookShareCount');
-    expect(declarationBundle).toContain('PinterestShareCount');
+    expect(declarationBundle).not.toContain('FacebookShareCount');
+    expect(declarationBundle).not.toContain('PinterestShareCount');
     expect(declarationBundle).not.toContain('TwitterShareButton');
     expect(declarationBundle).not.toContain('TwitterIcon');
   });

@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-share.svg)](https://www.npmjs.com/package/react-share) ![npm bundle size](https://img.shields.io/bundlephobia/min/react-share) [![downloads](https://img.shields.io/npm/dm/react-share.svg?label=monthly%20downloads)](https://www.npmjs.com/package/react-share) [![downloads](https://img.shields.io/npm/dt/react-share.svg?label=total%20downloads)](https://www.npmjs.com/package/react-share)
 
-> Social media share buttons and share counts for your React apps.
+> Social media share buttons for your React apps.
 
 ![Share buttons screenshot](example.png)
 
@@ -42,7 +42,6 @@ npm install react-share
   - [Whatsapp](#whatsappsharebutton)
   - [Workplace](#workplacesharebutton)
   - [X](#xsharebutton)
-- [share counts](#share-counts) (deprecated)
 - social media icons included in the library
 - supports also custom icons
 
@@ -567,52 +566,6 @@ import { WorkplaceShareButton, WorkplaceIcon } from "react-share";
 </WorkplaceShareButton>;
 ```
 
-### Share counts
-
-Share count components are deprecated and will be removed in v6. They remain available in v5 as best-effort compatibility only, and upstream networks may stop returning counts without notice.
-
-```js
-import {
-  FacebookShareCount,
-  HatenaShareCount,
-  OKShareCount,
-  PinterestShareCount,
-  RedditShareCount,
-  TumblrShareCount,
-  VKShareCount,
-} from "react-share";
-```
-
-Supported components:
-
-- `FacebookShareCount`
-- `HatenaShareCount`
-- `OKShareCount`
-- `PinterestShareCount`
-- `RedditShareCount`
-- `TumblrShareCount`
-- `VKShareCount`
-
-Shared props:
-
-- `url` (`string`, required): URL to look up.
-- `children` (`(shareCount: number) => ReactNode`, optional): Render prop for custom output.
-- Standard `<span>` attributes such as `className`, `aria-*`, and `data-*`.
-
-Example:
-
-```jsx
-<FacebookShareCount url={shareUrl} />
-```
-
-Custom rendering:
-
-```jsx
-<FacebookShareCount url={shareUrl}>
-  {(shareCount) => <span className="myShareCountWrapper">{shareCount}</span>}
-</FacebookShareCount>
-```
-
 ### Icons
 
 All exported icons share the same props:
@@ -645,7 +598,7 @@ Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="
 
 ### About semantic versioning
 
-This library uses the standard semver convention. However, the share buttons and and counts are prone to lots of changes that are not in control of this library. For example: if Facebook decides to change or deprecate it's API in a major way, this library will not get a major version bump just because of that. Keep this in mind when you are planning the maintenance of your application.
+This library uses the standard semver convention. However, the share buttons are prone to lots of changes that are not in control of this library. For example: if Facebook decides to change or deprecate its API in a major way, this library will not get a major version bump just because of that. Keep this in mind when you are planning the maintenance of your application.
 
 ## License
 

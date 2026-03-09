@@ -410,9 +410,6 @@ import { TelegramShareButton, TelegramIcon } from "react-share";
 Optional props:
 
 - `title` (`string`): Title of the shared page.
-- `hashtags` (`string[]`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
-- `related` (`string[]`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
-- `via` (`string`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
 
 ```jsx
 import { ThreadsShareButton, ThreadsIcon } from "react-share";

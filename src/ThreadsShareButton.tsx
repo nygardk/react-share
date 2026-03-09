@@ -16,33 +16,21 @@ function threadsLink(url: string, { title }: { title?: string }) {
 }
 
 type ThreadsShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
-  /** @deprecated This prop is ignored and will be removed in v6. */
-  hashtags?: string[];
-  /** @deprecated This prop is ignored and will be removed in v6. */
-  related?: string[];
   title?: string;
-  /** @deprecated This prop is ignored and will be removed in v6. */
-  via?: string;
 };
 
 const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButtonProps>(
-  ({ hashtags, related, title, via, ...props }, ref) => {
-    void hashtags;
-    void related;
-    void via;
-
-    return (
-      <ShareButton
-        {...props}
-        forwardedRef={ref}
-        networkName="threads"
-        networkLink={threadsLink}
-        opts={{ title }}
-        windowHeight={600}
-        windowWidth={550}
-      />
-    );
-  },
+  ({ title, ...props }, ref) => (
+    <ShareButton
+      {...props}
+      forwardedRef={ref}
+      networkName="threads"
+      networkLink={threadsLink}
+      opts={{ title }}
+      windowHeight={600}
+      windowWidth={550}
+    />
+  ),
 );
 
 ThreadsShareButton.displayName = 'ThreadsShareButton';

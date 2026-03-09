@@ -13,13 +13,15 @@ function facebookLink(url: string, { hashtag }: { hashtag?: string }) {
   return 'https://www.facebook.com/sharer/sharer.php' + objectToGetParams({ u: url, hashtag });
 }
 
+export const buildFacebookShareUrl = facebookLink;
+
 const FacebookShareButton = forwardRef<HTMLButtonElement, FacebookShareButtonProps>(
   ({ hashtag, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="facebook"
-      networkLink={facebookLink}
+      networkLink={buildFacebookShareUrl}
       opts={{ hashtag }}
       windowHeight={400}
       windowWidth={550}

@@ -24,13 +24,15 @@ function whatsappLink(
   );
 }
 
+export const buildWhatsappShareUrl = whatsappLink;
+
 const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
   ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="whatsapp"
-      networkLink={whatsappLink}
+      networkLink={buildWhatsappShareUrl}
       opts={{
         message,
         separator: separator || ' ',

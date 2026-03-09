@@ -15,13 +15,15 @@ function emailLink(url: string, { subject, body, separator }: Options) {
   return 'mailto:' + objectToGetParams({ subject, body: body ? body + separator + url : url });
 }
 
+export const buildEmailShareUrl = emailLink;
+
 const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonProps>(
   ({ body, separator, subject, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="email"
-      networkLink={emailLink}
+      networkLink={buildEmailShareUrl}
       onClick={(_, link: string) => {
         window.location.href = link;
       }}

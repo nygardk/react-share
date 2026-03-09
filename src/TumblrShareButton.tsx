@@ -26,6 +26,8 @@ function tumblrLink(
   );
 }
 
+export const buildTumblrShareUrl = tumblrLink;
+
 type Options = {
   postTitle?: string;
   caption?: string;
@@ -41,7 +43,7 @@ const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
       {...props}
       forwardedRef={ref}
       networkName="tumblr"
-      networkLink={tumblrLink}
+      networkLink={buildTumblrShareUrl}
       opts={{
         postTitle,
         tags: (tags || []).join(','),

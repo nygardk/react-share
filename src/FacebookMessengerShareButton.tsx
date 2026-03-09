@@ -27,6 +27,8 @@ function facebookMessengerLink(url: string, { appId, redirectUri, to }: Options)
   );
 }
 
+export const buildFacebookMessengerShareUrl = facebookMessengerLink;
+
 const FacebookMessengerShareButton = forwardRef<
   HTMLButtonElement,
   FacebookMessengerShareButtonProps
@@ -35,7 +37,7 @@ const FacebookMessengerShareButton = forwardRef<
     {...props}
     forwardedRef={ref}
     networkName="facebookmessenger"
-    networkLink={facebookMessengerLink}
+    networkLink={buildFacebookMessengerShareUrl}
     opts={{
       appId,
       redirectUri,

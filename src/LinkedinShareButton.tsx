@@ -23,13 +23,15 @@ function linkedinLink(url: string, { shareTitle, summary, source }: Options) {
   );
 }
 
+export const buildLinkedinShareUrl = linkedinLink;
+
 const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
   ({ shareTitle, source, summary, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="linkedin"
-      networkLink={linkedinLink}
+      networkLink={buildLinkedinShareUrl}
       opts={{ shareTitle, summary, source }}
       windowHeight={600}
       windowWidth={750}

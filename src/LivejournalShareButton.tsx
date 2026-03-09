@@ -26,13 +26,15 @@ function livejournalLink(
   );
 }
 
+export const buildLivejournalShareUrl = livejournalLink;
+
 const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
   ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="livejournal"
-      networkLink={livejournalLink}
+      networkLink={buildLivejournalShareUrl}
       opts={{
         shareTitle,
         description,

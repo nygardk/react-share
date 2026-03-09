@@ -29,13 +29,15 @@ function pinterestLink(url: string, { media, description, pinId }: PinterestShar
   );
 }
 
+export const buildPinterestShareUrl = pinterestLink;
+
 const PinterestShareButton = forwardRef<HTMLButtonElement, PinterestShareButtonProps>(
   ({ description, media, pinId, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="pinterest"
-      networkLink={pinterestLink}
+      networkLink={buildPinterestShareUrl}
       opts={{
         media,
         description,

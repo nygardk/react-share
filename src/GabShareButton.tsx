@@ -19,13 +19,15 @@ function gabLink(url: string, { text }: { text?: string }) {
   );
 }
 
+export const buildGabShareUrl = gabLink;
+
 const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="gab"
-      networkLink={gabLink}
+      networkLink={buildGabShareUrl}
       opts={{ text }}
       windowHeight={640}
       windowPosition="windowCenter"

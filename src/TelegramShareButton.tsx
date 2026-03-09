@@ -19,13 +19,15 @@ function telegramLink(url: string, { text }: { text?: string }) {
   );
 }
 
+export const buildTelegramShareUrl = telegramLink;
+
 const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="telegram"
-      networkLink={telegramLink}
+      networkLink={buildTelegramShareUrl}
       opts={{ text }}
       windowHeight={400}
       windowWidth={550}

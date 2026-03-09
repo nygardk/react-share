@@ -28,6 +28,8 @@ function xLink(
   );
 }
 
+export const buildXShareUrl = xLink;
+
 type XShareButtonProps = Omit<
   ShareButtonProps<{
     text?: string;
@@ -49,7 +51,7 @@ const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
       {...props}
       forwardedRef={ref}
       networkName="twitter"
-      networkLink={xLink}
+      networkLink={buildXShareUrl}
       opts={{
         hashtags,
         text,

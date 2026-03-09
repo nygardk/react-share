@@ -27,13 +27,15 @@ function instapaperLink(
   );
 }
 
+export const buildInstapaperShareUrl = instapaperLink;
+
 const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButtonProps>(
   ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="instapaper"
-      networkLink={instapaperLink}
+      networkLink={buildInstapaperShareUrl}
       opts={{
         shareTitle,
         description,

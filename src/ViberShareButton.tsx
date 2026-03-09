@@ -21,13 +21,15 @@ function viberLink(url: string, { message, separator }: { message?: string; sepa
   );
 }
 
+export const buildViberShareUrl = viberLink;
+
 const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
   ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="viber"
-      networkLink={viberLink}
+      networkLink={buildViberShareUrl}
       opts={{
         message,
         separator: separator || ' ',

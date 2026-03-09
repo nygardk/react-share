@@ -19,13 +19,15 @@ function lineLink(url: string, { text }: { text?: string }) {
   );
 }
 
+export const buildLineShareUrl = lineLink;
+
 const LineShareButton = forwardRef<HTMLButtonElement, LineShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="line"
-      networkLink={lineLink}
+      networkLink={buildLineShareUrl}
       opts={{ text }}
       windowHeight={500}
       windowWidth={500}

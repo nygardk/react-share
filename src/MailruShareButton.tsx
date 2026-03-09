@@ -24,6 +24,8 @@ function mailruLink(
   );
 }
 
+export const buildMailruShareUrl = mailruLink;
+
 type MailruShareButtonProps = Omit<
   ShareButtonProps<{ shareTitle?: string; description?: string; imageUrl?: string }>,
   'title'
@@ -39,7 +41,7 @@ const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
       {...props}
       forwardedRef={ref}
       networkName="mailru"
-      networkLink={mailruLink}
+      networkLink={buildMailruShareUrl}
       opts={{
         shareTitle,
         description,

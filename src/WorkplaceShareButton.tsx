@@ -21,13 +21,15 @@ function workplaceLink(url: string, { quote, hashtag }: { quote?: string; hashta
   );
 }
 
+export const buildWorkplaceShareUrl = workplaceLink;
+
 const WorkplaceShareButton = forwardRef<HTMLButtonElement, WorkplaceShareButtonProps>(
   ({ hashtag, quote, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="workplace"
-      networkLink={workplaceLink}
+      networkLink={buildWorkplaceShareUrl}
       opts={{
         quote,
         hashtag,

@@ -27,13 +27,15 @@ function weiboLink(
   );
 }
 
+export const buildWeiboShareUrl = weiboLink;
+
 const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonProps>(
   ({ image, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="weibo"
-      networkLink={weiboLink}
+      networkLink={buildWeiboShareUrl}
       opts={{
         shareTitle,
         image,

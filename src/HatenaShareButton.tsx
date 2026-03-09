@@ -12,13 +12,15 @@ function hatenaLink(url: string, { shareTitle }: { shareTitle?: string }) {
   return `http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${shareTitle}`;
 }
 
+export const buildHatenaShareUrl = hatenaLink;
+
 const HatenaShareButton = forwardRef<HTMLButtonElement, HatenaShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="hatena"
-      networkLink={hatenaLink}
+      networkLink={buildHatenaShareUrl}
       opts={{ shareTitle }}
       windowHeight={460}
       windowPosition="windowCenter"

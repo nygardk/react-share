@@ -22,13 +22,15 @@ function blueskyLink(url: string, { text, separator }: { text?: string; separato
   );
 }
 
+export const buildBlueskyShareUrl = blueskyLink;
+
 const BlueskyShareButton = forwardRef<HTMLButtonElement, BlueskyShareButtonProps>(
   ({ separator, text, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="bluesky"
-      networkLink={blueskyLink}
+      networkLink={buildBlueskyShareUrl}
       opts={{
         text,
         separator: separator || ' ',

@@ -24,6 +24,8 @@ function okLink(
   );
 }
 
+export const buildOKShareUrl = okLink;
+
 type OKShareButtonProps = Omit<
   ShareButtonProps<{ shareTitle?: string; description?: string; image?: string }>,
   'title'
@@ -39,7 +41,7 @@ const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
       {...props}
       forwardedRef={ref}
       networkName="ok"
-      networkLink={okLink}
+      networkLink={buildOKShareUrl}
       opts={{
         shareTitle,
         description,

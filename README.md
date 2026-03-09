@@ -117,6 +117,19 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 </FacebookShareButton>;
 ```
 
+Low-level helpers are also available when you want to generate a share URL or open a popup yourself. Every popup-based button has a matching `build*ShareUrl` export, such as `buildFacebookShareUrl`, `buildLinkedinShareUrl`, `buildWhatsappShareUrl`, and `buildXShareUrl`. `openShareWindow` exposes the same popup behavior used internally by the button components:
+
+```jsx
+import { buildXShareUrl, openShareWindow } from "react-share";
+
+const url = buildXShareUrl(shareUrl, {
+  text: "Read this next",
+  hashtags: ["react", "share"],
+});
+
+openShareWindow(url, { width: 550, height: 400 });
+```
+
 #### BlueskyShareButton
 
 Optional props:

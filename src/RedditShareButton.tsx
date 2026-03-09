@@ -19,13 +19,15 @@ function redditLink(url: string, { shareTitle }: { shareTitle?: string }) {
   );
 }
 
+export const buildRedditShareUrl = redditLink;
+
 const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="reddit"
-      networkLink={redditLink}
+      networkLink={buildRedditShareUrl}
       opts={{ shareTitle }}
       windowHeight={460}
       windowPosition="windowCenter"

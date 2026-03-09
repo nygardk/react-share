@@ -15,6 +15,8 @@ function threadsLink(url: string, { text }: { text?: string }) {
   );
 }
 
+export const buildThreadsShareUrl = threadsLink;
+
 type ThreadsShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
   text?: string;
 };
@@ -25,7 +27,7 @@ const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButtonProps
       {...props}
       forwardedRef={ref}
       networkName="threads"
-      networkLink={threadsLink}
+      networkLink={buildThreadsShareUrl}
       opts={{ text }}
       windowHeight={600}
       windowWidth={550}

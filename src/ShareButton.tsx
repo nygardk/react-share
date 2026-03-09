@@ -1,10 +1,10 @@
 import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
+import { openShareWindow, type WindowPosition } from './shareWindow';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
-type WindowPosition = 'windowCenter' | 'screenCenter';
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
 type IconShapeProps = { borderRadius?: number; round?: boolean };
 
@@ -40,16 +40,6 @@ const isPromise = (obj: unknown): obj is Promise<unknown> =>
   (typeof obj === 'object' || typeof obj === 'function') &&
   'then' in obj &&
   typeof (obj as Promise<unknown>).then === 'function';
-
-const getBoxPositionOnWindowCenter = (width: number, height: number) => ({
-  left: window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2,
-  top: window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - height / 2,
-});
-
-const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
-  top: (window.screen.height - height) / 2,
-  left: (window.screen.width - width) / 2,
-});
 
 function getButtonBorderRadius(children: React.ReactNode) {
   const childNodes = Children.toArray(children);
@@ -87,50 +77,6 @@ function hasTextContent(children: React.ReactNode): boolean {
 
     return hasTextContent(child.props.children);
   });
-}
-
-function windowOpen(
-  url: string,
-  { height, width, ...configRest }: { height: number; width: number; [key: string]: unknown },
-  onClose?: (dialog: Window | null) => void,
-) {
-  const config: { [key: string]: string | number } = {
-    height,
-    width,
-    location: 'no',
-    toolbar: 'no',
-    status: 'no',
-    directories: 'no',
-    menubar: 'no',
-    scrollbars: 'yes',
-    resizable: 'no',
-    centerscreen: 'yes',
-    chrome: 'yes',
-    ...configRest,
-  };
-
-  const shareDialog = window.open(
-    url,
-    '',
-    Object.keys(config)
-      .map(key => `${key}=${config[key]}`)
-      .join(', '),
-  );
-
-  if (onClose) {
-    const interval = window.setInterval(() => {
-      try {
-        if (shareDialog === null || shareDialog.closed) {
-          window.clearInterval(interval);
-          onClose(shareDialog);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }, 1000);
-  }
-
-  return shareDialog;
 }
 
 export interface Props<LinkOptions> extends NativeButtonProps {
@@ -231,15 +177,12 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
     }
 
     if (openShareDialogOnClick) {
-      const windowConfig = {
+      openShareWindow(link, {
         height: windowHeight,
+        onClose: onShareWindowClose,
+        position: windowPosition,
         width: windowWidth,
-        ...(windowPosition === 'windowCenter'
-          ? getBoxPositionOnWindowCenter(windowWidth, windowHeight)
-          : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
-      };
-
-      windowOpen(link, windowConfig, onShareWindowClose);
+      });
     }
 
     if (onClick) {

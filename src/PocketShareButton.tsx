@@ -19,13 +19,15 @@ function pocketLink(url: string, { shareTitle }: { shareTitle?: string }) {
   );
 }
 
+export const buildPocketShareUrl = pocketLink;
+
 const PocketShareButton = forwardRef<HTMLButtonElement, PocketShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="pocket"
-      networkLink={pocketLink}
+      networkLink={buildPocketShareUrl}
       opts={{ shareTitle }}
       windowHeight={500}
       windowWidth={500}

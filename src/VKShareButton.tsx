@@ -27,13 +27,15 @@ function vkLink(url: string, { shareTitle, image, noParse, noVkLinks }: Options)
   );
 }
 
+export const buildVKShareUrl = vkLink;
+
 const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
   ({ image, noParse, noVkLinks, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="vk"
-      networkLink={vkLink}
+      networkLink={buildVKShareUrl}
       opts={{
         shareTitle,
         image,

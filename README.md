@@ -53,6 +53,11 @@ npm install react-share
 
 - Locally: clone the repository and run `npm install && npm run demo`.
 
+## Guides
+
+- [Migrate v5 to v6](./docs/migrate-v5-to-v6.md)
+- [Native and mobile sharing behavior](./docs/native-sharing.md)
+
 ## React compatibility
 
 | Version | Compatible React versions     |

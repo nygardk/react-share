@@ -17,6 +17,7 @@ npm install react-share
 - no external script loading, i.e. no dependencies on SDKs
 - supports tree shaking with ES modules
 - opens a popup share-window
+- includes opt-in mobile app handoff for selected messaging networks
 - share buttons for:
   - [Bluesky](#blueskysharebutton)
   - [Email](#emailsharebutton)
@@ -91,6 +92,7 @@ Required:
 - `windowPosition` (`"windowCenter" | "screenCenter"`): Controls popup positioning on popup-based buttons.
   Optional on popup-based share buttons:
 - `openShareDialogOnClick` (`boolean`, default `true`): Opens the popup automatically on click. `EmailShareButton` does not expose this prop because it always uses `mailto:` navigation.
+- `mobileBehavior` (`"web" | "app" | "auto"`): Supported only by `FacebookMessengerShareButton`, `TelegramShareButton`, `ViberShareButton`, and `WhatsappShareButton`. Defaults to `"web"`. `"app"` uses a best-effort app/deep link. `"auto"` prefers that app/deep link on detected mobile environments and otherwise keeps the web flow.
 
 The native button `title` attribute uses `htmlTitle` so it does not conflict with share payload props such as `text`, `message`, `shareTitle`, or `postTitle`:
 
@@ -177,13 +179,19 @@ Extra required props:
   Optional props:
 - `redirectUri` (`string`): Redirect target after sharing. Defaults to the shared URL.
 - `to` (`string`): Recipient user ID.
+- `mobileBehavior` (`"web" | "app" | "auto"`, default `"web"`): Best-effort mobile strategy. `"app"` uses a Messenger deep link and `"auto"` only does that on detected mobile environments.
 - Notes:
-  - Mobile behavior depends on Meta's current app and dialog support.
+  - Mobile behavior depends on Meta's current app and dialog support and is less reliable than WhatsApp or Telegram app handoff.
 
 ```jsx
 import { FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share";
 
-<FacebookMessengerShareButton appId={appId} url={shareUrl} aria-label="Send in Messenger">
+<FacebookMessengerShareButton
+  appId={appId}
+  mobileBehavior="app"
+  url={shareUrl}
+  aria-label="Send in Messenger"
+>
   <FacebookMessengerIcon size={32} round />
 </FacebookMessengerShareButton>;
 ```
@@ -207,6 +215,7 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 Optional props:
 
 - `text` (`string`): Text to share before the URL.
+- `mobileBehavior` (`"web" | "app" | "auto"`, default `"web"`): `"app"` uses a Telegram app link and `"auto"` uses it only on detected mobile environments.
 
 ```jsx
 import { GabShareButton, GabIcon } from "react-share";
@@ -413,7 +422,12 @@ Optional props:
 ```jsx
 import { TelegramShareButton, TelegramIcon } from "react-share";
 
-<TelegramShareButton text="Read this next" url={shareUrl} aria-label="Share on Telegram">
+<TelegramShareButton
+  text="Read this next"
+  mobileBehavior="app"
+  url={shareUrl}
+  aria-label="Share on Telegram"
+>
   <TelegramIcon size={32} round />
 </TelegramShareButton>;
 ```
@@ -486,11 +500,17 @@ Optional props:
 
 - `message` (`string`): Message to share before the URL.
 - `separator` (`string`, default `" "`): Separator between the message and URL.
+- `mobileBehavior` (`"web" | "app" | "auto"`, default `"web"`): `"app"` navigates to the Viber URL scheme directly and `"auto"` uses that path only on detected mobile environments.
 
 ```jsx
 import { ViberShareButton, ViberIcon } from "react-share";
 
-<ViberShareButton message="Read this next" url={shareUrl} aria-label="Share on Viber">
+<ViberShareButton
+  message="Read this next"
+  mobileBehavior="app"
+  url={shareUrl}
+  aria-label="Share on Viber"
+>
   <ViberIcon size={32} round />
 </ViberShareButton>;
 ```
@@ -545,13 +565,19 @@ Optional props:
 
 - `message` (`string`): Message to share before the URL.
 - `separator` (`string`, default `" "`): Separator between the message and URL.
+- `mobileBehavior` (`"web" | "app" | "auto"`, default `"web"`): `"app"` uses a WhatsApp app link and `"auto"` uses it only on detected mobile environments.
 - Notes:
   - Generates an `api.whatsapp.com` share URL.
 
 ```jsx
 import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
-<WhatsappShareButton message="Read this next" url={shareUrl} aria-label="Share on WhatsApp">
+<WhatsappShareButton
+  message="Read this next"
+  mobileBehavior="app"
+  url={shareUrl}
+  aria-label="Share on WhatsApp"
+>
   <WhatsappIcon size={32} round />
 </WhatsappShareButton>;
 ```
@@ -604,6 +630,7 @@ Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="
 - Popup blockers: share buttons use `window.open` from the click handler. If your app does async work in `beforeOnClick`, some browsers may treat the eventual popup as script-triggered and block it. In those cases, set `openShareDialogOnClick={false}` and manage the resulting URL yourself.
 - Accessibility: icon-only buttons should always have an accessible name. Use `aria-label` or `aria-labelledby` on the share button; `htmlTitle` is only a tooltip.
 - Mobile app handoff: some platforms open the browser, an in-app browser, or an extra tab before handing off to a native app. This behavior is controlled by the target platform and browser, not by `react-share`.
+- Mobile app strategies: `mobileBehavior="app"` and `mobileBehavior="auto"` are best-effort only. The library does not try to detect whether an app-open succeeded or guarantee a browser fallback path.
 - iOS PWAs: standalone mode can show a blank intermediary page for schemes such as `mailto:` or native-app handoff URLs. This is a platform limitation.
 
 ### About semantic versioning

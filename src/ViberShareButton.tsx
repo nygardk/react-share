@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { type MobileBehavior, resolveMobileShareStrategy } from './mobile';
 import { assert } from './utils/assert';
 import { objectToGetParams } from './utils/objectToGetParams';
 import { ShareButton, type ShareButtonProps } from './ShareButton';
@@ -8,6 +9,7 @@ type ViberShareButtonProps = Omit<
   'title'
 > & {
   message?: string;
+  mobileBehavior?: MobileBehavior;
   separator?: string;
 };
 
@@ -24,21 +26,29 @@ function viberLink(url: string, { message, separator }: { message?: string; sepa
 export const buildViberShareUrl = viberLink;
 
 export const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
-  ({ message, separator, ...props }, ref) => (
-    <ShareButton
-      {...props}
-      forwardedRef={ref}
-      networkName="viber"
-      networkLink={buildViberShareUrl}
-      opts={{
-        message,
-        separator: separator || ' ',
-      }}
-      windowHeight={460}
-      windowWidth={660}
-    />
-  ),
+  ({ message, mobileBehavior, separator, ...props }, ref) => {
+    const { linkBehavior, networkLink } = resolveMobileShareStrategy(
+      mobileBehavior,
+      buildViberShareUrl,
+      buildViberShareUrl,
+    );
+
+    return (
+      <ShareButton
+        {...props}
+        forwardedRef={ref}
+        linkBehavior={linkBehavior}
+        networkName="viber"
+        networkLink={networkLink}
+        opts={{
+          message,
+          separator: separator || ' ',
+        }}
+        windowHeight={460}
+        windowWidth={660}
+      />
+    );
+  },
 );
 
 ViberShareButton.displayName = 'ViberShareButton';
-

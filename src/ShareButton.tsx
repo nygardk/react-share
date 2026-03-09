@@ -1,7 +1,7 @@
 import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
-import { openShareWindow, type WindowPosition } from './shareWindow';
+import { openShareWindow, type LinkBehavior, type WindowPosition } from './shareWindow';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
@@ -101,6 +101,7 @@ export interface Props<LinkOptions> extends NativeButtonProps {
    * share payload props exposed by the button components.
    */
   htmlTitle?: HTMLButtonElement['title'];
+  linkBehavior?: LinkBehavior;
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
@@ -123,7 +124,7 @@ export interface Props<LinkOptions> extends NativeButtonProps {
 
 export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit<
   Props<LinkOptions>,
-  'forwardedRef' | 'networkLink' | 'networkName' | 'opts'
+  'forwardedRef' | 'linkBehavior' | 'networkLink' | 'networkName' | 'opts'
 >;
 
 export function ShareButton<LinkOptions extends Record<string, unknown>>({
@@ -136,6 +137,7 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
   disabledStyle = { opacity: 0.6 },
   forwardedRef,
   htmlTitle,
+  linkBehavior = 'popup',
   networkLink,
   networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
@@ -176,13 +178,17 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
       }
     }
 
-    if (openShareDialogOnClick) {
+    if (openShareDialogOnClick && linkBehavior === 'popup') {
       openShareWindow(link, {
         height: windowHeight,
         onClose: onShareWindowClose,
         position: windowPosition,
         width: windowWidth,
       });
+    }
+
+    if (openShareDialogOnClick && linkBehavior === 'navigate') {
+      window.location.href = link;
     }
 
     if (onClick) {

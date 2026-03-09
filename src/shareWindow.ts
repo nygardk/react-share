@@ -1,4 +1,5 @@
 export type WindowPosition = 'windowCenter' | 'screenCenter';
+export type LinkBehavior = 'popup' | 'navigate';
 
 export type ShareWindowOptions = {
   height?: number;

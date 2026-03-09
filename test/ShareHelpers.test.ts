@@ -1,6 +1,11 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { buildFacebookShareUrl, buildXShareUrl, openShareWindow } from '../src';
+import {
+  buildFacebookShareUrl,
+  buildLinkedinShareUrl,
+  buildXShareUrl,
+  openShareWindow,
+} from '../src';
 
 describe('share helpers', () => {
   it('builds a Facebook share URL directly', () => {
@@ -19,6 +24,12 @@ describe('share helpers', () => {
       }),
     ).toBe(
       'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Example%20title&via=reactshare&hashtags=react%2Cshare&related=openai',
+    );
+  });
+
+  it('builds a LinkedIn share URL directly from only the URL', () => {
+    expect(buildLinkedinShareUrl('https://example.com')).toBe(
+      'https://linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com&mini=true',
     );
   });
 

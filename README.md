@@ -303,24 +303,14 @@ import { LineShareButton, LineIcon } from "react-share";
 
 #### LinkedinShareButton
 
-Optional props:
-
-- `shareTitle` (`string`): Title sent in the share payload.
-- `summary` (`string`): Description of the shared page.
-- `source` (`string`): Source label such as your app or site name.
 - Notes:
-  - These fields are best-effort only and may be ignored or rewritten by LinkedIn.
+  - LinkedIn sharing is URL-first and best-effort.
+  - The button only sends the shared URL because LinkedIn no longer provides a reliable public URL-based way to prefill title, summary, or source values.
 
 ```jsx
 import { LinkedinShareButton, LinkedinIcon } from "react-share";
 
-<LinkedinShareButton
-  shareTitle="Read this next"
-  summary="Quick summary"
-  source="example.com"
-  url={shareUrl}
-  aria-label="Share on LinkedIn"
->
+<LinkedinShareButton url={shareUrl} aria-label="Share on LinkedIn">
   <LinkedinIcon size={32} round />
 </LinkedinShareButton>;
 ```

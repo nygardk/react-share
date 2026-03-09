@@ -90,12 +90,8 @@ const shareButtonCases: ShareButtonCase[] = [
   {
     children: 'Share on LinkedIn',
     Component: LinkedinShareButton,
-    expectedUrl:
-      'https://linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com&mini=true&title=Example%20title&summary=Example%20summary&source=Example%20source',
+    expectedUrl: 'https://linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com&mini=true',
     props: {
-      source: 'Example source',
-      summary: 'Example summary',
-      shareTitle: 'Example title',
       url: 'https://example.com',
     },
   },

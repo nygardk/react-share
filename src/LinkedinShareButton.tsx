@@ -3,36 +3,26 @@ import { assert } from './utils/assert';
 import { objectToGetParams } from './utils/objectToGetParams';
 import { ShareButton, type ShareButtonProps } from './ShareButton';
 
-type Options = {
-  /** The url-encoded title value that you wish you use. */
-  shareTitle?: string;
-  /** The url-encoded description that you wish you use. */
-  summary?: string;
-  /** The url-encoded source of the content (e.g. your website or application name) */
-  source?: string;
-};
+type Options = Record<string, never>;
 
-type LinkedinShareButtonProps = Omit<ShareButtonProps<Options>, 'title'> & Options;
+type LinkedinShareButtonProps = Omit<ShareButtonProps<Options>, 'title'>;
 
-function linkedinLink(url: string, { shareTitle, summary, source }: Options) {
+function linkedinLink(url: string) {
   assert(url, 'linkedin.url');
 
-  return (
-    'https://linkedin.com/shareArticle' +
-    objectToGetParams({ url, mini: 'true', title: shareTitle, summary, source })
-  );
+  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url, mini: 'true' });
 }
 
 export const buildLinkedinShareUrl = linkedinLink;
 
 export const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
-  ({ shareTitle, source, summary, ...props }, ref) => (
+  (props, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="linkedin"
       networkLink={buildLinkedinShareUrl}
-      opts={{ shareTitle, summary, source }}
+      opts={{}}
       windowHeight={600}
       windowWidth={750}
     />
@@ -40,4 +30,3 @@ export const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareBu
 );
 
 LinkedinShareButton.displayName = 'LinkedinShareButton';
-

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type BlueskyShareButtonProps = Omit<
   ShareButtonProps<{ text?: string; separator?: string }>,
@@ -24,7 +24,7 @@ function blueskyLink(url: string, { text, separator }: { text?: string; separato
 
 export const buildBlueskyShareUrl = blueskyLink;
 
-const BlueskyShareButton = forwardRef<HTMLButtonElement, BlueskyShareButtonProps>(
+export const BlueskyShareButton = forwardRef<HTMLButtonElement, BlueskyShareButtonProps>(
   ({ separator, text, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -44,4 +44,3 @@ const BlueskyShareButton = forwardRef<HTMLButtonElement, BlueskyShareButtonProps
 
 BlueskyShareButton.displayName = 'BlueskyShareButton';
 
-export default BlueskyShareButton;

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type Options = {
   /** Your app's unique identifier. */
@@ -29,7 +29,7 @@ function facebookMessengerLink(url: string, { appId, redirectUri, to }: Options)
 
 export const buildFacebookMessengerShareUrl = facebookMessengerLink;
 
-const FacebookMessengerShareButton = forwardRef<
+export const FacebookMessengerShareButton = forwardRef<
   HTMLButtonElement,
   FacebookMessengerShareButtonProps
 >(({ appId, redirectUri, to, ...props }, ref) => (
@@ -50,4 +50,3 @@ const FacebookMessengerShareButton = forwardRef<
 
 FacebookMessengerShareButton.displayName = 'FacebookMessengerShareButton';
 
-export default FacebookMessengerShareButton;

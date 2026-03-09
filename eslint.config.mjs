@@ -4,6 +4,7 @@ import tsParser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
@@ -31,7 +32,10 @@ export default [
         ...globals.node,
       },
     },
-    plugins: { "@typescript-eslint": ts },
+    plugins: {
+      "@typescript-eslint": ts,
+      import: importPlugin,
+    },
     rules: {
       ...ts.configs.strict.rules,
       "@typescript-eslint/consistent-type-imports": [
@@ -41,6 +45,13 @@ export default [
           disallowTypeAnnotations: false,
         },
       ],
+    },
+  },
+  {
+    files: ["src/**/*.{ts,tsx}", "test/**/*.{ts,tsx}", "demo/**/*.{ts,tsx}"],
+    ignores: ["demo/declarations.d.ts"],
+    rules: {
+      "import/no-default-export": "error",
     },
   },
   {

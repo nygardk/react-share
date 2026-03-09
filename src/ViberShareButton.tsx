@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type ViberShareButtonProps = Omit<
   ShareButtonProps<{ message?: string; separator?: string }>,
@@ -23,7 +23,7 @@ function viberLink(url: string, { message, separator }: { message?: string; sepa
 
 export const buildViberShareUrl = viberLink;
 
-const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
+export const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
   ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -42,4 +42,3 @@ const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
 
 ViberShareButton.displayName = 'ViberShareButton';
 
-export default ViberShareButton;

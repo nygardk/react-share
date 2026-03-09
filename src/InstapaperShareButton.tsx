@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type InstapaperShareButtonProps = Omit<
   ShareButtonProps<{ shareTitle?: string; description?: string }>,
@@ -29,7 +29,7 @@ function instapaperLink(
 
 export const buildInstapaperShareUrl = instapaperLink;
 
-const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButtonProps>(
+export const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButtonProps>(
   ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -49,4 +49,3 @@ const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButto
 
 InstapaperShareButton.displayName = 'InstapaperShareButton';
 
-export default InstapaperShareButton;

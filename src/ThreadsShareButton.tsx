@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function threadsLink(url: string, { text }: { text?: string }) {
   assert(url, 'threads.url');
@@ -21,7 +21,7 @@ type ThreadsShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'
   text?: string;
 };
 
-const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButtonProps>(
+export const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -37,4 +37,3 @@ const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButtonProps
 
 ThreadsShareButton.displayName = 'ThreadsShareButton';
 
-export default ThreadsShareButton;

@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import EmailShareButton from '../src/EmailShareButton';
+import { EmailShareButton } from '../src/EmailShareButton';
 
 describe('EmailShareButton', () => {
   it('navigates to a mailto link instead of opening a popup', () => {

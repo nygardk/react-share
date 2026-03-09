@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type Options = {
   shareTitle?: string;
@@ -29,7 +29,7 @@ function vkLink(url: string, { shareTitle, image, noParse, noVkLinks }: Options)
 
 export const buildVKShareUrl = vkLink;
 
-const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
+export const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
   ({ image, noParse, noVkLinks, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -50,4 +50,3 @@ const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
 
 VKShareButton.displayName = 'VKShareButton';
 
-export default VKShareButton;

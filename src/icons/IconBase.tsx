@@ -26,7 +26,7 @@ function withDefaultFill(children: ReactNode, iconFillColor: string) {
   });
 }
 
-export default function IconBase({
+export function IconBase({
   bgStyle = {},
   borderRadius = 0,
   children,

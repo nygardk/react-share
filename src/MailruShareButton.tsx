@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function mailruLink(
   url: string,
@@ -35,7 +35,7 @@ type MailruShareButtonProps = Omit<
   shareTitle?: string;
 };
 
-const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
+export const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
   ({ description, imageUrl, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -55,4 +55,3 @@ const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
 
 MailruShareButton.displayName = 'MailruShareButton';
 
-export default MailruShareButton;

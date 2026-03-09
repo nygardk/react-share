@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function tumblrLink(
   url: string,
@@ -37,7 +37,7 @@ type Options = {
 type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>, 'title'> &
   Options & { tags?: string[] };
 
-const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
+export const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
   ({ caption, postTitle, posttype, tags, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -58,4 +58,3 @@ const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
 
 TumblrShareButton.displayName = 'TumblrShareButton';
 
-export default TumblrShareButton;

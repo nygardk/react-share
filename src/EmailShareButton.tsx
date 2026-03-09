@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type Options = {
   body?: string;
@@ -17,7 +17,7 @@ function emailLink(url: string, { subject, body, separator }: Options) {
 
 export const buildEmailShareUrl = emailLink;
 
-const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonProps>(
+export const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonProps>(
   ({ body, separator, subject, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -39,4 +39,3 @@ const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonProps>(
 
 EmailShareButton.displayName = 'EmailShareButton';
 
-export default EmailShareButton;

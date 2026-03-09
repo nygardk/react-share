@@ -2,11 +2,11 @@ import React, { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import EmailIcon from '../src/EmailIcon';
-import EmailShareButton from '../src/EmailShareButton';
-import PinterestIcon from '../src/PinterestIcon';
-import PinterestShareButton from '../src/PinterestShareButton';
-import TumblrShareButton from '../src/TumblrShareButton';
+import { EmailIcon } from '../src/EmailIcon';
+import { EmailShareButton } from '../src/EmailShareButton';
+import { PinterestIcon } from '../src/PinterestIcon';
+import { PinterestShareButton } from '../src/PinterestShareButton';
+import { TumblrShareButton } from '../src/TumblrShareButton';
 
 describe('share button components', () => {
   it('does not forward network-specific props to the DOM', () => {

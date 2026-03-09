@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type TelegramShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
   text?: string;
@@ -21,7 +21,7 @@ function telegramLink(url: string, { text }: { text?: string }) {
 
 export const buildTelegramShareUrl = telegramLink;
 
-const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonProps>(
+export const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -37,4 +37,3 @@ const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonPro
 
 TelegramShareButton.displayName = 'TelegramShareButton';
 
-export default TelegramShareButton;

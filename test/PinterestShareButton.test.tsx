@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import PinterestShareButton from '../src/PinterestShareButton';
+import { PinterestShareButton } from '../src/PinterestShareButton';
 
 describe('PinterestShareButton', () => {
   it('builds a create-pin url when media is provided', () => {

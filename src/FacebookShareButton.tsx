@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type FacebookShareButtonProps = ShareButtonProps<{ hashtag?: string }> & {
   hashtag?: string;
@@ -15,7 +15,7 @@ function facebookLink(url: string, { hashtag }: { hashtag?: string }) {
 
 export const buildFacebookShareUrl = facebookLink;
 
-const FacebookShareButton = forwardRef<HTMLButtonElement, FacebookShareButtonProps>(
+export const FacebookShareButton = forwardRef<HTMLButtonElement, FacebookShareButtonProps>(
   ({ hashtag, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -31,4 +31,3 @@ const FacebookShareButton = forwardRef<HTMLButtonElement, FacebookShareButtonPro
 
 FacebookShareButton.displayName = 'FacebookShareButton';
 
-export default FacebookShareButton;

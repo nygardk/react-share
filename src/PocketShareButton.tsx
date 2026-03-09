@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type PocketShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 'title'> & {
   shareTitle?: string;
@@ -21,7 +21,7 @@ function pocketLink(url: string, { shareTitle }: { shareTitle?: string }) {
 
 export const buildPocketShareUrl = pocketLink;
 
-const PocketShareButton = forwardRef<HTMLButtonElement, PocketShareButtonProps>(
+export const PocketShareButton = forwardRef<HTMLButtonElement, PocketShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -37,4 +37,3 @@ const PocketShareButton = forwardRef<HTMLButtonElement, PocketShareButtonProps>(
 
 PocketShareButton.displayName = 'PocketShareButton';
 
-export default PocketShareButton;

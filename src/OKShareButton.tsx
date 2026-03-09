@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function okLink(
   url: string,
@@ -35,7 +35,7 @@ type OKShareButtonProps = Omit<
   shareTitle?: string;
 };
 
-const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
+export const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
   ({ description, image, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -56,4 +56,3 @@ const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
 
 OKShareButton.displayName = 'OKShareButton';
 
-export default OKShareButton;

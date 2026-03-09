@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type WhatsappShareButtonProps = Omit<
   ShareButtonProps<{ message?: string; separator?: string }>,
@@ -26,7 +26,7 @@ function whatsappLink(
 
 export const buildWhatsappShareUrl = whatsappLink;
 
-const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
+export const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
   ({ message, separator, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -45,4 +45,3 @@ const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonPro
 
 WhatsappShareButton.displayName = 'WhatsappShareButton';
 
-export default WhatsappShareButton;

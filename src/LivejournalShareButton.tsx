@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type LivejournalShareButtonProps = Omit<
   ShareButtonProps<{ shareTitle?: string; description?: string }>,
@@ -28,7 +28,7 @@ function livejournalLink(
 
 export const buildLivejournalShareUrl = livejournalLink;
 
-const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
+export const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
   ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -47,4 +47,3 @@ const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareBut
 
 LivejournalShareButton.displayName = 'LivejournalShareButton';
 
-export default LivejournalShareButton;

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type HatenaShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 'title'> & {
   shareTitle?: string;
@@ -14,7 +14,7 @@ function hatenaLink(url: string, { shareTitle }: { shareTitle?: string }) {
 
 export const buildHatenaShareUrl = hatenaLink;
 
-const HatenaShareButton = forwardRef<HTMLButtonElement, HatenaShareButtonProps>(
+export const HatenaShareButton = forwardRef<HTMLButtonElement, HatenaShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -31,4 +31,3 @@ const HatenaShareButton = forwardRef<HTMLButtonElement, HatenaShareButtonProps>(
 
 HatenaShareButton.displayName = 'HatenaShareButton';
 
-export default HatenaShareButton;

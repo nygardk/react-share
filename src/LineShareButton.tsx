@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type LineShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
   text?: string;
@@ -21,7 +21,7 @@ function lineLink(url: string, { text }: { text?: string }) {
 
 export const buildLineShareUrl = lineLink;
 
-const LineShareButton = forwardRef<HTMLButtonElement, LineShareButtonProps>(
+export const LineShareButton = forwardRef<HTMLButtonElement, LineShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -37,4 +37,3 @@ const LineShareButton = forwardRef<HTMLButtonElement, LineShareButtonProps>(
 
 LineShareButton.displayName = 'LineShareButton';
 
-export default LineShareButton;

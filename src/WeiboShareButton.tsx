@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type WeiboShareButtonProps = Omit<
   ShareButtonProps<{ shareTitle?: string; image?: string }>,
@@ -29,7 +29,7 @@ function weiboLink(
 
 export const buildWeiboShareUrl = weiboLink;
 
-const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonProps>(
+export const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonProps>(
   ({ image, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -49,4 +49,3 @@ const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonProps>(
 
 WeiboShareButton.displayName = 'WeiboShareButton';
 
-export default WeiboShareButton;

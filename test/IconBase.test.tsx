@@ -2,22 +2,22 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import FacebookIcon from '../src/FacebookIcon';
-import FacebookMessengerIcon from '../src/FacebookMessengerIcon';
-import HatenaIcon from '../src/HatenaIcon';
-import IconBase from '../src/icons/IconBase';
-import LineIcon from '../src/LineIcon';
-import LivejournalIcon from '../src/LivejournalIcon';
-import MailruIcon from '../src/MailruIcon';
-import OKIcon from '../src/OKIcon';
-import PinterestIcon from '../src/PinterestIcon';
-import RedditIcon from '../src/RedditIcon';
-import TelegramIcon from '../src/TelegramIcon';
-import TumblrIcon from '../src/TumblrIcon';
-import VKIcon from '../src/VKIcon';
-import ViberIcon from '../src/ViberIcon';
-import WeiboIcon from '../src/WeiboIcon';
-import WorkplaceIcon from '../src/WorkplaceIcon';
+import { FacebookIcon } from '../src/FacebookIcon';
+import { FacebookMessengerIcon } from '../src/FacebookMessengerIcon';
+import { HatenaIcon } from '../src/HatenaIcon';
+import { IconBase } from '../src/icons/IconBase';
+import { LineIcon } from '../src/LineIcon';
+import { LivejournalIcon } from '../src/LivejournalIcon';
+import { MailruIcon } from '../src/MailruIcon';
+import { OKIcon } from '../src/OKIcon';
+import { PinterestIcon } from '../src/PinterestIcon';
+import { RedditIcon } from '../src/RedditIcon';
+import { TelegramIcon } from '../src/TelegramIcon';
+import { TumblrIcon } from '../src/TumblrIcon';
+import { VKIcon } from '../src/VKIcon';
+import { ViberIcon } from '../src/ViberIcon';
+import { WeiboIcon } from '../src/WeiboIcon';
+import { WorkplaceIcon } from '../src/WorkplaceIcon';
 
 describe('IconBase', () => {
   it('renders exported icons with the shared rectangular background by default', () => {

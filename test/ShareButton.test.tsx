@@ -2,8 +2,8 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import FacebookIcon from '../src/FacebookIcon';
-import ShareButton from '../src/ShareButton';
+import { FacebookIcon } from '../src/FacebookIcon';
+import { ShareButton } from '../src/ShareButton';
 
 describe('ShareButton', () => {
   afterEach(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import FacebookMessengerShareButton from '../src/FacebookMessengerShareButton';
+import { FacebookMessengerShareButton } from '../src/FacebookMessengerShareButton';
 
 describe('FacebookMessengerShareButton', () => {
   it('defaults redirectUri to the shared url', () => {

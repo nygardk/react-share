@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type GabShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
   text?: string;
@@ -21,7 +21,7 @@ function gabLink(url: string, { text }: { text?: string }) {
 
 export const buildGabShareUrl = gabLink;
 
-const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>(
+export const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>(
   ({ text, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -38,4 +38,3 @@ const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>(
 
 GabShareButton.displayName = 'GabShareButton';
 
-export default GabShareButton;

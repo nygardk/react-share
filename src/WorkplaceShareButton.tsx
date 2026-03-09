@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type WorkplaceShareButtonProps = ShareButtonProps<{ quote?: string; hashtag?: string }> & {
   hashtag?: string;
@@ -23,7 +23,7 @@ function workplaceLink(url: string, { quote, hashtag }: { quote?: string; hashta
 
 export const buildWorkplaceShareUrl = workplaceLink;
 
-const WorkplaceShareButton = forwardRef<HTMLButtonElement, WorkplaceShareButtonProps>(
+export const WorkplaceShareButton = forwardRef<HTMLButtonElement, WorkplaceShareButtonProps>(
   ({ hashtag, quote, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -42,4 +42,3 @@ const WorkplaceShareButton = forwardRef<HTMLButtonElement, WorkplaceShareButtonP
 
 WorkplaceShareButton.displayName = 'WorkplaceShareButton';
 
-export default WorkplaceShareButton;

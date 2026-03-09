@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import assert from '../src/utils/assert';
-import objectToGetParams from '../src/utils/objectToGetParams';
+import { assert } from '../src/utils/assert';
+import { objectToGetParams } from '../src/utils/objectToGetParams';
 
 describe('utilities', () => {
   it('encodes query parameters and skips nullish values', () => {

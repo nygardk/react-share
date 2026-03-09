@@ -1,4 +1,4 @@
-export default function objectToGetParams(object: {
+export function objectToGetParams(object: {
   [key: string]: string | number | undefined | null;
 }) {
   const params = Object.entries(object)

@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import XShareButton from '../src/XShareButton';
+import { XShareButton } from '../src/XShareButton';
 describe('XShareButton', () => {
   it('builds a share url with hashtags and related accounts', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);

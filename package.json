@@ -19,7 +19,7 @@
     "build-demo": "vite build --config vite.demo.config.js",
     "check-types": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.demo.json",
     "demo": "vite --config vite.demo.config.js",
-    "lint": "eslint ./src ./demo",
+    "lint": "eslint ./src ./demo ./test",
     "lint-package": "npx publint && npx @arethetypeswrong/cli --pack .",
     "prepublishOnly": "npm run build",
     "start": "npm run demo",

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type Options = {
   /** The url-encoded title value that you wish you use. */
@@ -25,7 +25,7 @@ function linkedinLink(url: string, { shareTitle, summary, source }: Options) {
 
 export const buildLinkedinShareUrl = linkedinLink;
 
-const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
+export const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
   ({ shareTitle, source, summary, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -41,4 +41,3 @@ const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonPro
 
 LinkedinShareButton.displayName = 'LinkedinShareButton';
 
-export default LinkedinShareButton;

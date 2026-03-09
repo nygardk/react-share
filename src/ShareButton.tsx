@@ -126,7 +126,7 @@ export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit
   'forwardedRef' | 'networkLink' | 'networkName' | 'opts'
 >;
 
-export default function ShareButton<LinkOptions extends Record<string, unknown>>({
+export function ShareButton<LinkOptions extends Record<string, unknown>>({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   beforeOnClick,

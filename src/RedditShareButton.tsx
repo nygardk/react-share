@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type RedditShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 'title'> & {
   shareTitle?: string;
@@ -21,7 +21,7 @@ function redditLink(url: string, { shareTitle }: { shareTitle?: string }) {
 
 export const buildRedditShareUrl = redditLink;
 
-const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButtonProps>(
+export const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButtonProps>(
   ({ shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -38,4 +38,3 @@ const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButtonProps>(
 
 RedditShareButton.displayName = 'RedditShareButton';
 
-export default RedditShareButton;

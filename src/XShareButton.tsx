@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function xLink(
   url: string,
@@ -45,7 +45,7 @@ type XShareButtonProps = Omit<
   related?: string[];
 };
 
-const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
+export const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
   ({ hashtags, related, text, via, ...props }, ref) => (
     <ShareButton
       {...props}
@@ -66,4 +66,3 @@ const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
 
 XShareButton.displayName = 'XShareButton';
 
-export default XShareButton;

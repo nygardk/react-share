@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import WhatsappShareButton from '../src/WhatsappShareButton';
+import { WhatsappShareButton } from '../src/WhatsappShareButton';
 
 describe('WhatsappShareButton', () => {
   it('uses the api host for generated share links', () => {

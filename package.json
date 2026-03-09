@@ -17,12 +17,15 @@
   "scripts": {
     "build": "vite build",
     "build-demo": "vite build --config vite.demo.config.js",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.demo.json",
     "demo": "vite --config vite.demo.config.js",
     "lint": "eslint ./src ./demo",
     "lint-package": "npx publint && npx @arethetypeswrong/cli --pack .",
     "prepublishOnly": "npm run build",
     "start": "npm run demo",
+    "test": "vitest run",
+    "test:dist": "vitest run --config vitest.dist.config.ts",
+    "test:coverage": "vitest run --coverage",
     "release": "npm run build && changeset publish"
   },
   "keywords": [
@@ -53,29 +56,35 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "2.27.12",
-    "@types/assert": "1.5.11",
-    "@types/jsonp": "0.2.3",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@typescript-eslint/eslint-plugin": "8.22.0",
-    "@typescript-eslint/parser": "8.22.0",
-    "@vitejs/plugin-react": "4.3.4",
-    "eslint": "9.19.0",
-    "eslint-config-prettier": "10.0.1",
+    "@changesets/cli": "^2.30.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/assert": "^1.5.11",
+    "@types/jsonp": "^0.2.3",
+    "@types/node": "^24.12.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.2.3",
-    "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.1.0",
-    "globals": "15.14.0",
-    "prettier": "3.4.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "5.7.3",
-    "vite": "6.0.11",
-    "vite-plugin-dts": "4.5.0"
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.4.0",
+    "jsdom": "^28.1.0",
+    "prettier": "^3.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -83,10 +92,5 @@
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19"
-  },
-  "overrides": {
-    "vite-plugin-dts": {
-      "@microsoft/api-extractor": "~7.48.0"
-    }
   }
 }

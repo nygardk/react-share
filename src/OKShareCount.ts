@@ -50,4 +50,9 @@ function getOKShareCount(shareUrl: string, callback: (shareCount?: number) => vo
   );
 }
 
-export default createShareCount(getOKShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const OKShareCount = createShareCount(getOKShareCount);
+
+export default OKShareCount;

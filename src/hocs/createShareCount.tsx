@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { useIsMounted } from '../hooks/useIsMounted';
 
-type SocialMediaShareCountProps = Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> & {
+type ShareCountContainerProps = Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'>;
+
+type SocialMediaShareCountProps = ShareCountContainerProps & {
   children?: (shareCount: number) => React.ReactNode;
   getCount: (url: string, callback: (shareCount?: number) => void) => void;
   url: string;
 };
+
+type ShareCountProps = Omit<SocialMediaShareCountProps, 'getCount'>;
 
 export function SocialMediaShareCount({
   children = (shareCount: number) => shareCount,
@@ -39,7 +43,7 @@ export function SocialMediaShareCount({
 }
 
 export default function createShareCount(getCount: SocialMediaShareCountProps['getCount']) {
-  const ShareCount = (props: Omit<SocialMediaShareCountProps, 'getCount'>) => (
+  const ShareCount = (props: ShareCountProps) => (
     <SocialMediaShareCount getCount={getCount} {...props} />
   );
 

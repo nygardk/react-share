@@ -18,4 +18,9 @@ function getRedditShareCount(shareUrl: string, callback: (shareCount?: number) =
   });
 }
 
-export default createShareCount(getRedditShareCount);
+/**
+ * @deprecated Share counts are deprecated and will be removed in v6.
+ */
+const RedditShareCount = createShareCount(getRedditShareCount);
+
+export default RedditShareCount;

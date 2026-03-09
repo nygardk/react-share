@@ -9,6 +9,16 @@ import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
 
 export default [
+  {
+    ignores: [
+      "demo/assets/**",
+      "dist/**",
+      "**/.DS_Store",
+      "**/*.css",
+      "**/*.html",
+      "**/*.png",
+    ],
+  },
   js.configs.recommended,
   {
     files: ["**/*.ts", "**/*.tsx"],
@@ -45,6 +55,7 @@ export default [
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
+      "jsx-a11y/control-has-associated-label": "error",
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
     },

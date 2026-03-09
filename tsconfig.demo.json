@@ -1,6 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "noEmit": true,
     "rootDir": "."
   },
   "include": ["src", "demo"]

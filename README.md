@@ -18,38 +18,31 @@ npm install react-share
 - supports tree shaking with ES modules
 - opens a popup share-window
 - share buttons for:
-  - Facebook
-  - Facebook Messenger
-  - X (formerly Twitter)
-  - Telegram
-  - Whatsapp
-  - LinkedIn
-  - Pinterest
-  - VK
-  - Odnoklassniki
-  - Reddit
-  - Tumblr
-  - Mail.Ru
-  - LiveJournal
-  - Viber
-  - Workplace
-  - Line
-  - Weibo
-  - Pocket
-  - Instapaper
-  - Hatena
-  - Gab
-  - Bluesky
-  - email
-  - Threads
-- share counts for
-  - Facebook
-  - Pinterest
-  - VK
-  - Odnoklassniki
-  - Reddit
-  - Tumblr
-  - Hatena
+  - [Bluesky](#blueskysharebutton)
+  - [Email](#emailsharebutton)
+  - [Facebook](#facebooksharebutton)
+  - [Facebook Messenger](#facebookmessengersharebutton)
+  - [Gab](#gabsharebutton)
+  - [Hatena](#hatenasharebutton)
+  - [Instapaper](#instapapersharebutton)
+  - [Line](#linesharebutton)
+  - [LinkedIn](#linkedinsharebutton)
+  - [LiveJournal](#livejournalsharebutton)
+  - [Mail.Ru](#mailrusharebutton)
+  - [Odnoklassniki](#oksharebutton)
+  - [Pinterest](#pinterestsharebutton)
+  - [Pocket](#pocketsharebutton)
+  - [Reddit](#redditsharebutton)
+  - [Telegram](#telegramsharebutton)
+  - [Threads](#threadssharebutton)
+  - [Tumblr](#tumblrsharebutton)
+  - [Viber](#vibersharebutton)
+  - [VK](#vksharebutton)
+  - [Weibo](#weibosharebutton)
+  - [Whatsapp](#whatsappsharebutton)
+  - [Workplace](#workplacesharebutton)
+  - [X](#xsharebutton)
+- [share counts](#share-counts) (deprecated)
 - social media icons included in the library
 - supports also custom icons
 
@@ -57,80 +50,526 @@ npm install react-share
 
 - [Deployed demo](https://npm-react-share-demo.netlify.app) (from [`./demo`](./demo/))
 
-- [Codesandbox example](https://codesandbox.io/p/sandbox/react-share-demo-474q4k)
-
 - Locally: clone the repository and run `npm install && npm run demo`.
 
 ## React compatibility
 
 | Version | Compatible React versions     |
 | ------- | ----------------------------- |
-| 1       | `0.13.x`, `0.14.x`, `15.x.x`. |
-| 2       | `15`, `16`                    |
-| 3       | `15`, `16`                    |
-| 3.0.1   | `^16.3.`                      |
-| 4       | `^16.3`, `17`, `18`           |
 | 5       | `17`, `18`, `19`              |
+| 4       | `^16.3`, `17`, `18`           |
+| 3.0.1   | `^16.3.`                      |
+| 3       | `15`, `16`                    |
+| 2       | `15`, `16`                    |
+| 1       | `0.13.x`, `0.14.x`, `15.x.x`. |
 
 ## API
 
 ### Share buttons
 
-```js
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  GabShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
-  LineShareButton,
-  LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
-  PinterestShareButton,
-  PocketShareButton,
-  RedditShareButton,
-  TelegramShareButton,
-  ThreadsShareButton,
-  TumblrShareButton,
-  TwitterShareButton,
-  ViberShareButton,
-  VKShareButton,
-  WhatsappShareButton,
-  WorkplaceShareButton,
-} from "react-share";
+All share buttons render a native `<button>` element and pass through standard button attributes such as `aria-label`, `aria-labelledby`, `aria-describedby`, `name`, and `data-*`.
+
+Buttons and icons are separate named exports. Import only the components you use to keep tree shaking effective, and pass any custom element as `children` if you want to use your own icon set instead of the bundled icons.
+
+Icon-only buttons need an accessible name. Pass `aria-label` or `aria-labelledby` when you render them in your app. `htmlTitle` only sets the native tooltip/title attribute and is not used as the button's accessible name.
+
+Shared props:
+
+Required:
+
+- `children` (`ReactNode`): Button contents.
+- `url` (`string`): URL of the shared page.
+  Optional on all share buttons:
+- `beforeOnClick` (`() => Promise<void> | void`): Runs before the share action.
+- `disabled` (`boolean`): Disables click handling and adds a `disabled` class.
+- `disabledStyle` (`CSSProperties`, default `{ opacity: 0.6 }`): Applied when `disabled` is true.
+- `htmlTitle` (`string`): Sets the native `title` attribute on the underlying button.
+- `onClick` (`(event, link) => void`): Called with the click event and generated share URL after link generation. Not exposed by `EmailShareButton`.
+- `onShareWindowClose` (`() => void`): Called after the popup closes on popup-based buttons.
+- `resetButtonStyle` (`boolean`, default `true`): Resets native button styles unless disabled.
+- `windowHeight`, `windowWidth` (`number`): Override popup dimensions on popup-based buttons.
+- `windowPosition` (`"windowCenter" | "screenCenter"`): Controls popup positioning on popup-based buttons.
+  Optional on popup-based share buttons:
+- `openShareDialogOnClick` (`boolean`, default `true`): Opens the popup automatically on click. `EmailShareButton` does not expose this prop because it always uses `mailto:` navigation.
+
+The native button `title` attribute uses `htmlTitle` so it does not conflict with network share props named `title`:
+
+```jsx
+import { XShareButton, XIcon } from "react-share";
+
+<XShareButton
+  title="Share title sent to X"
+  htmlTitle="Native button tooltip"
+  url={shareUrl}
+  aria-label="Share on X"
+>
+  <XIcon size={32} round />
+</XShareButton>;
 ```
 
-##### Share button props
+Basic example:
 
-|                              | Required props                                                                              | Optional props                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **All**                      | **`children`** (string/element): React node<br />**`url`** (string): URL of the shared page | **`htmlTitle`** (string): Adds accessible `title=""` attribute to button the element<br/> **`disabled`** (bool): Disables click action and adds "disabled" class<br/>**`disabledStyle`** (object, default=`{ opacity: 0.6 }`): Disabled style<br/>**`windowWidth`, `windowHeight`** (number, different default for all share buttons): opened window dimensions<br />**`beforeOnClick`** (`() => Promise`/`() => void`): Takes a function that returns a Promise to be fulfilled before calling `onClick`. If you do not return promise, `onClick` is called immediately.<br/>**`openShareDialogOnClick`** (boolean): Open dialog on click. Defaults to `true` except on EmailShareButton<br/>**`onShareWindowClose`** (`() => void`): Takes a function to be called after closing share dialog.<br/>**`resetButtonStyle`** (boolean, default=`true`): Reset `button` element style. Preferred to be set to `false` if you want to customize the button style. |
-| EmailShareButton             | -                                                                                           | **`subject`** (string): Title of the shared page<br/>**`body`** (string): Email, will be prepended to the url.<br/>**`separator`** (string, default=`" "`): Separates body from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| FacebookShareButton          | -                                                                                           | **`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| FacebookMessengerShareButton | **`appId`** (string): Facebook application id                                               | **`redirectUri`** (string): The URL to redirect to after sharing (default: the shared url).<br />**`to`** (string): A user ID of a recipient. Once the dialog comes up, the sender can specify additional people as recipients.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| HatenaShareButton            | -                                                                                           | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| InstapaperShareButton        | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`description`** (string): Description of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| LinkedinShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`summary`** (string): Description of the shared page<br/>**`source`** (string): Source of the content (e.g. your website or application name)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| LineShareButton              | -                                                                                           | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| LivejournalShareButton       | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`description`** (string): Description of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| MailruShareButton            | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`description`** (string): Description of the shared page<br/>**`imageUrl`** (string): An absolute link to the image that will be shared                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| OKShareButton                | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`description`** (string): Description of the shared page<br/>**`image`** (string): An absolute link to the image that will be shared                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| PinterestShareButton         | **`media`** (string): An absolute link to the image that will be pinned                     | **`description`** (string): Description for the shared<br/>**`pinId`** (string): Id of existing pin - If you’ve already pinned this page, use this to treat any new Pins of this page as repins of the original. Doing this can give you a better feel for engagement, because any Pins you create will count towards repins of your original Pin.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| PocketShareButton            | -                                                                                           | **`title`** (string): Title of the shared page. Note that if Pocket detects a title tag on the page being saved, this parameter will be ignored and the title tag of the saved page will be used instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| RedditShareButton            | -                                                                                           | **`title`** (string): Title of the shared page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| TelegramShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ThreadsShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br> **`url`**: (string)<br/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| TumblrShareButton            | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`tags`**: (`Array<string>`)<br/>**`caption`** (string): Description of the shared page<br/>**`posttype`** (string, default=`link`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| TwitterShareButton           | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`url`**: (string)<br/>**`hashtags`** (array): Hashtags<br/>**`related`** (array): Accounts to recommend following                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ViberShareButton             | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`separator`** (string), default=`" "`: Separates title from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| VKShareButton                | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`image`** (string): An absolute link to the image that will be shared<br/>**`noParse`** (boolean): If true is passed, VK will not retrieve URL information<br/>**`noVkLinks`** (boolean): If true is passed, there will be no links to the user's profile in the open window. Only for mobile devices                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| WeiboShareButton             | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`image`** (string): An absolute link to the image that will be shared                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| WhatsappShareButton          | -                                                                                           | **`title`** (string): Title of the shared page<br/>**`separator`** (string, default=`" "`): Separates title from the url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| WorkplaceShareButton         | -                                                                                           | **`quote`** (string): A quote to be shared along with the link.<br/>**`hashtag`** (string): A hashtag specified by the developer to be added to the shared content. People will still have the opportunity to remove this hashtag in the dialog. The hashtag should include the hash symbol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+```jsx
+import { FacebookShareButton, FacebookIcon } from "react-share";
+
+<FacebookShareButton url={shareUrl} aria-label="Share this page on Facebook">
+  <FacebookIcon size={32} round />
+</FacebookShareButton>;
+```
+
+#### BlueskyShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `separator` (`string`, default `" "`): Separator between the title and URL.
+
+```jsx
+import { BlueskyShareButton, BlueskyIcon } from "react-share";
+
+<BlueskyShareButton title="Read this next" url={shareUrl} aria-label="Share on Bluesky">
+  <BlueskyIcon size={32} round />
+</BlueskyShareButton>;
+```
+
+#### EmailShareButton
+
+Optional props:
+
+- `subject` (`string`): Email subject line.
+- `body` (`string`): Text prepended before the shared URL.
+- `separator` (`string`, default `" "`): Separator between the body and URL.
+- Notes:
+  - Uses `mailto:` navigation instead of opening a popup.
+  - Does not expose `openShareDialogOnClick` or `onClick`.
+
+```jsx
+import { EmailShareButton, EmailIcon } from "react-share";
+
+<EmailShareButton
+  subject="Take a look"
+  body="Thought you might like this:"
+  url={shareUrl}
+  aria-label="Share by email"
+>
+  <EmailIcon size={32} round />
+</EmailShareButton>;
+```
+
+#### FacebookMessengerShareButton
+
+Extra required props:
+
+- `appId` (`string`): Facebook application ID.
+  Optional props:
+- `redirectUri` (`string`): Redirect target after sharing. Defaults to the shared URL.
+- `to` (`string`): Recipient user ID.
+- Notes:
+  - Mobile behavior depends on Meta's current app and dialog support.
+
+```jsx
+import { FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share";
+
+<FacebookMessengerShareButton appId={appId} url={shareUrl} aria-label="Send in Messenger">
+  <FacebookMessengerIcon size={32} round />
+</FacebookMessengerShareButton>;
+```
+
+#### FacebookShareButton
+
+Optional props:
+
+- `hashtag` (`string`): Hashtag to append to the shared content. Include the leading `#`.
+
+```jsx
+import { FacebookShareButton, FacebookIcon } from "react-share";
+
+<FacebookShareButton hashtag="#reactshare" url={shareUrl} aria-label="Share on Facebook">
+  <FacebookIcon size={32} round />
+</FacebookShareButton>;
+```
+
+#### GabShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+
+```jsx
+import { GabShareButton, GabIcon } from "react-share";
+
+<GabShareButton title="Read this next" url={shareUrl} aria-label="Share on Gab">
+  <GabIcon size={32} round />
+</GabShareButton>;
+```
+
+#### HatenaShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+
+```jsx
+import { HatenaShareButton, HatenaIcon } from "react-share";
+
+<HatenaShareButton title="Read this next" url={shareUrl} aria-label="Share on Hatena">
+  <HatenaIcon size={32} round />
+</HatenaShareButton>;
+```
+
+#### InstapaperShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `description` (`string`): Description of the shared page.
+
+```jsx
+import { InstapaperShareButton, InstapaperIcon } from "react-share";
+
+<InstapaperShareButton
+  title="Read this next"
+  description="Quick summary"
+  url={shareUrl}
+  aria-label="Save to Instapaper"
+>
+  <InstapaperIcon size={32} round />
+</InstapaperShareButton>;
+```
+
+#### LineShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+
+```jsx
+import { LineShareButton, LineIcon } from "react-share";
+
+<LineShareButton title="Read this next" url={shareUrl} aria-label="Share on Line">
+  <LineIcon size={32} round />
+</LineShareButton>;
+```
+
+#### LinkedinShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `summary` (`string`): Description of the shared page.
+- `source` (`string`): Source label such as your app or site name.
+- Notes:
+  - These fields are best-effort only and may be ignored or rewritten by LinkedIn.
+
+```jsx
+import { LinkedinShareButton, LinkedinIcon } from "react-share";
+
+<LinkedinShareButton
+  title="Read this next"
+  summary="Quick summary"
+  source="example.com"
+  url={shareUrl}
+  aria-label="Share on LinkedIn"
+>
+  <LinkedinIcon size={32} round />
+</LinkedinShareButton>;
+```
+
+#### LivejournalShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `description` (`string`): Description of the shared page.
+
+```jsx
+import { LivejournalShareButton, LivejournalIcon } from "react-share";
+
+<LivejournalShareButton
+  title="Read this next"
+  description="Quick summary"
+  url={shareUrl}
+  aria-label="Share on LiveJournal"
+>
+  <LivejournalIcon size={32} round />
+</LivejournalShareButton>;
+```
+
+#### MailruShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `description` (`string`): Description of the shared page.
+- `imageUrl` (`string`): Absolute image URL to include in the share payload.
+
+```jsx
+import { MailruShareButton, MailruIcon } from "react-share";
+
+<MailruShareButton
+  title="Read this next"
+  description="Quick summary"
+  imageUrl={imageUrl}
+  url={shareUrl}
+  aria-label="Share on Mail.ru"
+>
+  <MailruIcon size={32} round />
+</MailruShareButton>;
+```
+
+#### OKShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `description` (`string`): Description of the shared page.
+- `image` (`string`): Absolute image URL to include in the share payload.
+
+```jsx
+import { OKShareButton, OKIcon } from "react-share";
+
+<OKShareButton
+  title="Read this next"
+  description="Quick summary"
+  image={imageUrl}
+  url={shareUrl}
+  aria-label="Share on OK"
+>
+  <OKIcon size={32} round />
+</OKShareButton>;
+```
+
+#### PinterestShareButton
+
+Extra required props:
+
+- `media` (`string`): Absolute image URL to pin.
+  Optional props:
+- `description` (`string`): Description of the pin.
+- `pinId` (`string`): Existing pin ID to treat new pins as repins.
+
+```jsx
+import { PinterestShareButton, PinterestIcon } from "react-share";
+
+<PinterestShareButton
+  media={imageUrl}
+  description="Pin this"
+  url={shareUrl}
+  aria-label="Pin on Pinterest"
+>
+  <PinterestIcon size={32} round />
+</PinterestShareButton>;
+```
+
+#### PocketShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- Notes:
+  - If Pocket detects a title on the target page, it may ignore this prop and use page metadata instead.
+
+```jsx
+import { PocketShareButton, PocketIcon } from "react-share";
+
+<PocketShareButton title="Read this next" url={shareUrl} aria-label="Save to Pocket">
+  <PocketIcon size={32} round />
+</PocketShareButton>;
+```
+
+#### RedditShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+
+```jsx
+import { RedditShareButton, RedditIcon } from "react-share";
+
+<RedditShareButton title="Read this next" url={shareUrl} aria-label="Share on Reddit">
+  <RedditIcon size={32} round />
+</RedditShareButton>;
+```
+
+#### TelegramShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+
+```jsx
+import { TelegramShareButton, TelegramIcon } from "react-share";
+
+<TelegramShareButton title="Read this next" url={shareUrl} aria-label="Share on Telegram">
+  <TelegramIcon size={32} round />
+</TelegramShareButton>;
+```
+
+#### ThreadsShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `hashtags` (`string[]`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
+- `related` (`string[]`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
+- `via` (`string`): Deprecated compatibility prop. Ignored in v5 and removed in v6.
+
+```jsx
+import { ThreadsShareButton, ThreadsIcon } from "react-share";
+
+<ThreadsShareButton title="Read this next" url={shareUrl} aria-label="Share on Threads">
+  <ThreadsIcon size={32} round />
+</ThreadsShareButton>;
+```
+
+#### TumblrShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `tags` (`string[]`): Tags to attach to the post.
+- `caption` (`string`): Description shown with the shared page.
+- `posttype` (`string`, default `"link"`): Tumblr post type.
+
+```jsx
+import { TumblrShareButton, TumblrIcon } from "react-share";
+
+<TumblrShareButton
+  title="Read this next"
+  caption="Quick summary"
+  tags={["react", "share"]}
+  url={shareUrl}
+  aria-label="Share on Tumblr"
+>
+  <TumblrIcon size={32} round />
+</TumblrShareButton>;
+```
+
+#### XShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `via` (`string`): Account to attribute the share to.
+- `hashtags` (`string[]`): Hashtags without the leading `#`.
+- `related` (`string[]`): Related accounts to recommend.
+- Notes:
+  - X can ignore or rewrite some share fields.
+  - `TwitterShareButton` remains available as a deprecated alias for backwards compatibility.
+
+```jsx
+import { XShareButton, XIcon } from "react-share";
+
+<XShareButton
+  title="Read this next"
+  via="reactshare"
+  hashtags={["react", "share"]}
+  url={shareUrl}
+  aria-label="Share on X"
+>
+  <XIcon size={32} round />
+</XShareButton>;
+```
+
+#### ViberShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `separator` (`string`, default `" "`): Separator between the title and URL.
+
+```jsx
+import { ViberShareButton, ViberIcon } from "react-share";
+
+<ViberShareButton title="Read this next" url={shareUrl} aria-label="Share on Viber">
+  <ViberIcon size={32} round />
+</ViberShareButton>;
+```
+
+#### VKShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `image` (`string`): Absolute image URL to include in the share payload.
+- `noParse` (`boolean`): Prevent VK from retrieving URL information.
+- `noVkLinks` (`boolean`): Hide profile links in the window. Relevant on mobile devices.
+
+```jsx
+import { VKShareButton, VKIcon } from "react-share";
+
+<VKShareButton
+  title="Read this next"
+  image={imageUrl}
+  noParse
+  noVkLinks
+  url={shareUrl}
+  aria-label="Share on VK"
+>
+  <VKIcon size={32} round />
+</VKShareButton>;
+```
+
+#### WeiboShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `image` (`string`): Absolute image URL to include in the share payload.
+
+```jsx
+import { WeiboShareButton, WeiboIcon } from "react-share";
+
+<WeiboShareButton
+  title="Read this next"
+  image={imageUrl}
+  url={shareUrl}
+  aria-label="Share on Weibo"
+>
+  <WeiboIcon size={32} round />
+</WeiboShareButton>;
+```
+
+#### WhatsappShareButton
+
+Optional props:
+
+- `title` (`string`): Title of the shared page.
+- `separator` (`string`, default `" "`): Separator between the title and URL.
+- Notes:
+  - Generates an `api.whatsapp.com` share URL.
+
+```jsx
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
+
+<WhatsappShareButton title="Read this next" url={shareUrl} aria-label="Share on WhatsApp">
+  <WhatsappIcon size={32} round />
+</WhatsappShareButton>;
+```
+
+#### WorkplaceShareButton
+
+Optional props:
+
+- `quote` (`string`): Quote to include with the share.
+- `hashtag` (`string`): Hashtag to append to the share. Include the leading `#`.
+
+```jsx
+import { WorkplaceShareButton, WorkplaceIcon } from "react-share";
+
+<WorkplaceShareButton
+  quote="Worth a read"
+  hashtag="#reactshare"
+  url={shareUrl}
+  aria-label="Share on Workplace"
+>
+  <WorkplaceIcon size={32} round />
+</WorkplaceShareButton>;
+```
 
 ### Share counts
+
+Share count components are deprecated and will be removed in v6. They remain available in v5 as best-effort compatibility only, and upstream networks may stop returning counts without notice.
 
 ```js
 import {
@@ -144,8 +583,21 @@ import {
 } from "react-share";
 ```
 
-All share count components take in only one mandatory prop: `url`, which is the
-URL you are sharing. `className` prop is optional.
+Supported components:
+
+- `FacebookShareCount`
+- `HatenaShareCount`
+- `OKShareCount`
+- `PinterestShareCount`
+- `RedditShareCount`
+- `TumblrShareCount`
+- `VKShareCount`
+
+Shared props:
+
+- `url` (`string`, required): URL to look up.
+- `children` (`(shareCount: number) => ReactNode`, optional): Render prop for custom output.
+- Standard `<span>` attributes such as `className`, `aria-*`, and `data-*`.
 
 Example:
 
@@ -153,9 +605,7 @@ Example:
 <FacebookShareCount url={shareUrl} />
 ```
 
-If you want to render anything else but the count,
-you can provide a function as a child element that takes in `shareCount` as an
-argument and returns an element:
+Custom rendering:
 
 ```jsx
 <FacebookShareCount url={shareUrl}>
@@ -165,53 +615,33 @@ argument and returns an element:
 
 ### Icons
 
-```js
-import {
-  EmailIcon,
-  FacebookIcon,
-  FacebookMessengerIcon,
-  GabIcon,
-  HatenaIcon,
-  InstapaperIcon,
-  LineIcon,
-  LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
-  PinterestIcon,
-  PocketIcon,
-  RedditIcon,
-  TelegramIcon,
-  ThreadsIcon,
-  TumblrIcon,
-  TwitterIcon,
-  ViberIcon,
-  VKIcon,
-  WeiboIcon,
-  WhatsappIcon,
-  WorkplaceIcon,
-  XIcon,
-  BlueskyIcon,
-} from "react-share";
-```
+All exported icons share the same props:
 
-Props:
-
-- `size`: Icon size in pixels (number)
-
-- `round`: Whether to show round or rect icons (bool)
-
-- `borderRadius`: Allow rounded corners if using rect icons (number)
-
-- `bgStyle`: customize background style, e.g. `fill` (object)
-
-- `iconFillColor`: customize icon fill color (string, default = 'white')
+| Prop            | Type                      | Default   | Description                                                            |
+| --------------- | ------------------------- | --------- | ---------------------------------------------------------------------- |
+| `size`          | `number \| string`        | `64`      | Icon size.                                                             |
+| `round`         | `boolean`                 | `false`   | Render a circular background instead of a rectangle.                   |
+| `borderRadius`  | `number`                  | `0`       | Rounded corners when using the rectangular shape.                      |
+| `bgStyle`       | `CSSProperties`           | `{}`      | Custom background styles such as `fill`.                               |
+| `iconFillColor` | `string`                  | `"white"` | Fill color applied to icon paths that do not already specify one.      |
+| `...svgProps`   | `SVGProps<SVGSVGElement>` | -         | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
 
 Example:
 
 ```jsx
-<TwitterIcon size={32} round={true} />
+import { XIcon } from "react-share";
+
+<XIcon aria-hidden="true" size={32} round />;
 ```
+
+Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="true"`, or provide an accessible name when the icon itself conveys meaning.
+
+## Troubleshooting
+
+- Popup blockers: share buttons use `window.open` from the click handler. If your app does async work in `beforeOnClick`, some browsers may treat the eventual popup as script-triggered and block it. In those cases, set `openShareDialogOnClick={false}` and manage the resulting URL yourself.
+- Accessibility: icon-only buttons should always have an accessible name. Use `aria-label` or `aria-labelledby` on the share button; `htmlTitle` is only a tooltip.
+- Mobile app handoff: some platforms open the browser, an in-app browser, or an extra tab before handing off to a native app. This behavior is controlled by the target platform and browser, not by `react-share`.
+- iOS PWAs: standalone mode can show a blank intermediary page for schemes such as `mailto:` or native-app handoff URLs. This is a platform limitation.
 
 ### About semantic versioning
 

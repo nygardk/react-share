@@ -1,9 +1,39 @@
+import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type WindowPosition = 'windowCenter' | 'screenCenter';
+type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
+type IconShapeProps = { borderRadius?: number; round?: boolean };
+
+const DEFAULT_ARIA_LABELS = {
+  bluesky: 'Share on Bluesky',
+  email: 'Share by email',
+  facebook: 'Share on Facebook',
+  facebookmessenger: 'Share in Messenger',
+  gab: 'Share on Gab',
+  hatena: 'Share on Hatena',
+  instapaper: 'Save to Instapaper',
+  line: 'Share on Line',
+  linkedin: 'Share on LinkedIn',
+  livejournal: 'Share on LiveJournal',
+  mailru: 'Share on Mail.ru',
+  ok: 'Share on OK',
+  pinterest: 'Pin on Pinterest',
+  pocket: 'Save to Pocket',
+  reddit: 'Share on Reddit',
+  telegram: 'Share on Telegram',
+  threads: 'Share on Threads',
+  tumblr: 'Share on Tumblr',
+  twitter: 'Share on X',
+  viber: 'Share on Viber',
+  vk: 'Share on VK',
+  weibo: 'Share on Weibo',
+  whatsapp: 'Share on WhatsApp',
+  workplace: 'Share on Workplace',
+} as const;
 
 const isPromise = (obj: unknown): obj is Promise<unknown> =>
   !!obj &&
@@ -20,6 +50,44 @@ const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
   top: (window.screen.height - height) / 2,
   left: (window.screen.width - width) / 2,
 });
+
+function getButtonBorderRadius(children: React.ReactNode) {
+  const childNodes = Children.toArray(children);
+
+  if (childNodes.length !== 1) {
+    return undefined;
+  }
+
+  const [child] = childNodes;
+
+  if (!isValidElement<IconShapeProps>(child)) {
+    return undefined;
+  }
+
+  if (child.props.round) {
+    return '50%';
+  }
+
+  return child.props.borderRadius ?? 0;
+}
+
+function hasTextContent(children: React.ReactNode): boolean {
+  return Children.toArray(children).some(child => {
+    if (typeof child === 'string') {
+      return child.trim().length > 0;
+    }
+
+    if (typeof child === 'number') {
+      return true;
+    }
+
+    if (!isValidElement<{ children?: React.ReactNode }>(child)) {
+      return false;
+    }
+
+    return hasTextContent(child.props.children);
+  });
+}
 
 function windowOpen(
   url: string,
@@ -65,8 +133,7 @@ function windowOpen(
   return shareDialog;
 }
 
-export interface Props<LinkOptions>
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
+export interface Props<LinkOptions> extends NativeButtonProps {
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.
@@ -83,7 +150,9 @@ export interface Props<LinkOptions>
   disabledStyle?: React.CSSProperties;
   forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
-   * Passes as the native `title` atribute for the `button` element.
+   * Passes as the native `title` attribute for the `button` element.
+   * This uses `htmlTitle` instead of `title` because many share buttons
+   * already use `title` for the share payload sent to the target network.
    */
   htmlTitle?: HTMLButtonElement['title'];
   networkName: string;
@@ -106,7 +175,14 @@ export interface Props<LinkOptions>
   windowPosition?: WindowPosition;
 }
 
+export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit<
+  Props<LinkOptions>,
+  'forwardedRef' | 'networkLink' | 'networkName' | 'opts'
+>;
+
 export default function ShareButton<LinkOptions extends Record<string, unknown>>({
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   beforeOnClick,
   children,
   className,
@@ -115,7 +191,6 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   forwardedRef,
   htmlTitle,
   networkLink,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
   onShareWindowClose,
@@ -125,18 +200,25 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   style,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   title, // deconstructed from ...rest to prevent passing it to the button element
+  type = 'button',
   url,
   windowHeight = 400,
   windowPosition = 'windowCenter',
   windowWidth = 550,
   ...rest
 }: Props<LinkOptions>) {
-  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const link = networkLink(url, opts);
+  const buttonBorderRadius = getButtonBorderRadius(children);
+  const fallbackAriaLabel =
+    !ariaLabel && !ariaLabelledBy && !hasTextContent(children)
+      ? DEFAULT_ARIA_LABELS[networkName as keyof typeof DEFAULT_ARIA_LABELS]
+      : undefined;
 
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) {
       return;
     }
+
+    const link = networkLink(url, opts);
 
     event.preventDefault();
 
@@ -179,6 +261,9 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        display: 'inline-flex',
+        borderRadius: buttonBorderRadius,
+        outlineOffset: 2,
         font: 'inherit',
         color: 'inherit',
         cursor: 'pointer',
@@ -193,11 +278,15 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   return (
     <button
       {...rest}
+      aria-label={ariaLabel || fallbackAriaLabel}
+      aria-labelledby={ariaLabelledBy}
       className={newClassName}
+      disabled={disabled}
       onClick={handleClick}
       ref={forwardedRef}
       style={newStyle}
       title={htmlTitle}
+      type={type}
     >
       {children}
     </button>

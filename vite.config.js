@@ -17,11 +17,10 @@ export default defineConfig({
     dts({
       rollupTypes: true,
       afterBuild: () => {
-        // https://github.com/qmhc/vite-plugin-dts/issues/267
         fs.copyFileSync('dist/index.d.ts', 'dist/index.d.cts');
       },
       include: ['src'],
-      tsconfigPath: './tsconfig.json',
+      tsconfigPath: './tsconfig.build.json',
     }),
   ],
   build: {

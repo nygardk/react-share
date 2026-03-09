@@ -6,9 +6,11 @@ export { default as FacebookIcon } from './FacebookIcon';
 export { default as FacebookMessengerIcon } from './FacebookMessengerIcon';
 export { default as FacebookMessengerShareButton } from './FacebookMessengerShareButton';
 export { default as FacebookShareButton } from './FacebookShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as FacebookShareCount } from './FacebookShareCount';
 export { default as HatenaIcon } from './HatenaIcon';
 export { default as HatenaShareButton } from './HatenaShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as HatenaShareCount } from './HatenaShareCount';
 export { default as InstapaperIcon } from './InstapaperIcon';
 export { default as InstapaperShareButton } from './InstapaperShareButton';
@@ -22,9 +24,11 @@ export { default as MailruIcon } from './MailruIcon';
 export { default as MailruShareButton } from './MailruShareButton';
 export { default as OKIcon } from './OKIcon';
 export { default as OKShareButton } from './OKShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as OKShareCount } from './OKShareCount';
 export { default as PinterestIcon } from './PinterestIcon';
 export { default as PinterestShareButton } from './PinterestShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as PinterestShareCount } from './PinterestShareCount';
 export { default as PocketIcon } from './PocketIcon';
 export { default as PocketShareButton } from './PocketShareButton';
@@ -32,6 +36,7 @@ export { default as RedditIcon } from './RedditIcon';
 export { default as RedditShareButton } from './RedditShareButton';
 export { default as GabShareButton } from './GabShareButton';
 export { default as GabIcon } from './GabIcon';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as RedditShareCount } from './RedditShareCount';
 export { default as TelegramIcon } from './TelegramIcon';
 export { default as TelegramShareButton } from './TelegramShareButton';
@@ -39,13 +44,17 @@ export { default as ThreadsIcon } from './ThreadsIcon';
 export { default as ThreadsShareButton } from './ThreadsShareButton';
 export { default as TumblrIcon } from './TumblrIcon';
 export { default as TumblrShareButton } from './TumblrShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as TumblrShareCount } from './TumblrShareCount';
 export { default as TwitterIcon } from './TwitterIcon';
+export { default as XShareButton } from './XShareButton';
+/** @deprecated Use XShareButton instead. */
 export { default as TwitterShareButton } from './TwitterShareButton';
 export { default as ViberIcon } from './ViberIcon';
 export { default as ViberShareButton } from './ViberShareButton';
 export { default as VKIcon } from './VKIcon';
 export { default as VKShareButton } from './VKShareButton';
+/** @deprecated Share counts are deprecated and will be removed in v6. */
 export { default as VKShareCount } from './VKShareCount';
 export { default as WeiboIcon } from './WeiboIcon';
 export { default as WeiboShareButton } from './WeiboShareButton';

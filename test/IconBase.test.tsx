@@ -9,6 +9,7 @@ import { IconBase } from '../src/icons/IconBase';
 import { LineIcon } from '../src/LineIcon';
 import { LivejournalIcon } from '../src/LivejournalIcon';
 import { MailruIcon } from '../src/MailruIcon';
+import { NativeShareIcon } from '../src/NativeShareIcon';
 import { OKIcon } from '../src/OKIcon';
 import { PinterestIcon } from '../src/PinterestIcon';
 import { RedditIcon } from '../src/RedditIcon';
@@ -40,6 +41,7 @@ describe('IconBase', () => {
       ['line', LineIcon, '#06C755'],
       ['livejournal', LivejournalIcon, '#00B0EA'],
       ['mailru', MailruIcon, '#005FF9'],
+      ['native-share', NativeShareIcon, '#0A84FF'],
       ['ok', OKIcon, '#FF7700'],
       ['pinterest', PinterestIcon, '#E60023'],
       ['reddit', RedditIcon, '#FF4500'],

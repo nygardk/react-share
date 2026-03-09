@@ -22,6 +22,8 @@ import {
   LivejournalShareButton,
   MailruIcon,
   MailruShareButton,
+  NativeShareButton,
+  NativeShareIcon,
   OKIcon,
   OKShareButton,
   PinterestIcon,
@@ -220,6 +222,17 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
+        <NativeShareButton
+          aria-label="Share with native share"
+          text={title}
+          url={shareUrl}
+          className="Demo__some-network__share-button"
+        >
+          <NativeShareIcon size={32} round />
+        </NativeShareButton>
+      </div>
+
+      <div className="Demo__some-network">
         <PocketShareButton
           aria-label="Save to Pocket"
           url={shareUrl}
@@ -336,4 +349,3 @@ export function Demo() {
     </div>
   );
 }
-

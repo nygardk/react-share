@@ -18,6 +18,7 @@ npm install react-share
 - supports tree shaking with ES modules
 - opens a popup share-window
 - includes opt-in mobile app handoff for selected messaging networks
+- includes Web Share API helpers and a native share button
 - share buttons for:
   - [Bluesky](#blueskysharebutton)
   - [Email](#emailsharebutton)
@@ -130,6 +131,33 @@ const url = buildXShareUrl(shareUrl, {
 });
 
 openShareWindow(url, { width: 550, height: 400 });
+```
+
+For mobile-first or PWA-first flows, the package also exports `canNativeShare(data)` and `shareNative(data)` for the browser Web Share API.
+
+#### NativeShareButton
+
+Optional props:
+
+- `title` (`string`): Native share title.
+- `text` (`string`): Native share text.
+- `url` (`string`): Native share URL.
+- `files` (`File[]`): Files to share when the platform supports them.
+- Notes:
+  - Uses `navigator.share()` and disables itself when native sharing is unavailable.
+  - For file sharing, capability checks rely on `navigator.canShare()`.
+
+```jsx
+import { NativeShareButton, NativeShareIcon } from "react-share";
+
+<NativeShareButton
+  title="Read this next"
+  text="Thought you might like this"
+  url={shareUrl}
+  aria-label="Share with your device"
+>
+  <NativeShareIcon size={32} round />
+</NativeShareButton>;
 ```
 
 #### BlueskyShareButton

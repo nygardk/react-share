@@ -31,12 +31,16 @@ const isUsableExport = (value: unknown) =>
 
 const representativeExportNames = [
   'FacebookShareButton',
+  'NativeShareIcon',
+  'NativeShareButton',
   'XShareButton',
+  'canNativeShare',
   'buildFacebookShareUrl',
   'buildXShareUrl',
   'FacebookIcon',
   'XIcon',
   'openShareWindow',
+  'shareNative',
 ] as const;
 
 describe('package builds', () => {

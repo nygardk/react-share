@@ -1,12 +1,11 @@
-import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
 import { openShareWindow, type LinkBehavior, type WindowPosition } from './shareWindow';
+import { getButtonBorderRadius, hasTextContent, isPromise } from './utils/buttonHelpers';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
-type IconShapeProps = { borderRadius?: number; round?: boolean };
 
 const DEFAULT_ARIA_LABELS = {
   bluesky: 'Share on Bluesky',
@@ -34,50 +33,6 @@ const DEFAULT_ARIA_LABELS = {
   whatsapp: 'Share on WhatsApp',
   workplace: 'Share on Workplace',
 } as const;
-
-const isPromise = (obj: unknown): obj is Promise<unknown> =>
-  !!obj &&
-  (typeof obj === 'object' || typeof obj === 'function') &&
-  'then' in obj &&
-  typeof (obj as Promise<unknown>).then === 'function';
-
-function getButtonBorderRadius(children: React.ReactNode) {
-  const childNodes = Children.toArray(children);
-
-  if (childNodes.length !== 1) {
-    return undefined;
-  }
-
-  const [child] = childNodes;
-
-  if (!isValidElement<IconShapeProps>(child)) {
-    return undefined;
-  }
-
-  if (child.props.round) {
-    return '50%';
-  }
-
-  return child.props.borderRadius ?? 0;
-}
-
-function hasTextContent(children: React.ReactNode): boolean {
-  return Children.toArray(children).some(child => {
-    if (typeof child === 'string') {
-      return child.trim().length > 0;
-    }
-
-    if (typeof child === 'number') {
-      return true;
-    }
-
-    if (!isValidElement<{ children?: React.ReactNode }>(child)) {
-      return false;
-    }
-
-    return hasTextContent(child.props.children);
-  });
-}
 
 export interface Props<LinkOptions> extends NativeButtonProps {
   /**

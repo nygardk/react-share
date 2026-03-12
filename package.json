@@ -64,8 +64,8 @@
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
-    "@vitejs/plugin-react": "^5.1.4",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitejs/plugin-react": "^6.0.0",
+    "@vitest/coverage-v8": "^4.1.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-babel": "^5.3.1",
@@ -80,9 +80,9 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
+    "vite": "^8.0.0",
     "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.0"
   },
   "dependencies": {
     "classnames": "^2.3.2"

@@ -31,7 +31,11 @@ describe('PinterestShareButton', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <PinterestShareButton media="https://example.com/image.png" pinId="42" url="https://example.com">
+      <PinterestShareButton
+        media="https://example.com/image.png"
+        pinId="42"
+        url="https://example.com"
+      >
         Pin it
       </PinterestShareButton>,
     );

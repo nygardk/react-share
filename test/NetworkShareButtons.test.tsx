@@ -151,7 +151,8 @@ const shareButtonCases: ShareButtonCase[] = [
   {
     children: 'Share on Threads',
     Component: ThreadsShareButton,
-    expectedUrl: 'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
+    expectedUrl:
+      'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       text: 'Example title',
       url: 'https://example.com',
@@ -216,18 +217,16 @@ const shareButtonCases: ShareButtonCase[] = [
 ];
 
 describe('network share buttons', () => {
-  it.each(shareButtonCases)('builds the expected share URL for $children', ({
-    Component,
-    children,
-    expectedUrl,
-    props,
-  }) => {
-    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+  it.each(shareButtonCases)(
+    'builds the expected share URL for $children',
+    ({ Component, children, expectedUrl, props }) => {
+      const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
-    render(<Component {...props}>{children}</Component>);
+      render(<Component {...props}>{children}</Component>);
 
-    fireEvent.click(screen.getByRole('button', { name: children }));
+      fireEvent.click(screen.getByRole('button', { name: children }));
 
-    expect(openSpy).toHaveBeenCalledWith(expectedUrl, '', expect.any(String));
-  });
+      expect(openSpy).toHaveBeenCalledWith(expectedUrl, '', expect.any(String));
+    },
+  );
 });

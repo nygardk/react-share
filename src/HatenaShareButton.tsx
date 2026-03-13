@@ -30,4 +30,3 @@ export const HatenaShareButton = forwardRef<HTMLButtonElement, HatenaShareButton
 );
 
 HatenaShareButton.displayName = 'HatenaShareButton';
-

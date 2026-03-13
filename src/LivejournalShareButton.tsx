@@ -46,4 +46,3 @@ export const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalS
 );
 
 LivejournalShareButton.displayName = 'LivejournalShareButton';
-

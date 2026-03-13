@@ -48,4 +48,3 @@ export const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperSha
 );
 
 InstapaperShareButton.displayName = 'InstapaperShareButton';
-

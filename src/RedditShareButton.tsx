@@ -37,4 +37,3 @@ export const RedditShareButton = forwardRef<HTMLButtonElement, RedditShareButton
 );
 
 RedditShareButton.displayName = 'RedditShareButton';
-

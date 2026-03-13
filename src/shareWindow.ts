@@ -20,12 +20,7 @@ const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
 
 export function openShareWindow(
   url: string,
-  {
-    height = 400,
-    onClose,
-    position = 'windowCenter',
-    width = 550,
-  }: ShareWindowOptions = {},
+  { height = 400, onClose, position = 'windowCenter', width = 550 }: ShareWindowOptions = {},
 ) {
   const config: { [key: string]: string | number } = {
     height,

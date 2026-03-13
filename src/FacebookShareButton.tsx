@@ -30,4 +30,3 @@ export const FacebookShareButton = forwardRef<HTMLButtonElement, FacebookShareBu
 );
 
 FacebookShareButton.displayName = 'FacebookShareButton';
-

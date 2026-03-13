@@ -36,4 +36,3 @@ export const LineShareButton = forwardRef<HTMLButtonElement, LineShareButtonProp
 );
 
 LineShareButton.displayName = 'LineShareButton';
-

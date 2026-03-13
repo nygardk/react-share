@@ -5,11 +5,7 @@ import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function okLink(
   url: string,
-  {
-    shareTitle,
-    description,
-    image,
-  }: { shareTitle?: string; description?: string; image?: string },
+  { shareTitle, description, image }: { shareTitle?: string; description?: string; image?: string },
 ) {
   assert(url, 'ok.url');
 
@@ -55,4 +51,3 @@ export const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
 );
 
 OKShareButton.displayName = 'OKShareButton';
-

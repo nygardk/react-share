@@ -11,10 +11,7 @@ type WeiboShareButtonProps = Omit<
   shareTitle?: string;
 };
 
-function weiboLink(
-  url: string,
-  { shareTitle, image }: { shareTitle?: string; image?: string },
-) {
+function weiboLink(url: string, { shareTitle, image }: { shareTitle?: string; image?: string }) {
   assert(url, 'weibo.url');
 
   return (
@@ -48,4 +45,3 @@ export const WeiboShareButton = forwardRef<HTMLButtonElement, WeiboShareButtonPr
 );
 
 WeiboShareButton.displayName = 'WeiboShareButton';
-

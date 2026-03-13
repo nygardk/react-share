@@ -37,4 +37,3 @@ export const GabShareButton = forwardRef<HTMLButtonElement, GabShareButtonProps>
 );
 
 GabShareButton.displayName = 'GabShareButton';
-

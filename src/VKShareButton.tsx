@@ -49,4 +49,3 @@ export const VKShareButton = forwardRef<HTMLButtonElement, VKShareButtonProps>(
 );
 
 VKShareButton.displayName = 'VKShareButton';
-

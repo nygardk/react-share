@@ -36,4 +36,3 @@ export const PocketShareButton = forwardRef<HTMLButtonElement, PocketShareButton
 );
 
 PocketShareButton.displayName = 'PocketShareButton';
-

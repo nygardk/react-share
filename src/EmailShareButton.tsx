@@ -38,4 +38,3 @@ export const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonPr
 );
 
 EmailShareButton.displayName = 'EmailShareButton';
-

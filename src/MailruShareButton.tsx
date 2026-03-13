@@ -54,4 +54,3 @@ export const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButton
 );
 
 MailruShareButton.displayName = 'MailruShareButton';
-

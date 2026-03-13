@@ -41,4 +41,3 @@ export const WorkplaceShareButton = forwardRef<HTMLButtonElement, WorkplaceShare
 );
 
 WorkplaceShareButton.displayName = 'WorkplaceShareButton';
-

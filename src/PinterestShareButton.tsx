@@ -50,4 +50,3 @@ export const PinterestShareButton = forwardRef<HTMLButtonElement, PinterestShare
 );
 
 PinterestShareButton.displayName = 'PinterestShareButton';
-

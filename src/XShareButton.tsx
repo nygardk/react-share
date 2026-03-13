@@ -65,4 +65,3 @@ export const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
 );
 
 XShareButton.displayName = 'XShareButton';
-

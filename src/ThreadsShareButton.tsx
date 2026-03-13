@@ -36,4 +36,3 @@ export const ThreadsShareButton = forwardRef<HTMLButtonElement, ThreadsShareButt
 );
 
 ThreadsShareButton.displayName = 'ThreadsShareButton';
-

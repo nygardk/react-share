@@ -430,6 +430,7 @@ Optional props:
 - `tags` (`string[]`): Tags to attach to the post.
 - `caption` (`string`): Description shown with the shared page.
 - `posttype` (`string`, default `"link"`): Tumblr post type.
+- `content` (`string`): The content for some post types. See [Tumblr's documentation](https://help.tumblr.com/knowledge-base/share-button-documentation/) for details.
 
 ```jsx
 import { TumblrShareButton, TumblrIcon } from "react-share";

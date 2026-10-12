@@ -74,31 +74,32 @@ See every button in action in the [deployed demo](https://npm-react-share-demo.n
 
 ## Supported networks
 
-| Network            | Button                                                          | Icon                    | Network-specific props                             |
-| ------------------ | --------------------------------------------------------------- | ----------------------- | -------------------------------------------------- |
-| Bluesky            | [`BlueskyShareButton`](#blueskysharebutton)                     | `BlueskyIcon`           | `text`, `separator`                                |
-| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `subject`, `body`, `separator`                     |
-| Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                          |
-| Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior` |
-| Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                             |
-| Hatena             | [`HatenaShareButton`](#hatenasharebutton)                       | `HatenaIcon`            | `shareTitle`                                       |
-| Instapaper         | [`InstapaperShareButton`](#instapapersharebutton)               | `InstapaperIcon`        | `shareTitle`, `description`                        |
-| Line               | [`LineShareButton`](#linesharebutton)                           | `LineIcon`              | `text`                                             |
-| LinkedIn           | [`LinkedinShareButton`](#linkedinsharebutton)                   | `LinkedinIcon`          | –                                                  |
-| LiveJournal        | [`LivejournalShareButton`](#livejournalsharebutton)             | `LivejournalIcon`       | `shareTitle`, `description`                        |
-| Mail.Ru            | [`MailruShareButton`](#mailrusharebutton)                       | `MailruIcon`            | `shareTitle`, `description`, `imageUrl`            |
-| Odnoklassniki      | [`OKShareButton`](#oksharebutton)                               | `OKIcon`                | `shareTitle`, `description`, `image`               |
-| Pinterest          | [`PinterestShareButton`](#pinterestsharebutton)                 | `PinterestIcon`         | **`media`**, `description`, `pinId`                |
-| Reddit             | [`RedditShareButton`](#redditsharebutton)                       | `RedditIcon`            | `shareTitle`                                       |
-| Telegram           | [`TelegramShareButton`](#telegramsharebutton)                   | `TelegramIcon`          | `text`, `mobileBehavior`                           |
-| Threads            | [`ThreadsShareButton`](#threadssharebutton)                     | `ThreadsIcon`           | `text`                                             |
-| Tumblr             | [`TumblrShareButton`](#tumblrsharebutton)                       | `TumblrIcon`            | `postTitle`, `tags`, `caption`, `posttype`         |
-| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `message`, `separator`, `mobileBehavior`           |
-| VK                 | [`VKShareButton`](#vksharebutton)                               | `VKIcon`                | `shareTitle`, `image`, `noParse`, `noVkLinks`      |
-| Weibo              | [`WeiboShareButton`](#weibosharebutton)                         | `WeiboIcon`             | `shareTitle`, `image`                              |
-| WhatsApp           | [`WhatsappShareButton`](#whatsappsharebutton)                   | `WhatsappIcon`          | `message`, `separator`, `mobileBehavior`           |
-| X                  | [`XShareButton`](#xsharebutton)                                 | `XIcon`                 | `text`, `via`, `hashtags`, `related`               |
-| Device share sheet | [`NativeShareButton`](#nativesharebutton)                       | `NativeShareIcon`       | `title`, `text`, `url`, `files`                    |
+| Network            | Button                                                          | Icon                    | Network-specific props                                |
+| ------------------ | --------------------------------------------------------------- | ----------------------- | ----------------------------------------------------- |
+| Bluesky            | [`BlueskyShareButton`](#blueskysharebutton)                     | `BlueskyIcon`           | `text`, `separator`                                   |
+| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `to`, `subject`, `body`, `separator`                  |
+| Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                             |
+| Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior`    |
+| Farcaster          | [`FarcasterShareButton`](#farcastersharebutton)                 | `FarcasterIcon`         | `text`, `channelKey`, `parentCastHash`                |
+| Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                                |
+| Hatena             | [`HatenaShareButton`](#hatenasharebutton)                       | `HatenaIcon`            | `shareTitle`                                          |
+| Instapaper         | [`InstapaperShareButton`](#instapapersharebutton)               | `InstapaperIcon`        | `shareTitle`, `description`                           |
+| Line               | [`LineShareButton`](#linesharebutton)                           | `LineIcon`              | `text`                                                |
+| LinkedIn           | [`LinkedinShareButton`](#linkedinsharebutton)                   | `LinkedinIcon`          | –                                                     |
+| LiveJournal        | [`LivejournalShareButton`](#livejournalsharebutton)             | `LivejournalIcon`       | `shareTitle`, `description`                           |
+| Mail.Ru            | [`MailruShareButton`](#mailrusharebutton)                       | `MailruIcon`            | `shareTitle`, `description`, `imageUrl`               |
+| Odnoklassniki      | [`OKShareButton`](#oksharebutton)                               | `OKIcon`                | `shareTitle`, `description`, `image`                  |
+| Pinterest          | [`PinterestShareButton`](#pinterestsharebutton)                 | `PinterestIcon`         | **`media`**, `description`, `pinId`                   |
+| Reddit             | [`RedditShareButton`](#redditsharebutton)                       | `RedditIcon`            | `shareTitle`                                          |
+| Telegram           | [`TelegramShareButton`](#telegramsharebutton)                   | `TelegramIcon`          | `text`, `mobileBehavior`                              |
+| Threads            | [`ThreadsShareButton`](#threadssharebutton)                     | `ThreadsIcon`           | `text`                                                |
+| Tumblr             | [`TumblrShareButton`](#tumblrsharebutton)                       | `TumblrIcon`            | `postTitle`, `tags`, `caption`, `posttype`, `content` |
+| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `phone`, `message`, `separator`, `mobileBehavior`     |
+| VK                 | [`VKShareButton`](#vksharebutton)                               | `VKIcon`                | `shareTitle`, `image`, `noParse`, `noVkLinks`         |
+| Weibo              | [`WeiboShareButton`](#weibosharebutton)                         | `WeiboIcon`             | `shareTitle`, `image`                                 |
+| WhatsApp           | [`WhatsappShareButton`](#whatsappsharebutton)                   | `WhatsappIcon`          | `message`, `separator`, `mobileBehavior`              |
+| X                  | [`XShareButton`](#xsharebutton)                                 | `XIcon`                 | `text`, `via`, `hashtags`, `related`                  |
+| Device share sheet | [`NativeShareButton`](#nativesharebutton)                       | `NativeShareIcon`       | `title`, `text`, `url`, `files`                       |
 
 Required props are in **bold**. Every icon also has a badge-style `*LegacyIcon` variant (see [Icons](#icons)), and every network button has a matching `build*ShareUrl` helper (see [Building share URLs yourself](#building-share-urls-yourself)).
 
@@ -139,6 +140,7 @@ These props apply to every network share button. `NativeShareButton` has its [ow
 | `onShareWindowClose`     | `() => void`                            | –       | Called after the popup closes.                                                                                                                               |
 | `windowWidth`            | `number`                                | –       | Overrides the popup width.                                                                                                                                   |
 | `windowHeight`           | `number`                                | –       | Overrides the popup height.                                                                                                                                  |
+| `openInNewTab`           | `boolean`                               | `false` | Opens the share page in a regular browser tab instead of a popup window. The `window*` props are ignored.                                                    |
 | `windowPosition`         | `"windowCenter" \| "screenCenter"`      | –       | Controls popup positioning.                                                                                                                                  |
 | `mobileBehavior`         | `"web" \| "app" \| "auto"`              | `"web"` | Only on `FacebookMessengerShareButton`, `TelegramShareButton`, `ViberShareButton`, and `WhatsappShareButton`. See [Mobile app handoff](#mobile-app-handoff). |
 
@@ -185,11 +187,12 @@ import { BlueskyShareButton, BlueskyIcon } from "react-share";
 
 #### EmailShareButton
 
-| Prop        | Type     | Default | Description                                                                   |
-| ----------- | -------- | ------- | ----------------------------------------------------------------------------- |
-| `subject`   | `string` | –       | Email subject line.                                                           |
-| `body`      | `string` | –       | Text prepended before the shared URL.                                         |
-| `separator` | `string` | `"\n"`  | Separator between the body and URL. The default puts the URL on its own line. |
+| Prop        | Type                 | Default | Description                                                                   |
+| ----------- | -------------------- | ------- | ----------------------------------------------------------------------------- |
+| `to`        | `string \| string[]` | –       | Recipient address, or several addresses.                                      |
+| `subject`   | `string`             | –       | Email subject line.                                                           |
+| `body`      | `string`             | –       | Text prepended before the shared URL.                                         |
+| `separator` | `string`             | `"\n"`  | Separator between the body and URL. The default puts the URL on its own line. |
 
 - Uses `mailto:` navigation instead of opening a popup.
 - Does not expose `openShareDialogOnClick` or `onClick`.
@@ -256,6 +259,30 @@ import { FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share
 >
   <FacebookMessengerIcon size={32} />
 </FacebookMessengerShareButton>;
+```
+
+</details>
+
+#### FarcasterShareButton
+
+| Prop             | Type     | Default | Description                                         |
+| ---------------- | -------- | ------- | --------------------------------------------------- |
+| `text`           | `string` | –       | Text of the cast.                                   |
+| `channelKey`     | `string` | –       | Channel to post the cast to, such as `"farcaster"`. |
+| `parentCastHash` | `string` | –       | Hash of a cast to reply to.                         |
+
+- The shared `url` is attached to the cast as an embed.
+- Opens the [Farcaster compose intent](https://docs.farcaster.xyz/reference/farcaster/intent-urls) (formerly Warpcast).
+
+<details>
+<summary>Example</summary>
+
+```jsx
+import { FarcasterShareButton, FarcasterIcon } from "react-share";
+
+<FarcasterShareButton text="Read this next" url={shareUrl} aria-label="Share on Farcaster">
+  <FarcasterIcon size={32} />
+</FarcasterShareButton>;
 ```
 
 </details>
@@ -532,12 +559,13 @@ import { ThreadsShareButton, ThreadsIcon } from "react-share";
 
 #### TumblrShareButton
 
-| Prop        | Type       | Default  | Description                             |
-| ----------- | ---------- | -------- | --------------------------------------- |
-| `postTitle` | `string`   | –        | Title sent in the Tumblr post payload.  |
-| `tags`      | `string[]` | –        | Tags to attach to the post.             |
-| `caption`   | `string`   | –        | Description shown with the shared page. |
-| `posttype`  | `string`   | `"link"` | Tumblr post type.                       |
+| Prop        | Type       | Default  | Description                                                                                                                                        |
+| ----------- | ---------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `postTitle` | `string`   | –        | Title sent in the Tumblr post payload.                                                                                                             |
+| `tags`      | `string[]` | –        | Tags to attach to the post.                                                                                                                        |
+| `caption`   | `string`   | –        | Description shown with the shared page.                                                                                                            |
+| `posttype`  | `string`   | `"link"` | Tumblr post type, such as `"quote"`.                                                                                                               |
+| `content`   | `string`   | –        | Post content for post types other than `"link"`. See [Tumblr's documentation](https://help.tumblr.com/knowledge-base/share-button-documentation/). |
 
 <details>
 <summary>Example</summary>
@@ -642,6 +670,7 @@ import { WeiboShareButton, WeiboIcon } from "react-share";
 
 | Prop             | Type                       | Default | Description                                                                                 |
 | ---------------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------- |
+| `phone`          | `string`                   | –       | Recipient phone number in international format. Non-digits are removed.                     |
 | `message`        | `string`                   | –       | Message to share before the URL.                                                            |
 | `separator`      | `string`                   | `" "`   | Separator between the message and URL.                                                      |
 | `mobileBehavior` | `"web" \| "app" \| "auto"` | `"web"` | `"app"` uses a WhatsApp app link and `"auto"` uses it only on detected mobile environments. |
@@ -668,12 +697,13 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 #### XShareButton
 
-| Prop       | Type       | Default | Description                        |
-| ---------- | ---------- | ------- | ---------------------------------- |
-| `text`     | `string`   | –       | Text to share before the URL.      |
-| `via`      | `string`   | –       | Account to attribute the share to. |
-| `hashtags` | `string[]` | –       | Hashtags without the leading `#`.  |
-| `related`  | `string[]` | –       | Related accounts to recommend.     |
+| Prop       | Type       | Default | Description                                                   |
+| ---------- | ---------- | ------- | ------------------------------------------------------------- |
+| `url`      | `string`   | –       | Optional for X. Set `text` instead to share a text-only post. |
+| `text`     | `string`   | –       | Text to share before the URL.                                 |
+| `via`      | `string`   | –       | Account to attribute the share to.                            |
+| `hashtags` | `string[]` | –       | Hashtags without the leading `#`.                             |
+| `related`  | `string[]` | –       | Related accounts to recommend.                                |
 
 - X can ignore or rewrite some share fields.
 
@@ -808,6 +838,44 @@ const url = buildXShareUrl(shareUrl, {
 });
 
 openShareWindow(url, { width: 550, height: 400 });
+
+// or open a regular browser tab instead of a popup window
+openShareWindow(url, { newTab: true });
+```
+
+### Custom networks
+
+For a network the library does not cover, build its share URL yourself and open it with `openShareWindow`:
+
+```jsx
+import { openShareWindow } from "react-share";
+
+<button
+  type="button"
+  onClick={() => openShareWindow(`https://example.com/share?u=${encodeURIComponent(shareUrl)}`)}
+>
+  Share on Example
+</button>;
+```
+
+### Preparing the share data on click
+
+Share buttons build their link from props at click time. If you need to fetch something first, such as a short link or a token, open the popup immediately so popup blockers allow it, then load the URL once it is ready:
+
+```jsx
+import { buildXShareUrl, openShareWindow } from "react-share";
+
+async function share() {
+  const popup = openShareWindow("about:blank");
+
+  try {
+    const shortUrl = await createShortLink(shareUrl);
+
+    popup?.location.replace(buildXShareUrl(shortUrl, { text: "Read this next" }));
+  } catch {
+    popup?.close();
+  }
+}
 ```
 
 ## Accessibility

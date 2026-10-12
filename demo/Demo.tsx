@@ -8,6 +8,8 @@ import {
   FacebookMessengerIcon,
   FacebookMessengerShareButton,
   FacebookShareButton,
+  FarcasterIcon,
+  FarcasterShareButton,
   GabIcon,
   GabShareButton,
   HatenaIcon,
@@ -192,6 +194,19 @@ export function Demo() {
         >
           <BlueskyIcon size={32} />
         </BlueskyShareButton>
+      </div>
+
+      <div className="Demo__some-network">
+        <FarcasterShareButton
+          aria-label="Share on Farcaster"
+          url={shareUrl}
+          text={title}
+          windowWidth={660}
+          windowHeight={460}
+          className="Demo__some-network__share-button"
+        >
+          <FarcasterIcon size={32} />
+        </FarcasterShareButton>
       </div>
 
       <div className="Demo__some-network">

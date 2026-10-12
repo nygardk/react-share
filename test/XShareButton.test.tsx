@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { XIcon } from '../src/XIcon';
-import { XShareButton } from '../src/XShareButton';
+import { XShareButton, buildXShareUrl } from '../src/XShareButton';
 describe('XShareButton', () => {
   it('builds a share url with hashtags and related accounts', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
@@ -74,6 +74,24 @@ describe('XShareButton', () => {
       '',
       expect.any(String),
     );
+  });
+
+  it('shares text only when no url is given', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
+    render(<XShareButton text="Just text">Share on X</XShareButton>);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share on X' }));
+
+    expect(openSpy).toHaveBeenCalledWith(
+      'https://x.com/intent/post?text=Just%20text',
+      '',
+      expect.any(String),
+    );
+  });
+
+  it('throws when neither url nor text is given', () => {
+    expect(() => buildXShareUrl(undefined, {})).toThrow('x.url or x.text');
   });
 
   it('applies the default X aria-label to icon-only buttons', () => {

@@ -38,6 +38,60 @@ describe('ShareButton', () => {
     expect(onClick).toHaveBeenCalledWith(expect.any(Object), 'https://example.com/share');
   });
 
+  it('opens a regular tab when openInNewTab is set', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        openInNewTab
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    expect(openSpy).toHaveBeenCalledTimes(1);
+    expect(openSpy).toHaveBeenCalledWith('https://example.com', '_blank');
+  });
+
+  it('pre-opens a tab for async beforeOnClick when openInNewTab is set', async () => {
+    let resolveBeforeOnClick = () => {};
+    const shareWindow = { close: vi.fn(), closed: false, location: { replace: vi.fn() } };
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(shareWindow as unknown as Window);
+
+    render(
+      <ShareButton
+        beforeOnClick={() =>
+          new Promise<void>(resolve => {
+            resolveBeforeOnClick = resolve;
+          })
+        }
+        networkLink={(url: string) => url}
+        networkName="test"
+        openInNewTab
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    expect(openSpy).toHaveBeenCalledWith('about:blank', '_blank');
+
+    resolveBeforeOnClick();
+
+    await waitFor(() =>
+      expect(shareWindow.location.replace).toHaveBeenCalledWith('https://example.com'),
+    );
+  });
+
   it('waits for beforeOnClick before invoking onClick', async () => {
     const steps: string[] = [];
     const onClick = vi.fn(() => {

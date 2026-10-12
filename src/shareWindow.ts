@@ -3,6 +3,8 @@ export type LinkBehavior = 'popup' | 'navigate';
 
 export type ShareWindowOptions = {
   height?: number;
+  /** Open a regular browser tab instead of a sized popup window. */
+  newTab?: boolean;
   onClose?: (dialog: Window | null) => void;
   position?: WindowPosition;
   width?: number;
@@ -20,7 +22,13 @@ const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
 
 export function openShareWindow(
   url: string,
-  { height = 400, onClose, position = 'windowCenter', width = 550 }: ShareWindowOptions = {},
+  {
+    height = 400,
+    newTab = false,
+    onClose,
+    position = 'windowCenter',
+    width = 550,
+  }: ShareWindowOptions = {},
 ) {
   const config: { [key: string]: string | number } = {
     height,
@@ -39,13 +47,15 @@ export function openShareWindow(
       : getBoxPositionOnScreenCenter(width, height)),
   };
 
-  const shareDialog = window.open(
-    url,
-    '',
-    Object.keys(config)
-      .map(key => `${key}=${config[key]}`)
-      .join(', '),
-  );
+  const shareDialog = newTab
+    ? window.open(url, '_blank')
+    : window.open(
+        url,
+        '',
+        Object.keys(config)
+          .map(key => `${key}=${config[key]}`)
+          .join(', '),
+      );
 
   if (onClose) {
     const interval = window.setInterval(() => {

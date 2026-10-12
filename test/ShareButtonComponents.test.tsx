@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 
 import { EmailIcon } from '../src/EmailIcon';
 import { EmailShareButton } from '../src/EmailShareButton';
@@ -61,6 +61,27 @@ describe('share button components', () => {
     expect(button).not.toHaveAttribute('tags');
     expect(button).not.toHaveAttribute('caption');
     expect(button).not.toHaveAttribute('posttype');
+  });
+
+  it('sends the Tumblr content field for non-link post types', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
+    render(
+      <TumblrShareButton content="The quote" posttype="quote" url="https://example.com">
+        Share on Tumblr
+      </TumblrShareButton>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Share on Tumblr' });
+
+    fireEvent.click(button);
+
+    expect(button).not.toHaveAttribute('content');
+    expect(openSpy).toHaveBeenCalledWith(
+      'https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com&tags=&posttype=quote&content=The%20quote',
+      '',
+      expect.any(String),
+    );
   });
 
   it('adds the email fallback label for icon-only buttons', () => {

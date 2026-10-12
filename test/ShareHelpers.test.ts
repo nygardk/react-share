@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   buildBlueskyShareUrl,
   buildEmailShareUrl,
+  buildFarcasterShareUrl,
   buildFacebookShareUrl,
   buildLinkedinShareUrl,
   buildViberShareUrl,
@@ -42,6 +43,11 @@ describe('share helpers', () => {
       'Bluesky',
       () => buildBlueskyShareUrl('https://example.com', { text: 'Hello' }),
       'https://bsky.app/intent/compose?text=Hello%20https%3A%2F%2Fexample.com',
+    ],
+    [
+      'Farcaster',
+      () => buildFarcasterShareUrl('https://example.com', { parentCastHash: '0xabc', text: 'Hi' }),
+      'https://farcaster.xyz/~/compose?text=Hi&embeds[]=https%3A%2F%2Fexample.com&parentCastHash=0xabc',
     ],
     [
       'Email',
@@ -96,5 +102,13 @@ describe('share helpers', () => {
       '',
       expect.stringContaining('left=500'),
     );
+  });
+
+  it('opens a regular tab instead of a popup when newTab is set', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
+    openShareWindow('https://example.com/share', { newTab: true });
+
+    expect(openSpy).toHaveBeenCalledWith('https://example.com/share', '_blank');
   });
 });

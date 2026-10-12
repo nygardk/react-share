@@ -7,7 +7,7 @@ function threadsLink(url: string, { text }: { text?: string }) {
   assert(url, 'threads.url');
 
   return (
-    'https://threads.net/intent/post' +
+    'https://www.threads.com/intent/post' +
     objectToGetParams({
       url,
       text,

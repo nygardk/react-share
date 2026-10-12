@@ -17,7 +17,7 @@ function xLink(
   assert(Array.isArray(related), 'x.related is not an array');
 
   return (
-    'https://twitter.com/intent/tweet' +
+    'https://x.com/intent/post' +
     objectToGetParams({
       url,
       text,

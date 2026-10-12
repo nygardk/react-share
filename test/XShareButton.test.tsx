@@ -23,7 +23,7 @@ describe('XShareButton', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Share on X' }));
 
     expect(openSpy).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Example%20title&via=reactshare&hashtags=react%2Cshare&related=openai%2Cvitejs',
+      'https://x.com/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title&via=reactshare&hashtags=react%2Cshare&related=openai%2Cvitejs',
       '',
       expect.any(String),
     );
@@ -52,7 +52,7 @@ describe('XShareButton', () => {
     expect(button).not.toHaveAttribute('hashtags');
     expect(button).not.toHaveAttribute('related');
     expect(openSpy).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Share%20title&hashtags=react&related=openai',
+      'https://x.com/intent/post?url=https%3A%2F%2Fexample.com&text=Share%20title&hashtags=react&related=openai',
       '',
       expect.any(String),
     );
@@ -70,7 +70,7 @@ describe('XShareButton', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Share on X' }));
 
     expect(openSpy).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Example%20title',
+      'https://x.com/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
       '',
       expect.any(String),
     );

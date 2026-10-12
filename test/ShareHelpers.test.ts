@@ -23,7 +23,7 @@ describe('share helpers', () => {
         via: 'reactshare',
       }),
     ).toBe(
-      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com&text=Example%20title&via=reactshare&hashtags=react%2Cshare&related=openai',
+      'https://x.com/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title&via=reactshare&hashtags=react%2Cshare&related=openai',
     );
   });
 

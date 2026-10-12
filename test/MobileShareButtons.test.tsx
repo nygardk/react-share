@@ -64,7 +64,7 @@ describe('mobile share buttons', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Share on Telegram' }));
 
     expect(openSpy).toHaveBeenCalledWith(
-      'https://telegram.me/share/url?url=https%3A%2F%2Fexample.com&text=Example',
+      'https://t.me/share/url?url=https%3A%2F%2Fexample.com&text=Example',
       '',
       expect.any(String),
     );

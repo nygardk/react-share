@@ -71,7 +71,7 @@ This is the preferred path for:
 
 ### `TelegramShareButton`
 
-- `mobileBehavior="web"`: uses `https://telegram.me/share/url?...` in a popup
+- `mobileBehavior="web"`: uses `https://t.me/share/url?...` in a popup
 - `mobileBehavior="app"`: navigates to `tg://msg_url?...`
 - `mobileBehavior="auto"`: uses the app link on detected mobile environments and the popup URL elsewhere
 

@@ -131,7 +131,7 @@ const shareButtonCases: ShareButtonCase[] = [
   {
     children: 'Share on Telegram',
     Component: TelegramShareButton,
-    expectedUrl: 'https://telegram.me/share/url?url=https%3A%2F%2Fexample.com&text=Example%20title',
+    expectedUrl: 'https://t.me/share/url?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       text: 'Example title',
       url: 'https://example.com',
@@ -141,7 +141,7 @@ const shareButtonCases: ShareButtonCase[] = [
     children: 'Share on Threads',
     Component: ThreadsShareButton,
     expectedUrl:
-      'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
+      'https://www.threads.com/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
     props: {
       text: 'Example title',
       url: 'https://example.com',

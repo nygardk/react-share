@@ -13,7 +13,10 @@ type ViberShareButtonProps = Omit<
   separator?: string;
 };
 
-function viberLink(url: string, { message, separator }: { message?: string; separator?: string }) {
+function viberLink(
+  url: string,
+  { message, separator = ' ' }: { message?: string; separator?: string },
+) {
   assert(url, 'viber.url');
   return (
     'viber://forward' +

@@ -11,7 +11,10 @@ type BlueskyShareButtonProps = Omit<
   text?: string;
 };
 
-function blueskyLink(url: string, { text, separator }: { text?: string; separator?: string }) {
+function blueskyLink(
+  url: string,
+  { text, separator = ' ' }: { text?: string; separator?: string },
+) {
   assert(url, 'bluesky.url');
 
   return (

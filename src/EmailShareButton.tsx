@@ -11,7 +11,7 @@ type Options = {
 type EmailShareButtonProps = Omit<ShareButtonProps<Options>, 'onClick' | 'openShareDialogOnClick'> &
   Options;
 
-function emailLink(url: string, { subject, body, separator }: Options) {
+function emailLink(url: string, { subject, body, separator = ' ' }: Options) {
   return 'mailto:' + objectToGetParams({ subject, body: body ? body + separator + url : url });
 }
 

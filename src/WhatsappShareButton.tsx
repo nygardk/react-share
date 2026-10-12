@@ -15,7 +15,7 @@ type WhatsappShareButtonProps = Omit<
 
 function whatsappLink(
   url: string,
-  { message, separator }: { message?: string; separator?: string },
+  { message, separator = ' ' }: { message?: string; separator?: string },
 ) {
   assert(url, 'whatsapp.url');
   return (
@@ -30,7 +30,7 @@ export const buildWhatsappShareUrl = whatsappLink;
 
 function whatsappAppLink(
   url: string,
-  { message, separator }: { message?: string; separator?: string },
+  { message, separator = ' ' }: { message?: string; separator?: string },
 ) {
   assert(url, 'whatsapp.url');
   return (

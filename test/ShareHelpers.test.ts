@@ -1,8 +1,12 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import {
+  buildBlueskyShareUrl,
+  buildEmailShareUrl,
   buildFacebookShareUrl,
   buildLinkedinShareUrl,
+  buildViberShareUrl,
+  buildWhatsappShareUrl,
   buildXShareUrl,
   openShareWindow,
 } from '../src';
@@ -31,6 +35,31 @@ describe('share helpers', () => {
     expect(buildLinkedinShareUrl('https://example.com')).toBe(
       'https://linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com&mini=true',
     );
+  });
+
+  it.each([
+    [
+      'Bluesky',
+      () => buildBlueskyShareUrl('https://example.com', { text: 'Hello' }),
+      'https://bsky.app/intent/compose?text=Hello%20https%3A%2F%2Fexample.com',
+    ],
+    [
+      'Email',
+      () => buildEmailShareUrl('https://example.com', { body: 'Hello' }),
+      'mailto:?body=Hello%20https%3A%2F%2Fexample.com',
+    ],
+    [
+      'Viber',
+      () => buildViberShareUrl('https://example.com', { message: 'Hello' }),
+      'viber://forward?text=Hello%20https%3A%2F%2Fexample.com',
+    ],
+    [
+      'WhatsApp',
+      () => buildWhatsappShareUrl('https://example.com', { message: 'Hello' }),
+      'https://api.whatsapp.com/send?text=Hello%20https%3A%2F%2Fexample.com',
+    ],
+  ])('defaults the separator when building a %s share URL directly', (_, build, expected) => {
+    expect(build()).toBe(expected);
   });
 
   it('opens a centered share window with the requested size', () => {

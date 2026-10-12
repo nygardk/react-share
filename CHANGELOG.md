@@ -1,5 +1,16 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- 5ebcdc2: Add a `content` prop to `TumblrShareButton` and `buildTumblrShareUrl`, and list the other Tumblr post types for `posttype`. For post types other than `link`, `content` carries the actual post data, such as the quote text. Based on #564 by @me4502.
+- 37bf4cc: Add a `to` prop to `EmailShareButton` and `buildEmailShareUrl` for prefilling the recipient. It accepts one address or an array of addresses. Requested in #418.
+- a40bfc8: Add an `openInNewTab` prop to popup-based share buttons, and a matching `newTab` option for `openShareWindow`, to open the share page in a regular browser tab instead of a popup window. Requested in #449 and proposed in #342.
+- e15ed00: Add `FarcasterShareButton`, `FarcasterIcon`, `FarcasterLegacyIcon`, and `buildFarcasterShareUrl` for sharing to Farcaster (formerly Warpcast) through its compose intent. The shared URL is attached as an embed, and `text`, `channelKey`, and `parentCastHash` are supported. Requested in #558.
+- 8d087a7: Make `url` optional on `XShareButton` and `buildXShareUrl` so text-only posts can be shared by passing only `text`. At least one of `url` or `text` is still required. Requested in #570.
+- 8c76486: Add a `phone` prop to `WhatsappShareButton` and `buildWhatsappShareUrl` for sharing to a specific number. It takes the number in international format and removes everything except digits. It applies to both the web and the app link. Requested in #359.
+
 ## 6.0.0
 
 ### Major Changes

@@ -93,7 +93,7 @@ See every button in action in the [deployed demo](https://npm-react-share-demo.n
 | Telegram           | [`TelegramShareButton`](#telegramsharebutton)                   | `TelegramIcon`          | `text`, `mobileBehavior`                           |
 | Threads            | [`ThreadsShareButton`](#threadssharebutton)                     | `ThreadsIcon`           | `text`                                             |
 | Tumblr             | [`TumblrShareButton`](#tumblrsharebutton)                       | `TumblrIcon`            | `postTitle`, `tags`, `caption`, `posttype`         |
-| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `message`, `separator`, `mobileBehavior`           |
+| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `phone`, `message`, `separator`, `mobileBehavior`  |
 | VK                 | [`VKShareButton`](#vksharebutton)                               | `VKIcon`                | `shareTitle`, `image`, `noParse`, `noVkLinks`      |
 | Weibo              | [`WeiboShareButton`](#weibosharebutton)                         | `WeiboIcon`             | `shareTitle`, `image`                              |
 | WhatsApp           | [`WhatsappShareButton`](#whatsappsharebutton)                   | `WhatsappIcon`          | `message`, `separator`, `mobileBehavior`           |
@@ -643,6 +643,7 @@ import { WeiboShareButton, WeiboIcon } from "react-share";
 
 | Prop             | Type                       | Default | Description                                                                                 |
 | ---------------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------- |
+| `phone`          | `string`                   | –       | Recipient phone number in international format. Non-digits are removed.                     |
 | `message`        | `string`                   | –       | Message to share before the URL.                                                            |
 | `separator`      | `string`                   | `" "`   | Separator between the message and URL.                                                      |
 | `mobileBehavior` | `"web" \| "app" \| "auto"` | `"web"` | `"app"` uses a WhatsApp app link and `"auto"` uses it only on detected mobile environments. |

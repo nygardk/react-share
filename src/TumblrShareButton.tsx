@@ -3,6 +3,8 @@ import { assert } from './utils/assert';
 import { objectToGetParams } from './utils/objectToGetParams';
 import { ShareButton, type ShareButtonProps } from './ShareButton';
 
+type TumblrPostType = 'link' | 'text' | 'quote' | 'photo' | 'chat' | 'video' | (string & {});
+
 function tumblrLink(
   url: string,
   {
@@ -10,7 +12,14 @@ function tumblrLink(
     caption,
     tags,
     posttype,
-  }: { postTitle?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+    content,
+  }: {
+    postTitle?: string;
+    caption?: string;
+    tags?: string;
+    posttype?: TumblrPostType;
+    content?: string;
+  },
 ) {
   assert(url, 'tumblr.url');
 
@@ -22,6 +31,7 @@ function tumblrLink(
       caption,
       tags,
       posttype,
+      content,
     })
   );
 }
@@ -31,14 +41,16 @@ export const buildTumblrShareUrl = tumblrLink;
 type Options = {
   postTitle?: string;
   caption?: string;
-  posttype?: 'link' | string;
+  /** The post content for post types other than `link`, such as the quote text or photo URL. */
+  content?: string;
+  posttype?: TumblrPostType;
 };
 
 type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>, 'title'> &
   Options & { tags?: string[] };
 
 export const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
-  ({ caption, postTitle, posttype, tags, ...props }, ref) => (
+  ({ caption, content, postTitle, posttype, tags, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
@@ -49,6 +61,7 @@ export const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButton
         tags: (tags || []).join(','),
         caption,
         posttype: posttype || 'link',
+        content,
       }}
       windowHeight={460}
       windowWidth={660}

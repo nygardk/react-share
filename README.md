@@ -74,31 +74,31 @@ See every button in action in the [deployed demo](https://npm-react-share-demo.n
 
 ## Supported networks
 
-| Network            | Button                                                          | Icon                    | Network-specific props                             |
-| ------------------ | --------------------------------------------------------------- | ----------------------- | -------------------------------------------------- |
-| Bluesky            | [`BlueskyShareButton`](#blueskysharebutton)                     | `BlueskyIcon`           | `text`, `separator`                                |
-| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `to`, `subject`, `body`, `separator`               |
-| Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                          |
-| Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior` |
-| Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                             |
-| Hatena             | [`HatenaShareButton`](#hatenasharebutton)                       | `HatenaIcon`            | `shareTitle`                                       |
-| Instapaper         | [`InstapaperShareButton`](#instapapersharebutton)               | `InstapaperIcon`        | `shareTitle`, `description`                        |
-| Line               | [`LineShareButton`](#linesharebutton)                           | `LineIcon`              | `text`                                             |
-| LinkedIn           | [`LinkedinShareButton`](#linkedinsharebutton)                   | `LinkedinIcon`          | –                                                  |
-| LiveJournal        | [`LivejournalShareButton`](#livejournalsharebutton)             | `LivejournalIcon`       | `shareTitle`, `description`                        |
-| Mail.Ru            | [`MailruShareButton`](#mailrusharebutton)                       | `MailruIcon`            | `shareTitle`, `description`, `imageUrl`            |
-| Odnoklassniki      | [`OKShareButton`](#oksharebutton)                               | `OKIcon`                | `shareTitle`, `description`, `image`               |
-| Pinterest          | [`PinterestShareButton`](#pinterestsharebutton)                 | `PinterestIcon`         | **`media`**, `description`, `pinId`                |
-| Reddit             | [`RedditShareButton`](#redditsharebutton)                       | `RedditIcon`            | `shareTitle`                                       |
-| Telegram           | [`TelegramShareButton`](#telegramsharebutton)                   | `TelegramIcon`          | `text`, `mobileBehavior`                           |
-| Threads            | [`ThreadsShareButton`](#threadssharebutton)                     | `ThreadsIcon`           | `text`                                             |
-| Tumblr             | [`TumblrShareButton`](#tumblrsharebutton)                       | `TumblrIcon`            | `postTitle`, `tags`, `caption`, `posttype`         |
-| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `phone`, `message`, `separator`, `mobileBehavior`  |
-| VK                 | [`VKShareButton`](#vksharebutton)                               | `VKIcon`                | `shareTitle`, `image`, `noParse`, `noVkLinks`      |
-| Weibo              | [`WeiboShareButton`](#weibosharebutton)                         | `WeiboIcon`             | `shareTitle`, `image`                              |
-| WhatsApp           | [`WhatsappShareButton`](#whatsappsharebutton)                   | `WhatsappIcon`          | `message`, `separator`, `mobileBehavior`           |
-| X                  | [`XShareButton`](#xsharebutton)                                 | `XIcon`                 | `text`, `via`, `hashtags`, `related`               |
-| Device share sheet | [`NativeShareButton`](#nativesharebutton)                       | `NativeShareIcon`       | `title`, `text`, `url`, `files`                    |
+| Network            | Button                                                          | Icon                    | Network-specific props                                |
+| ------------------ | --------------------------------------------------------------- | ----------------------- | ----------------------------------------------------- |
+| Bluesky            | [`BlueskyShareButton`](#blueskysharebutton)                     | `BlueskyIcon`           | `text`, `separator`                                   |
+| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `to`, `subject`, `body`, `separator`                  |
+| Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                             |
+| Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior`    |
+| Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                                |
+| Hatena             | [`HatenaShareButton`](#hatenasharebutton)                       | `HatenaIcon`            | `shareTitle`                                          |
+| Instapaper         | [`InstapaperShareButton`](#instapapersharebutton)               | `InstapaperIcon`        | `shareTitle`, `description`                           |
+| Line               | [`LineShareButton`](#linesharebutton)                           | `LineIcon`              | `text`                                                |
+| LinkedIn           | [`LinkedinShareButton`](#linkedinsharebutton)                   | `LinkedinIcon`          | –                                                     |
+| LiveJournal        | [`LivejournalShareButton`](#livejournalsharebutton)             | `LivejournalIcon`       | `shareTitle`, `description`                           |
+| Mail.Ru            | [`MailruShareButton`](#mailrusharebutton)                       | `MailruIcon`            | `shareTitle`, `description`, `imageUrl`               |
+| Odnoklassniki      | [`OKShareButton`](#oksharebutton)                               | `OKIcon`                | `shareTitle`, `description`, `image`                  |
+| Pinterest          | [`PinterestShareButton`](#pinterestsharebutton)                 | `PinterestIcon`         | **`media`**, `description`, `pinId`                   |
+| Reddit             | [`RedditShareButton`](#redditsharebutton)                       | `RedditIcon`            | `shareTitle`                                          |
+| Telegram           | [`TelegramShareButton`](#telegramsharebutton)                   | `TelegramIcon`          | `text`, `mobileBehavior`                              |
+| Threads            | [`ThreadsShareButton`](#threadssharebutton)                     | `ThreadsIcon`           | `text`                                                |
+| Tumblr             | [`TumblrShareButton`](#tumblrsharebutton)                       | `TumblrIcon`            | `postTitle`, `tags`, `caption`, `posttype`, `content` |
+| Viber              | [`ViberShareButton`](#vibersharebutton)                         | `ViberIcon`             | `phone`, `message`, `separator`, `mobileBehavior`     |
+| VK                 | [`VKShareButton`](#vksharebutton)                               | `VKIcon`                | `shareTitle`, `image`, `noParse`, `noVkLinks`         |
+| Weibo              | [`WeiboShareButton`](#weibosharebutton)                         | `WeiboIcon`             | `shareTitle`, `image`                                 |
+| WhatsApp           | [`WhatsappShareButton`](#whatsappsharebutton)                   | `WhatsappIcon`          | `message`, `separator`, `mobileBehavior`              |
+| X                  | [`XShareButton`](#xsharebutton)                                 | `XIcon`                 | `text`, `via`, `hashtags`, `related`                  |
+| Device share sheet | [`NativeShareButton`](#nativesharebutton)                       | `NativeShareIcon`       | `title`, `text`, `url`, `files`                       |
 
 Required props are in **bold**. Every icon also has a badge-style `*LegacyIcon` variant (see [Icons](#icons)), and every network button has a matching `build*ShareUrl` helper (see [Building share URLs yourself](#building-share-urls-yourself)).
 
@@ -533,12 +533,13 @@ import { ThreadsShareButton, ThreadsIcon } from "react-share";
 
 #### TumblrShareButton
 
-| Prop        | Type       | Default  | Description                             |
-| ----------- | ---------- | -------- | --------------------------------------- |
-| `postTitle` | `string`   | –        | Title sent in the Tumblr post payload.  |
-| `tags`      | `string[]` | –        | Tags to attach to the post.             |
-| `caption`   | `string`   | –        | Description shown with the shared page. |
-| `posttype`  | `string`   | `"link"` | Tumblr post type.                       |
+| Prop        | Type       | Default  | Description                                                                                                                                        |
+| ----------- | ---------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `postTitle` | `string`   | –        | Title sent in the Tumblr post payload.                                                                                                             |
+| `tags`      | `string[]` | –        | Tags to attach to the post.                                                                                                                        |
+| `caption`   | `string`   | –        | Description shown with the shared page.                                                                                                            |
+| `posttype`  | `string`   | `"link"` | Tumblr post type, such as `"quote"`.                                                                                                               |
+| `content`   | `string`   | –        | Post content for post types other than `"link"`. See [Tumblr's documentation](https://help.tumblr.com/knowledge-base/share-button-documentation/). |
 
 <details>
 <summary>Example</summary>

@@ -101,7 +101,6 @@ Used by:
 - `HatenaShareButton`
 - `InstapaperShareButton`
 - `LivejournalShareButton`
-- `LinkedinShareButton` in v5 only
 - `MailruShareButton`
 - `OKShareButton`
 - `RedditShareButton`
@@ -140,7 +139,7 @@ Used by `TumblrShareButton`.
 
 `LinkedinShareButton` no longer accepts:
 
-- `shareTitle`
+- `title`
 - `summary`
 - `source`
 
@@ -150,7 +149,7 @@ Used by `TumblrShareButton`.
 
 ```jsx
 <LinkedinShareButton
-  shareTitle="Read this next"
+  title="Read this next"
   summary="Quick summary"
   source="example.com"
   url={shareUrl}
@@ -235,7 +234,7 @@ If you want the old icon look without changing visuals, rename your imports:
 
 - `FacebookIcon` -> `FacebookLegacyIcon`
 - `XIcon` -> `XLegacyIcon`
-- `NativeShareIcon` -> `NativeShareLegacyIcon`
+- `WhatsappIcon` -> `WhatsappLegacyIcon`
 
 Example:
 
@@ -267,16 +266,34 @@ Default behavior is still `mobileBehavior="web"`.
 
 Use `mobileBehavior="app"` and `mobileBehavior="auto"` only when best-effort app handoff is acceptable. The library does not try to detect whether the native app actually opened.
 
+## Other improvements
+
+These need no code changes, but are worth knowing about:
+
+- `onShareWindowOpen` is a new callback on popup-based buttons. It receives the opened share window, or `null` when a popup blocker prevented it from opening, so you can offer a fallback.
+- The package is marked with `"use client"`, so share buttons can be imported directly from React Server Components, such as Next.js App Router pages. You can remove any local `"use client"` wrapper you added only for `react-share`.
+- X, Threads, and Telegram buttons now use the current `x.com`, `threads.com`, and `t.me` share endpoints instead of relying on redirects from the old hosts.
+
 ## Upgrade checklist
+
+Required:
 
 1. Upgrade your app to React 18 or 19.
 2. Replace `TwitterShareButton` and `TwitterIcon` with `XShareButton` and `XIcon`.
 3. Remove all share count usage.
 4. Remove `PocketShareButton` and `WorkplaceShareButton` usage.
-5. Rename every old share-button `title` prop to the correct v6 payload prop.
+5. Rename every share-button `title` prop to the network's v6 payload prop (`text`, `message`, `shareTitle`, or `postTitle`). TypeScript reports the old prop, but plain JavaScript silently ignores it, so search your code for `title=` on share buttons. Keep using `htmlTitle` for the native tooltip.
 6. Remove `hashtags`, `related`, and `via` from `ThreadsShareButton`.
-7. Remove `shareTitle`, `summary`, and `source` from `LinkedinShareButton`.
-8. Rename any old badge-style icon usage from `*Icon` to `*LegacyIcon`.
-9. Remove `round`, `borderRadius`, `bgStyle`, and `iconFillColor` from raw `*Icon` usage.
-10. Decide whether any messaging buttons should opt into `mobileBehavior`.
-11. For mobile/PWA or file-sharing flows, prefer `NativeShareButton` or `shareNative(...)`.
+7. Remove `title`, `summary`, and `source` from `LinkedinShareButton`.
+8. For each `*Icon`, either rename it to `*LegacyIcon` to keep the v5 badge look and props, or keep `*Icon` and remove `round`, `borderRadius`, `bgStyle`, and `iconFillColor`.
+
+Check behavior:
+
+9. If `beforeOnClick` returns a promise, the popup now opens immediately, and rejecting the promise cancels the share and closes the popup.
+10. `EmailShareButton` now puts the URL on its own line. Pass `separator=" "` to keep the v5 formatting.
+
+Optional:
+
+11. Opt messaging buttons into `mobileBehavior` where app handoff matters.
+12. For mobile/PWA or file-sharing flows, use `NativeShareButton` or `shareNative(...)`.
+13. Use `onShareWindowOpen` to detect blocked popups, and remove any local `"use client"` wrappers you added only for `react-share`.

@@ -12,6 +12,8 @@
 npm install react-share
 ```
 
+Upgrading from v5? Follow the [v5 to v6 migration guide](./docs/migrate-v5-to-v6.md).
+
 ## Features
 
 - no external script loading, i.e. no dependencies on SDKs

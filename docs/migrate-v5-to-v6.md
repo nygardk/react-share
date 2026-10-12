@@ -171,6 +171,10 @@ Used by `TumblrShareButton`.
 - `related`
 - `via`
 
+## Behavior changes
+
+- Popup-based buttons now open the share popup immediately when `beforeOnClick` returns a promise, and load the share URL once it resolves. Rejecting the promise cancels sharing and closes the popup. Previously the popup opened after the promise resolved and was often blocked by the browser.
+
 ## New helper exports
 
 v6 adds low-level helpers from the package root:

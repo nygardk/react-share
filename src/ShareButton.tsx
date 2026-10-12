@@ -36,6 +36,9 @@ export interface Props<LinkOptions> extends NativeButtonProps {
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.
+   * When a Promise is returned, the share popup opens immediately and loads the
+   * share URL once the Promise resolves. Rejecting the Promise cancels sharing
+   * and closes the popup.
    */
   beforeOnClick?: () => Promise<void> | void;
   children: React.ReactNode;
@@ -123,21 +126,32 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
 
     event.preventDefault();
 
-    if (beforeOnClick) {
-      const returnVal = beforeOnClick();
+    const returnVal = beforeOnClick?.();
+    const opensPopup = openShareDialogOnClick && linkBehavior === 'popup';
+    const windowOptions = {
+      height: windowHeight,
+      onClose: onShareWindowClose,
+      position: windowPosition,
+      width: windowWidth,
+    };
 
-      if (isPromise(returnVal)) {
+    if (isPromise(returnVal)) {
+      // Popup blockers only allow window.open during the click's user activation,
+      // which is gone after an await, so open a blank popup now and load the link later.
+      const shareWindow = opensPopup ? openShareWindow('about:blank', windowOptions) : null;
+
+      try {
         await returnVal;
+      } catch {
+        shareWindow?.close();
+        return;
       }
-    }
 
-    if (openShareDialogOnClick && linkBehavior === 'popup') {
-      openShareWindow(link, {
-        height: windowHeight,
-        onClose: onShareWindowClose,
-        position: windowPosition,
-        width: windowWidth,
-      });
+      if (shareWindow && !shareWindow.closed) {
+        shareWindow.location.replace(link);
+      }
+    } else if (opensPopup) {
+      openShareWindow(link, windowOptions);
     }
 
     if (openShareDialogOnClick && linkBehavior === 'navigate') {

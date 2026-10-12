@@ -85,7 +85,7 @@ Required:
 - `children` (`ReactNode`): Button contents.
 - `url` (`string`): URL of the shared page.
   Optional on all share buttons:
-- `beforeOnClick` (`() => Promise<void> | void`): Runs before the share action.
+- `beforeOnClick` (`() => Promise<void> | void`): Runs before the share action. If it returns a promise, popup-based buttons open the popup immediately (so popup blockers allow it) and load the share URL once the promise resolves. Reject the promise to cancel sharing and close the popup. The share URL is built from the props at click time, so state updated inside `beforeOnClick` is not picked up.
 - `disabled` (`boolean`): Disables click handling and adds a `disabled` class.
 - `disabledStyle` (`CSSProperties`, default `{ opacity: 0.6 }`): Applied when `disabled` is true.
 - `htmlTitle` (`string`): Sets the native `title` attribute on the underlying button.
@@ -631,7 +631,7 @@ Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="
 
 ## Troubleshooting
 
-- Popup blockers: share buttons use `window.open` from the click handler. If your app does async work in `beforeOnClick`, some browsers may treat the eventual popup as script-triggered and block it. In those cases, set `openShareDialogOnClick={false}` and manage the resulting URL yourself.
+- Popup blockers: share buttons call `window.open` synchronously from the click handler, even when `beforeOnClick` is async, so browsers treat the popup as user-initiated. `NativeShareButton` cannot pre-open the system share sheet, so long async work in its `beforeOnClick` may cause the browser to reject `navigator.share()`.
 - Accessibility: icon-only buttons should always have an accessible name. Use `aria-label` or `aria-labelledby` on the share button; `htmlTitle` is only a tooltip.
 - Mobile app handoff: some platforms open the browser, an in-app browser, or an extra tab before handing off to a native app. This behavior is controlled by the target platform and browser, not by `react-share`.
 - Mobile app strategies: `mobileBehavior="app"` and `mobileBehavior="auto"` are best-effort only. The library does not try to detect whether an app-open succeeded or guarantee a browser fallback path.

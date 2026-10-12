@@ -71,6 +71,12 @@ export interface Props<LinkOptions> extends NativeButtonProps {
    */
   onShareWindowOpen?: (shareWindow: Window | null) => void;
   openShareDialogOnClick?: boolean;
+  /**
+   * Opens the share page in a regular browser tab instead of a popup window.
+   * `windowWidth`, `windowHeight`, and `windowPosition` are ignored in that case.
+   * @default false
+   */
+  openInNewTab?: boolean;
   opts: LinkOptions;
   resetButtonStyle?: boolean;
   /**
@@ -104,6 +110,7 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
   onClick,
   onShareWindowClose,
   onShareWindowOpen,
+  openInNewTab = false,
   openShareDialogOnClick = true,
   opts,
   resetButtonStyle = true,
@@ -136,6 +143,7 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
     const opensPopup = openShareDialogOnClick && linkBehavior === 'popup';
     const windowOptions = {
       height: windowHeight,
+      newTab: openInNewTab,
       onClose: onShareWindowClose,
       position: windowPosition,
       width: windowWidth,

@@ -10,7 +10,10 @@ type Options = {
   to?: string | string[];
 };
 
-type EmailShareButtonProps = Omit<ShareButtonProps<Options>, 'onClick' | 'openShareDialogOnClick'> &
+type EmailShareButtonProps = Omit<
+  ShareButtonProps<Options>,
+  'onClick' | 'openInNewTab' | 'openShareDialogOnClick'
+> &
   Options;
 
 function emailRecipients(to: Options['to']) {

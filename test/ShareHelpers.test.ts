@@ -97,4 +97,12 @@ describe('share helpers', () => {
       expect.stringContaining('left=500'),
     );
   });
+
+  it('opens a regular tab instead of a popup when newTab is set', () => {
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
+
+    openShareWindow('https://example.com/share', { newTab: true });
+
+    expect(openSpy).toHaveBeenCalledWith('https://example.com/share', '_blank');
+  });
 });

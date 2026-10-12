@@ -139,6 +139,7 @@ These props apply to every network share button. `NativeShareButton` has its [ow
 | `onShareWindowClose`     | `() => void`                            | –       | Called after the popup closes.                                                                                                                               |
 | `windowWidth`            | `number`                                | –       | Overrides the popup width.                                                                                                                                   |
 | `windowHeight`           | `number`                                | –       | Overrides the popup height.                                                                                                                                  |
+| `openInNewTab`           | `boolean`                               | `false` | Opens the share page in a regular browser tab instead of a popup window. The `window*` props are ignored.                                                    |
 | `windowPosition`         | `"windowCenter" \| "screenCenter"`      | –       | Controls popup positioning.                                                                                                                                  |
 | `mobileBehavior`         | `"web" \| "app" \| "auto"`              | `"web"` | Only on `FacebookMessengerShareButton`, `TelegramShareButton`, `ViberShareButton`, and `WhatsappShareButton`. See [Mobile app handoff](#mobile-app-handoff). |
 
@@ -812,6 +813,9 @@ const url = buildXShareUrl(shareUrl, {
 });
 
 openShareWindow(url, { width: 550, height: 400 });
+
+// or open a regular browser tab instead of a popup window
+openShareWindow(url, { newTab: true });
 ```
 
 ## Accessibility

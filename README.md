@@ -891,6 +891,15 @@ async function share() {
 - **Mobile app handoff opens a browser tab first.** This is controlled by the target platform and browser. See [Mobile app handoff](#mobile-app-handoff).
 - **React Server Components.** The package is marked with `"use client"`, so share buttons and icons can be imported directly from Server Components in frameworks such as Next.js. They render as client components.
 - **iOS PWAs show a blank page.** Standalone mode can show a blank intermediary page for schemes such as `mailto:` or native-app handoff URLs. This is a platform limitation.
+- **Reddit does not prefill the link.** As of October 2026, Reddit's submit page ignores the `url` parameter and only prefills the title, so `RedditShareButton` opens the page without the link. This is controlled by Reddit. As a workaround, you can open a text post with the link in its body using `openShareWindow`:
+
+  ```jsx
+  import { openShareWindow } from "react-share";
+
+  const params = new URLSearchParams({ selftext: "true", title: "Read this next", text: shareUrl });
+
+  openShareWindow(`https://www.reddit.com/submit?${params}`);
+  ```
 
 ## Compatibility and versioning
 

@@ -77,7 +77,7 @@ See every button in action in the [deployed demo](https://npm-react-share-demo.n
 | Network            | Button                                                          | Icon                    | Network-specific props                             |
 | ------------------ | --------------------------------------------------------------- | ----------------------- | -------------------------------------------------- |
 | Bluesky            | [`BlueskyShareButton`](#blueskysharebutton)                     | `BlueskyIcon`           | `text`, `separator`                                |
-| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `subject`, `body`, `separator`                     |
+| Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `to`, `subject`, `body`, `separator`               |
 | Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                          |
 | Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior` |
 | Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                             |
@@ -185,11 +185,12 @@ import { BlueskyShareButton, BlueskyIcon } from "react-share";
 
 #### EmailShareButton
 
-| Prop        | Type     | Default | Description                                                                   |
-| ----------- | -------- | ------- | ----------------------------------------------------------------------------- |
-| `subject`   | `string` | –       | Email subject line.                                                           |
-| `body`      | `string` | –       | Text prepended before the shared URL.                                         |
-| `separator` | `string` | `"\n"`  | Separator between the body and URL. The default puts the URL on its own line. |
+| Prop        | Type                 | Default | Description                                                                   |
+| ----------- | -------------------- | ------- | ----------------------------------------------------------------------------- |
+| `to`        | `string \| string[]` | –       | Recipient address, or several addresses.                                      |
+| `subject`   | `string`             | –       | Email subject line.                                                           |
+| `body`      | `string`             | –       | Text prepended before the shared URL.                                         |
+| `separator` | `string`             | `"\n"`  | Separator between the body and URL. The default puts the URL on its own line. |
 
 - Uses `mailto:` navigation instead of opening a popup.
 - Does not expose `openShareDialogOnClick` or `onClick`.

@@ -6,19 +6,32 @@ type Options = {
   body?: string;
   separator?: string;
   subject?: string;
+  /** Recipient address, or several addresses. */
+  to?: string | string[];
 };
 
 type EmailShareButtonProps = Omit<ShareButtonProps<Options>, 'onClick' | 'openShareDialogOnClick'> &
   Options;
 
-function emailLink(url: string, { subject, body, separator = '\n' }: Options) {
-  return 'mailto:' + objectToGetParams({ subject, body: body ? body + separator + url : url });
+function emailRecipients(to: Options['to']) {
+  return (Array.isArray(to) ? to : [to])
+    .filter(Boolean)
+    .map(address => encodeURIComponent(address as string).replace(/%40/g, '@'))
+    .join(',');
+}
+
+function emailLink(url: string, { subject, body, separator = '\n', to }: Options) {
+  return (
+    'mailto:' +
+    emailRecipients(to) +
+    objectToGetParams({ subject, body: body ? body + separator + url : url })
+  );
 }
 
 export const buildEmailShareUrl = emailLink;
 
 export const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonProps>(
-  ({ body, separator, subject, ...props }, ref) => (
+  ({ body, separator, subject, to, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
@@ -32,6 +45,7 @@ export const EmailShareButton = forwardRef<HTMLButtonElement, EmailShareButtonPr
         subject,
         body,
         separator: separator || '\n',
+        to,
       }}
     />
   ),

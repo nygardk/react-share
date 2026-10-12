@@ -9,6 +9,7 @@ import { LinkedinIcon } from '../src/LinkedinIcon';
 import { MailruIcon } from '../src/MailruIcon';
 import { NativeShareIcon } from '../src/NativeShareIcon';
 import { NativeShareLegacyIcon } from '../src/NativeShareLegacyIcon';
+import { ThreadsIcon } from '../src/ThreadsIcon';
 import { XIcon } from '../src/XIcon';
 import { RawIconBase } from '../src/icons/RawIconBase';
 
@@ -52,6 +53,17 @@ describe('raw icon family', () => {
     expect(circle).toHaveAttribute('r', '12');
     expect(glyph).toHaveAttribute('fill', 'white');
     expect(glyph).toHaveAttribute('transform', 'translate(12 12) scale(0.5) translate(-12 -12)');
+  });
+
+  it('draws the Threads app icon with a fixed white glyph', () => {
+    render(<ThreadsIcon color="#123456" data-testid="threads-icon" />);
+
+    const svg = screen.getByTestId('threads-icon');
+    const fills = Array.from(svg.querySelectorAll('path')).map(path => path.getAttribute('fill'));
+
+    expect(svg).toHaveAttribute('fill', '#123456');
+    expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+    expect(fills).toEqual([null, 'white']);
   });
 
   it('draws outlined glyphs in white on the circle with a round stroke', () => {

@@ -227,7 +227,7 @@ In v5, `*Icon` exports were the badge-style icons with background props such as 
 
 In v6:
 
-- `*Icon` now means the raw, background-free icon.
+- `*Icon` now means the raw network logo without the badge background props.
 - `*LegacyIcon` preserves the old badge-style visual and props.
 
 If you want the old icon look without changing visuals, rename your imports:

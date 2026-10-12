@@ -593,7 +593,7 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 v6 exports two icon families:
 
-- `*Icon`: raw, background-free network logos.
+- `*Icon`: network logos without customizable backgrounds. Glyph-only marks such as X, Weibo, and Tumblr sit on a circle so every icon has a similar visual weight.
 - `*LegacyIcon`: the v5 badge-style icons with customizable backgrounds.
 
 Raw icons use a smaller, simpler prop surface:
@@ -601,7 +601,7 @@ Raw icons use a smaller, simpler prop surface:
 | Prop          | Type                      | Default | Description                                                            |
 | ------------- | ------------------------- | ------- | ---------------------------------------------------------------------- |
 | `size`        | `number \| string`        | `24`    | Icon size.                                                             |
-| `color`       | `string`                  | brand   | Icon color. Applied as the fill, or as the stroke on outline icons.    |
+| `color`       | `string`                  | brand   | Icon color.                                                            |
 | `...svgProps` | `SVGProps<SVGSVGElement>` | -       | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
 
 Example:
@@ -612,7 +612,7 @@ import { XIcon } from "react-share";
 <XIcon aria-hidden="true" size={32} />;
 ```
 
-Most raw icons render with their default brand color. `NativeShareIcon` follows the current text color so it can blend into generic action UI. `EmailIcon` and `NativeShareIcon` are outline icons drawn with a stroke instead of a fill. Pass `color` to recolor any raw icon, whether filled or outlined.
+Most raw icons render with their default brand color. Pass `color` to recolor the brand-colored part of any raw icon; white badge glyphs stay white.
 
 Legacy icons preserve the old badge look and prop contract:
 

@@ -1,5 +1,74 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- a811bc3: Change the default `EmailShareButton` `separator` from `" "` to `"\n"` so the shared URL appears on its own line below the email body. The new `buildEmailShareUrl` helper uses the same default.
+
+  Reported in #582, where the URL was run together with the body text. Pass `separator=" "` to keep the previous formatting.
+
+- 5bb43a5: Open the share popup synchronously when `beforeOnClick` returns a promise, then load the share URL into it once the promise resolves. If the promise rejects, sharing is cancelled and the popup is closed.
+
+  Previously the popup was opened only after awaiting `beforeOnClick`. By then the click's user activation had expired, so Safari and other browsers with strict popup blockers silently blocked the share window (#525, #506, #529). Rejections from `beforeOnClick` also used to surface as unhandled promise rejections.
+
+- e72b45e: Remove all deprecated share count exports in v6, including the underlying share count implementation and the `jsonp` dependency that previously powered them.
+- 2dc35f2: Remove the deprecated `TwitterShareButton` and `TwitterIcon` aliases in v6. Use `XShareButton` and `XIcon` instead.
+- 05c4997: Remove `PocketShareButton`, `PocketIcon`, `PocketLegacyIcon`, and `buildPocketShareUrl`, as well as `WorkplaceShareButton`, `WorkplaceIcon`, `WorkplaceLegacyIcon`, and `buildWorkplaceShareUrl`.
+
+  Pocket shut down in July 2025 and Workplace from Meta shut down in June 2026, so these buttons could only open dead share pages.
+
+- 20570c5: Drop React 17 support in v6 and require React 18 or 19 via `peerDependencies`.
+- 08b5638: Remove `title`, `summary`, and `source` from `LinkedinShareButton` and make `buildLinkedinShareUrl` URL-only.
+
+  This follows the long-running LinkedIn compatibility problems in #550 and #362. LinkedIn no longer provides a reliable public URL-based way to prefill those fields, so v6 stops exposing them as if they were dependable.
+
+- 22249a6: Split the icon exports into raw and legacy families for v6.
+
+  The existing `*Icon` exports now render SVG logos that are closer to the underlying network marks. The previous badge-style icons remain available as `*LegacyIcon` exports with the existing `round`, `borderRadius`, `bgStyle`, and `iconFillColor` props.
+
+  If you want to preserve the v5 visuals, rename imports such as `FacebookIcon` to `FacebookLegacyIcon`, `XIcon` to `XLegacyIcon`, and `WhatsappIcon` to `WhatsappLegacyIcon`.
+
+  If you keep the `*Icon` names, note that raw icons default to `size={24}` instead of `64`, and no longer accept `round`, `borderRadius`, `bgStyle`, or `iconFillColor`.
+
+- b2c18ff: Remove the deprecated `hashtags`, `related`, and `via` props from `ThreadsShareButton` in v6. Those props were ignored in v5 and were kept only for compatibility ahead of this major release.
+- 28da248: Replace the share button `title` prop with explicit v6 payload names:
+  - `text` for Bluesky, Gab, Line, Telegram, Threads, and X
+  - `message` for WhatsApp and Viber
+  - `shareTitle` for Hatena, Instapaper, LiveJournal, Mail.ru, OK, Reddit, VK, and Weibo
+  - `postTitle` for Tumblr
+
+  `htmlTitle` remains the native button tooltip/title attribute.
+
+### Minor Changes
+
+- 7996b59: Add an `onShareWindowOpen` callback to popup-based share buttons. It receives the opened share window, or `null` when a popup blocker prevented it from opening, so apps can detect blocked popups and offer a fallback, as requested in #525.
+- 98bb140: Mark the published ESM and CJS bundles with a `"use client"` directive so share buttons can be imported directly from React Server Components, such as Next.js App Router pages, without a local client wrapper. Requested in #491.
+- 2ff01f4: Draw the raw `LivejournalIcon` pencil in navy and white like the official LiveJournal logo. The pencil used to be cut out of the blue circle, so it took on the page background instead of its own colors.
+- 7f896ad: Update the raw `OKIcon` to the 2023 OK logo: a white figure on an orange (`#FF7700`) rounded square, as served on ok.ru. The previous bare glyph was the old mark in an older orange.
+- 82f732f: Update the raw `ThreadsIcon` to the 2026 Threads app icon: a white glyph on a black rounded square. The previous bare glyph was the old mark and looked lighter than the other raw icons.
+- 17a51d2: Use the Lucide mail and share glyphs for the raw `EmailIcon` and `NativeShareIcon`. The previous glyphs were small badge glyphs on a 64x64 viewBox and looked undersized next to the other raw icons.
+- 57ddea2: Put glyph-only raw icons on circle badges so every raw icon has a similar visual weight, like the v5 badges had. `XIcon`, `WeiboIcon`, `BlueskyIcon`, `EmailIcon`, `NativeShareIcon`, `InstapaperIcon`, and `TumblrIcon` now sit on a circle. The glyph is always drawn in white, so it stays legible on dark backgrounds. `NativeShareIcon` now uses a fixed blue (`#0A84FF`) instead of the current text color, which would hide the white glyph on dark pages.
+- e05b396: Add an explicit `mobileBehavior` prop to `FacebookMessengerShareButton`, `TelegramShareButton`, `ViberShareButton`, and `WhatsappShareButton`.
+
+  This follows recurring mobile browser and app-handoff reports in #577, #551, #529, and #357. The new prop keeps web sharing as the default while allowing best-effort app-link behavior with `mobileBehavior="app"` or `mobileBehavior="auto"`.
+
+- f978a65: Add low-level helper exports for advanced usage in v6, including per-network `build*ShareUrl` helpers and `openShareWindow(url, options)`.
+- 9e44ba2: Add `canNativeShare(data)`, `shareNative(data)`, `NativeShareButton`, and a generic `NativeShareIcon` for browser-native sharing flows.
+
+  This gives mobile and PWA use cases a first-class Web Share API path instead of forcing them through network-specific popup URLs, which is especially relevant for requests like #576 and the iOS/PWA limitations described in #551.
+
+- f708c54: Keep raw icon details white on dark backgrounds. Details cut out of the brand shape, such as the Facebook "f", the LinkedIn "in", the LINE lettering, and the inside of the WhatsApp and Viber bubbles, used to show the page background through them, so the logos turned into dark blobs on dark pages. `color` still recolors the brand-colored part of the icon.
+
+### Patch Changes
+
+- e72d4f3: Update five raw icons to their networks' current brand colors: `BlueskyIcon` (`#0560FF`), `LineIcon` (`#06C755`), `PinterestIcon` (`#E60023`), `TumblrIcon` (`#001935`), and `GabIcon` (`#30CE7D`). They used older or approximate colors before. The legacy icons keep their v5 colors.
+- 4aa9052: Use the current share endpoints for X (`https://x.com/intent/post`), Threads (`https://www.threads.com/intent/post`), and Telegram (`https://t.me/share/url`).
+
+  The old `twitter.com`, `threads.net`, and `telegram.me` hosts only keep working through redirects, which add an extra hop and can drop the share intent if those redirects are retired. Requested in #536.
+
+- 71e21b3: Draw the raw `LinkedinIcon` and `GabIcon` at full size. They reused the small glyphs from the badge icons without their backgrounds, so they filled less than half of the icon box and looked tiny next to the other raw icons. `LinkedinIcon` now uses the full rounded-square "in" mark in LinkedIn's current `#0A66C2` blue, and `GabIcon` puts the wordmark on a rounded green square.
+
 ## 5.3.0
 
 ### Minor Changes

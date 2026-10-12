@@ -65,6 +65,11 @@ export interface Props<LinkOptions> extends NativeButtonProps {
    * Takes a function to be called after closing share dialog.
    */
   onShareWindowClose?: () => void;
+  /**
+   * Takes a function to be called with the opened share window, or `null`
+   * when a popup blocker prevented it from opening.
+   */
+  onShareWindowOpen?: (shareWindow: Window | null) => void;
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
   resetButtonStyle?: boolean;
@@ -98,6 +103,7 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
   networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
   onShareWindowClose,
+  onShareWindowOpen,
   openShareDialogOnClick = true,
   opts,
   resetButtonStyle = true,
@@ -150,8 +156,14 @@ export function ShareButton<LinkOptions extends Record<string, unknown>>({
       if (shareWindow && !shareWindow.closed) {
         shareWindow.location.replace(link);
       }
+
+      if (opensPopup) {
+        onShareWindowOpen?.(shareWindow);
+      }
     } else if (opensPopup) {
-      openShareWindow(link, windowOptions);
+      const shareWindow = openShareWindow(link, windowOptions);
+
+      onShareWindowOpen?.(shareWindow);
     }
 
     if (openShareDialogOnClick && linkBehavior === 'navigate') {

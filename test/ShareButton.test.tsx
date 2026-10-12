@@ -129,6 +129,50 @@ describe('ShareButton', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
+  it('passes the opened share window to onShareWindowOpen', () => {
+    const shareWindow = { closed: false };
+    vi.spyOn(window, 'open').mockReturnValue(shareWindow as unknown as Window);
+    const onShareWindowOpen = vi.fn();
+
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        onShareWindowOpen={onShareWindowOpen}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    expect(onShareWindowOpen).toHaveBeenCalledWith(shareWindow);
+  });
+
+  it('passes null to onShareWindowOpen when the popup is blocked', async () => {
+    vi.spyOn(window, 'open').mockReturnValue(null);
+    const onShareWindowOpen = vi.fn();
+
+    render(
+      <ShareButton
+        beforeOnClick={() => Promise.resolve()}
+        networkLink={(url: string) => url}
+        networkName="test"
+        onShareWindowOpen={onShareWindowOpen}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    await waitFor(() => expect(onShareWindowOpen).toHaveBeenCalledWith(null));
+  });
+
   it('skips window.open when openShareDialogOnClick is false', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 

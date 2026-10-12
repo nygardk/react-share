@@ -91,6 +91,7 @@ Required:
 - `htmlTitle` (`string`): Sets the native `title` attribute on the underlying button.
 - `onClick` (`(event, link) => void`): Called with the click event and generated share URL after link generation. Not exposed by `EmailShareButton`.
 - `onShareWindowClose` (`() => void`): Called after the popup closes on popup-based buttons.
+- `onShareWindowOpen` (`(shareWindow: Window | null) => void`): Called after the popup opens on popup-based buttons. Receives `null` when a popup blocker prevented the window from opening, so you can fall back to another sharing flow.
 - `resetButtonStyle` (`boolean`, default `true`): Resets native button styles unless disabled.
 - `windowHeight`, `windowWidth` (`number`): Override popup dimensions on popup-based buttons.
 - `windowPosition` (`"windowCenter" | "screenCenter"`): Controls popup positioning on popup-based buttons.

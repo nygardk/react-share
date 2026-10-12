@@ -185,7 +185,7 @@ Optional props:
 
 - `subject` (`string`): Email subject line.
 - `body` (`string`): Text prepended before the shared URL.
-- `separator` (`string`, default `" "`): Separator between the body and URL.
+- `separator` (`string`, default `"\n"`): Separator between the body and URL. The default puts the URL on its own line.
 - Notes:
   - Uses `mailto:` navigation instead of opening a popup.
   - Does not expose `openShareDialogOnClick` or `onClick`.

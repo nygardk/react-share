@@ -174,6 +174,7 @@ Used by `TumblrShareButton`.
 ## Behavior changes
 
 - Popup-based buttons now open the share popup immediately when `beforeOnClick` returns a promise, and load the share URL once it resolves. Rejecting the promise cancels sharing and closes the popup. Previously the popup opened after the promise resolved and was often blocked by the browser.
+- `EmailShareButton` and `buildEmailShareUrl` now separate `body` and the URL with a newline (`"\n"`) instead of a space, so the URL appears on its own line. Pass `separator=" "` to keep the v5 formatting.
 
 ## New helper exports
 

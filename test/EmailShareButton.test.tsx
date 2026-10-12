@@ -30,7 +30,7 @@ describe('EmailShareButton', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Share by email' }));
 
     expect(openSpy).not.toHaveBeenCalled();
-    expect(hrefState.value).toBe('mailto:?subject=Subject&body=Body%20https%3A%2F%2Fexample.com');
+    expect(hrefState.value).toBe('mailto:?subject=Subject&body=Body%0Ahttps%3A%2F%2Fexample.com');
   });
 
   it('uses the shared url as the body when no body is provided', () => {

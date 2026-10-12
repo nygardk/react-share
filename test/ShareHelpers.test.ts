@@ -46,7 +46,7 @@ describe('share helpers', () => {
     [
       'Email',
       () => buildEmailShareUrl('https://example.com', { body: 'Hello' }),
-      'mailto:?body=Hello%20https%3A%2F%2Fexample.com',
+      'mailto:?body=Hello%0Ahttps%3A%2F%2Fexample.com',
     ],
     [
       'Viber',

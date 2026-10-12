@@ -843,6 +843,41 @@ openShareWindow(url, { width: 550, height: 400 });
 openShareWindow(url, { newTab: true });
 ```
 
+### Custom networks
+
+For a network the library does not cover, build its share URL yourself and open it with `openShareWindow`:
+
+```jsx
+import { openShareWindow } from "react-share";
+
+<button
+  type="button"
+  onClick={() => openShareWindow(`https://example.com/share?u=${encodeURIComponent(shareUrl)}`)}
+>
+  Share on Example
+</button>;
+```
+
+### Preparing the share data on click
+
+Share buttons build their link from props at click time. If you need to fetch something first, such as a short link or a token, open the popup immediately so popup blockers allow it, then load the URL once it is ready:
+
+```jsx
+import { buildXShareUrl, openShareWindow } from "react-share";
+
+async function share() {
+  const popup = openShareWindow("about:blank");
+
+  try {
+    const shortUrl = await createShortLink(shareUrl);
+
+    popup?.location.replace(buildXShareUrl(shortUrl, { text: "Read this next" }));
+  } catch {
+    popup?.close();
+  }
+}
+```
+
 ## Accessibility
 
 - Icon-only buttons need an accessible name. Pass `aria-label` or `aria-labelledby` on the share button.

@@ -24,11 +24,29 @@ const representativeExportNames = [
   'shareNative',
 ] as const;
 
+const removedExportNames = [
+  'TwitterShareButton',
+  'TwitterIcon',
+  'FacebookShareCount',
+  'PocketShareButton',
+  'PocketIcon',
+  'PocketLegacyIcon',
+  'buildPocketShareUrl',
+  'WorkplaceShareButton',
+  'WorkplaceIcon',
+  'WorkplaceLegacyIcon',
+  'buildWorkplaceShareUrl',
+];
+
 describe('package exports', () => {
   it('exports representative public symbols', () => {
     for (const exportName of representativeExportNames) {
       expect(ReactShare[exportName]).toBeDefined();
     }
+  });
+
+  it.each(removedExportNames)('does not export removed symbol %s', exportName => {
+    expect(ReactShare).not.toHaveProperty(exportName);
   });
 
   it('exports icon components', () => {

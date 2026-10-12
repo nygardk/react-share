@@ -39,6 +39,15 @@ All share count exports were removed in v6:
 
 If your app still depends on share counts, keep using `react-share` v5 until you replace that UI.
 
+### Pocket and Workplace
+
+Pocket (shut down in July 2025) and Workplace from Meta (shut down in June 2026) no longer accept shares, so their exports were removed:
+
+- `PocketShareButton`, `PocketIcon`, `PocketLegacyIcon`, `buildPocketShareUrl`
+- `WorkplaceShareButton`, `WorkplaceIcon`, `WorkplaceLegacyIcon`, `buildWorkplaceShareUrl`
+
+Remove these buttons from your UI. There is no drop-in replacement.
+
 ## Renamed share payload props
 
 `htmlTitle` is still the native button `title` attribute. The old overloaded share-button `title` prop was replaced with explicit payload names.
@@ -95,7 +104,6 @@ Used by:
 - `LinkedinShareButton` in v5 only
 - `MailruShareButton`
 - `OKShareButton`
-- `PocketShareButton`
 - `RedditShareButton`
 - `VKShareButton`
 - `WeiboShareButton`
@@ -259,10 +267,11 @@ Use `mobileBehavior="app"` and `mobileBehavior="auto"` only when best-effort app
 1. Upgrade your app to React 18 or 19.
 2. Replace `TwitterShareButton` and `TwitterIcon` with `XShareButton` and `XIcon`.
 3. Remove all share count usage.
-4. Rename every old share-button `title` prop to the correct v6 payload prop.
-5. Remove `hashtags`, `related`, and `via` from `ThreadsShareButton`.
-6. Remove `shareTitle`, `summary`, and `source` from `LinkedinShareButton`.
-7. Rename any old badge-style icon usage from `*Icon` to `*LegacyIcon`.
-8. Remove `round`, `borderRadius`, `bgStyle`, and `iconFillColor` from raw `*Icon` usage.
-9. Decide whether any messaging buttons should opt into `mobileBehavior`.
-10. For mobile/PWA or file-sharing flows, prefer `NativeShareButton` or `shareNative(...)`.
+4. Remove `PocketShareButton` and `WorkplaceShareButton` usage.
+5. Rename every old share-button `title` prop to the correct v6 payload prop.
+6. Remove `hashtags`, `related`, and `via` from `ThreadsShareButton`.
+7. Remove `shareTitle`, `summary`, and `source` from `LinkedinShareButton`.
+8. Rename any old badge-style icon usage from `*Icon` to `*LegacyIcon`.
+9. Remove `round`, `borderRadius`, `bgStyle`, and `iconFillColor` from raw `*Icon` usage.
+10. Decide whether any messaging buttons should opt into `mobileBehavior`.
+11. For mobile/PWA or file-sharing flows, prefer `NativeShareButton` or `shareNative(...)`.

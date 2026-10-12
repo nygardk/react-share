@@ -21,7 +21,6 @@ const DEFAULT_ARIA_LABELS = {
   mailru: 'Share on Mail.ru',
   ok: 'Share on OK',
   pinterest: 'Pin on Pinterest',
-  pocket: 'Save to Pocket',
   reddit: 'Share on Reddit',
   telegram: 'Share on Telegram',
   threads: 'Share on Threads',
@@ -30,7 +29,6 @@ const DEFAULT_ARIA_LABELS = {
   vk: 'Share on VK',
   weibo: 'Share on Weibo',
   whatsapp: 'Share on WhatsApp',
-  workplace: 'Share on Workplace',
   x: 'Share on X',
 } as const;
 

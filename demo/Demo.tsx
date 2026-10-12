@@ -28,8 +28,6 @@ import {
   OKShareButton,
   PinterestIcon,
   PinterestShareButton,
-  PocketIcon,
-  PocketShareButton,
   RedditIcon,
   RedditShareButton,
   TelegramIcon,
@@ -46,8 +44,6 @@ import {
   WeiboShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-  WorkplaceIcon,
-  WorkplaceShareButton,
   XIcon,
   XShareButton,
 } from '../src';
@@ -233,17 +229,6 @@ export function Demo() {
       </div>
 
       <div className="Demo__some-network">
-        <PocketShareButton
-          aria-label="Save to Pocket"
-          url={shareUrl}
-          shareTitle={title}
-          className="Demo__some-network__share-button"
-        >
-          <PocketIcon size={32} />
-        </PocketShareButton>
-      </div>
-
-      <div className="Demo__some-network">
         <InstapaperShareButton
           aria-label="Save to Instapaper"
           url={shareUrl}
@@ -321,17 +306,6 @@ export function Demo() {
         >
           <HatenaIcon size={32} />
         </HatenaShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <WorkplaceShareButton
-          aria-label="Share on Workplace"
-          url={shareUrl}
-          quote={title}
-          className="Demo__some-network__share-button"
-        >
-          <WorkplaceIcon size={32} />
-        </WorkplaceShareButton>
       </div>
 
       <div className="Demo__some-network">

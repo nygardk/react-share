@@ -66,13 +66,15 @@ describe('package builds', () => {
     await expect(access(distPaths.typesCjs)).resolves.toBeUndefined();
   });
 
-  it('does not emit removed share count or Twitter alias exports in the built type declarations', async () => {
+  it('does not emit removed v6 exports in the built type declarations', async () => {
     const declarationBundle = await readFile(distPaths.types, 'utf8');
 
     expect(declarationBundle).not.toContain('FacebookShareCount');
     expect(declarationBundle).not.toContain('PinterestShareCount');
     expect(declarationBundle).not.toContain('TwitterShareButton');
     expect(declarationBundle).not.toContain('TwitterIcon');
+    expect(declarationBundle).not.toContain('PocketShareButton');
+    expect(declarationBundle).not.toContain('WorkplaceShareButton');
   });
 
   it('exports the same public surface from the ESM and CJS builds', async () => {

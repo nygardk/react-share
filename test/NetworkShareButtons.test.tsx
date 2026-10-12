@@ -12,14 +12,12 @@ import { LinkedinShareButton } from '../src/LinkedinShareButton';
 import { LivejournalShareButton } from '../src/LivejournalShareButton';
 import { MailruShareButton } from '../src/MailruShareButton';
 import { OKShareButton } from '../src/OKShareButton';
-import { PocketShareButton } from '../src/PocketShareButton';
 import { TelegramShareButton } from '../src/TelegramShareButton';
 import { ThreadsShareButton } from '../src/ThreadsShareButton';
 import { TumblrShareButton } from '../src/TumblrShareButton';
 import { ViberShareButton } from '../src/ViberShareButton';
 import { VKShareButton } from '../src/VKShareButton';
 import { WeiboShareButton } from '../src/WeiboShareButton';
-import { WorkplaceShareButton } from '../src/WorkplaceShareButton';
 
 type ShareButtonCase = {
   children: string;
@@ -131,15 +129,6 @@ const shareButtonCases: ShareButtonCase[] = [
     },
   },
   {
-    children: 'Share on Pocket',
-    Component: PocketShareButton,
-    expectedUrl: 'https://getpocket.com/save?url=https%3A%2F%2Fexample.com&title=Example%20title',
-    props: {
-      shareTitle: 'Example title',
-      url: 'https://example.com',
-    },
-  },
-  {
     children: 'Share on Telegram',
     Component: TelegramShareButton,
     expectedUrl: 'https://telegram.me/share/url?url=https%3A%2F%2Fexample.com&text=Example%20title',
@@ -200,17 +189,6 @@ const shareButtonCases: ShareButtonCase[] = [
     props: {
       image: 'https://example.com/image.png',
       shareTitle: 'Example title',
-      url: 'https://example.com',
-    },
-  },
-  {
-    children: 'Share on Workplace',
-    Component: WorkplaceShareButton,
-    expectedUrl:
-      'https://work.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com&quote=Example%20quote&hashtag=%23reactshare',
-    props: {
-      hashtag: '#reactshare',
-      quote: 'Example quote',
       url: 'https://example.com',
     },
   },

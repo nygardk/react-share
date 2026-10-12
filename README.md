@@ -33,7 +33,6 @@ npm install react-share
   - [Mail.Ru](#mailrusharebutton)
   - [Odnoklassniki](#oksharebutton)
   - [Pinterest](#pinterestsharebutton)
-  - [Pocket](#pocketsharebutton)
   - [Reddit](#redditsharebutton)
   - [Telegram](#telegramsharebutton)
   - [Threads](#threadssharebutton)
@@ -42,7 +41,6 @@ npm install react-share
   - [VK](#vksharebutton)
   - [Weibo](#weibosharebutton)
   - [Whatsapp](#whatsappsharebutton)
-  - [Workplace](#workplacesharebutton)
   - [X](#xsharebutton)
 - social media icons included in the library
 - supports also custom icons
@@ -405,22 +403,6 @@ import { PinterestShareButton, PinterestIcon } from "react-share";
 </PinterestShareButton>;
 ```
 
-#### PocketShareButton
-
-Optional props:
-
-- `shareTitle` (`string`): Title sent in the share payload.
-- Notes:
-  - If Pocket detects a title on the target page, it may ignore this prop and use page metadata instead.
-
-```jsx
-import { PocketShareButton, PocketIcon } from "react-share";
-
-<PocketShareButton shareTitle="Read this next" url={shareUrl} aria-label="Save to Pocket">
-  <PocketIcon size={32} />
-</PocketShareButton>;
-```
-
 #### RedditShareButton
 
 Optional props:
@@ -602,26 +584,6 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 >
   <WhatsappIcon size={32} />
 </WhatsappShareButton>;
-```
-
-#### WorkplaceShareButton
-
-Optional props:
-
-- `quote` (`string`): Quote to include with the share.
-- `hashtag` (`string`): Hashtag to append to the share. Include the leading `#`.
-
-```jsx
-import { WorkplaceShareButton, WorkplaceIcon } from "react-share";
-
-<WorkplaceShareButton
-  quote="Worth a read"
-  hashtag="#reactshare"
-  url={shareUrl}
-  aria-label="Share on Workplace"
->
-  <WorkplaceIcon size={32} />
-</WorkplaceShareButton>;
 ```
 
 ### Icons

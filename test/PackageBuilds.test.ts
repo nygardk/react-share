@@ -66,6 +66,15 @@ describe('package builds', () => {
     await expect(access(distPaths.typesCjs)).resolves.toBeUndefined();
   });
 
+  it.each([
+    ['ESM', distPaths.esm],
+    ['CJS', distPaths.cjs],
+  ])('marks the %s build as a client module for React Server Components', async (_, distPath) => {
+    const bundle = await readFile(distPath, 'utf8');
+
+    expect(bundle.startsWith('"use client";')).toBe(true);
+  });
+
   it('does not emit removed v6 exports in the built type declarations', async () => {
     const declarationBundle = await readFile(distPaths.types, 'utf8');
 

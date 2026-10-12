@@ -636,6 +636,7 @@ Standalone icons are raw SVG elements. Mark decorative icons with `aria-hidden="
 - Accessibility: icon-only buttons should always have an accessible name. Use `aria-label` or `aria-labelledby` on the share button; `htmlTitle` is only a tooltip.
 - Mobile app handoff: some platforms open the browser, an in-app browser, or an extra tab before handing off to a native app. This behavior is controlled by the target platform and browser, not by `react-share`.
 - Mobile app strategies: `mobileBehavior="app"` and `mobileBehavior="auto"` are best-effort only. The library does not try to detect whether an app-open succeeded or guarantee a browser fallback path.
+- React Server Components: the package is marked with `"use client"`, so share buttons and icons can be imported directly from Server Components in frameworks such as Next.js. They render as client components.
 - iOS PWAs: standalone mode can show a blank intermediary page for schemes such as `mailto:` or native-app handoff URLs. This is a platform limitation.
 
 ### About semantic versioning

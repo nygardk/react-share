@@ -11,6 +11,8 @@ import { NativeShareIcon } from '../src/NativeShareIcon';
 import { NativeShareLegacyIcon } from '../src/NativeShareLegacyIcon';
 import { OKIcon } from '../src/OKIcon';
 import { ThreadsIcon } from '../src/ThreadsIcon';
+import { ViberIcon } from '../src/ViberIcon';
+import { WhatsappIcon } from '../src/WhatsappIcon';
 import { XIcon } from '../src/XIcon';
 import { RawIconBase } from '../src/icons/RawIconBase';
 
@@ -28,7 +30,38 @@ describe('raw icon family', () => {
     expect(svg.querySelector('circle')).toBeNull();
   });
 
-  it('draws LinkedIn as a single-color full-size mark', () => {
+  it('fills the inside of outline bubble marks with white', () => {
+    render(
+      <>
+        <WhatsappIcon data-testid="whatsapp-icon" />
+        <ViberIcon data-testid="viber-icon" />
+      </>,
+    );
+
+    for (const testId of ['whatsapp-icon', 'viber-icon']) {
+      const [backdrop, mark] = Array.from(screen.getByTestId(testId).children);
+
+      expect(backdrop).toHaveAttribute('fill', 'white');
+      expect(backdrop?.querySelector('path')).toBeInTheDocument();
+      expect(mark?.tagName).toBe('path');
+    }
+  });
+
+  it('keeps cut-out details white with a backdrop behind the mark', () => {
+    render(<FacebookIcon aria-label="facebook icon" data-testid="facebook-icon" />);
+
+    const svg = screen.getByTestId('facebook-icon');
+    const [backdrop, mark] = Array.from(svg.children);
+
+    expect(svg).toHaveAttribute('fill', '#0866FF');
+    expect(backdrop?.tagName).toBe('g');
+    expect(backdrop).toHaveAttribute('fill', 'white');
+    expect(backdrop?.querySelector('circle')).toHaveAttribute('r', '11');
+    expect(mark?.tagName).toBe('path');
+    expect(mark).not.toHaveAttribute('fill');
+  });
+
+  it('draws LinkedIn as a full-size mark', () => {
     render(<LinkedinIcon aria-label="linkedin icon" data-testid="linkedin-icon" size={32} />);
 
     const svg = screen.getByTestId('linkedin-icon');
@@ -37,7 +70,7 @@ describe('raw icon family', () => {
     expect(svg).toHaveAttribute('height', '32');
     expect(svg).toHaveAttribute('fill', '#0A66C2');
     expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
-    expect(svg.children).toHaveLength(1);
+    expect(svg.querySelector(':scope > g[fill="white"] > rect')).toHaveAttribute('width', '22');
   });
 
   it('draws glyph-only icons in white on a circle', () => {

@@ -6,6 +6,11 @@ export type RawIconProps = Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> & {
 
 type RawIconBaseProps = RawIconProps & {
   /**
+   * White shape painted behind the mark, inset within its outline, so the
+   * details cut out of the mark stay white on dark backgrounds.
+   */
+  backdrop?: ReactNode;
+  /**
    * Put the glyph on a filled circle, scaled around the center of the 24x24
    * viewBox. Used for glyph-only marks so they match the visual weight of the
    * circular brand marks. The glyph is always drawn in white.
@@ -31,6 +36,7 @@ function glyphPaint(outlined: boolean, color: string | undefined) {
 }
 
 export function RawIconBase({
+  backdrop,
   badge,
   children,
   color,
@@ -57,6 +63,7 @@ export function RawIconBase({
 
   return (
     <svg viewBox={viewBox} width={size} height={size} {...glyphPaint(outlined, paint)} {...rest}>
+      {backdrop && <g fill="white">{backdrop}</g>}
       {children}
     </svg>
   );

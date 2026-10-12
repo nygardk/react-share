@@ -593,7 +593,7 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 v6 exports two icon families:
 
-- `*Icon`: network logos without customizable backgrounds. Glyph-only marks such as X, Weibo, and Tumblr sit on a circle so every icon has a similar visual weight.
+- `*Icon`: network logos without customizable backgrounds. Glyph-only marks such as X, Weibo, and Tumblr sit on a circle so every icon has a similar visual weight, and logo details stay white so the icons work on dark backgrounds.
 - `*LegacyIcon`: the v5 badge-style icons with customizable backgrounds.
 
 Raw icons use a smaller, simpler prop surface:
@@ -612,7 +612,7 @@ import { XIcon } from "react-share";
 <XIcon aria-hidden="true" size={32} />;
 ```
 
-Most raw icons render with their default brand color. Pass `color` to recolor the brand-colored part of any raw icon; white badge glyphs stay white.
+Most raw icons render with their default brand color. Pass `color` to recolor the brand-colored part of any raw icon; white logo details stay white.
 
 Legacy icons preserve the old badge look and prop contract:
 

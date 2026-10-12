@@ -80,6 +80,7 @@ See every button in action in the [deployed demo](https://npm-react-share-demo.n
 | Email              | [`EmailShareButton`](#emailsharebutton)                         | `EmailIcon`             | `to`, `subject`, `body`, `separator`                  |
 | Facebook           | [`FacebookShareButton`](#facebooksharebutton)                   | `FacebookIcon`          | `hashtag`                                             |
 | Facebook Messenger | [`FacebookMessengerShareButton`](#facebookmessengersharebutton) | `FacebookMessengerIcon` | **`appId`**, `redirectUri`, `to`, `mobileBehavior`    |
+| Farcaster          | [`FarcasterShareButton`](#farcastersharebutton)                 | `FarcasterIcon`         | `text`, `channelKey`, `parentCastHash`                |
 | Gab                | [`GabShareButton`](#gabsharebutton)                             | `GabIcon`               | `text`                                                |
 | Hatena             | [`HatenaShareButton`](#hatenasharebutton)                       | `HatenaIcon`            | `shareTitle`                                          |
 | Instapaper         | [`InstapaperShareButton`](#instapapersharebutton)               | `InstapaperIcon`        | `shareTitle`, `description`                           |
@@ -258,6 +259,30 @@ import { FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share
 >
   <FacebookMessengerIcon size={32} />
 </FacebookMessengerShareButton>;
+```
+
+</details>
+
+#### FarcasterShareButton
+
+| Prop             | Type     | Default | Description                                         |
+| ---------------- | -------- | ------- | --------------------------------------------------- |
+| `text`           | `string` | –       | Text of the cast.                                   |
+| `channelKey`     | `string` | –       | Channel to post the cast to, such as `"farcaster"`. |
+| `parentCastHash` | `string` | –       | Hash of a cast to reply to.                         |
+
+- The shared `url` is attached to the cast as an embed.
+- Opens the [Farcaster compose intent](https://docs.farcaster.xyz/reference/farcaster/intent-urls) (formerly Warpcast).
+
+<details>
+<summary>Example</summary>
+
+```jsx
+import { FarcasterShareButton, FarcasterIcon } from "react-share";
+
+<FarcasterShareButton text="Read this next" url={shareUrl} aria-label="Share on Farcaster">
+  <FarcasterIcon size={32} />
+</FarcasterShareButton>;
 ```
 
 </details>

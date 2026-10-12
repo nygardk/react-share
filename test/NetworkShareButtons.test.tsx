@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { BlueskyShareButton } from '../src/BlueskyShareButton';
 import { FacebookShareButton } from '../src/FacebookShareButton';
+import { FarcasterShareButton } from '../src/FarcasterShareButton';
 import { GabShareButton } from '../src/GabShareButton';
 import { HatenaShareButton } from '../src/HatenaShareButton';
 import { InstapaperShareButton } from '../src/InstapaperShareButton';
@@ -43,6 +44,17 @@ const shareButtonCases: ShareButtonCase[] = [
       'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com&hashtag=%23reactshare',
     props: {
       hashtag: '#reactshare',
+      url: 'https://example.com',
+    },
+  },
+  {
+    children: 'Share on Farcaster',
+    Component: FarcasterShareButton,
+    expectedUrl:
+      'https://farcaster.xyz/~/compose?text=Example%20title&embeds[]=https%3A%2F%2Fexample.com&channelKey=farcaster',
+    props: {
+      channelKey: 'farcaster',
+      text: 'Example title',
       url: 'https://example.com',
     },
   },

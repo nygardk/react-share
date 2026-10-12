@@ -12,6 +12,7 @@ const DEFAULT_ARIA_LABELS = {
   email: 'Share by email',
   facebook: 'Share on Facebook',
   facebookmessenger: 'Share in Messenger',
+  farcaster: 'Share on Farcaster',
   gab: 'Share on Gab',
   hatena: 'Share on Hatena',
   instapaper: 'Save to Instapaper',

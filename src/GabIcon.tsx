@@ -4,7 +4,7 @@ export function GabIcon(props: RawIconProps) {
   return (
     <RawIconBase
       backdrop={<rect x="1" y="1" width="22" height="22" rx="2.5" />}
-      color="#00d178"
+      color="#30CE7D"
       viewBox="0 0 24 24"
       {...props}
     >

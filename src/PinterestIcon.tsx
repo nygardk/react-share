@@ -9,7 +9,7 @@ export function PinterestIcon(props: RawIconProps) {
           <path d="M7.3 19.4h2.9l-1.6 4.075a11.986 11.986 0 0 1-1.05-.366z" />
         </>
       }
-      color="#BD081C"
+      color="#E60023"
       viewBox="0 0 24 24"
       {...props}
     >

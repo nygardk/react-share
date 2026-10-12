@@ -4,7 +4,7 @@ export function LineIcon(props: RawIconProps) {
   return (
     <RawIconBase
       backdrop={<rect x="4" y="7" width="16" height="7" rx="1" />}
-      color="#00C300"
+      color="#06C755"
       viewBox="0 0 24 24"
       {...props}
     >

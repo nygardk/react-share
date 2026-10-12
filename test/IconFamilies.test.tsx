@@ -6,6 +6,7 @@ import { EmailIcon } from '../src/EmailIcon';
 import { FacebookIcon } from '../src/FacebookIcon';
 import { FacebookLegacyIcon } from '../src/FacebookLegacyIcon';
 import { LinkedinIcon } from '../src/LinkedinIcon';
+import { LivejournalIcon } from '../src/LivejournalIcon';
 import { MailruIcon } from '../src/MailruIcon';
 import { NativeShareIcon } from '../src/NativeShareIcon';
 import { NativeShareLegacyIcon } from '../src/NativeShareLegacyIcon';
@@ -45,6 +46,17 @@ describe('raw icon family', () => {
       expect(backdrop?.querySelector('path')).toBeInTheDocument();
       expect(mark?.tagName).toBe('path');
     }
+  });
+
+  it('draws the LiveJournal pencil in fixed navy and white', () => {
+    render(<LivejournalIcon color="#123456" data-testid="livejournal-icon" />);
+
+    const svg = screen.getByTestId('livejournal-icon');
+    const fills = Array.from(svg.querySelectorAll('path')).map(path => path.getAttribute('fill'));
+
+    expect(svg).toHaveAttribute('fill', '#123456');
+    expect(svg.querySelector('circle')).not.toHaveAttribute('fill');
+    expect(fills).toEqual([null, '#15374C', 'white', '#15374C']);
   });
 
   it('keeps cut-out details white with a backdrop behind the mark', () => {

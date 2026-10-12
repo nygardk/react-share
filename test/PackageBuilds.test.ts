@@ -31,10 +31,18 @@ const isUsableExport = (value: unknown) =>
 
 const representativeExportNames = [
   'FacebookShareButton',
+  'FacebookLegacyIcon',
+  'NativeShareIcon',
+  'NativeShareLegacyIcon',
+  'NativeShareButton',
   'XShareButton',
-  'TwitterShareButton',
+  'canNativeShare',
+  'buildFacebookShareUrl',
+  'buildXShareUrl',
   'FacebookIcon',
-  'PinterestShareCount',
+  'XIcon',
+  'openShareWindow',
+  'shareNative',
 ] as const;
 
 describe('package builds', () => {
@@ -58,14 +66,24 @@ describe('package builds', () => {
     await expect(access(distPaths.typesCjs)).resolves.toBeUndefined();
   });
 
-  it('marks share count exports as deprecated in the built type declarations', async () => {
+  it.each([
+    ['ESM', distPaths.esm],
+    ['CJS', distPaths.cjs],
+  ])('marks the %s build as a client module for React Server Components', async (_, distPath) => {
+    const bundle = await readFile(distPath, 'utf8');
+
+    expect(bundle.startsWith('"use client";')).toBe(true);
+  });
+
+  it('does not emit removed v6 exports in the built type declarations', async () => {
     const declarationBundle = await readFile(distPaths.types, 'utf8');
 
-    expect(declarationBundle).toContain('@deprecated Share counts are deprecated and will be removed in v6.');
-    expect(declarationBundle).toContain('@deprecated Use XShareButton instead.');
-    expect(declarationBundle).toContain('FacebookShareCount');
-    expect(declarationBundle).toContain('PinterestShareCount');
-    expect(declarationBundle).toContain('TwitterShareButton');
+    expect(declarationBundle).not.toContain('FacebookShareCount');
+    expect(declarationBundle).not.toContain('PinterestShareCount');
+    expect(declarationBundle).not.toContain('TwitterShareButton');
+    expect(declarationBundle).not.toContain('TwitterIcon');
+    expect(declarationBundle).not.toContain('PocketShareButton');
+    expect(declarationBundle).not.toContain('WorkplaceShareButton');
   });
 
   it('exports the same public surface from the ESM and CJS builds', async () => {

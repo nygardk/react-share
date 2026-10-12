@@ -1,16 +1,16 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function tumblrLink(
   url: string,
   {
-    title,
+    postTitle,
     caption,
     tags,
     posttype,
-  }: { title?: string; caption?: string; tags?: string; posttype?: 'link' | string },
+  }: { postTitle?: string; caption?: string; tags?: string; posttype?: 'link' | string },
 ) {
   assert(url, 'tumblr.url');
 
@@ -18,7 +18,7 @@ function tumblrLink(
     'https://www.tumblr.com/widgets/share/tool' +
     objectToGetParams({
       canonicalUrl: url,
-      title,
+      title: postTitle,
       caption,
       tags,
       posttype,
@@ -26,8 +26,10 @@ function tumblrLink(
   );
 }
 
+export const buildTumblrShareUrl = tumblrLink;
+
 type Options = {
-  title?: string;
+  postTitle?: string;
   caption?: string;
   posttype?: 'link' | string;
 };
@@ -35,15 +37,15 @@ type Options = {
 type TumblrShareButtonProps = Omit<ShareButtonProps<Options & { tags: string }>, 'title'> &
   Options & { tags?: string[] };
 
-const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
-  ({ caption, posttype, tags, title, ...props }, ref) => (
+export const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
+  ({ caption, postTitle, posttype, tags, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="tumblr"
-      networkLink={tumblrLink}
+      networkLink={buildTumblrShareUrl}
       opts={{
-        title,
+        postTitle,
         tags: (tags || []).join(','),
         caption,
         posttype: posttype || 'link',
@@ -55,5 +57,3 @@ const TumblrShareButton = forwardRef<HTMLButtonElement, TumblrShareButtonProps>(
 );
 
 TumblrShareButton.displayName = 'TumblrShareButton';
-
-export default TumblrShareButton;

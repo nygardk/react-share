@@ -1,36 +1,28 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
-type Options = {
-  /** The url-encoded title value that you wish you use. */
-  title?: string;
-  /** The url-encoded description that you wish you use. */
-  summary?: string;
-  /** The url-encoded source of the content (e.g. your website or application name) */
-  source?: string;
-};
+type Options = Record<string, never>;
 
-type LinkedinShareButtonProps = Omit<ShareButtonProps<Options>, 'title'> & Options;
+type LinkedinShareButtonProps = Omit<ShareButtonProps<Options>, 'title'>;
 
-function linkedinLink(url: string, { title, summary, source }: Options) {
+function linkedinLink(url: string) {
   assert(url, 'linkedin.url');
 
-  return (
-    'https://linkedin.com/shareArticle' +
-    objectToGetParams({ url, mini: 'true', title, summary, source })
-  );
+  return 'https://linkedin.com/shareArticle' + objectToGetParams({ url, mini: 'true' });
 }
 
-const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
-  ({ source, summary, title, ...props }, ref) => (
+export const buildLinkedinShareUrl = linkedinLink;
+
+export const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonProps>(
+  (props, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="linkedin"
-      networkLink={linkedinLink}
-      opts={{ title, summary, source }}
+      networkLink={buildLinkedinShareUrl}
+      opts={{}}
       windowHeight={600}
       windowWidth={750}
     />
@@ -38,5 +30,3 @@ const LinkedinShareButton = forwardRef<HTMLButtonElement, LinkedinShareButtonPro
 );
 
 LinkedinShareButton.displayName = 'LinkedinShareButton';
-
-export default LinkedinShareButton;

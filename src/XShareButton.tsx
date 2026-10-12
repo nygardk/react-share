@@ -1,26 +1,26 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function xLink(
   url: string,
   {
-    title,
+    text,
     via,
     hashtags = [],
     related = [],
-  }: { title?: string; via?: string; hashtags?: string[]; related?: string[] },
+  }: { text?: string; via?: string; hashtags?: string[]; related?: string[] },
 ) {
   assert(url, 'x.url');
   assert(Array.isArray(hashtags), 'x.hashtags is not an array');
   assert(Array.isArray(related), 'x.related is not an array');
 
   return (
-    'https://twitter.com/intent/tweet' +
+    'https://x.com/intent/post' +
     objectToGetParams({
       url,
-      text: title,
+      text,
       via,
       hashtags: hashtags.length > 0 ? hashtags.join(',') : undefined,
       related: related.length > 0 ? related.join(',') : undefined,
@@ -28,31 +28,33 @@ function xLink(
   );
 }
 
+export const buildXShareUrl = xLink;
+
 type XShareButtonProps = Omit<
   ShareButtonProps<{
-    title?: string;
+    text?: string;
     via?: string;
     hashtags?: string[];
     related?: string[];
   }>,
   'title'
 > & {
-  title?: string;
+  text?: string;
   via?: string;
   hashtags?: string[];
   related?: string[];
 };
 
-const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
-  ({ hashtags, related, title, via, ...props }, ref) => (
+export const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
+  ({ hashtags, related, text, via, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
-      networkName="twitter"
-      networkLink={xLink}
+      networkName="x"
+      networkLink={buildXShareUrl}
       opts={{
         hashtags,
-        title,
+        text,
         via,
         related,
       }}
@@ -63,5 +65,3 @@ const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
 );
 
 XShareButton.displayName = 'XShareButton';
-
-export default XShareButton;

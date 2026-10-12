@@ -35,6 +35,11 @@ export default defineConfig({
     minify: false,
     rollupOptions: {
       external: externalDeps,
+      output: {
+        // Share buttons attach click handlers, so React Server Components must
+        // treat the package as a client module.
+        banner: '"use client";',
+      },
     },
   },
 });

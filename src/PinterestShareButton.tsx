@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type PinterestShareProps = {
   media: string;
@@ -29,13 +29,15 @@ function pinterestLink(url: string, { media, description, pinId }: PinterestShar
   );
 }
 
-const PinterestShareButton = forwardRef<HTMLButtonElement, PinterestShareButtonProps>(
+export const buildPinterestShareUrl = pinterestLink;
+
+export const PinterestShareButton = forwardRef<HTMLButtonElement, PinterestShareButtonProps>(
   ({ description, media, pinId, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="pinterest"
-      networkLink={pinterestLink}
+      networkLink={buildPinterestShareUrl}
       opts={{
         media,
         description,
@@ -48,5 +50,3 @@ const PinterestShareButton = forwardRef<HTMLButtonElement, PinterestShareButtonP
 );
 
 PinterestShareButton.displayName = 'PinterestShareButton';
-
-export default PinterestShareButton;

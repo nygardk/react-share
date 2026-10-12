@@ -1,38 +1,61 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { type MobileBehavior, resolveMobileShareStrategy } from './mobile';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
-type TelegramShareButtonProps = Omit<ShareButtonProps<{ title?: string }>, 'title'> & {
-  title?: string;
+type TelegramShareButtonProps = Omit<ShareButtonProps<{ text?: string }>, 'title'> & {
+  mobileBehavior?: MobileBehavior;
+  text?: string;
 };
 
-function telegramLink(url: string, { title }: { title?: string }) {
+function telegramLink(url: string, { text }: { text?: string }) {
   assert(url, 'telegram.url');
 
   return (
-    'https://telegram.me/share/url' +
+    'https://t.me/share/url' +
     objectToGetParams({
       url,
-      text: title,
+      text,
     })
   );
 }
 
-const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonProps>(
-  ({ title, ...props }, ref) => (
-    <ShareButton
-      {...props}
-      forwardedRef={ref}
-      networkName="telegram"
-      networkLink={telegramLink}
-      opts={{ title }}
-      windowHeight={400}
-      windowWidth={550}
-    />
-  ),
+export const buildTelegramShareUrl = telegramLink;
+
+function telegramAppLink(url: string, { text }: { text?: string }) {
+  assert(url, 'telegram.url');
+
+  return (
+    'tg://msg_url' +
+    objectToGetParams({
+      url,
+      text,
+    })
+  );
+}
+
+export const TelegramShareButton = forwardRef<HTMLButtonElement, TelegramShareButtonProps>(
+  ({ mobileBehavior, text, ...props }, ref) => {
+    const { linkBehavior, networkLink } = resolveMobileShareStrategy(
+      mobileBehavior,
+      buildTelegramShareUrl,
+      telegramAppLink,
+    );
+
+    return (
+      <ShareButton
+        {...props}
+        forwardedRef={ref}
+        linkBehavior={linkBehavior}
+        networkName="telegram"
+        networkLink={networkLink}
+        opts={{ text }}
+        windowHeight={400}
+        windowWidth={550}
+      />
+    );
+  },
 );
 
 TelegramShareButton.displayName = 'TelegramShareButton';
-
-export default TelegramShareButton;

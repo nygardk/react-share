@@ -2,14 +2,14 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import RedditShareButton from '../src/RedditShareButton';
+import { RedditShareButton } from '../src/RedditShareButton';
 
 describe('RedditShareButton', () => {
   it('uses the current Reddit share URL', () => {
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
 
     render(
-      <RedditShareButton title="Example title" url="https://example.com">
+      <RedditShareButton shareTitle="Example title" url="https://example.com">
         Share to Reddit
       </RedditShareButton>,
     );

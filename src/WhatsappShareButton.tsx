@@ -1,43 +1,70 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { type MobileBehavior, resolveMobileShareStrategy } from './mobile';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type WhatsappShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; separator?: string }>,
+  ShareButtonProps<{ message?: string; separator?: string }>,
   'title'
 > & {
+  message?: string;
+  mobileBehavior?: MobileBehavior;
   separator?: string;
-  title?: string;
 };
 
-function whatsappLink(url: string, { title, separator }: { title?: string; separator?: string }) {
+function whatsappLink(
+  url: string,
+  { message, separator = ' ' }: { message?: string; separator?: string },
+) {
   assert(url, 'whatsapp.url');
   return (
     'https://api.whatsapp.com/send' +
     objectToGetParams({
-      text: title ? title + separator + url : url,
+      text: message ? message + separator + url : url,
     })
   );
 }
 
-const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
-  ({ separator, title, ...props }, ref) => (
-    <ShareButton
-      {...props}
-      forwardedRef={ref}
-      networkName="whatsapp"
-      networkLink={whatsappLink}
-      opts={{
-        title,
-        separator: separator || ' ',
-      }}
-      windowHeight={400}
-      windowWidth={550}
-    />
-  ),
+export const buildWhatsappShareUrl = whatsappLink;
+
+function whatsappAppLink(
+  url: string,
+  { message, separator = ' ' }: { message?: string; separator?: string },
+) {
+  assert(url, 'whatsapp.url');
+  return (
+    'whatsapp://send' +
+    objectToGetParams({
+      text: message ? message + separator + url : url,
+    })
+  );
+}
+
+export const WhatsappShareButton = forwardRef<HTMLButtonElement, WhatsappShareButtonProps>(
+  ({ message, mobileBehavior, separator, ...props }, ref) => {
+    const { linkBehavior, networkLink } = resolveMobileShareStrategy(
+      mobileBehavior,
+      buildWhatsappShareUrl,
+      whatsappAppLink,
+    );
+
+    return (
+      <ShareButton
+        {...props}
+        forwardedRef={ref}
+        linkBehavior={linkBehavior}
+        networkName="whatsapp"
+        networkLink={networkLink}
+        opts={{
+          message,
+          separator: separator || ' ',
+        }}
+        windowHeight={400}
+        windowWidth={550}
+      />
+    );
+  },
 );
 
 WhatsappShareButton.displayName = 'WhatsappShareButton';
-
-export default WhatsappShareButton;

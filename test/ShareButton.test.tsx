@@ -2,8 +2,9 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import FacebookIcon from '../src/FacebookIcon';
-import ShareButton from '../src/ShareButton';
+import { FacebookIcon } from '../src/FacebookIcon';
+import { FacebookLegacyIcon } from '../src/FacebookLegacyIcon';
+import { ShareButton } from '../src/ShareButton';
 
 describe('ShareButton', () => {
   afterEach(() => {
@@ -65,6 +66,111 @@ describe('ShareButton', () => {
 
     await waitFor(() => expect(onClick).toHaveBeenCalledTimes(1));
     expect(steps).toEqual(['before:start', 'before:end', 'click']);
+  });
+
+  it('opens the popup synchronously when beforeOnClick is async', async () => {
+    let resolveBeforeOnClick = () => {};
+    const shareWindow = { close: vi.fn(), closed: false, location: { replace: vi.fn() } };
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(shareWindow as unknown as Window);
+    const onClick = vi.fn();
+
+    render(
+      <ShareButton
+        beforeOnClick={() =>
+          new Promise<void>(resolve => {
+            resolveBeforeOnClick = resolve;
+          })
+        }
+        networkLink={(url: string) => `${url}/share`}
+        networkName="test"
+        onClick={onClick}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    // Popup blockers only allow window.open during the click's user activation.
+    expect(openSpy).toHaveBeenCalledWith('about:blank', '', expect.stringContaining('height=400'));
+    expect(shareWindow.location.replace).not.toHaveBeenCalled();
+
+    resolveBeforeOnClick();
+
+    await waitFor(() => expect(onClick).toHaveBeenCalledTimes(1));
+    expect(openSpy).toHaveBeenCalledTimes(1);
+    expect(shareWindow.location.replace).toHaveBeenCalledWith('https://example.com/share');
+  });
+
+  it('cancels sharing and closes the popup when async beforeOnClick rejects', async () => {
+    const shareWindow = { close: vi.fn(), closed: false, location: { replace: vi.fn() } };
+    vi.spyOn(window, 'open').mockReturnValue(shareWindow as unknown as Window);
+    const onClick = vi.fn();
+
+    render(
+      <ShareButton
+        beforeOnClick={() => Promise.reject(new Error('cancelled'))}
+        networkLink={(url: string) => url}
+        networkName="test"
+        onClick={onClick}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    await waitFor(() => expect(shareWindow.close).toHaveBeenCalledTimes(1));
+    expect(shareWindow.location.replace).not.toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('passes the opened share window to onShareWindowOpen', () => {
+    const shareWindow = { closed: false };
+    vi.spyOn(window, 'open').mockReturnValue(shareWindow as unknown as Window);
+    const onShareWindowOpen = vi.fn();
+
+    render(
+      <ShareButton
+        networkLink={(url: string) => url}
+        networkName="test"
+        onShareWindowOpen={onShareWindowOpen}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    expect(onShareWindowOpen).toHaveBeenCalledWith(shareWindow);
+  });
+
+  it('passes null to onShareWindowOpen when the popup is blocked', async () => {
+    vi.spyOn(window, 'open').mockReturnValue(null);
+    const onShareWindowOpen = vi.fn();
+
+    render(
+      <ShareButton
+        beforeOnClick={() => Promise.resolve()}
+        networkLink={(url: string) => url}
+        networkName="test"
+        onShareWindowOpen={onShareWindowOpen}
+        opts={{}}
+        url="https://example.com"
+      >
+        Share
+      </ShareButton>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Share' }));
+
+    await waitFor(() => expect(onShareWindowOpen).toHaveBeenCalledWith(null));
   });
 
   it('skips window.open when openShareDialogOnClick is false', () => {
@@ -328,7 +434,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round aria-label="facebook icon" />
+        <FacebookLegacyIcon round aria-label="facebook icon" />
       </ShareButton>,
     );
 
@@ -343,7 +449,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round />
+        <FacebookIcon />
       </ShareButton>,
     );
 
@@ -362,7 +468,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon round />
+        <FacebookIcon />
       </ShareButton>,
     );
 
@@ -383,7 +489,7 @@ describe('ShareButton', () => {
           opts={{}}
           url="https://example.com"
         >
-          <FacebookIcon round />
+          <FacebookIcon />
         </ShareButton>
       </>,
     );
@@ -417,7 +523,7 @@ describe('ShareButton', () => {
         opts={{}}
         url="https://example.com"
       >
-        <FacebookIcon aria-label="facebook icon" borderRadius={12} />
+        <FacebookLegacyIcon aria-label="facebook icon" borderRadius={12} />
       </ShareButton>,
     );
 
@@ -433,7 +539,7 @@ describe('ShareButton', () => {
         style={{ borderRadius: 4, display: 'inline-block', outlineOffset: 3 }}
         url="https://example.com"
       >
-        <FacebookIcon round aria-label="facebook icon" />
+        <FacebookIcon aria-label="facebook icon" />
       </ShareButton>,
     );
 

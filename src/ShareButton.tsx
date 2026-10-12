@@ -1,12 +1,11 @@
-import { Children, isValidElement } from 'react';
 import type React from 'react';
 import cx from 'classnames';
+import { openShareWindow, type LinkBehavior, type WindowPosition } from './shareWindow';
+import { getButtonBorderRadius, hasTextContent, isPromise } from './utils/buttonHelpers';
 
 type NetworkLink<LinkOptions> = (url: string, options: LinkOptions) => string;
 
-type WindowPosition = 'windowCenter' | 'screenCenter';
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
-type IconShapeProps = { borderRadius?: number; round?: boolean };
 
 const DEFAULT_ARIA_LABELS = {
   bluesky: 'Share on Bluesky',
@@ -22,121 +21,24 @@ const DEFAULT_ARIA_LABELS = {
   mailru: 'Share on Mail.ru',
   ok: 'Share on OK',
   pinterest: 'Pin on Pinterest',
-  pocket: 'Save to Pocket',
   reddit: 'Share on Reddit',
   telegram: 'Share on Telegram',
   threads: 'Share on Threads',
   tumblr: 'Share on Tumblr',
-  twitter: 'Share on X',
   viber: 'Share on Viber',
   vk: 'Share on VK',
   weibo: 'Share on Weibo',
   whatsapp: 'Share on WhatsApp',
-  workplace: 'Share on Workplace',
+  x: 'Share on X',
 } as const;
-
-const isPromise = (obj: unknown): obj is Promise<unknown> =>
-  !!obj &&
-  (typeof obj === 'object' || typeof obj === 'function') &&
-  'then' in obj &&
-  typeof (obj as Promise<unknown>).then === 'function';
-
-const getBoxPositionOnWindowCenter = (width: number, height: number) => ({
-  left: window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2,
-  top: window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - height / 2,
-});
-
-const getBoxPositionOnScreenCenter = (width: number, height: number) => ({
-  top: (window.screen.height - height) / 2,
-  left: (window.screen.width - width) / 2,
-});
-
-function getButtonBorderRadius(children: React.ReactNode) {
-  const childNodes = Children.toArray(children);
-
-  if (childNodes.length !== 1) {
-    return undefined;
-  }
-
-  const [child] = childNodes;
-
-  if (!isValidElement<IconShapeProps>(child)) {
-    return undefined;
-  }
-
-  if (child.props.round) {
-    return '50%';
-  }
-
-  return child.props.borderRadius ?? 0;
-}
-
-function hasTextContent(children: React.ReactNode): boolean {
-  return Children.toArray(children).some(child => {
-    if (typeof child === 'string') {
-      return child.trim().length > 0;
-    }
-
-    if (typeof child === 'number') {
-      return true;
-    }
-
-    if (!isValidElement<{ children?: React.ReactNode }>(child)) {
-      return false;
-    }
-
-    return hasTextContent(child.props.children);
-  });
-}
-
-function windowOpen(
-  url: string,
-  { height, width, ...configRest }: { height: number; width: number; [key: string]: unknown },
-  onClose?: (dialog: Window | null) => void,
-) {
-  const config: { [key: string]: string | number } = {
-    height,
-    width,
-    location: 'no',
-    toolbar: 'no',
-    status: 'no',
-    directories: 'no',
-    menubar: 'no',
-    scrollbars: 'yes',
-    resizable: 'no',
-    centerscreen: 'yes',
-    chrome: 'yes',
-    ...configRest,
-  };
-
-  const shareDialog = window.open(
-    url,
-    '',
-    Object.keys(config)
-      .map(key => `${key}=${config[key]}`)
-      .join(', '),
-  );
-
-  if (onClose) {
-    const interval = window.setInterval(() => {
-      try {
-        if (shareDialog === null || shareDialog.closed) {
-          window.clearInterval(interval);
-          onClose(shareDialog);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }, 1000);
-  }
-
-  return shareDialog;
-}
 
 export interface Props<LinkOptions> extends NativeButtonProps {
   /**
    *  Takes a function that returns a Promise to be fulfilled before calling
    * `onClick`. If you do not return promise, `onClick` is called immediately.
+   * When a Promise is returned, the share popup opens immediately and loads the
+   * share URL once the Promise resolves. Rejecting the Promise cancels sharing
+   * and closes the popup.
    */
   beforeOnClick?: () => Promise<void> | void;
   children: React.ReactNode;
@@ -151,10 +53,11 @@ export interface Props<LinkOptions> extends NativeButtonProps {
   forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * Passes as the native `title` attribute for the `button` element.
-   * This uses `htmlTitle` instead of `title` because many share buttons
-   * already use `title` for the share payload sent to the target network.
+   * This uses `htmlTitle` instead of `title` so it does not collide with
+   * share payload props exposed by the button components.
    */
   htmlTitle?: HTMLButtonElement['title'];
+  linkBehavior?: LinkBehavior;
   networkName: string;
   networkLink: NetworkLink<LinkOptions>;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>, link: string) => void;
@@ -162,6 +65,11 @@ export interface Props<LinkOptions> extends NativeButtonProps {
    * Takes a function to be called after closing share dialog.
    */
   onShareWindowClose?: () => void;
+  /**
+   * Takes a function to be called with the opened share window, or `null`
+   * when a popup blocker prevented it from opening.
+   */
+  onShareWindowOpen?: (shareWindow: Window | null) => void;
   openShareDialogOnClick?: boolean;
   opts: LinkOptions;
   resetButtonStyle?: boolean;
@@ -177,10 +85,10 @@ export interface Props<LinkOptions> extends NativeButtonProps {
 
 export type ShareButtonProps<LinkOptions extends Record<string, unknown>> = Omit<
   Props<LinkOptions>,
-  'forwardedRef' | 'networkLink' | 'networkName' | 'opts'
+  'forwardedRef' | 'linkBehavior' | 'networkLink' | 'networkName' | 'opts'
 >;
 
-export default function ShareButton<LinkOptions extends Record<string, unknown>>({
+export function ShareButton<LinkOptions extends Record<string, unknown>>({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   beforeOnClick,
@@ -190,10 +98,12 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
   disabledStyle = { opacity: 0.6 },
   forwardedRef,
   htmlTitle,
+  linkBehavior = 'popup',
   networkLink,
   networkName, // deconstructed from ...rest to prevent passing it to the button element
   onClick,
   onShareWindowClose,
+  onShareWindowOpen,
   openShareDialogOnClick = true,
   opts,
   resetButtonStyle = true,
@@ -222,24 +132,42 @@ export default function ShareButton<LinkOptions extends Record<string, unknown>>
 
     event.preventDefault();
 
-    if (beforeOnClick) {
-      const returnVal = beforeOnClick();
+    const returnVal = beforeOnClick?.();
+    const opensPopup = openShareDialogOnClick && linkBehavior === 'popup';
+    const windowOptions = {
+      height: windowHeight,
+      onClose: onShareWindowClose,
+      position: windowPosition,
+      width: windowWidth,
+    };
 
-      if (isPromise(returnVal)) {
+    if (isPromise(returnVal)) {
+      // Popup blockers only allow window.open during the click's user activation,
+      // which is gone after an await, so open a blank popup now and load the link later.
+      const shareWindow = opensPopup ? openShareWindow('about:blank', windowOptions) : null;
+
+      try {
         await returnVal;
+      } catch {
+        shareWindow?.close();
+        return;
       }
+
+      if (shareWindow && !shareWindow.closed) {
+        shareWindow.location.replace(link);
+      }
+
+      if (opensPopup) {
+        onShareWindowOpen?.(shareWindow);
+      }
+    } else if (opensPopup) {
+      const shareWindow = openShareWindow(link, windowOptions);
+
+      onShareWindowOpen?.(shareWindow);
     }
 
-    if (openShareDialogOnClick) {
-      const windowConfig = {
-        height: windowHeight,
-        width: windowWidth,
-        ...(windowPosition === 'windowCenter'
-          ? getBoxPositionOnWindowCenter(windowWidth, windowHeight)
-          : getBoxPositionOnScreenCenter(windowWidth, windowHeight)),
-      };
-
-      windowOpen(link, windowConfig, onShareWindowClose);
+    if (openShareDialogOnClick && linkBehavior === 'navigate') {
+      window.location.href = link;
     }
 
     if (onClick) {

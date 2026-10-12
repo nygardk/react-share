@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import EmailShareButton from '../src/EmailShareButton';
+import { EmailShareButton } from '../src/EmailShareButton';
 
 describe('EmailShareButton', () => {
   it('navigates to a mailto link instead of opening a popup', () => {
@@ -30,9 +30,7 @@ describe('EmailShareButton', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Share by email' }));
 
     expect(openSpy).not.toHaveBeenCalled();
-    expect(hrefState.value).toBe(
-      'mailto:?subject=Subject&body=Body%20https%3A%2F%2Fexample.com',
-    );
+    expect(hrefState.value).toBe('mailto:?subject=Subject&body=Body%0Ahttps%3A%2F%2Fexample.com');
   });
 
   it('uses the shared url as the body when no body is provided', () => {

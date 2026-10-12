@@ -1,9 +1,9 @@
-import IconBase, { type IconProps } from './icons/IconBase';
+import { RawIconBase, type RawIconProps } from './icons/RawIconBase';
 
-export default function XIcon(props: IconProps) {
+export function XIcon(props: RawIconProps) {
   return (
-    <IconBase color="#000000" {...props}>
-      <path d="M 41.116 18.375 h 4.962 l -10.8405 12.39 l 12.753 16.86 H 38.005 l -7.821 -10.2255 L 21.235 47.625 H 16.27 l 11.595 -13.2525 L 15.631 18.375 H 25.87 l 7.0695 9.3465 z m -1.7415 26.28 h 2.7495 L 24.376 21.189 H 21.4255 z" />
-    </IconBase>
+    <RawIconBase badge={{ scale: 0.5 }} color="#000000" {...props}>
+      <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+    </RawIconBase>
   );
 }

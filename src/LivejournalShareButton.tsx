@@ -1,40 +1,42 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type LivejournalShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; description?: string }>,
+  ShareButtonProps<{ shareTitle?: string; description?: string }>,
   'title'
 > & {
   description?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
 function livejournalLink(
   url: string,
-  { title, description }: { title?: string; description?: string },
+  { shareTitle, description }: { shareTitle?: string; description?: string },
 ) {
   assert(url, 'livejournal.url');
 
   return (
     'https://www.livejournal.com/update.bml' +
     objectToGetParams({
-      subject: title,
+      subject: shareTitle,
       event: description,
     })
   );
 }
 
-const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
-  ({ description, title, ...props }, ref) => (
+export const buildLivejournalShareUrl = livejournalLink;
+
+export const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareButtonProps>(
+  ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="livejournal"
-      networkLink={livejournalLink}
+      networkLink={buildLivejournalShareUrl}
       opts={{
-        title,
+        shareTitle,
         description,
       }}
       windowHeight={460}
@@ -44,5 +46,3 @@ const LivejournalShareButton = forwardRef<HTMLButtonElement, LivejournalShareBut
 );
 
 LivejournalShareButton.displayName = 'LivejournalShareButton';
-
-export default LivejournalShareButton;

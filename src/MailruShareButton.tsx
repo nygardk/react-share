@@ -1,11 +1,15 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function mailruLink(
   url: string,
-  { title, description, imageUrl }: { title?: string; description?: string; imageUrl?: string },
+  {
+    shareTitle,
+    description,
+    imageUrl,
+  }: { shareTitle?: string; description?: string; imageUrl?: string },
 ) {
   assert(url, 'mailru.url');
 
@@ -13,31 +17,33 @@ function mailruLink(
     'https://connect.mail.ru/share' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
       description,
       image_url: imageUrl,
     })
   );
 }
 
+export const buildMailruShareUrl = mailruLink;
+
 type MailruShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; description?: string; imageUrl?: string }>,
+  ShareButtonProps<{ shareTitle?: string; description?: string; imageUrl?: string }>,
   'title'
 > & {
   description?: string;
   imageUrl?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
-const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
-  ({ description, imageUrl, title, ...props }, ref) => (
+export const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
+  ({ description, imageUrl, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="mailru"
-      networkLink={mailruLink}
+      networkLink={buildMailruShareUrl}
       opts={{
-        title,
+        shareTitle,
         description,
         imageUrl,
       }}
@@ -48,5 +54,3 @@ const MailruShareButton = forwardRef<HTMLButtonElement, MailruShareButtonProps>(
 );
 
 MailruShareButton.displayName = 'MailruShareButton';
-
-export default MailruShareButton;

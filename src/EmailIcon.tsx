@@ -1,9 +1,11 @@
-import IconBase, { type IconProps } from './icons/IconBase';
+import { RawIconBase, type RawIconProps } from './icons/RawIconBase';
 
-export default function EmailIcon(props: IconProps) {
+// Lucide "mail" (ISC license).
+export function EmailIcon(props: RawIconProps) {
   return (
-    <IconBase color="#7f7f7f" {...props}>
-      <path d="M17,22v20h30V22H17z M41.1,25L32,32.1L22.9,25H41.1z M20,39V26.6l12,9.3l12-9.3V39H20z" />
-    </IconBase>
+    <RawIconBase badge={{ scale: 0.6 }} color="#7f7f7f" outlined {...props}>
+      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+    </RawIconBase>
   );
 }

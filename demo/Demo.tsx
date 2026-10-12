@@ -22,12 +22,12 @@ import {
   LivejournalShareButton,
   MailruIcon,
   MailruShareButton,
+  NativeShareButton,
+  NativeShareIcon,
   OKIcon,
   OKShareButton,
   PinterestIcon,
   PinterestShareButton,
-  PocketIcon,
-  PocketShareButton,
   RedditIcon,
   RedditShareButton,
   TelegramIcon,
@@ -36,7 +36,6 @@ import {
   ThreadsShareButton,
   TumblrIcon,
   TumblrShareButton,
-  TwitterShareButton,
   ViberIcon,
   ViberShareButton,
   VKIcon,
@@ -45,9 +44,8 @@ import {
   WeiboShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-  WorkplaceIcon,
-  WorkplaceShareButton,
   XIcon,
+  XShareButton,
 } from '../src';
 
 import './Demo.css';
@@ -64,11 +62,11 @@ export function Demo() {
         <WhatsappShareButton
           aria-label="Share on WhatsApp"
           url={shareUrl}
-          title={title}
+          message={title}
           separator=":: "
           className="Demo__some-network__share-button"
         >
-          <WhatsappIcon size={32} round />
+          <WhatsappIcon size={32} />
         </WhatsappShareButton>
       </div>
 
@@ -78,19 +76,19 @@ export function Demo() {
           url={shareUrl}
           className="Demo__some-network__share-button"
         >
-          <FacebookIcon size={32} round />
+          <FacebookIcon size={32} />
         </FacebookShareButton>
       </div>
 
       <div className="Demo__some-network">
-        <TwitterShareButton
+        <XShareButton
           aria-label="Share on X"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
-          <XIcon size={32} round />
-        </TwitterShareButton>
+          <XIcon size={32} />
+        </XShareButton>
       </div>
 
       <div className="Demo__some-network">
@@ -100,7 +98,7 @@ export function Demo() {
           appId="521270401588372"
           className="Demo__some-network__share-button"
         >
-          <FacebookMessengerIcon size={32} round />
+          <FacebookMessengerIcon size={32} />
         </FacebookMessengerShareButton>
       </div>
 
@@ -110,7 +108,7 @@ export function Demo() {
           url={shareUrl}
           className="Demo__some-network__share-button"
         >
-          <LinkedinIcon size={32} round />
+          <LinkedinIcon size={32} />
         </LinkedinShareButton>
       </div>
 
@@ -118,10 +116,10 @@ export function Demo() {
         <TelegramShareButton
           aria-label="Share on Telegram"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
-          <TelegramIcon size={32} round />
+          <TelegramIcon size={32} />
         </TelegramShareButton>
       </div>
 
@@ -129,12 +127,12 @@ export function Demo() {
         <RedditShareButton
           aria-label="Share on Reddit"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
         >
-          <RedditIcon size={32} round />
+          <RedditIcon size={32} />
         </RedditShareButton>
       </div>
 
@@ -145,7 +143,7 @@ export function Demo() {
           media={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <PinterestIcon size={32} round />
+          <PinterestIcon size={32} />
         </PinterestShareButton>
       </div>
 
@@ -153,10 +151,10 @@ export function Demo() {
         <ThreadsShareButton
           aria-label="Share on Threads"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
-          <ThreadsIcon size={32} round />
+          <ThreadsIcon size={32} />
         </ThreadsShareButton>
       </div>
 
@@ -164,11 +162,11 @@ export function Demo() {
         <WeiboShareButton
           aria-label="Share on Weibo"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           image={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <WeiboIcon size={32} round />
+          <WeiboIcon size={32} />
         </WeiboShareButton>
       </div>
 
@@ -176,10 +174,10 @@ export function Demo() {
         <LineShareButton
           aria-label="Share on Line"
           url={shareUrl}
-          title={title}
+          text={title}
           className="Demo__some-network__share-button"
         >
-          <LineIcon size={32} round />
+          <LineIcon size={32} />
         </LineShareButton>
       </div>
 
@@ -187,12 +185,12 @@ export function Demo() {
         <BlueskyShareButton
           aria-label="Share on Bluesky"
           url={shareUrl}
-          title={title}
+          text={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
         >
-          <BlueskyIcon size={32} round />
+          <BlueskyIcon size={32} />
         </BlueskyShareButton>
       </div>
 
@@ -200,10 +198,10 @@ export function Demo() {
         <ViberShareButton
           aria-label="Share on Viber"
           url={shareUrl}
-          title={title}
+          message={title}
           className="Demo__some-network__share-button"
         >
-          <ViberIcon size={32} round />
+          <ViberIcon size={32} />
         </ViberShareButton>
       </div>
 
@@ -215,29 +213,29 @@ export function Demo() {
           body="body"
           className="Demo__some-network__share-button"
         >
-          <EmailIcon size={32} round />
+          <EmailIcon size={32} />
         </EmailShareButton>
       </div>
 
       <div className="Demo__some-network">
-        <PocketShareButton
-          aria-label="Save to Pocket"
+        <NativeShareButton
+          aria-label="Share with native share"
+          text={title}
           url={shareUrl}
-          title={title}
           className="Demo__some-network__share-button"
         >
-          <PocketIcon size={32} round />
-        </PocketShareButton>
+          <NativeShareIcon size={32} />
+        </NativeShareButton>
       </div>
 
       <div className="Demo__some-network">
         <InstapaperShareButton
           aria-label="Save to Instapaper"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           className="Demo__some-network__share-button"
         >
-          <InstapaperIcon size={32} round />
+          <InstapaperIcon size={32} />
         </InstapaperShareButton>
       </div>
 
@@ -245,10 +243,10 @@ export function Demo() {
         <TumblrShareButton
           aria-label="Share on Tumblr"
           url={shareUrl}
-          title={title}
+          postTitle={title}
           className="Demo__some-network__share-button"
         >
-          <TumblrIcon size={32} round />
+          <TumblrIcon size={32} />
         </TumblrShareButton>
       </div>
 
@@ -259,7 +257,7 @@ export function Demo() {
           image={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <VKIcon size={32} round />
+          <VKIcon size={32} />
         </VKShareButton>
       </div>
 
@@ -270,7 +268,7 @@ export function Demo() {
           image={`${String(window.location)}/${exampleImage}`}
           className="Demo__some-network__share-button"
         >
-          <OKIcon size={32} round />
+          <OKIcon size={32} />
         </OKShareButton>
       </div>
 
@@ -278,10 +276,10 @@ export function Demo() {
         <MailruShareButton
           aria-label="Share on Mail.ru"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           className="Demo__some-network__share-button"
         >
-          <MailruIcon size={32} round />
+          <MailruIcon size={32} />
         </MailruShareButton>
       </div>
 
@@ -289,11 +287,11 @@ export function Demo() {
         <LivejournalShareButton
           aria-label="Share on LiveJournal"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           description={shareUrl}
           className="Demo__some-network__share-button"
         >
-          <LivejournalIcon size={32} round />
+          <LivejournalIcon size={32} />
         </LivejournalShareButton>
       </div>
 
@@ -301,40 +299,27 @@ export function Demo() {
         <HatenaShareButton
           aria-label="Share on Hatena"
           url={shareUrl}
-          title={title}
+          shareTitle={title}
           windowWidth={660}
           windowHeight={460}
           className="Demo__some-network__share-button"
         >
-          <HatenaIcon size={32} round />
+          <HatenaIcon size={32} />
         </HatenaShareButton>
-      </div>
-
-      <div className="Demo__some-network">
-        <WorkplaceShareButton
-          aria-label="Share on Workplace"
-          url={shareUrl}
-          quote={title}
-          className="Demo__some-network__share-button"
-        >
-          <WorkplaceIcon size={32} round />
-        </WorkplaceShareButton>
       </div>
 
       <div className="Demo__some-network">
         <GabShareButton
           aria-label="Share on Gab"
           url={shareUrl}
-          title={title}
+          text={title}
           windowWidth={660}
           windowHeight={640}
           className="Demo__some-network__share-button"
         >
-          <GabIcon size={32} round />
+          <GabIcon size={32} />
         </GabShareButton>
       </div>
     </div>
   );
 }
-
-export default Demo;

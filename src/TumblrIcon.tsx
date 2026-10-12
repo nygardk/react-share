@@ -1,9 +1,9 @@
-import IconBase, { type IconProps } from './icons/IconBase';
+import { RawIconBase, type RawIconProps } from './icons/RawIconBase';
 
-export default function TumblrIcon(props: IconProps) {
+export function TumblrIcon(props: RawIconProps) {
   return (
-    <IconBase color="#36465D" {...props}>
-      <path d="M39.2,41c-0.6,0.3-1.6,0.5-2.4,0.5c-2.4,0.1-2.9-1.7-2.9-3v-9.3h6v-4.5h-6V17c0,0-4.3,0-4.4,0 c-0.1,0-0.2,0.1-0.2,0.2c-0.3,2.3-1.4,6.4-5.9,8.1v3.9h3V39c0,3.4,2.5,8.1,9,8c2.2,0,4.7-1,5.2-1.8L39.2,41z" />
-    </IconBase>
+    <RawIconBase badge={{ scale: 0.5 }} color="#001935" {...props}>
+      <path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z" />
+    </RawIconBase>
   );
 }

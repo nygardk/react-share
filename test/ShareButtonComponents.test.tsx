@@ -1,13 +1,12 @@
 import React, { createRef } from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 
-import EmailIcon from '../src/EmailIcon';
-import EmailShareButton from '../src/EmailShareButton';
-import PinterestIcon from '../src/PinterestIcon';
-import PinterestShareButton from '../src/PinterestShareButton';
-import ThreadsShareButton from '../src/ThreadsShareButton';
-import TumblrShareButton from '../src/TumblrShareButton';
+import { EmailIcon } from '../src/EmailIcon';
+import { EmailShareButton } from '../src/EmailShareButton';
+import { PinterestIcon } from '../src/PinterestIcon';
+import { PinterestShareButton } from '../src/PinterestShareButton';
+import { TumblrShareButton } from '../src/TumblrShareButton';
 
 describe('share button components', () => {
   it('does not forward network-specific props to the DOM', () => {
@@ -49,8 +48,8 @@ describe('share button components', () => {
         caption="Example caption"
         openShareDialogOnClick={false}
         posttype="photo"
+        postTitle="Example title"
         tags={['react', 'share']}
-        title="Example title"
         url="https://example.com"
       >
         Share on Tumblr
@@ -64,39 +63,10 @@ describe('share button components', () => {
     expect(button).not.toHaveAttribute('posttype');
   });
 
-  it('keeps legacy Threads props as ignored no-ops', () => {
-    const openSpy = vi.spyOn(window, 'open').mockReturnValue(null);
-
-    render(
-      <ThreadsShareButton
-        hashtags={['react', 'share']}
-        related={['openai']}
-        title="Example title"
-        url="https://example.com"
-        via="reactshare"
-      >
-        Share on Threads
-      </ThreadsShareButton>,
-    );
-
-    const button = screen.getByRole('button', { name: 'Share on Threads' });
-
-    fireEvent.click(button);
-
-    expect(button).not.toHaveAttribute('hashtags');
-    expect(button).not.toHaveAttribute('related');
-    expect(button).not.toHaveAttribute('via');
-    expect(openSpy).toHaveBeenCalledWith(
-      'https://threads.net/intent/post?url=https%3A%2F%2Fexample.com&text=Example%20title',
-      '',
-      expect.any(String),
-    );
-  });
-
   it('adds the email fallback label for icon-only buttons', () => {
     render(
       <EmailShareButton subject="Subject" url="https://example.com">
-        <EmailIcon round />
+        <EmailIcon />
       </EmailShareButton>,
     );
 
@@ -106,7 +76,7 @@ describe('share button components', () => {
   it('adds the Pinterest fallback label for icon-only buttons', () => {
     render(
       <PinterestShareButton media="https://example.com/image.png" url="https://example.com">
-        <PinterestIcon round />
+        <PinterestIcon />
       </PinterestShareButton>,
     );
 

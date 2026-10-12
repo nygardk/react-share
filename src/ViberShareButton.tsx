@@ -1,43 +1,57 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { type MobileBehavior, resolveMobileShareStrategy } from './mobile';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type ViberShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; separator?: string }>,
+  ShareButtonProps<{ message?: string; separator?: string }>,
   'title'
 > & {
+  message?: string;
+  mobileBehavior?: MobileBehavior;
   separator?: string;
-  title?: string;
 };
 
-function viberLink(url: string, { title, separator }: { title?: string; separator?: string }) {
+function viberLink(
+  url: string,
+  { message, separator = ' ' }: { message?: string; separator?: string },
+) {
   assert(url, 'viber.url');
   return (
     'viber://forward' +
     objectToGetParams({
-      text: title ? title + separator + url : url,
+      text: message ? message + separator + url : url,
     })
   );
 }
 
-const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
-  ({ separator, title, ...props }, ref) => (
-    <ShareButton
-      {...props}
-      forwardedRef={ref}
-      networkName="viber"
-      networkLink={viberLink}
-      opts={{
-        title,
-        separator: separator || ' ',
-      }}
-      windowHeight={460}
-      windowWidth={660}
-    />
-  ),
+export const buildViberShareUrl = viberLink;
+
+export const ViberShareButton = forwardRef<HTMLButtonElement, ViberShareButtonProps>(
+  ({ message, mobileBehavior, separator, ...props }, ref) => {
+    const { linkBehavior, networkLink } = resolveMobileShareStrategy(
+      mobileBehavior,
+      buildViberShareUrl,
+      buildViberShareUrl,
+    );
+
+    return (
+      <ShareButton
+        {...props}
+        forwardedRef={ref}
+        linkBehavior={linkBehavior}
+        networkName="viber"
+        networkLink={networkLink}
+        opts={{
+          message,
+          separator: separator || ' ',
+        }}
+        windowHeight={460}
+        windowWidth={660}
+      />
+    );
+  },
 );
 
 ViberShareButton.displayName = 'ViberShareButton';
-
-export default ViberShareButton;

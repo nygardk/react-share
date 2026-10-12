@@ -1,19 +1,19 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type InstapaperShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; description?: string }>,
+  ShareButtonProps<{ shareTitle?: string; description?: string }>,
   'title'
 > & {
   description?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
 function instapaperLink(
   url: string,
-  { title, description }: { title?: string; description?: string },
+  { shareTitle, description }: { shareTitle?: string; description?: string },
 ) {
   assert(url, 'instapaper.url');
 
@@ -21,21 +21,23 @@ function instapaperLink(
     'http://www.instapaper.com/hello2' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
       description,
     })
   );
 }
 
-const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButtonProps>(
-  ({ description, title, ...props }, ref) => (
+export const buildInstapaperShareUrl = instapaperLink;
+
+export const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButtonProps>(
+  ({ description, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="instapaper"
-      networkLink={instapaperLink}
+      networkLink={buildInstapaperShareUrl}
       opts={{
-        title,
+        shareTitle,
         description,
       }}
       windowHeight={500}
@@ -46,5 +48,3 @@ const InstapaperShareButton = forwardRef<HTMLButtonElement, InstapaperShareButto
 );
 
 InstapaperShareButton.displayName = 'InstapaperShareButton';
-
-export default InstapaperShareButton;

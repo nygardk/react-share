@@ -1,11 +1,11 @@
 import { forwardRef } from 'react';
-import assert from './utils/assert';
-import objectToGetParams from './utils/objectToGetParams';
-import ShareButton, { type ShareButtonProps } from './ShareButton';
+import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
+import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 function okLink(
   url: string,
-  { title, description, image }: { title?: string; description?: string; image?: string },
+  { shareTitle, description, image }: { shareTitle?: string; description?: string; image?: string },
 ) {
   assert(url, 'ok.url');
 
@@ -13,31 +13,33 @@ function okLink(
     'https://connect.ok.ru/offer' +
     objectToGetParams({
       url,
-      title,
+      title: shareTitle,
       description,
       imageUrl: image,
     })
   );
 }
 
+export const buildOKShareUrl = okLink;
+
 type OKShareButtonProps = Omit<
-  ShareButtonProps<{ title?: string; description?: string; image?: string }>,
+  ShareButtonProps<{ shareTitle?: string; description?: string; image?: string }>,
   'title'
 > & {
   description?: string;
   image?: string;
-  title?: string;
+  shareTitle?: string;
 };
 
-const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
-  ({ description, image, title, ...props }, ref) => (
+export const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
+  ({ description, image, shareTitle, ...props }, ref) => (
     <ShareButton
       {...props}
       forwardedRef={ref}
       networkName="ok"
-      networkLink={okLink}
+      networkLink={buildOKShareUrl}
       opts={{
-        title,
+        shareTitle,
         description,
         image,
       }}
@@ -49,5 +51,3 @@ const OKShareButton = forwardRef<HTMLButtonElement, OKShareButtonProps>(
 );
 
 OKShareButton.displayName = 'OKShareButton';
-
-export default OKShareButton;

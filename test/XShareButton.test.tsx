@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
+import { XIcon } from '../src/XIcon';
 import { XShareButton } from '../src/XShareButton';
 describe('XShareButton', () => {
   it('builds a share url with hashtags and related accounts', () => {
@@ -73,5 +74,15 @@ describe('XShareButton', () => {
       '',
       expect.any(String),
     );
+  });
+
+  it('applies the default X aria-label to icon-only buttons', () => {
+    render(
+      <XShareButton url="https://example.com">
+        <XIcon size={32} />
+      </XShareButton>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share on X' })).toBeInTheDocument();
   });
 });

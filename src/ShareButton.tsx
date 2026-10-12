@@ -26,12 +26,12 @@ const DEFAULT_ARIA_LABELS = {
   telegram: 'Share on Telegram',
   threads: 'Share on Threads',
   tumblr: 'Share on Tumblr',
-  twitter: 'Share on X',
   viber: 'Share on Viber',
   vk: 'Share on VK',
   weibo: 'Share on Weibo',
   whatsapp: 'Share on WhatsApp',
   workplace: 'Share on Workplace',
+  x: 'Share on X',
 } as const;
 
 export interface Props<LinkOptions> extends NativeButtonProps {

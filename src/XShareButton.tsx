@@ -50,7 +50,7 @@ export const XShareButton = forwardRef<HTMLButtonElement, XShareButtonProps>(
     <ShareButton
       {...props}
       forwardedRef={ref}
-      networkName="twitter"
+      networkName="x"
       networkLink={buildXShareUrl}
       opts={{
         hashtags,

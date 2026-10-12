@@ -22,14 +22,15 @@ describe('raw icon family', () => {
     expect(svg.querySelector('circle')).toBeNull();
   });
 
-  it('keeps repo-local raw icons background-free', () => {
+  it('draws LinkedIn as a single-color full-size mark', () => {
     render(<LinkedinIcon aria-label="linkedin icon" data-testid="linkedin-icon" size={32} />);
 
     const svg = screen.getByTestId('linkedin-icon');
 
     expect(svg).toHaveAttribute('width', '32');
     expect(svg).toHaveAttribute('height', '32');
-    expect(svg).toHaveAttribute('fill', '#0077B5');
+    expect(svg).toHaveAttribute('fill', '#0A66C2');
+    expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
     expect(svg.querySelector('rect')).toBeNull();
     expect(svg.querySelector('circle')).toBeNull();
   });

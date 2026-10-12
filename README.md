@@ -4,7 +4,7 @@
 
 > Social media share buttons for your React apps.
 
-![Share buttons screenshot](example.png)
+![Share buttons screenshot](example.svg)
 
 ## Install
 

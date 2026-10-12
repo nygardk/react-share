@@ -26,6 +26,7 @@
     "test": "vitest run",
     "test:dist": "vitest run --config vitest.dist.config.ts",
     "test:coverage": "vitest run --coverage",
+    "update-example": "vitest run test/ExampleImage.test.tsx --update",
     "release": "npm run build && changeset publish"
   },
   "keywords": [

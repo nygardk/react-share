@@ -601,6 +601,7 @@ Raw icons use a smaller, simpler prop surface:
 | Prop          | Type                      | Default | Description                                                            |
 | ------------- | ------------------------- | ------- | ---------------------------------------------------------------------- |
 | `size`        | `number \| string`        | `24`    | Icon size.                                                             |
+| `color`       | `string`                  | brand   | Icon color. Applied as the fill, or as the stroke on outline icons.    |
 | `...svgProps` | `SVGProps<SVGSVGElement>` | -       | Standard SVG attributes such as `className`, `aria-hidden`, `aria-label`, or `role`. |
 
 Example:
@@ -611,7 +612,7 @@ import { XIcon } from "react-share";
 <XIcon aria-hidden="true" size={32} />;
 ```
 
-Most raw icons render with their default brand color. `NativeShareIcon` follows the current text color so it can blend into generic action UI.
+Most raw icons render with their default brand color. `NativeShareIcon` follows the current text color so it can blend into generic action UI. `EmailIcon` and `NativeShareIcon` are outline icons drawn with a stroke instead of a fill. Pass `color` to recolor any raw icon, whether filled or outlined.
 
 Legacy icons preserve the old badge look and prop contract:
 
@@ -651,6 +652,6 @@ MIT
 
 ## Icon sources
 
-Raw icons are vendored from [Simple Icons](https://simpleicons.org/) where there is a strong canonical match, with a small set of repo-local custom glyphs for unsupported networks and the generic native-share icon.
+Raw icons are vendored from [Simple Icons](https://simpleicons.org/) where there is a strong canonical match, with a small set of repo-local custom glyphs for networks it does not cover. The generic `EmailIcon` and `NativeShareIcon` glyphs come from [Lucide](https://lucide.dev/) (ISC license, Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT); all other copyright for Lucide is held by Lucide Contributors 2022).
 
 Legacy icon badge paths are preserved from the earlier [react-social-icons](https://github.com/jaketrent/react-social-icons)-based implementation.

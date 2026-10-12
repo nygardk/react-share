@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import { EmailIcon } from '../src/EmailIcon';
 import { FacebookIcon } from '../src/FacebookIcon';
 import { FacebookLegacyIcon } from '../src/FacebookLegacyIcon';
 import { LinkedinIcon } from '../src/LinkedinIcon';
@@ -35,10 +36,46 @@ describe('raw icon family', () => {
     expect(svg.querySelector('circle')).toBeNull();
   });
 
+  it('renders outlined icons with a stroke in their default color', () => {
+    render(<EmailIcon aria-label="email icon" data-testid="email-icon" />);
+
+    const svg = screen.getByTestId('email-icon');
+
+    expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+    expect(svg).toHaveAttribute('fill', 'none');
+    expect(svg).toHaveAttribute('stroke', '#7f7f7f');
+    expect(svg).toHaveAttribute('stroke-width', '2');
+    expect(svg).toHaveAttribute('stroke-linecap', 'round');
+    expect(svg).toHaveAttribute('stroke-linejoin', 'round');
+  });
+
+  it('recolors outlined icons through the color and fill props', () => {
+    render(
+      <>
+        <EmailIcon color="#123456" data-testid="email-color" />
+        <EmailIcon data-testid="email-fill" fill="#654321" />
+      </>,
+    );
+
+    expect(screen.getByTestId('email-color')).toHaveAttribute('stroke', '#123456');
+    expect(screen.getByTestId('email-color')).toHaveAttribute('fill', 'none');
+    expect(screen.getByTestId('email-fill')).toHaveAttribute('stroke', '#654321');
+    expect(screen.getByTestId('email-fill')).toHaveAttribute('fill', 'none');
+  });
+
+  it('recolors filled icons through the color prop', () => {
+    render(<FacebookIcon color="#123456" data-testid="facebook-color" />);
+
+    expect(screen.getByTestId('facebook-color')).toHaveAttribute('fill', '#123456');
+  });
+
   it('uses the current text color for the native share glyph', () => {
     render(<NativeShareIcon aria-label="native share icon" data-testid="native-share-icon" />);
 
-    expect(screen.getByTestId('native-share-icon')).toHaveAttribute('fill', 'currentColor');
+    const svg = screen.getByTestId('native-share-icon');
+
+    expect(svg).toHaveAttribute('fill', 'none');
+    expect(svg).toHaveAttribute('stroke', 'currentColor');
   });
 
   it('passes standard svg props through the raw icon base', () => {

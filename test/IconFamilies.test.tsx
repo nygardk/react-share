@@ -9,6 +9,7 @@ import { LinkedinIcon } from '../src/LinkedinIcon';
 import { MailruIcon } from '../src/MailruIcon';
 import { NativeShareIcon } from '../src/NativeShareIcon';
 import { NativeShareLegacyIcon } from '../src/NativeShareLegacyIcon';
+import { OKIcon } from '../src/OKIcon';
 import { ThreadsIcon } from '../src/ThreadsIcon';
 import { XIcon } from '../src/XIcon';
 import { RawIconBase } from '../src/icons/RawIconBase';
@@ -64,6 +65,17 @@ describe('raw icon family', () => {
     expect(svg).toHaveAttribute('fill', '#123456');
     expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
     expect(fills).toEqual([null, 'white']);
+  });
+
+  it('draws the OK logo with a fixed white figure', () => {
+    render(<OKIcon data-testid="ok-icon" />);
+
+    const svg = screen.getByTestId('ok-icon');
+    const fills = Array.from(svg.querySelectorAll('path')).map(path => path.getAttribute('fill'));
+
+    expect(svg).toHaveAttribute('fill', '#FF7700');
+    expect(svg).toHaveAttribute('viewBox', '0 0 24 24');
+    expect(fills).toEqual([null, 'white', 'white']);
   });
 
   it('draws outlined glyphs in white on the circle with a round stroke', () => {

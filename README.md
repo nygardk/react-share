@@ -668,12 +668,13 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 #### XShareButton
 
-| Prop       | Type       | Default | Description                        |
-| ---------- | ---------- | ------- | ---------------------------------- |
-| `text`     | `string`   | –       | Text to share before the URL.      |
-| `via`      | `string`   | –       | Account to attribute the share to. |
-| `hashtags` | `string[]` | –       | Hashtags without the leading `#`.  |
-| `related`  | `string[]` | –       | Related accounts to recommend.     |
+| Prop       | Type       | Default | Description                                                   |
+| ---------- | ---------- | ------- | ------------------------------------------------------------- |
+| `url`      | `string`   | –       | Optional for X. Set `text` instead to share a text-only post. |
+| `text`     | `string`   | –       | Text to share before the URL.                                 |
+| `via`      | `string`   | –       | Account to attribute the share to.                            |
+| `hashtags` | `string[]` | –       | Hashtags without the leading `#`.                             |
+| `related`  | `string[]` | –       | Related accounts to recommend.                                |
 
 - X can ignore or rewrite some share fields.
 

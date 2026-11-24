@@ -1,10 +1,10 @@
 import { access, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
-const rootDir = path.resolve(new URL('..', import.meta.url).pathname);
+const rootDir = fileURLToPath(new URL('..', import.meta.url));
 const require = createRequire(import.meta.url);
 
 const distPaths = {

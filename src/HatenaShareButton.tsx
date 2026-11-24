@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { assert } from './utils/assert';
+import { objectToGetParams } from './utils/objectToGetParams';
 import { ShareButton, type ShareButtonProps } from './ShareButton';
 
 type HatenaShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 'title'> & {
@@ -9,7 +10,9 @@ type HatenaShareButtonProps = Omit<ShareButtonProps<{ shareTitle?: string }>, 't
 function hatenaLink(url: string, { shareTitle }: { shareTitle?: string }) {
   assert(url, 'hatena.url');
 
-  return `http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${shareTitle}`;
+  return (
+    'http://b.hatena.ne.jp/add' + objectToGetParams({ mode: 'confirm', url, title: shareTitle })
+  );
 }
 
 export const buildHatenaShareUrl = hatenaLink;

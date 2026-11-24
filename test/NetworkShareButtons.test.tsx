@@ -70,10 +70,11 @@ const shareButtonCases: ShareButtonCase[] = [
   {
     children: 'Share on Hatena',
     Component: HatenaShareButton,
-    expectedUrl: 'http://b.hatena.ne.jp/add?mode=confirm&url=https://example.com&title=Example',
+    expectedUrl:
+      'http://b.hatena.ne.jp/add?mode=confirm&url=https%3A%2F%2Fexample.com%2F%3Fa%3D1%26b%3D2%23top&title=Tips%20%26%20tricks',
     props: {
-      shareTitle: 'Example',
-      url: 'https://example.com',
+      shareTitle: 'Tips & tricks',
+      url: 'https://example.com/?a=1&b=2#top',
     },
   },
   {

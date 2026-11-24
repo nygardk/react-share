@@ -5,6 +5,7 @@ import {
   buildEmailShareUrl,
   buildFarcasterShareUrl,
   buildFacebookShareUrl,
+  buildHatenaShareUrl,
   buildLinkedinShareUrl,
   buildViberShareUrl,
   buildWhatsappShareUrl,
@@ -13,6 +14,12 @@ import {
 } from '../src';
 
 describe('share helpers', () => {
+  it('omits the Hatena title when none is supplied', () => {
+    const link = new URL(buildHatenaShareUrl('https://example.com', {}));
+    expect(link.searchParams.get('url')).toBe('https://example.com');
+    expect(link.searchParams.has('title')).toBe(false);
+  });
+
   it('builds a Facebook share URL directly', () => {
     expect(buildFacebookShareUrl('https://example.com', { hashtag: '#reactshare' })).toBe(
       'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com&hashtag=%23reactshare',
